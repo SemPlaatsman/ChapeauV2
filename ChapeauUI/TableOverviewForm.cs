@@ -17,5 +17,17 @@ namespace ChapeauUI
             InitializeComponent();
         }
 
+        private void buttonTable1_Click(object sender, EventArgs e)
+        {
+            buttonTable1.BackColor = Color.LightGreen;
+            if (buttonTable1.BackColor != Color.Red)
+            {
+                buttonTable1.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                buttonTable1.BackColor = Color.Red;
+            }
+        }
     }
 }
