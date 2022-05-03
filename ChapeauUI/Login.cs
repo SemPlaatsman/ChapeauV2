@@ -22,8 +22,6 @@ namespace ChapeauUI
             this.Hide();
             RegisterForm registerForm = new RegisterForm();
             registerForm.ShowDialog();
-            /*TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();*/
             this.Close();
         }
 
@@ -33,6 +31,14 @@ namespace ChapeauUI
                 textBoxLoginPIN.PasswordChar = '\0';
             else
                 textBoxLoginPIN.PasswordChar = '*';
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -17,9 +17,5 @@ namespace ChapeauUI
             InitializeComponent();
         }
 
-        private void pictureBoxTable1_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
