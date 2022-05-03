@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class Login : Form
+    public partial class RegisterForm : Form
     {
-        public Login()
+        public RegisterForm()
         {
             InitializeComponent();
         }
 
-        private void buttonRegister_Click(object sender, EventArgs e)
+        private void buttonBackToInlog_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.ShowDialog();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
             this.Close();
         }
     }

@@ -77,9 +77,9 @@ namespace ChapeauUI
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(57, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 20);
+            this.label3.Size = new System.Drawing.Size(32, 20);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Wachtwoord:";
+            this.label3.Text = "Pin:";
             // 
             // textBox1
             // 
