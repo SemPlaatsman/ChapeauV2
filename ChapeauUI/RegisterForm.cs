@@ -39,12 +39,14 @@ namespace ChapeauUI
             string lastname = textBoxRegisterLastname.Text;
             string email = textBoxRegisterEmail.Text;
             string phoneNumber = textBoxRegisterPhoneNumber.Text;
+            string job = comboBoxRegisterJob.Text;
             string PIN = textBoxRegisterPIN.Text;
             string PINRepeat = textBoxRegisterPINRepeat.Text;
 
+
             try
             {
-                if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || PIN == "")
+                if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || job == "" || PIN == "")
                 {
                     MessageBox.Show("Niet alle velden zijn ingevuld. Probeer het opnieuw.");
                 }
