@@ -29,6 +29,7 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.labelWelkom = new System.Windows.Forms.Label();
             this.buttonBackToInlog = new System.Windows.Forms.Button();
             this.labelRegisterVoornaam = new System.Windows.Forms.Label();
@@ -39,12 +40,13 @@ namespace ChapeauUI
             this.labelRegisterPinRepeat = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterFirstname = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterLastname = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterEmail = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterPhoneNumber = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterPIN = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterPINRepeat = new System.Windows.Forms.TextBox();
+            this.checkBoxPIN = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelWelkom
@@ -52,11 +54,9 @@ namespace ChapeauUI
             this.labelWelkom.AutoSize = true;
             this.labelWelkom.Location = new System.Drawing.Point(223, 31);
             this.labelWelkom.Name = "labelWelkom";
-            this.labelWelkom.Size = new System.Drawing.Size(519, 60);
+            this.labelWelkom.Size = new System.Drawing.Size(519, 80);
             this.labelWelkom.TabIndex = 0;
-            this.labelWelkom.Text = "Welkom bij Chapeau. \r\nVul hieronder jouw gegevens in om een werknemersnummer te k" +
-    "rijgen. \r\nVoor het wachtwoord moet je een pincode invullen bestaande uit vier ci" +
-    "jfers. \r\n";
+            this.labelWelkom.Text = resources.GetString("labelWelkom.Text");
             // 
             // buttonBackToInlog
             // 
@@ -130,6 +130,7 @@ namespace ChapeauUI
             this.buttonRegister.TabIndex = 8;
             this.buttonRegister.Text = "Registeren";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // label1
             // 
@@ -141,59 +142,74 @@ namespace ChapeauUI
             this.label1.Text = "De combinatie van jouw werknemersnummer en pincode is belangrijk om in te loggen." +
     " \r\nSchrijf het ergens op, of onthoud het goed. ";
             // 
-            // textBox1
+            // textBoxRegisterFirstname
             // 
-            this.textBox1.Location = new System.Drawing.Point(223, 128);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 27);
-            this.textBox1.TabIndex = 10;
+            this.textBoxRegisterFirstname.Location = new System.Drawing.Point(223, 128);
+            this.textBoxRegisterFirstname.Name = "textBoxRegisterFirstname";
+            this.textBoxRegisterFirstname.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterFirstname.TabIndex = 10;
             // 
-            // textBox2
+            // textBoxRegisterLastname
             // 
-            this.textBox2.Location = new System.Drawing.Point(223, 162);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(256, 27);
-            this.textBox2.TabIndex = 11;
+            this.textBoxRegisterLastname.Location = new System.Drawing.Point(223, 162);
+            this.textBoxRegisterLastname.Name = "textBoxRegisterLastname";
+            this.textBoxRegisterLastname.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterLastname.TabIndex = 11;
             // 
-            // textBox3
+            // textBoxRegisterEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(223, 196);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(256, 27);
-            this.textBox3.TabIndex = 12;
+            this.textBoxRegisterEmail.Location = new System.Drawing.Point(223, 196);
+            this.textBoxRegisterEmail.Name = "textBoxRegisterEmail";
+            this.textBoxRegisterEmail.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterEmail.TabIndex = 12;
             // 
-            // textBox4
+            // textBoxRegisterPhoneNumber
             // 
-            this.textBox4.Location = new System.Drawing.Point(223, 230);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(157, 27);
-            this.textBox4.TabIndex = 13;
+            this.textBoxRegisterPhoneNumber.Location = new System.Drawing.Point(223, 230);
+            this.textBoxRegisterPhoneNumber.Name = "textBoxRegisterPhoneNumber";
+            this.textBoxRegisterPhoneNumber.Size = new System.Drawing.Size(157, 27);
+            this.textBoxRegisterPhoneNumber.TabIndex = 13;
             // 
-            // textBox5
+            // textBoxRegisterPIN
             // 
-            this.textBox5.Location = new System.Drawing.Point(223, 264);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(95, 27);
-            this.textBox5.TabIndex = 14;
+            this.textBoxRegisterPIN.Location = new System.Drawing.Point(223, 264);
+            this.textBoxRegisterPIN.Name = "textBoxRegisterPIN";
+            this.textBoxRegisterPIN.PasswordChar = '*';
+            this.textBoxRegisterPIN.Size = new System.Drawing.Size(95, 27);
+            this.textBoxRegisterPIN.TabIndex = 14;
             // 
-            // textBox6
+            // textBoxRegisterPINRepeat
             // 
-            this.textBox6.Location = new System.Drawing.Point(223, 300);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(95, 27);
-            this.textBox6.TabIndex = 15;
+            this.textBoxRegisterPINRepeat.Location = new System.Drawing.Point(223, 300);
+            this.textBoxRegisterPINRepeat.Name = "textBoxRegisterPINRepeat";
+            this.textBoxRegisterPINRepeat.PasswordChar = '*';
+            this.textBoxRegisterPINRepeat.Size = new System.Drawing.Size(95, 27);
+            this.textBoxRegisterPINRepeat.TabIndex = 15;
+            // 
+            // checkBoxPIN
+            // 
+            this.checkBoxPIN.AutoSize = true;
+            this.checkBoxPIN.Location = new System.Drawing.Point(378, 267);
+            this.checkBoxPIN.Name = "checkBoxPIN";
+            this.checkBoxPIN.Size = new System.Drawing.Size(90, 24);
+            this.checkBoxPIN.TabIndex = 16;
+            this.checkBoxPIN.Text = "View PIN";
+            this.checkBoxPIN.UseVisualStyleBackColor = true;
+            this.checkBoxPIN.CheckedChanged += new System.EventHandler(this.checkBoxPIN_CheckedChanged);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 513);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.checkBoxPIN);
+            this.Controls.Add(this.textBoxRegisterPINRepeat);
+            this.Controls.Add(this.textBoxRegisterPIN);
+            this.Controls.Add(this.textBoxRegisterPhoneNumber);
+            this.Controls.Add(this.textBoxRegisterEmail);
+            this.Controls.Add(this.textBoxRegisterLastname);
+            this.Controls.Add(this.textBoxRegisterFirstname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.labelRegisterPinRepeat);
@@ -223,11 +239,12 @@ namespace ChapeauUI
         private System.Windows.Forms.Label labelRegisterPinRepeat;
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxRegisterFirstname;
+        private System.Windows.Forms.TextBox textBoxRegisterLastname;
+        private System.Windows.Forms.TextBox textBoxRegisterEmail;
+        private System.Windows.Forms.TextBox textBoxRegisterPhoneNumber;
+        private System.Windows.Forms.TextBox textBoxRegisterPIN;
+        private System.Windows.Forms.TextBox textBoxRegisterPINRepeat;
+        private System.Windows.Forms.CheckBox checkBoxPIN;
     }
 }

@@ -57,4 +57,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelWelkom.Text" xml:space="preserve">
+    <value>Welkom bij Chapeau. 
+Vul hieronder jouw gegevens in om een werknemersnummer te krijgen. 
+Voor het wachtwoord moet je een pincode invullen bestaande uit vier cijfers. 
+Alle velden zijn verplicht in te vullen.
+</value>
+  </data>
 </root>
