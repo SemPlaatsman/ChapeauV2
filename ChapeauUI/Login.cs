@@ -22,6 +22,8 @@ namespace ChapeauUI
             this.Hide();
             RegisterForm registerForm = new RegisterForm();
             registerForm.ShowDialog();
+            /*TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();*/
             this.Close();
         }
 

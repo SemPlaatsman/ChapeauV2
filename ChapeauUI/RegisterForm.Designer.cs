@@ -217,7 +217,7 @@ namespace ChapeauUI
             "Bartender"});
             this.comboBoxRegisterJob.Location = new System.Drawing.Point(223, 264);
             this.comboBoxRegisterJob.Name = "comboBoxRegisterJob";
-            this.comboBoxRegisterJob.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxRegisterJob.Size = new System.Drawing.Size(157, 28);
             this.comboBoxRegisterJob.TabIndex = 18;
             // 
             // RegisterForm
