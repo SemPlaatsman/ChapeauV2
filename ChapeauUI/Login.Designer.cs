@@ -39,9 +39,11 @@ namespace ChapeauUI
             this.labelNogGeenWNR = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxViewPIN = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonWachtwoordVergeten = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +94,8 @@ namespace ChapeauUI
             // 
             this.textBoxLoginPIN.Location = new System.Drawing.Point(250, 138);
             this.textBoxLoginPIN.Name = "textBoxLoginPIN";
-            this.textBoxLoginPIN.Size = new System.Drawing.Size(154, 27);
+            this.textBoxLoginPIN.PasswordChar = '*';
+            this.textBoxLoginPIN.Size = new System.Drawing.Size(82, 27);
             this.textBoxLoginPIN.TabIndex = 6;
             // 
             // labelNogGeenWNR
@@ -116,10 +119,22 @@ namespace ChapeauUI
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBoxViewPIN);
             this.panel1.Location = new System.Drawing.Point(45, 67);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(453, 147);
+            this.panel1.Size = new System.Drawing.Size(589, 147);
             this.panel1.TabIndex = 9;
+            // 
+            // checkBoxViewPIN
+            // 
+            this.checkBoxViewPIN.AutoSize = true;
+            this.checkBoxViewPIN.Location = new System.Drawing.Point(316, 73);
+            this.checkBoxViewPIN.Name = "checkBoxViewPIN";
+            this.checkBoxViewPIN.Size = new System.Drawing.Size(90, 24);
+            this.checkBoxViewPIN.TabIndex = 0;
+            this.checkBoxViewPIN.Text = "View PIN";
+            this.checkBoxViewPIN.UseVisualStyleBackColor = true;
+            this.checkBoxViewPIN.CheckedChanged += new System.EventHandler(this.checkBoxViewPIN_CheckedChanged);
             // 
             // panel2
             // 
@@ -167,6 +182,8 @@ namespace ChapeauUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Login";
             this.Text = "Welkom bij Chapeau";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,6 +204,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonWachtwoordVergeten;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox checkBoxViewPIN;
     }
 }
 

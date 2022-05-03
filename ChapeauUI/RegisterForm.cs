@@ -43,7 +43,6 @@ namespace ChapeauUI
             string PIN = textBoxRegisterPIN.Text;
             string PINRepeat = textBoxRegisterPINRepeat.Text;
 
-
             try
             {
                 if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || job == "" || PIN == "")

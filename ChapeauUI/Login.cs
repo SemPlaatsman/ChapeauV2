@@ -24,5 +24,13 @@ namespace ChapeauUI
             registerForm.ShowDialog();
             this.Close();
         }
+
+        private void checkBoxViewPIN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxViewPIN.Checked)
+                textBoxLoginPIN.PasswordChar = '\0';
+            else
+                textBoxLoginPIN.PasswordChar = '*';
+        }
     }
 }
