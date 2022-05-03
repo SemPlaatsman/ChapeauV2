@@ -75,5 +75,7 @@ namespace ChapeauUI
             // Hier komt nog een iets van een RegisterDAO om het daadwerkelijk toe te voegen aan de database. 
             // register.AddRow(alle parameters) of iets dergelijks. 
         }
+
+
     }
 }

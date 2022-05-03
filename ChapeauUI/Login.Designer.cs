@@ -31,12 +31,12 @@ namespace ChapeauUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelLogin1 = new System.Windows.Forms.Label();
+            this.labelLoginWerknemersNummer = new System.Windows.Forms.Label();
+            this.labelLoginPIN = new System.Windows.Forms.Label();
+            this.textBoxLoginWerknemerNummer = new System.Windows.Forms.TextBox();
+            this.textBoxLoginPIN = new System.Windows.Forms.TextBox();
+            this.labelNogGeenWNR = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,55 +54,55 @@ namespace ChapeauUI
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelLogin1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(406, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Voer hieronder jouw werknemersnummer en wachtwoord in.";
+            this.labelLogin1.AutoSize = true;
+            this.labelLogin1.Location = new System.Drawing.Point(45, 32);
+            this.labelLogin1.Name = "labelLogin1";
+            this.labelLogin1.Size = new System.Drawing.Size(406, 20);
+            this.labelLogin1.TabIndex = 1;
+            this.labelLogin1.Text = "Voer hieronder jouw werknemersnummer en wachtwoord in.";
             // 
-            // label2
+            // labelLoginWerknemersNummer
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Werknemersnummer:";
+            this.labelLoginWerknemersNummer.AutoSize = true;
+            this.labelLoginWerknemersNummer.Location = new System.Drawing.Point(57, 96);
+            this.labelLoginWerknemersNummer.Name = "labelLoginWerknemersNummer";
+            this.labelLoginWerknemersNummer.Size = new System.Drawing.Size(148, 20);
+            this.labelLoginWerknemersNummer.TabIndex = 2;
+            this.labelLoginWerknemersNummer.Text = "Werknemersnummer:";
             // 
-            // label3
+            // labelLoginPIN
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Pin:";
+            this.labelLoginPIN.AutoSize = true;
+            this.labelLoginPIN.Location = new System.Drawing.Point(57, 138);
+            this.labelLoginPIN.Name = "labelLoginPIN";
+            this.labelLoginPIN.Size = new System.Drawing.Size(32, 20);
+            this.labelLoginPIN.TabIndex = 3;
+            this.labelLoginPIN.Text = "Pin:";
             // 
-            // textBox1
+            // textBoxLoginWerknemerNummer
             // 
-            this.textBox1.Location = new System.Drawing.Point(250, 96);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 27);
-            this.textBox1.TabIndex = 5;
+            this.textBoxLoginWerknemerNummer.Location = new System.Drawing.Point(250, 96);
+            this.textBoxLoginWerknemerNummer.Name = "textBoxLoginWerknemerNummer";
+            this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(154, 27);
+            this.textBoxLoginWerknemerNummer.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxLoginPIN
             // 
-            this.textBox2.Location = new System.Drawing.Point(250, 138);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 27);
-            this.textBox2.TabIndex = 6;
+            this.textBoxLoginPIN.Location = new System.Drawing.Point(250, 138);
+            this.textBoxLoginPIN.Name = "textBoxLoginPIN";
+            this.textBoxLoginPIN.Size = new System.Drawing.Size(154, 27);
+            this.textBoxLoginPIN.TabIndex = 6;
             // 
-            // label4
+            // labelNogGeenWNR
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 253);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(269, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Heb je nog geen werknemersnummer? ";
+            this.labelNogGeenWNR.AutoSize = true;
+            this.labelNogGeenWNR.Location = new System.Drawing.Point(57, 253);
+            this.labelNogGeenWNR.Name = "labelNogGeenWNR";
+            this.labelNogGeenWNR.Size = new System.Drawing.Size(269, 20);
+            this.labelNogGeenWNR.TabIndex = 7;
+            this.labelNogGeenWNR.Text = "Heb je nog geen werknemersnummer? ";
             // 
             // buttonRegister
             // 
@@ -155,12 +155,12 @@ namespace ChapeauUI
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonWachtwoordVergeten);
             this.Controls.Add(this.buttonRegister);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelNogGeenWNR);
+            this.Controls.Add(this.textBoxLoginPIN);
+            this.Controls.Add(this.textBoxLoginWerknemerNummer);
+            this.Controls.Add(this.labelLoginPIN);
+            this.Controls.Add(this.labelLoginWerknemersNummer);
+            this.Controls.Add(this.labelLogin1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -176,12 +176,12 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelLogin1;
+        private System.Windows.Forms.Label labelLoginWerknemersNummer;
+        private System.Windows.Forms.Label labelLoginPIN;
+        private System.Windows.Forms.TextBox textBoxLoginWerknemerNummer;
+        private System.Windows.Forms.TextBox textBoxLoginPIN;
+        private System.Windows.Forms.Label labelNogGeenWNR;
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

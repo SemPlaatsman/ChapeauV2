@@ -39,7 +39,7 @@ namespace ChapeauUI
             this.labelRegisterPin = new System.Windows.Forms.Label();
             this.labelRegisterPinRepeat = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelComboniatie = new System.Windows.Forms.Label();
             this.textBoxRegisterFirstname = new System.Windows.Forms.TextBox();
             this.textBoxRegisterLastname = new System.Windows.Forms.TextBox();
             this.textBoxRegisterEmail = new System.Windows.Forms.TextBox();
@@ -47,6 +47,8 @@ namespace ChapeauUI
             this.textBoxRegisterPIN = new System.Windows.Forms.TextBox();
             this.textBoxRegisterPINRepeat = new System.Windows.Forms.TextBox();
             this.checkBoxPIN = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxRegisterJob = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelWelkom
@@ -107,7 +109,7 @@ namespace ChapeauUI
             // labelRegisterPin
             // 
             this.labelRegisterPin.AutoSize = true;
-            this.labelRegisterPin.Location = new System.Drawing.Point(54, 263);
+            this.labelRegisterPin.Location = new System.Drawing.Point(54, 297);
             this.labelRegisterPin.Name = "labelRegisterPin";
             this.labelRegisterPin.Size = new System.Drawing.Size(133, 20);
             this.labelRegisterPin.TabIndex = 6;
@@ -116,7 +118,7 @@ namespace ChapeauUI
             // labelRegisterPinRepeat
             // 
             this.labelRegisterPinRepeat.AutoSize = true;
-            this.labelRegisterPinRepeat.Location = new System.Drawing.Point(24, 300);
+            this.labelRegisterPinRepeat.Location = new System.Drawing.Point(24, 334);
             this.labelRegisterPinRepeat.Name = "labelRegisterPinRepeat";
             this.labelRegisterPinRepeat.Size = new System.Drawing.Size(163, 20);
             this.labelRegisterPinRepeat.TabIndex = 7;
@@ -124,7 +126,7 @@ namespace ChapeauUI
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(223, 355);
+            this.buttonRegister.Location = new System.Drawing.Point(223, 389);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(113, 34);
             this.buttonRegister.TabIndex = 8;
@@ -132,14 +134,14 @@ namespace ChapeauUI
             this.buttonRegister.UseVisualStyleBackColor = true;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
-            // label1
+            // labelComboniatie
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(155, 403);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(587, 40);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "De combinatie van jouw werknemersnummer en pincode is belangrijk om in te loggen." +
+            this.labelComboniatie.AutoSize = true;
+            this.labelComboniatie.Location = new System.Drawing.Point(155, 437);
+            this.labelComboniatie.Name = "labelComboniatie";
+            this.labelComboniatie.Size = new System.Drawing.Size(587, 40);
+            this.labelComboniatie.TabIndex = 9;
+            this.labelComboniatie.Text = "De combinatie van jouw werknemersnummer en pincode is belangrijk om in te loggen." +
     " \r\nSchrijf het ergens op, of onthoud het goed. ";
             // 
             // textBoxRegisterFirstname
@@ -172,7 +174,7 @@ namespace ChapeauUI
             // 
             // textBoxRegisterPIN
             // 
-            this.textBoxRegisterPIN.Location = new System.Drawing.Point(223, 264);
+            this.textBoxRegisterPIN.Location = new System.Drawing.Point(223, 298);
             this.textBoxRegisterPIN.Name = "textBoxRegisterPIN";
             this.textBoxRegisterPIN.PasswordChar = '*';
             this.textBoxRegisterPIN.Size = new System.Drawing.Size(95, 27);
@@ -180,7 +182,7 @@ namespace ChapeauUI
             // 
             // textBoxRegisterPINRepeat
             // 
-            this.textBoxRegisterPINRepeat.Location = new System.Drawing.Point(223, 300);
+            this.textBoxRegisterPINRepeat.Location = new System.Drawing.Point(223, 334);
             this.textBoxRegisterPINRepeat.Name = "textBoxRegisterPINRepeat";
             this.textBoxRegisterPINRepeat.PasswordChar = '*';
             this.textBoxRegisterPINRepeat.Size = new System.Drawing.Size(95, 27);
@@ -189,7 +191,7 @@ namespace ChapeauUI
             // checkBoxPIN
             // 
             this.checkBoxPIN.AutoSize = true;
-            this.checkBoxPIN.Location = new System.Drawing.Point(378, 267);
+            this.checkBoxPIN.Location = new System.Drawing.Point(378, 301);
             this.checkBoxPIN.Name = "checkBoxPIN";
             this.checkBoxPIN.Size = new System.Drawing.Size(90, 24);
             this.checkBoxPIN.TabIndex = 16;
@@ -197,12 +199,35 @@ namespace ChapeauUI
             this.checkBoxPIN.UseVisualStyleBackColor = true;
             this.checkBoxPIN.CheckedChanged += new System.EventHandler(this.checkBoxPIN_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 264);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Ik ga werken als:";
+            // 
+            // comboBoxRegisterJob
+            // 
+            this.comboBoxRegisterJob.FormattingEnabled = true;
+            this.comboBoxRegisterJob.Items.AddRange(new object[] {
+            "Chef",
+            "Serveerster",
+            "Bartender"});
+            this.comboBoxRegisterJob.Location = new System.Drawing.Point(223, 264);
+            this.comboBoxRegisterJob.Name = "comboBoxRegisterJob";
+            this.comboBoxRegisterJob.Size = new System.Drawing.Size(151, 28);
+            this.comboBoxRegisterJob.TabIndex = 18;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 513);
+            this.Controls.Add(this.comboBoxRegisterJob);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxPIN);
             this.Controls.Add(this.textBoxRegisterPINRepeat);
             this.Controls.Add(this.textBoxRegisterPIN);
@@ -210,7 +235,7 @@ namespace ChapeauUI
             this.Controls.Add(this.textBoxRegisterEmail);
             this.Controls.Add(this.textBoxRegisterLastname);
             this.Controls.Add(this.textBoxRegisterFirstname);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelComboniatie);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.labelRegisterPinRepeat);
             this.Controls.Add(this.labelRegisterPin);
@@ -238,7 +263,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Label labelRegisterPin;
         private System.Windows.Forms.Label labelRegisterPinRepeat;
         private System.Windows.Forms.Button buttonRegister;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelComboniatie;
         private System.Windows.Forms.TextBox textBoxRegisterFirstname;
         private System.Windows.Forms.TextBox textBoxRegisterLastname;
         private System.Windows.Forms.TextBox textBoxRegisterEmail;
@@ -246,5 +271,7 @@ namespace ChapeauUI
         private System.Windows.Forms.TextBox textBoxRegisterPIN;
         private System.Windows.Forms.TextBox textBoxRegisterPINRepeat;
         private System.Windows.Forms.CheckBox checkBoxPIN;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxRegisterJob;
     }
 }
