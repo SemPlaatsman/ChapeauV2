@@ -19,11 +19,26 @@ namespace ChapeauUI
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            this.Close();
-
-
-            //jkjkjekjdkejkdje dfrfregrf
             this.Hide();
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
+            this.Close();
+        }
+
+        private void checkBoxViewPIN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxViewPIN.Checked)
+                textBoxLoginPIN.PasswordChar = '\0';
+            else
+                textBoxLoginPIN.PasswordChar = '*';
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
         }
     }
 }
