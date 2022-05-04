@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace User
+namespace ChapeauModel
 {    public class User
     {
         public string FirstName { get; set; }

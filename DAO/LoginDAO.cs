@@ -1,14 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChapeauModel;
+using ErrorHandling;
 
 
-namespace BaseDAO
+namespace ChapeauDAO
 {
     public class LoginDAO : BaseDao
     {
-       // hoi
+       
+        public User Login(int werknemersNummer, string password) 
+        {
+            // ofzoiets... 
+            string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@EmployeeID", werknemersNummer);
+            sqlParameters[0] = new SqlParameter("@password", password);
+
+            if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
+            {
+                throw new ChapeauException("incorrect username or password, please make sure you have spelled everything correctly.");
+            }
+            else
+            {
+                return ReadUser(ExecuteSelectQuery(query, sqlParameters));
+            }
+        }
+
+        private User ReadUser(DataTable dataTable)
+        {
+            try
+            {
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    User user = new User()
+                    {
+                        // deze moeten nog aangepast worden. OOK IN DE USER MODEL
+                        FirstName = (string)dr["firstName"],
+                        LastName = (string)dr["lastName"],
+                        IsAdmin = (bool)dr["adminStatus"]
+                    };
+                    return user;
+                };
+                User newUser = new User();
+                return newUser;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Data could not be retrieved from the database. Please try again, error: " + e.Message);
+            }
+        }
     }
 }

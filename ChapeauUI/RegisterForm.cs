@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ErrorHandling;
 
 namespace ChapeauUI
 {
@@ -47,30 +48,34 @@ namespace ChapeauUI
             {
                 if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || job == "" || PIN == "")
                 {
-                    MessageBox.Show("Niet alle velden zijn ingevuld. Probeer het opnieuw.");
+                    throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");
                 }
                 if (!email.Contains('@'))
                 {
-                    MessageBox.Show("Er ontbreekt een '@' in dit email adres. Probeer het opnieuw. ");
                     textBoxRegisterEmail.Clear();
+                    throw new ChapeauException("Er ontbreekt een '@' in dit email adres. Probeer het opnieuw. ");
                 }
                 if (PIN.Length < 4 || PIN.Length > 4)
                 {
-                    MessageBox.Show("De pincode moet bestaan uit vier cijfers. Probeer het opnieuw");
                     textBoxRegisterPIN.Clear();
+                    throw new ChapeauException("De pincode moet bestaan uit vier cijfers. Probeer het opnieuw");
                 }
                 if (PIN != PINRepeat)
                 {
-                    MessageBox.Show("Wachtwoord komt niet overeen. Probeer het opnieuw.");
                     textBoxRegisterPINRepeat.Clear();
+                    throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");
                 }
                 // POP UP MET AANGEMAAKT WERKNEMERSNUMMER! 
                 // moet dit in een nieuwe form? 
 
             }
-            catch (Exception)
+            catch (ChapeauException chapeau)
             {
-                throw;
+                MessageBox.Show(chapeau.Message);
+            }
+            catch (Exception) 
+            {
+                // normale exceptions
             }
 
             // Hier komt nog een iets van een RegisterDAO om het daadwerkelijk toe te voegen aan de database. 

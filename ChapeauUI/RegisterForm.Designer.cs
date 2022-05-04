@@ -49,6 +49,11 @@ namespace ChapeauUI
             this.checkBoxPIN = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxRegisterJob = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelVraag = new System.Windows.Forms.Label();
+            this.labelAntwoord = new System.Windows.Forms.Label();
+            this.textBoxRegisterVraag = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterAntwoord = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelWelkom
@@ -126,7 +131,7 @@ namespace ChapeauUI
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(223, 389);
+            this.buttonRegister.Location = new System.Drawing.Point(223, 523);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(113, 34);
             this.buttonRegister.TabIndex = 8;
@@ -137,7 +142,7 @@ namespace ChapeauUI
             // labelComboniatie
             // 
             this.labelComboniatie.AutoSize = true;
-            this.labelComboniatie.Location = new System.Drawing.Point(155, 437);
+            this.labelComboniatie.Location = new System.Drawing.Point(155, 571);
             this.labelComboniatie.Name = "labelComboniatie";
             this.labelComboniatie.Size = new System.Drawing.Size(587, 40);
             this.labelComboniatie.TabIndex = 9;
@@ -220,12 +225,60 @@ namespace ChapeauUI
             this.comboBoxRegisterJob.Size = new System.Drawing.Size(157, 28);
             this.comboBoxRegisterJob.TabIndex = 18;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(223, 364);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(420, 60);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Mocht je in de toekomst je wachtwoord toch vergeten, \r\ndan kunnen we een nieuw wa" +
+    "chtwoord voor je instellen d.m.v. \r\neen vraag en een antwoord. Deze mag je zelf " +
+    "verzinnen";
+            // 
+            // labelVraag
+            // 
+            this.labelVraag.AutoSize = true;
+            this.labelVraag.Location = new System.Drawing.Point(137, 443);
+            this.labelVraag.Name = "labelVraag";
+            this.labelVraag.Size = new System.Drawing.Size(50, 20);
+            this.labelVraag.TabIndex = 20;
+            this.labelVraag.Text = "Vraag:";
+            // 
+            // labelAntwoord
+            // 
+            this.labelAntwoord.AutoSize = true;
+            this.labelAntwoord.Location = new System.Drawing.Point(109, 476);
+            this.labelAntwoord.Name = "labelAntwoord";
+            this.labelAntwoord.Size = new System.Drawing.Size(78, 20);
+            this.labelAntwoord.TabIndex = 21;
+            this.labelAntwoord.Text = "Antwoord:";
+            // 
+            // textBoxRegisterVraag
+            // 
+            this.textBoxRegisterVraag.Location = new System.Drawing.Point(223, 443);
+            this.textBoxRegisterVraag.Name = "textBoxRegisterVraag";
+            this.textBoxRegisterVraag.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterVraag.TabIndex = 22;
+            // 
+            // textBoxRegisterAntwoord
+            // 
+            this.textBoxRegisterAntwoord.Location = new System.Drawing.Point(223, 476);
+            this.textBoxRegisterAntwoord.Name = "textBoxRegisterAntwoord";
+            this.textBoxRegisterAntwoord.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterAntwoord.TabIndex = 23;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 513);
+            this.ClientSize = new System.Drawing.Size(800, 631);
+            this.Controls.Add(this.textBoxRegisterAntwoord);
+            this.Controls.Add(this.textBoxRegisterVraag);
+            this.Controls.Add(this.labelAntwoord);
+            this.Controls.Add(this.labelVraag);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxRegisterJob);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxPIN);
@@ -273,5 +326,10 @@ namespace ChapeauUI
         private System.Windows.Forms.CheckBox checkBoxPIN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxRegisterJob;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelVraag;
+        private System.Windows.Forms.Label labelAntwoord;
+        private System.Windows.Forms.TextBox textBoxRegisterVraag;
+        private System.Windows.Forms.TextBox textBoxRegisterAntwoord;
     }
 }
