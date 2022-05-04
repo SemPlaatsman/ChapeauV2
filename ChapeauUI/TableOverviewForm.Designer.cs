@@ -144,6 +144,7 @@ namespace ChapeauUI
             // 
             // buttonTable1
             // 
+            this.buttonTable1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable1.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable1.Image")));
             this.buttonTable1.Location = new System.Drawing.Point(55, 33);
             this.buttonTable1.Name = "buttonTable1";
@@ -163,6 +164,7 @@ namespace ChapeauUI
             this.buttonTable2.TabIndex = 21;
             this.buttonTable2.Text = "2";
             this.buttonTable2.UseVisualStyleBackColor = false;
+            this.buttonTable2.Click += new System.EventHandler(this.buttonTable2_Click);
             // 
             // buttonTable3
             // 

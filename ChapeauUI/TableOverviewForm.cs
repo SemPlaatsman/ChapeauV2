@@ -19,15 +19,14 @@ namespace ChapeauUI
 
         private void buttonTable1_Click(object sender, EventArgs e)
         {
-            buttonTable1.BackColor = Color.LightGreen;
-            if (buttonTable1.BackColor != Color.Red)
-            {
-                buttonTable1.BackColor = Color.LightGreen;
-            }
-            else
-            {
-                buttonTable1.BackColor = Color.Red;
-            }
+            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
+            // als bezet is, dan buttonTable1.BackColor = Color.Red;
+        }
+
+        private void buttonTable2_Click(object sender, EventArgs e)
+        {
+            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
+            // als bezet is, dan buttonTable2.BackColor = Color.Red;
         }
     }
 }
