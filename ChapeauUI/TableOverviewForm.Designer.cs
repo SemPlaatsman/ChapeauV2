@@ -50,6 +50,7 @@ namespace ChapeauUI
             this.buttonTable7 = new System.Windows.Forms.Button();
             this.buttonTable9 = new System.Windows.Forms.Button();
             this.buttonTable10 = new System.Windows.Forms.Button();
+            this.buttonUitloggen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTable1
@@ -254,11 +255,21 @@ namespace ChapeauUI
             this.buttonTable10.Text = "10";
             this.buttonTable10.UseVisualStyleBackColor = false;
             // 
+            // buttonUitloggen
+            // 
+            this.buttonUitloggen.Location = new System.Drawing.Point(55, 1002);
+            this.buttonUitloggen.Name = "buttonUitloggen";
+            this.buttonUitloggen.Size = new System.Drawing.Size(105, 41);
+            this.buttonUitloggen.TabIndex = 30;
+            this.buttonUitloggen.Text = "Uitloggen";
+            this.buttonUitloggen.UseVisualStyleBackColor = true;
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 1055);
+            this.Controls.Add(this.buttonUitloggen);
             this.Controls.Add(this.buttonTable10);
             this.Controls.Add(this.buttonTable9);
             this.Controls.Add(this.buttonTable7);
@@ -307,5 +318,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonTable7;
         private System.Windows.Forms.Button buttonTable9;
         private System.Windows.Forms.Button buttonTable10;
+        private System.Windows.Forms.Button buttonUitloggen;
     }
 }
