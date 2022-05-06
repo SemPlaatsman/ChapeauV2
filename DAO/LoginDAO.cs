@@ -20,7 +20,7 @@ namespace ChapeauDAO
             string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@EmployeeID", werknemersNummer);
-            sqlParameters[0] = new SqlParameter("@password", password);
+            sqlParameters[1] = new SqlParameter("@password", password);
 
             if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
             {
