@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class Employee
+    public class Order
     {
-        // nog helemaal aanpassen
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

@@ -10,8 +10,9 @@ namespace HashingAlgorithms
 {
     public class SaltHasher
     {
-        public HashSaltResult HashWithSalt(string password, byte[] saltBytes, HashAlgorithm hashAlgo)
+        public HashSaltResult HashWithSalt(string password, HashAlgorithm hashAlgo)
         {
+            byte[] saltBytes = this.GetSaltBytes();
             byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
             List<byte> passwordWithSaltBytes = new List<byte>();
             passwordWithSaltBytes.AddRange(passwordAsBytes);
@@ -20,14 +21,14 @@ namespace HashingAlgorithms
             return new HashSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
 
-        public byte[] GenerateSalt(int saltLength)
+        private byte[] GenerateSalt(int saltLength)
         {
             RNG rng = new RNG();
             byte[] saltBytes = rng.GenerateRandomCryptographicBytes(saltLength);
             return saltBytes;
         }
 
-        public byte[] GetSaltBytes()
+        private byte[] GetSaltBytes()
         {
             byte[] saltBytes;
             if (ConfigurationManager.AppSettings["Salt"] == null)
