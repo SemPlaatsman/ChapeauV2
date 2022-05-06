@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChapeauModel
-{    public class User
+{    public class Employee
     {
         // nog helemaal aanpassen
         public string FirstName { get; set; }

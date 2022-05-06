@@ -14,7 +14,7 @@ namespace ChapeauDAO
     public class LoginDAO : BaseDao
     {
        
-        public User Login(int werknemersNummer, string password) 
+        public Employee Login(int werknemersNummer, string password) 
         {
             // ofzoiets... 
             string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
@@ -32,13 +32,13 @@ namespace ChapeauDAO
             }
         }
 
-        private User ReadUser(DataTable dataTable)
+        private Employee ReadUser(DataTable dataTable)
         {
             try
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    User user = new User()
+                    Employee user = new Employee()
                     {
                         // deze moeten nog aangepast worden. OOK IN DE USER MODEL
                         FirstName = (string)dr["firstName"],
@@ -47,7 +47,7 @@ namespace ChapeauDAO
                     };
                     return user;
                 };
-                User newUser = new User();
+                Employee newUser = new Employee();
                 return newUser;
 
             }
