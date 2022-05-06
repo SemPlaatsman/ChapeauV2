@@ -16,5 +16,13 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void buttonCheckout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CheckoutForm checkoutForm = new CheckoutForm();
+            checkoutForm.ShowDialog();
+            this.Close();
+        }
     }
 }

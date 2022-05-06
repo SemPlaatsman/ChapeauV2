@@ -65,6 +65,7 @@ namespace ChapeauUI
             this.buttonCheckout.TabIndex = 3;
             this.buttonCheckout.Text = "Afrekenen";
             this.buttonCheckout.UseVisualStyleBackColor = true;
+            this.buttonCheckout.Click += new System.EventHandler(this.buttonCheckout_Click);
             // 
             // pictureBox1
             // 
