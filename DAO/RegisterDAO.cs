@@ -11,7 +11,9 @@ namespace ChapeauDAO
     {
         public void AddRowRegister(string firstname, string lastname, DateTime dateOfBirth, string email, string phoneNumber, string category, string password, string question, string answer)
         {
-            // hoe moet combobox?
+            // hoe moet combobox & datetimepicker
+            // VALUES('"+dateTimePicker.Value.Date.ToString("yyyyMMdd")+"')
+            // cmd.Parameters.Add("@Gander", comboBox1.GetItemText(comboBox1.SelectedItem));
             string query = "INSERT INTO [Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], Question, Answer) VALUES (@FirstName, @LastName, @DateOfBirth, @Email, @PhoneNumber, @Category, @Password, @Question, @Answer)";
             SqlParameter[] sqlParameters = new SqlParameter[9];
             sqlParameters[0] = new SqlParameter("@FirstName", firstname);
@@ -24,6 +26,7 @@ namespace ChapeauDAO
             sqlParameters[7] = new SqlParameter("@Question", question);
             sqlParameters[8] = new SqlParameter("@Answer", answer);
             ExecuteEditQuery(query, sqlParameters);
+            
         }
     }
 }

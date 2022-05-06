@@ -28,5 +28,13 @@ namespace ChapeauUI
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable2.BackColor = Color.Red;
         }
+
+        private void buttonUitloggen_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+            this.Close();
+        }
     }
 }
