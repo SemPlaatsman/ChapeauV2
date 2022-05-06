@@ -21,6 +21,10 @@ namespace ChapeauUI
         {
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable1.BackColor = Color.Red;
+            TableForm tableForm = new TableForm();
+            tableForm.ShowDialog();
+            this.Close();
+
             buttonTable1.BackColor = Color.Red;
         }
 
