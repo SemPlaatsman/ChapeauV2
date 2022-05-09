@@ -13,7 +13,11 @@ namespace ChapeauDAO
     {
         public List<OrderGerecht> GetAllOrderGerechten()
         {
-            string query = "";
+            string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, T.TypeName, M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS O " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON O.ItemId = M.ProductID " +
+                "JOIN ApplicatiebouwChapeau.TypeOfProduct AS T ON M.[Type] = T.TypeID " +
+                "WHERE O.[Status] != 1;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -26,12 +30,21 @@ namespace ChapeauDAO
             {
                 OrderGerecht orderGerecht = new OrderGerecht()
                 {
-                    Id = (int)dr["Id"],
-                    Name = (string)dr["name"],
-                    SalesPrice = (decimal)dr["salesPrice"],
-                    Stock = (int)dr["stock"],
-                    Alcoholic = Convert.ToBoolean(dr["alcoholic"]),
-                    NrOfSales = (int)dr["nrOfSales"]
+                    OrderGerechtId = (int)dr["OrderGerechtId"],
+                    MenuItem = new MenuItem()
+                    {
+                        ProductId = (int)dr["ProductId"],
+                        IsDiner = (bool)dr["IsDiner"],
+                        Type = (string)dr["TypeName"],
+                        ProductName = (string)dr["ProductName"],
+                        Price = (decimal)dr["Price"],
+                        Stock = (int)dr["Stock"],
+                        IsAlcoholic = (bool)dr["IsAlcoholic"]
+                    },
+                    OrderId = (int)dr["OrderId"],
+                    Status = (bool?)dr["Status"],
+                    TimeOfOrder = (DateTime)dr["TimeOfOrder"],
+                    Remark = (string)dr["Remark"]
                 };
                 orderGerechten.Add(orderGerecht);
             }
