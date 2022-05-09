@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace User
-{    public class User
+namespace ChapeauModel
+{
+    public class Employee
     {
+        // nog helemaal aanpassen
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public bool IsAdmin { get; set; }
     }
 }
