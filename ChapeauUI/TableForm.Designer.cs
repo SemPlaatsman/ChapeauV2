@@ -47,6 +47,7 @@ namespace ChapeauUI
             this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Terug";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonNewOrder
             // 

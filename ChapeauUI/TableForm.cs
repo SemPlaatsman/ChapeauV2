@@ -19,9 +19,15 @@ namespace ChapeauUI
 
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            this.Hide();
             CheckoutForm checkoutForm = new CheckoutForm();
             checkoutForm.ShowDialog();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
             this.Close();
         }
     }

@@ -9,6 +9,8 @@ namespace ChapeauDAO
 {
     public class RegisterDAO : BaseDao
     {
+
+        // 1 Employee parameter ipv 9 losse? hoe ga ik dit doen. 
         public void AddRowRegister(string firstname, string lastname, DateTime dateOfBirth, string email, string phoneNumber, int category, string password, string question, string answer)
         {
             // hoe moet combobox & datetimepicker

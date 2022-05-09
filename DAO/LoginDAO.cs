@@ -37,14 +37,20 @@ namespace ChapeauDAO
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Employee user = new Employee()
+                    Employee employee = new Employee()
                     {
-                        // deze moeten nog aangepast worden. OOK IN DE USER MODEL
-                        FirstName = (string)dr["firstName"],
-                        LastName = (string)dr["lastName"],
-                        IsAdmin = (bool)dr["adminStatus"]
+                        // deze moeten nog aangepast worden. OOK IN DE EMPLOYEE MODEL
+                        FirstName = (string)dr["FirstName"],
+                        LastName = (string)dr["LastName"],
+                        Category = (int)dr["Category"],
+                        DateOfBirth = (DateTime)dr["DateOfBirth"],
+                        Email = (string)dr["Email"],
+                        PhoneNumber = (string)dr["PhoneNumber"],
+                        Question = (string)dr["Question"],
+                        Answer = (string)dr["Answer"]
+
                     };
-                    return user;
+                    return employee;
                 };
                 Employee newUser = new Employee();
                 return newUser;
