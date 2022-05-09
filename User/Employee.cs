@@ -9,6 +9,7 @@ namespace ChapeauModel
     public class Employee
     {
         // nog helemaal aanpassen. moet alles erin wat ook in sql staat? email, phonenumber etc... 
+        public int EmployeeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Category { get; set; }

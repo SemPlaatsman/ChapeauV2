@@ -1,37 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChapeauModel;
 
 namespace ChapeauDAO
 {
     public class RegisterDAO : BaseDao
     {
-
-        // 1 Employee parameter ipv 9 losse? hoe ga ik dit doen. 
-        public void AddRowRegister(string firstname, string lastname, DateTime dateOfBirth, string email, string phoneNumber, int category, string password, string question, string answer)
-        {
-            // hoe moet combobox & datetimepicker
-            // voorbeelden van internet
-            // VALUES('"+dateTimePicker.Value.Date.ToString("yyyyMMdd")+"')
-            // cmd.Parameters.Add("@Gander", comboBox1.GetItemText(comboBox1.SelectedItem));
+        public void AddRowRegister(Employee employee)
+        {            
             string query = "INSERT INTO [Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], Question, Answer) VALUES (@FirstName, @LastName, @DateOfBirth, @Email, @PhoneNumber, @Category, @Password, @Question, @Answer)";
-            SqlParameter[] sqlParameters = new SqlParameter[9];
-            sqlParameters[0] = new SqlParameter("@FirstName", firstname);
-            sqlParameters[1] = new SqlParameter("@LastName", lastname);
-            sqlParameters[2] = new SqlParameter("@DateOfBirth", dateOfBirth.ToString("yyyy-MM-dd"));
-            sqlParameters[3] = new SqlParameter("@Email", email);
-            sqlParameters[4] = new SqlParameter("@PhoneNumber", phoneNumber);
-            sqlParameters[5] = new SqlParameter("@Category", category);
-            sqlParameters[6] = new SqlParameter("@Password", password);
-            sqlParameters[7] = new SqlParameter("@Question", question);
-            sqlParameters[8] = new SqlParameter("@Answer", answer);
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Employee", employee);
             ExecuteEditQuery(query, sqlParameters);
-            
-            // Employee Class maken en die meegeven ipv alle parameters. 
-            // comment
         }
+
+        private List<Employee> ReadTables(DataTable dataTable)
+        {
+            try
+            {
+                List<Employee> employees = new List<Employee>();
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    Employee employee = new Employee()
+                    {
+                        // zij hebben nog geen EmployeeID, hoe ga ik dit oplossen?
+                        FirstName = (string)dr["FirstName"],
+                        LastName = (string)dr["LastName"],
+                        Category = (int)dr["Category"],
+                        DateOfBirth = (DateTime)dr["DateOfBirth"],
+                        Email = (string)dr["Email"],
+                        PhoneNumber = (string)dr["PhoneNumber"],
+                        Question = (string)dr["Question"],
+                        Answer = (string)dr["Answer"]
+                    };
+                    employees.Add(employee);
+                };
+                return employees;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
+            }
+        }
+
+
     }
 }
