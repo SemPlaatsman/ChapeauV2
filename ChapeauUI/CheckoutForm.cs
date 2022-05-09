@@ -16,5 +16,13 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void buttonBackToTableOverview_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TableForm tableForm = new TableForm();
+            tableForm.ShowDialog();
+            this.Close();
+        }
     }
 }

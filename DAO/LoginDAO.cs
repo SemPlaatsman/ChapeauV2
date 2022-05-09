@@ -38,14 +38,14 @@ namespace ChapeauDAO
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Employee user = new Employee()
+                    Employee employee = new Employee()
                     {
-                        // deze moeten nog aangepast worden. OOK IN DE USER MODEL
+                        // deze moeten nog aangepast worden. OOK IN DE EMPLOYEE MODEL
                         FirstName = (string)dr["firstName"],
                         LastName = (string)dr["lastName"],
-                        IsAdmin = (bool)dr["adminStatus"]
+
                     };
-                    return user;
+                    return employee;
                 };
                 Employee newUser = new Employee();
                 return newUser;
