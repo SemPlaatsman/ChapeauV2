@@ -12,8 +12,7 @@ using ErrorHandling;
 namespace ChapeauDAO
 {
     public class LoginDAO : BaseDao
-    {
-       
+    {  
         public Employee Login(int werknemersNummer, string password) 
         {
             // ofzoiets... 

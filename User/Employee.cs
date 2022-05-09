@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChapeauModel
-{    public class Employee
+{
+    public class Employee
     {
         // nog helemaal aanpassen. moet alles erin wat ook in sql staat? email, phonenumber etc... 
         public string FirstName { get; set; }
@@ -16,5 +17,6 @@ namespace ChapeauModel
         public string PhoneNumber { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
+
     }
 }
