@@ -8,11 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
+using ChapeauModel;
+using System.Text.RegularExpressions;
+using HashingAlgorithms;
 
 namespace ChapeauUI
 {
     public partial class RegisterForm : Form
     {
+        private string firstname;
+        private string lastname;
+        private string email;
+        private DateTime dateOfBirth;
+        private string phoneNumber;
+        private int jobType;
+        private string PIN; // Als Hash?!
+        private string PINRepeat;
+        private string question;
+        private string answer;
         public RegisterForm()
         {
             InitializeComponent();
@@ -36,24 +49,55 @@ namespace ChapeauUI
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            string firstname = textBoxRegisterFirstname.Text;
-            string lastname = textBoxRegisterLastname.Text;
-            string email = textBoxRegisterEmail.Text;
-            string phoneNumber = textBoxRegisterPhoneNumber.Text;
-            string job = comboBoxRegisterJob.Text;
-            string PIN = textBoxRegisterPIN.Text;
-            string PINRepeat = textBoxRegisterPINRepeat.Text;
+            if (RegisterCheckMethod())
+            {
+                Employee employee = new Employee()
+                {
+                    FirstName = firstname,
+                    LastName = lastname,
+                    Password = PIN, // deze werkt ook nog niet. Moet met Hashing. 
+                    Category = jobType,
+                    DateOfBirth = dateOfBirth,
+                    Email = email,
+                    PhoneNumber = phoneNumber,
+                    Question = question,
+                    Answer = answer
+                };
+            }
+
+
+            // iets als Registerservice regService = new ...
+            // regService.add(employee)
+
+            // POP UP MET AANGEMAAKT WERKNEMERSNUMMER! 
+            // moet dit in een nieuwe form? 
+
+        }
+
+        private bool RegisterCheckMethod() 
+        {
+            bool registerCheck = true;
+
+            this.firstname = textBoxRegisterFirstname.Text;
+            this.lastname = textBoxRegisterLastname.Text;
+            this.email = textBoxRegisterEmail.Text;
+            this.phoneNumber = textBoxRegisterPhoneNumber.Text;
+            this.jobType = int.Parse(comboBoxRegisterJob.Text);
+            this.PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
+            this.PINRepeat = textBoxRegisterPINRepeat.Text;
+            this.question = textBoxRegisterQuestion.Text;
+            this.answer = textBoxRegisterAnswer.Text;
 
             try
             {
-                if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || job == "" || PIN == "")
-                {
-                    throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");
+                if (firstname == "" || lastname == "" ||  email == "" || phoneNumber == ""  || PIN == "" || PINRepeat == "" || question == "" || answer == "")
+                {                   
+                    throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");                   
                 }
-                if (!email.Contains('@'))
+                if (!ValidateEmail(email))
                 {
                     textBoxRegisterEmail.Clear();
-                    throw new ChapeauException("Er ontbreekt een '@' in dit email adres. Probeer het opnieuw. ");
+                    throw new ChapeauException("Dit is een ongeldig email adres. probeer het opnieuw ");
                 }
                 if (PIN.Length < 4 || PIN.Length > 4)
                 {
@@ -63,25 +107,24 @@ namespace ChapeauUI
                 if (PIN != PINRepeat)
                 {
                     textBoxRegisterPINRepeat.Clear();
-                    throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");
+                    throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");                    
                 }
-                // POP UP MET AANGEMAAKT WERKNEMERSNUMMER! 
-                // moet dit in een nieuwe form? 
-
+                // als ik hier een false in gooi dan kom ik nooit in true. 
             }
             catch (ChapeauException chapeau)
             {
                 MessageBox.Show(chapeau.Message);
             }
-            catch (Exception) 
+            catch (Exception)
             {
-                // normale exceptions
+                // normale exceptions besteed voor de logger.
             }
-
-            // Hier komt nog een iets van een RegisterDAO om het daadwerkelijk toe te voegen aan de database. 
-            // register.AddRow(alle parameters) of iets dergelijks. 
+            return registerCheck;
         }
 
-
+        private bool ValidateEmail(string email)
+        {
+            return new Regex(@"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}").Match(email).Success;
+        }
     }
 }
