@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ErrorHandling\ErrorHandling.csproj" />
+    <ProjectReference Include="..\HashingAlgorithms\HashingAlgorithms.csproj" />
   </ItemGroup>
 
 </Project>

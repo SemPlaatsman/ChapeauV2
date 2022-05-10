@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauModel;
 using ErrorHandling;
+using HashingAlgorithms;
 
 
 namespace ChapeauDAO
@@ -42,6 +43,7 @@ namespace ChapeauDAO
                         // deze moeten nog aangepast worden. OOK IN DE EMPLOYEE MODEL
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
+                        Password = (HashSaltResult)dr["Password"],
                         Category = (int)dr["Category"],
                         DateOfBirth = (DateTime)dr["DateOfBirth"],
                         Email = (string)dr["Email"],
@@ -52,8 +54,8 @@ namespace ChapeauDAO
                     };
                     return employee;
                 };
-                Employee newUser = new Employee();
-                return newUser;
+                Employee newEmployee = new Employee();
+                return newEmployee;
 
             }
             catch (Exception e)
