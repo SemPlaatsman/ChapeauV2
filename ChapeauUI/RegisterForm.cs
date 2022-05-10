@@ -17,7 +17,7 @@ namespace ChapeauUI
 {
     public partial class RegisterForm : Form
     {
-        private string firstname;
+/*        private string firstname;
         private string lastname;
         private string email;
         private DateTime dateOfBirth;
@@ -26,7 +26,7 @@ namespace ChapeauUI
         private string PIN; // Als Hash?!
         private string PINRepeat;
         private string question;
-        private string answer;
+        private string answer;*/
         public RegisterForm()
         {
             InitializeComponent();
@@ -52,17 +52,18 @@ namespace ChapeauUI
         {
             if (RegisterCheckMethod())
             {
+                SaltHasher sh = new SaltHasher();
                 Employee employee = new Employee()
                 {
-                    FirstName = firstname,
-                    LastName = lastname,
-                    Password = PIN, // deze werkt ook nog niet. Moet met Hashing. 
-                    Category = jobType,
-                    DateOfBirth = dateOfBirth,
-                    Email = email,
-                    PhoneNumber = phoneNumber,
-                    Question = question,
-                    Answer = answer
+                    FirstName = textBoxRegisterFirstname.Text,
+                    LastName = textBoxRegisterLastname.Text,
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text), // deze werkt ook nog niet. Moet met Hashing. 
+                    Category = comboBoxRegisterJob.SelectedIndex,
+                    DateOfBirth = dateTimePickerDateOfBirth.Value,
+                    Email = textBoxRegisterEmail.Text,
+                    PhoneNumber = textBoxRegisterPhoneNumber.Text,
+                    Question = textBoxRegisterQuestion.Text,
+                    Answer = textBoxRegisterAnswer.Text
                 };
 
                 RegisterService registerService = new RegisterService();
