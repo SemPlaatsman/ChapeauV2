@@ -17,16 +17,6 @@ namespace ChapeauUI
 {
     public partial class RegisterForm : Form
     {
-/*        private string firstname;
-        private string lastname;
-        private string email;
-        private DateTime dateOfBirth;
-        private string phoneNumber;
-        private int jobType;
-        private string PIN; // Als Hash?!
-        private string PINRepeat;
-        private string question;
-        private string answer;*/
         public RegisterForm()
         {
             InitializeComponent();
@@ -85,15 +75,15 @@ namespace ChapeauUI
             // eventueel omzetten naar false. Aanroepmethode moet dan !RegisterCheckMethod() worden. 
             bool registerCheck = true;
 
-            this.firstname = textBoxRegisterFirstname.Text;
-            this.lastname = textBoxRegisterLastname.Text;
-            this.email = textBoxRegisterEmail.Text;
-            this.phoneNumber = textBoxRegisterPhoneNumber.Text;
-            this.jobType = int.Parse(comboBoxRegisterJob.Text);
-            this.PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
-            this.PINRepeat = textBoxRegisterPINRepeat.Text;
-            this.question = textBoxRegisterQuestion.Text;
-            this.answer = textBoxRegisterAnswer.Text;
+            string firstname = textBoxRegisterFirstname.Text;
+            string lastname = textBoxRegisterLastname.Text;
+            string email = textBoxRegisterEmail.Text;
+            string phoneNumber = textBoxRegisterPhoneNumber.Text;
+            int jobType = int.Parse(comboBoxRegisterJob.Text);
+            string PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
+            string PINRepeat = textBoxRegisterPINRepeat.Text;
+            string question = textBoxRegisterQuestion.Text;
+            string answer = textBoxRegisterAnswer.Text;
 
             try
             {
