@@ -76,6 +76,7 @@ namespace ChapeauUI
 
         private bool RegisterCheckMethod() 
         {
+            // eventueel omzetten naar false. Aanroepmethode moet dan !RegisterCheckMethod() worden. 
             bool registerCheck = true;
 
             this.firstname = textBoxRegisterFirstname.Text;
