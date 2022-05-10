@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
 using ChapeauModel;
+using ChapeauLogica;
 using System.Text.RegularExpressions;
 using HashingAlgorithms;
 
@@ -63,15 +64,19 @@ namespace ChapeauUI
                     Question = question,
                     Answer = answer
                 };
+
+                RegisterService registerService = new RegisterService();
+                registerService.AddEmployee(employee);
+
+                // iets als Registerservice regService = new ...
+                // regService.add(employee)
+
+
+                // POP UP MET AANGEMAAKT WERKNEMERSNUMMER!  
+                // voltooid
+                // Achternaam, voornaam heeft werknummer ... 
+                // moet dit in een nieuwe form? 
             }
-
-
-            // iets als Registerservice regService = new ...
-            // regService.add(employee)
-
-            // POP UP MET AANGEMAAKT WERKNEMERSNUMMER! 
-            // moet dit in een nieuwe form? 
-
         }
 
         private bool RegisterCheckMethod() 
