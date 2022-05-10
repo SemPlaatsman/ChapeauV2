@@ -59,8 +59,6 @@ namespace ChapeauUI
                 RegisterService registerService = new RegisterService();
                 registerService.AddEmployee(employee);
 
-                // iets als Registerservice regService = new ...
-                // regService.add(employee)
 
 
                 // POP UP MET AANGEMAAKT WERKNEMERSNUMMER!  
@@ -73,7 +71,7 @@ namespace ChapeauUI
         private bool RegisterCheckMethod() 
         {
             // eventueel omzetten naar false. Aanroepmethode moet dan !RegisterCheckMethod() worden. 
-            bool registerCheck = true;
+            bool registerCheck = false;
 
             string firstname = textBoxRegisterFirstname.Text;
             string lastname = textBoxRegisterLastname.Text;
