@@ -73,20 +73,21 @@ namespace ChapeauUI
         private bool RegisterCheckMethod() 
         {
             // eventueel omzetten naar false. Aanroepmethode moet dan !RegisterCheckMethod() worden. 
+            SaltHasher sh = new SaltHasher();
             bool registerCheck = true;
             string firstname = textBoxRegisterFirstname.Text;
             string lastname = textBoxRegisterLastname.Text;
             string email = textBoxRegisterEmail.Text;
             string phoneNumber = textBoxRegisterPhoneNumber.Text;
-            int jobType = int.Parse(comboBoxRegisterJob.Text);
-            string PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
-            string PINRepeat = textBoxRegisterPINRepeat.Text;
+            int jobType = comboBoxRegisterJob.SelectedIndex;
+            HashSaltResult PIN = sh.HashWithSalt(textBoxRegisterPIN.Text); // dit moet als HashSaltResult, hoe?
+            HashSaltResult PINRepeat = sh.HashWithSalt(textBoxRegisterPINRepeat.Text);
             string question = textBoxRegisterQuestion.Text;
             string answer = textBoxRegisterAnswer.Text;
 
             try
             {
-                if (firstname == "" || lastname == "" ||  email == "" || phoneNumber == ""  || PIN == "" || PINRepeat == "" || question == "" || answer == "")
+                if (firstname == "" || lastname == "" ||  email == "" || phoneNumber == "" || question == "" || answer == "")
                 {                   
                     throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");                   
                 }
@@ -95,11 +96,11 @@ namespace ChapeauUI
                     textBoxRegisterEmail.Clear();
                     throw new ChapeauException("Dit is een ongeldig email adres. probeer het opnieuw ");
                 }
-                if (PIN.Length < 4 || PIN.Length > 4)
+/*                if (PIN.Length < 4 || PIN.Length > 4)
                 {
                     textBoxRegisterPIN.Clear();
                     throw new ChapeauException("De pincode moet bestaan uit vier cijfers. Probeer het opnieuw");
-                }
+                }*/
                 if (PIN != PINRepeat)
                 {
                     textBoxRegisterPINRepeat.Clear();
