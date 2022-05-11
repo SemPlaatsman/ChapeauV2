@@ -18,6 +18,8 @@ namespace ChapeauUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            //Misschien moet deze \/ run weg. maar kan ook goed zijn.
+            Application.Run(new ReceiptForm());
         }
     }
 }
