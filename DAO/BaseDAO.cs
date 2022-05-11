@@ -2,8 +2,9 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using ErrorHandling;
 
-namespace BaseDAO
+namespace ChapeauDAO
 {
     public abstract class BaseDao
     {
@@ -71,8 +72,7 @@ namespace BaseDAO
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
             finally
             {

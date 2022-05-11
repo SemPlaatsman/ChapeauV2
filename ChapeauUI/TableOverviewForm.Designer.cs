@@ -50,6 +50,7 @@ namespace ChapeauUI
             this.buttonTable7 = new System.Windows.Forms.Button();
             this.buttonTable9 = new System.Windows.Forms.Button();
             this.buttonTable10 = new System.Windows.Forms.Button();
+            this.buttonUitloggen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelTable1
@@ -73,7 +74,7 @@ namespace ChapeauUI
             // labelTable3
             // 
             this.labelTable3.AutoSize = true;
-            this.labelTable3.Location = new System.Drawing.Point(55, 194);
+            this.labelTable3.Location = new System.Drawing.Point(55, 177);
             this.labelTable3.Name = "labelTable3";
             this.labelTable3.Size = new System.Drawing.Size(56, 20);
             this.labelTable3.TabIndex = 12;
@@ -82,7 +83,7 @@ namespace ChapeauUI
             // labelTable4
             // 
             this.labelTable4.AutoSize = true;
-            this.labelTable4.Location = new System.Drawing.Point(328, 194);
+            this.labelTable4.Location = new System.Drawing.Point(328, 177);
             this.labelTable4.Name = "labelTable4";
             this.labelTable4.Size = new System.Drawing.Size(56, 20);
             this.labelTable4.TabIndex = 13;
@@ -91,7 +92,7 @@ namespace ChapeauUI
             // labelTable5
             // 
             this.labelTable5.AutoSize = true;
-            this.labelTable5.Location = new System.Drawing.Point(55, 385);
+            this.labelTable5.Location = new System.Drawing.Point(55, 347);
             this.labelTable5.Name = "labelTable5";
             this.labelTable5.Size = new System.Drawing.Size(56, 20);
             this.labelTable5.TabIndex = 14;
@@ -100,7 +101,7 @@ namespace ChapeauUI
             // labelTable6
             // 
             this.labelTable6.AutoSize = true;
-            this.labelTable6.Location = new System.Drawing.Point(328, 385);
+            this.labelTable6.Location = new System.Drawing.Point(328, 347);
             this.labelTable6.Name = "labelTable6";
             this.labelTable6.Size = new System.Drawing.Size(56, 20);
             this.labelTable6.TabIndex = 15;
@@ -109,7 +110,7 @@ namespace ChapeauUI
             // labelTable7
             // 
             this.labelTable7.AutoSize = true;
-            this.labelTable7.Location = new System.Drawing.Point(55, 574);
+            this.labelTable7.Location = new System.Drawing.Point(55, 512);
             this.labelTable7.Name = "labelTable7";
             this.labelTable7.Size = new System.Drawing.Size(56, 20);
             this.labelTable7.TabIndex = 16;
@@ -118,7 +119,7 @@ namespace ChapeauUI
             // labelTable8
             // 
             this.labelTable8.AutoSize = true;
-            this.labelTable8.Location = new System.Drawing.Point(328, 574);
+            this.labelTable8.Location = new System.Drawing.Point(328, 512);
             this.labelTable8.Name = "labelTable8";
             this.labelTable8.Size = new System.Drawing.Size(56, 20);
             this.labelTable8.TabIndex = 17;
@@ -127,7 +128,7 @@ namespace ChapeauUI
             // labelTable9
             // 
             this.labelTable9.AutoSize = true;
-            this.labelTable9.Location = new System.Drawing.Point(55, 768);
+            this.labelTable9.Location = new System.Drawing.Point(55, 681);
             this.labelTable9.Name = "labelTable9";
             this.labelTable9.Size = new System.Drawing.Size(56, 20);
             this.labelTable9.TabIndex = 18;
@@ -136,7 +137,7 @@ namespace ChapeauUI
             // labelTable10
             // 
             this.labelTable10.AutoSize = true;
-            this.labelTable10.Location = new System.Drawing.Point(328, 768);
+            this.labelTable10.Location = new System.Drawing.Point(328, 681);
             this.labelTable10.Name = "labelTable10";
             this.labelTable10.Size = new System.Drawing.Size(64, 20);
             this.labelTable10.TabIndex = 19;
@@ -170,7 +171,7 @@ namespace ChapeauUI
             // 
             this.buttonTable3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable3.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable3.Image")));
-            this.buttonTable3.Location = new System.Drawing.Point(55, 217);
+            this.buttonTable3.Location = new System.Drawing.Point(55, 200);
             this.buttonTable3.Name = "buttonTable3";
             this.buttonTable3.Size = new System.Drawing.Size(188, 130);
             this.buttonTable3.TabIndex = 22;
@@ -181,7 +182,7 @@ namespace ChapeauUI
             // 
             this.buttonTable4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable4.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable4.Image")));
-            this.buttonTable4.Location = new System.Drawing.Point(328, 217);
+            this.buttonTable4.Location = new System.Drawing.Point(328, 200);
             this.buttonTable4.Name = "buttonTable4";
             this.buttonTable4.Size = new System.Drawing.Size(188, 130);
             this.buttonTable4.TabIndex = 23;
@@ -192,7 +193,7 @@ namespace ChapeauUI
             // 
             this.buttonTable5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable5.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable5.Image")));
-            this.buttonTable5.Location = new System.Drawing.Point(55, 408);
+            this.buttonTable5.Location = new System.Drawing.Point(55, 370);
             this.buttonTable5.Name = "buttonTable5";
             this.buttonTable5.Size = new System.Drawing.Size(188, 130);
             this.buttonTable5.TabIndex = 24;
@@ -203,7 +204,7 @@ namespace ChapeauUI
             // 
             this.buttonTable6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable6.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable6.Image")));
-            this.buttonTable6.Location = new System.Drawing.Point(328, 408);
+            this.buttonTable6.Location = new System.Drawing.Point(328, 370);
             this.buttonTable6.Name = "buttonTable6";
             this.buttonTable6.Size = new System.Drawing.Size(188, 130);
             this.buttonTable6.TabIndex = 25;
@@ -214,7 +215,7 @@ namespace ChapeauUI
             // 
             this.buttonTable8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable8.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable8.Image")));
-            this.buttonTable8.Location = new System.Drawing.Point(328, 597);
+            this.buttonTable8.Location = new System.Drawing.Point(328, 535);
             this.buttonTable8.Name = "buttonTable8";
             this.buttonTable8.Size = new System.Drawing.Size(188, 130);
             this.buttonTable8.TabIndex = 26;
@@ -225,7 +226,7 @@ namespace ChapeauUI
             // 
             this.buttonTable7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable7.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable7.Image")));
-            this.buttonTable7.Location = new System.Drawing.Point(55, 597);
+            this.buttonTable7.Location = new System.Drawing.Point(55, 535);
             this.buttonTable7.Name = "buttonTable7";
             this.buttonTable7.Size = new System.Drawing.Size(188, 130);
             this.buttonTable7.TabIndex = 27;
@@ -236,7 +237,7 @@ namespace ChapeauUI
             // 
             this.buttonTable9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable9.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable9.Image")));
-            this.buttonTable9.Location = new System.Drawing.Point(55, 791);
+            this.buttonTable9.Location = new System.Drawing.Point(55, 704);
             this.buttonTable9.Name = "buttonTable9";
             this.buttonTable9.Size = new System.Drawing.Size(188, 130);
             this.buttonTable9.TabIndex = 28;
@@ -247,18 +248,32 @@ namespace ChapeauUI
             // 
             this.buttonTable10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonTable10.Image = ((System.Drawing.Image)(resources.GetObject("buttonTable10.Image")));
-            this.buttonTable10.Location = new System.Drawing.Point(328, 791);
+            this.buttonTable10.Location = new System.Drawing.Point(328, 704);
             this.buttonTable10.Name = "buttonTable10";
             this.buttonTable10.Size = new System.Drawing.Size(188, 130);
             this.buttonTable10.TabIndex = 29;
             this.buttonTable10.Text = "10";
             this.buttonTable10.UseVisualStyleBackColor = false;
             // 
+            // buttonUitloggen
+            // 
+            this.buttonUitloggen.BackColor = System.Drawing.Color.White;
+            this.buttonUitloggen.Image = ((System.Drawing.Image)(resources.GetObject("buttonUitloggen.Image")));
+            this.buttonUitloggen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonUitloggen.Location = new System.Drawing.Point(55, 866);
+            this.buttonUitloggen.Name = "buttonUitloggen";
+            this.buttonUitloggen.Size = new System.Drawing.Size(137, 50);
+            this.buttonUitloggen.TabIndex = 30;
+            this.buttonUitloggen.Text = "       Uitloggen";
+            this.buttonUitloggen.UseVisualStyleBackColor = false;
+            this.buttonUitloggen.Click += new System.EventHandler(this.buttonUitloggen_Click);
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 1055);
+            this.Controls.Add(this.buttonUitloggen);
             this.Controls.Add(this.buttonTable10);
             this.Controls.Add(this.buttonTable9);
             this.Controls.Add(this.buttonTable7);
@@ -307,5 +322,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonTable7;
         private System.Windows.Forms.Button buttonTable9;
         private System.Windows.Forms.Button buttonTable10;
+        private System.Windows.Forms.Button buttonUitloggen;
     }
 }

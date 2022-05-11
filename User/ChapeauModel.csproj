@@ -1,8 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ErrorHandling\ErrorHandling.csproj" />
+    <ProjectReference Include="..\HashingAlgorithms\HashingAlgorithms.csproj" />
+  </ItemGroup>
 
 </Project>

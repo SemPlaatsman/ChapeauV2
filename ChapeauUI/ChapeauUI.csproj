@@ -4,7 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ErrorHandling\ErrorHandling.csproj" />
+    <ProjectReference Include="..\HashingAlgorithms\HashingAlgorithms.csproj" />
+    <ProjectReference Include="..\LoginService\ChapeauLogica.csproj" />
+    <ProjectReference Include="..\User\ChapeauModel.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
