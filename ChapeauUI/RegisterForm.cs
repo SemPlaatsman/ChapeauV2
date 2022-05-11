@@ -54,7 +54,7 @@ namespace ChapeauUI
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
                     PhoneNumber = textBoxRegisterPhoneNumber.Text,
-                    Question = textBoxRegisterQuestion.Text,
+                    Question = textBoxRegisterQuestion.Text, // eventueel .ToLower()?
                     Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest
                 };
 
