@@ -1,0 +1,5 @@
+[11-5-2022 15:28:19] : test
+[11-5-2022 15:42:11] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Employee__Catego__40F9A68C". The conflict occurred in database "db_INF1c6", table "ApplicatiebouwChapeau.Category", column 'CategoryID'.
+The statement has been terminated.
+[11-5-2022 15:45:21] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Employee__Catego__40F9A68C". The conflict occurred in database "db_INF1c6", table "ApplicatiebouwChapeau.Category", column 'CategoryID'.
+The statement has been terminated.
