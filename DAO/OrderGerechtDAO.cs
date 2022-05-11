@@ -50,5 +50,9 @@ namespace ChapeauDAO
             }
             return orderGerechten;
         }
+        public void InsertOrderGerecht(int itemID, int orderID, int status, DateTime timeOfOrder, string remark)
+        {
+            string query = "INSERT INTO "
+        }
     }
 }
