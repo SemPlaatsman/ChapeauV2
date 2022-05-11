@@ -52,7 +52,14 @@ namespace ChapeauDAO
         }
         public void InsertOrderGerecht(int itemID, int orderID, int status, DateTime timeOfOrder, string remark)
         {
-            string query = "INSERT INTO "
+            string query = "INSERT INTO ApplicatiebouwChapeau.OrderGerecht (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@itemID, @OrderID, @Status, @TimeOfOrder, Remark)";
+            SqlParameter[] sql = new SqlParameter[5];
+            sql[0] = new SqlParameter("@ItemID", itemID);
+            sql[1] = new SqlParameter("@OrderID", orderID);
+            sql[2] = new SqlParameter("@Status", status);
+            sql[3] = new SqlParameter("@TimeOfOrder", timeOfOrder);
+            sql[4] = new SqlParameter("@Remark", remark);
+            ExecuteEditQuery(query, sql);
         }
     }
 }

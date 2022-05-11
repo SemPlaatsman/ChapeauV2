@@ -30,5 +30,13 @@ namespace ChapeauUI
             tableOverviewForm.ShowDialog();
             this.Close();
         }
+
+        private void buttonNewOrder_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Order order = new Order();  
+            order.ShowDialog();
+            this.Close();
+        }
     }
 }
