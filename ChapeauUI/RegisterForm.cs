@@ -49,12 +49,12 @@ namespace ChapeauUI
                 {
                     FirstName = textBoxRegisterFirstname.Text,
                     LastName = textBoxRegisterLastname.Text,
-                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, // deze werkt ook nog niet. Moet met Hashing. 
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, 
                     Category = comboBoxRegisterJob.SelectedIndex,
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
                     PhoneNumber = textBoxRegisterPhoneNumber.Text,
-                    Question = sh.HashWithSalt(textBoxRegisterQuestion.Text).Digest,
+                    Question = textBoxRegisterQuestion.Text,
                     Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest
                 };
 
