@@ -13,7 +13,7 @@ namespace ChapeauDAO
     {
         public void AddRowRegister(Employee employee)
         {            
-            string query = "INSERT INTO [Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], [Question], [Answer])" +
+            string query = "INSERT INTO [ApplicatiebouwChapeau].[Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], [Question], [Answer])" +
                 " VALUES (@FirstName, @LastName, @DateOfBirth, @Email, @PhoneNumber, @Category, @Password, @Question, @Answer)";
             SqlParameter[] sqlParameters = new SqlParameter[9];
             sqlParameters[0] = new SqlParameter("@FirstName", employee.FirstName);
@@ -21,7 +21,7 @@ namespace ChapeauDAO
             sqlParameters[2] = new SqlParameter("@DateOfBirth", employee.DateOfBirth);
             sqlParameters[3] = new SqlParameter("@Email", employee.Email);
             sqlParameters[4] = new SqlParameter("@PhoneNumber", employee.PhoneNumber);
-            sqlParameters[5] = new SqlParameter("@Category", employee.Category);
+            sqlParameters[5] = new SqlParameter("@Category", employee.Category + 1);
             sqlParameters[6] = new SqlParameter("@Password", employee.Password);
             sqlParameters[7] = new SqlParameter("@Question", employee.Question);
             sqlParameters[8] = new SqlParameter("@Answer", employee.Answer);

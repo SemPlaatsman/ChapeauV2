@@ -43,7 +43,7 @@ namespace ChapeauDAO
                         // deze moeten nog aangepast worden. OOK IN DE EMPLOYEE MODEL
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
-                        Password = (HashSaltResult)dr["Password"],
+                        Password = (string)dr["Password"],
                         Category = (int)dr["Category"],
                         DateOfBirth = (DateTime)dr["DateOfBirth"],
                         Email = (string)dr["Email"],

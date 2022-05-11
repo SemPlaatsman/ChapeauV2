@@ -40,6 +40,7 @@ namespace ChapeauUI
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show($"{comboBoxRegisterJob.SelectedIndex}");
             if (RegisterCheckMethod())
             {
                 SaltHasher sh = new SaltHasher();
@@ -47,7 +48,7 @@ namespace ChapeauUI
                 {
                     FirstName = textBoxRegisterFirstname.Text,
                     LastName = textBoxRegisterLastname.Text,
-                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text), // deze werkt ook nog niet. Moet met Hashing. 
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, // deze werkt ook nog niet. Moet met Hashing. 
                     Category = comboBoxRegisterJob.SelectedIndex,
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
@@ -78,7 +79,7 @@ namespace ChapeauUI
             string lastname = textBoxRegisterLastname.Text;
             string email = textBoxRegisterEmail.Text;
             string phoneNumber = textBoxRegisterPhoneNumber.Text;
-            int jobType = int.Parse(comboBoxRegisterJob.Text);
+            int jobType = comboBoxRegisterJob.SelectedIndex;
             string PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
             string PINRepeat = textBoxRegisterPINRepeat.Text;
             string question = textBoxRegisterQuestion.Text;

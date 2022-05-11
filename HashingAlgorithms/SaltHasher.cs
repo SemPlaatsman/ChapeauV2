@@ -22,7 +22,7 @@ namespace HashingAlgorithms
             return new HashSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
 
-        private byte[] GenerateSalt(int saltLength)
+        public byte[] GenerateSalt(int saltLength)
         {
             RNG rng = new RNG();
             byte[] saltBytes = rng.GenerateRandomCryptographicBytes(saltLength);
