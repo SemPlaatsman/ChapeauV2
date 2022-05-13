@@ -24,5 +24,21 @@ namespace ChapeauUI
             tableForm.ShowDialog();
             this.Close();
         }
+        //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
+        private void AfrekenenBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.ShowDialog();
+            this.Close();
+        }
+        //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
+        private void HandmatigBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ManualPrice manualPrice = new ManualPrice();
+            manualPrice.ShowDialog();
+            this.Close();
+        }
     }
 }
