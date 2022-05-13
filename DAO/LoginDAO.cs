@@ -17,7 +17,7 @@ namespace ChapeauDAO
         public Employee Login(int werknemersNummer, string password) 
         {
             // ofzoiets... 
-            string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
+            string query = "SELECT EmployeeID from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@EmployeeID", werknemersNummer);
             sqlParameters[1] = new SqlParameter("@password", password);
