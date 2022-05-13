@@ -61,12 +61,7 @@ namespace ChapeauUI
                 RegisterService registerService = new RegisterService();
                 registerService.AddEmployee(employee);
 
-                // POP UP MET AANGEMAAKT WERKNEMERSNUMMER!  
-                // voltooid
-                // Achternaam, voornaam heeft werknummer ... 
-                // moet dit in een nieuwe form? 
-
-                MessageBox.Show($"{textBoxRegisterLastname.Text}, {textBoxRegisterFirstname.Text} heeft werknemersnummer ... ");
+                MessageBox.Show($"{textBoxRegisterLastname.Text}, {textBoxRegisterFirstname.Text} is succesvol geregistreerd ");
 
                 // kijken in de DB wie het laatste toegevoegd is. WHERE ID = @ID. IN EEN LABEL!
             }
