@@ -38,7 +38,6 @@ namespace ChapeauDAO
                 {
                     Employee employee = new Employee()
                     {
-                        // zij hebben nog geen EmployeeID, hoe ga ik dit oplossen?
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
                         Category = (int)dr["Category"],
