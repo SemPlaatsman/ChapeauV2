@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ErrorHandling;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
@@ -15,6 +18,12 @@ namespace ChapeauUI
         public KitchenDisplay()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            KitchenService ks = new KitchenService();
+            List<KitchenOrderOverview> koo = ks.GetKitchenOverviews();
         }
     }
 }

@@ -21,7 +21,8 @@ namespace ChapeauDAO
                 "WHERE M.[Type] = 3 AND OG.[OrderId] IN(SELECT DISTINCT O2.[OrderId] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O2 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG2 ON O2.[OrderID] = OG2.[OrderId] " +
-                "WHERE OG2.[Status] = 0 OR OG2.[Status] IS NULL); ";
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M2 ON OG2.[ItemId] = M2.[ProductID] " +
+                "WHERE (OG2.[Status] = 0 OR OG2.[Status] IS NULL) AND M2.[Type] = 3); ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -46,9 +47,14 @@ namespace ChapeauDAO
                         IsAlcoholic = (bool)dr["IsAlcoholic"]
                     },
                     OrderId = (int)dr["OrderId"],
-                    Status = (bool?)dr["Status"],
+                    Status = (Convert.IsDBNull(dr["Status"])) ? null : (bool)dr["Status"],
+                    /* De bovenstaande regel code kijkt eerst of Convert.IsDBNull(...) true returned. 
+                    Als dat zo is dan wordt de waarde null gebruikt, 
+                    als Convert.IsDBNull false returned dan wordt (bool)dr["Status"] gebruikt (die de andere twee waardes van een nullable bool kan hebben).
+                    Dit wordt gedaan omdat je een DBNull niet direct naar een nullable bool kan casten.*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
-                    Remark = (string)dr["Remark"]
+                    Remark = Convert.IsDBNull(dr["Remark"]) ? String.Empty : (string)dr["Remark"]
+                    /* Zelfde reden als hierboven is genoemd alleen dan maak ik een empty string wanneer de value null is.*/
                 };
                 Order order = new Order()
                 {
