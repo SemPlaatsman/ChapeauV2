@@ -49,26 +49,21 @@ namespace ChapeauUI
                 {
                     FirstName = textBoxRegisterFirstname.Text,
                     LastName = textBoxRegisterLastname.Text,
-                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, // deze werkt ook nog niet. Moet met Hashing. 
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, 
                     Category = comboBoxRegisterJob.SelectedIndex,
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
                     PhoneNumber = textBoxRegisterPhoneNumber.Text,
-                    Question = sh.HashWithSalt(textBoxRegisterQuestion.Text).Digest,
+                    Question = textBoxRegisterQuestion.Text, // eventueel .ToLower()?
                     Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest
                 };
 
                 RegisterService registerService = new RegisterService();
                 registerService.AddEmployee(employee);
 
-                // iets als Registerservice regService = new ...
-                // regService.add(employee)
+                MessageBox.Show($"{textBoxRegisterLastname.Text}, {textBoxRegisterFirstname.Text} is succesvol geregistreerd ");
 
-
-                // POP UP MET AANGEMAAKT WERKNEMERSNUMMER!  
-                // voltooid
-                // Achternaam, voornaam heeft werknummer ... 
-                // moet dit in een nieuwe form? 
+                // kijken in de DB wie het laatste toegevoegd is. WHERE ID = @ID. IN EEN LABEL!
             }
         }
 

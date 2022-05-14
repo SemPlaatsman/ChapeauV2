@@ -14,13 +14,13 @@ namespace ChapeauDAO
 {
     public class LoginDAO : BaseDao
     {  
-        public Employee Login(int werknemersNummer, string password) 
+        // login Method + query
+        public Employee Login(Employee employee) 
         {
-            // ofzoiets... 
-            string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
+            string query = "SELECT EmployeeID from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@EmployeeID", werknemersNummer);
-            sqlParameters[1] = new SqlParameter("@password", password);
+            sqlParameters[0] = new SqlParameter("@EmployeeID", employee.EmployeeID);
+            sqlParameters[1] = new SqlParameter("@password", employee.Password);
 
             if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
             {
@@ -32,6 +32,7 @@ namespace ChapeauDAO
             }
         }
 
+        // Datatable to read the Employee
         private Employee ReadUser(DataTable dataTable)
         {
             try
@@ -40,7 +41,6 @@ namespace ChapeauDAO
                 {
                     Employee employee = new Employee()
                     {
-                        // deze moeten nog aangepast worden. OOK IN DE EMPLOYEE MODEL
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
                         Password = (string)dr["Password"],
