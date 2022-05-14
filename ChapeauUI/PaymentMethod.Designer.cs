@@ -62,6 +62,7 @@
             this.ContantBtn.TabIndex = 2;
             this.ContantBtn.Text = "Contant";
             this.ContantBtn.UseVisualStyleBackColor = true;
+            this.ContantBtn.Click += new System.EventHandler(this.ContantBtn_Click);
             // 
             // PinBtn
             // 
@@ -71,6 +72,7 @@
             this.PinBtn.TabIndex = 3;
             this.PinBtn.Text = "Pin";
             this.PinBtn.UseVisualStyleBackColor = true;
+            this.PinBtn.Click += new System.EventHandler(this.PinBtn_Click);
             // 
             // CreditCardBtn
             // 
@@ -80,6 +82,7 @@
             this.CreditCardBtn.TabIndex = 4;
             this.CreditCardBtn.Text = "Creditcard";
             this.CreditCardBtn.UseVisualStyleBackColor = true;
+            this.CreditCardBtn.Click += new System.EventHandler(this.CreditCardBtn_Click);
             // 
             // PaymentMethod
             // 
