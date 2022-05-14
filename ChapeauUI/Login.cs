@@ -31,11 +31,13 @@ namespace ChapeauUI
             listViewNames.FullRowSelect = true;
             listViewNames.Columns.Add("Lastname", 200);
             listViewNames.Columns.Add("Firstname", 200);
+            listViewNames.Columns.Add("Phone Number", 182);
 
             foreach (Employee employee in allEmployees)
             {
                 ListViewItem li = new ListViewItem(employee.LastName);
                 li.SubItems.Add(employee.FirstName);
+                li.SubItems.Add(employee.PhoneNumber);
                 li.Tag = employee;
                 listViewNames.Items.Add(li);
             }
@@ -59,14 +61,13 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-
             // hier komt een switch case die bekijkt wat voor EmployeeType er inlogt. 
             // op basis daarvan wordt de ingelogde doorverwezen naar de juiste pagina
 
-            this.Hide();
+/*            this.Hide();
             TableOverviewForm tableOverviewForm = new TableOverviewForm();
             tableOverviewForm.ShowDialog();
-            this.Close();
+            this.Close();*/
         }
 
         private void listViewNames_Click(object sender, EventArgs e)

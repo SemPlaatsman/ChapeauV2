@@ -49,7 +49,7 @@ namespace ChapeauUI
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(37, 419);
+            this.buttonLogin.Location = new System.Drawing.Point(12, 121);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(118, 60);
             this.buttonLogin.TabIndex = 0;
@@ -79,7 +79,7 @@ namespace ChapeauUI
             // 
             this.textBoxLoginWerknemerNummer.Location = new System.Drawing.Point(230, 339);
             this.textBoxLoginWerknemerNummer.Name = "textBoxLoginWerknemerNummer";
-            this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(151, 27);
+            this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(79, 27);
             this.textBoxLoginWerknemerNummer.TabIndex = 5;
             // 
             // textBoxLoginPIN
@@ -113,9 +113,10 @@ namespace ChapeauUI
             // 
             this.panel1.Controls.Add(this.checkBoxViewPIN);
             this.panel1.Controls.Add(this.buttonWachtwoordVergeten);
+            this.panel1.Controls.Add(this.buttonLogin);
             this.panel1.Location = new System.Drawing.Point(25, 310);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(586, 178);
+            this.panel1.Size = new System.Drawing.Size(586, 193);
             this.panel1.TabIndex = 9;
             // 
             // checkBoxViewPIN
@@ -131,7 +132,7 @@ namespace ChapeauUI
             // 
             // buttonWachtwoordVergeten
             // 
-            this.buttonWachtwoordVergeten.Location = new System.Drawing.Point(147, 109);
+            this.buttonWachtwoordVergeten.Location = new System.Drawing.Point(136, 121);
             this.buttonWachtwoordVergeten.Name = "buttonWachtwoordVergeten";
             this.buttonWachtwoordVergeten.Size = new System.Drawing.Size(118, 60);
             this.buttonWachtwoordVergeten.TabIndex = 11;
@@ -178,7 +179,6 @@ namespace ChapeauUI
             this.Controls.Add(this.textBoxLoginWerknemerNummer);
             this.Controls.Add(this.labelLoginPIN);
             this.Controls.Add(this.labelLoginWerknemersNummer);
-            this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
