@@ -10,5 +10,7 @@ namespace ChapeauModel
     {
         // hier komt te staan wat voor type werknemer iemand is. 
         // Op basis hiervan word degene die inlogt doorverwezen naar het juiste scherm na inlog. 
+
+        public int Category { get; set; }
     }
 }
