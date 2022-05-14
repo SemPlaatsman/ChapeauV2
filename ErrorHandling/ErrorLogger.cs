@@ -6,11 +6,11 @@ namespace ErrorHandling
 {
     public static class ErrorLogger
     {
-        public static void WriteLogToFile(string errorMessage)
+        public static void WriteLogToFile(Exception exception)
         {
             string filepath = ConfigurationManager.AppSettings["ErrorlogPath"];
             StreamWriter errorLogger = new StreamWriter(filepath, true);
-            errorLogger.WriteLine($"[{DateTime.Now}] : {errorMessage}");
+            errorLogger.WriteLine($"[{DateTime.Now}] : {exception.Message} {exception.StackTrace}");
             errorLogger.Close();
         }
     }
