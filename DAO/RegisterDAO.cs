@@ -12,7 +12,7 @@ namespace ChapeauDAO
     public class RegisterDAO : BaseDao
     {
         public void AddRowRegister(Employee employee)
-        {            
+        {
             string query = "INSERT INTO [ApplicatiebouwChapeau].[Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], [Question], [Answer])" +
                 " VALUES (@FirstName, @LastName, @DateOfBirth, @Email, @PhoneNumber, @Category, @Password, @Question, @Answer)";
             SqlParameter[] sqlParameters = new SqlParameter[9];
