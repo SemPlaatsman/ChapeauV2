@@ -52,10 +52,10 @@ namespace ChapeauUI
             this.label2 = new System.Windows.Forms.Label();
             this.labelVraag = new System.Windows.Forms.Label();
             this.labelAntwoord = new System.Windows.Forms.Label();
-            this.textBoxRegisterVraag = new System.Windows.Forms.TextBox();
-            this.textBoxRegisterAntwoord = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterQuestion = new System.Windows.Forms.TextBox();
+            this.textBoxRegisterAnswer = new System.Windows.Forms.TextBox();
             this.labelGeboorte = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // labelWelkom
@@ -256,19 +256,19 @@ namespace ChapeauUI
             this.labelAntwoord.TabIndex = 21;
             this.labelAntwoord.Text = "Antwoord:";
             // 
-            // textBoxRegisterVraag
+            // textBoxRegisterQuestion
             // 
-            this.textBoxRegisterVraag.Location = new System.Drawing.Point(223, 484);
-            this.textBoxRegisterVraag.Name = "textBoxRegisterVraag";
-            this.textBoxRegisterVraag.Size = new System.Drawing.Size(256, 27);
-            this.textBoxRegisterVraag.TabIndex = 22;
+            this.textBoxRegisterQuestion.Location = new System.Drawing.Point(223, 484);
+            this.textBoxRegisterQuestion.Name = "textBoxRegisterQuestion";
+            this.textBoxRegisterQuestion.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterQuestion.TabIndex = 22;
             // 
-            // textBoxRegisterAntwoord
+            // textBoxRegisterAnswer
             // 
-            this.textBoxRegisterAntwoord.Location = new System.Drawing.Point(223, 517);
-            this.textBoxRegisterAntwoord.Name = "textBoxRegisterAntwoord";
-            this.textBoxRegisterAntwoord.Size = new System.Drawing.Size(256, 27);
-            this.textBoxRegisterAntwoord.TabIndex = 23;
+            this.textBoxRegisterAnswer.Location = new System.Drawing.Point(223, 517);
+            this.textBoxRegisterAnswer.Name = "textBoxRegisterAnswer";
+            this.textBoxRegisterAnswer.Size = new System.Drawing.Size(256, 27);
+            this.textBoxRegisterAnswer.TabIndex = 23;
             // 
             // labelGeboorte
             // 
@@ -279,12 +279,12 @@ namespace ChapeauUI
             this.labelGeboorte.TabIndex = 25;
             this.labelGeboorte.Text = "Geboortedatum:";
             // 
-            // dateTimePicker1
+            // dateTimePickerDateOfBirth
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(223, 196);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(256, 27);
-            this.dateTimePicker1.TabIndex = 26;
+            this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(223, 196);
+            this.dateTimePickerDateOfBirth.Name = "dateTimePickerDateOfBirth";
+            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(256, 27);
+            this.dateTimePickerDateOfBirth.TabIndex = 26;
             // 
             // RegisterForm
             // 
@@ -292,10 +292,10 @@ namespace ChapeauUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 714);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerDateOfBirth);
             this.Controls.Add(this.labelGeboorte);
-            this.Controls.Add(this.textBoxRegisterAntwoord);
-            this.Controls.Add(this.textBoxRegisterVraag);
+            this.Controls.Add(this.textBoxRegisterAnswer);
+            this.Controls.Add(this.textBoxRegisterQuestion);
             this.Controls.Add(this.labelAntwoord);
             this.Controls.Add(this.labelVraag);
             this.Controls.Add(this.label2);
@@ -349,9 +349,9 @@ namespace ChapeauUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelVraag;
         private System.Windows.Forms.Label labelAntwoord;
-        private System.Windows.Forms.TextBox textBoxRegisterVraag;
-        private System.Windows.Forms.TextBox textBoxRegisterAntwoord;
+        private System.Windows.Forms.TextBox textBoxRegisterQuestion;
+        private System.Windows.Forms.TextBox textBoxRegisterAnswer;
         private System.Windows.Forms.Label labelGeboorte;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateOfBirth;
     }
 }

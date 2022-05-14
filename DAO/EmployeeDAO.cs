@@ -7,25 +7,25 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauModel;
 
+
 namespace ChapeauDAO
 {
-    public class RegisterDAO : BaseDao
+    public class EmployeeDAO : BaseDao
     {
-        public void AddRowRegister(Employee employee)
-        {            
-            string query = "INSERT INTO [ApplicatiebouwChapeau].[Employee] ([FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Category], [Password], [Question], [Answer])" +
-                " VALUES (@FirstName, @LastName, @DateOfBirth, @Email, @PhoneNumber, @Category, @Password, @Question, @Answer)";
-            SqlParameter[] sqlParameters = new SqlParameter[9];
-            sqlParameters[0] = new SqlParameter("@FirstName", employee.FirstName);
-            sqlParameters[1] = new SqlParameter("@LastName", employee.LastName);
-            sqlParameters[2] = new SqlParameter("@DateOfBirth", employee.DateOfBirth);
-            sqlParameters[3] = new SqlParameter("@Email", employee.Email);
-            sqlParameters[4] = new SqlParameter("@PhoneNumber", employee.PhoneNumber);
-            sqlParameters[5] = new SqlParameter("@Category", employee.Category + 1);
-            sqlParameters[6] = new SqlParameter("@Password", employee.Password);
-            sqlParameters[7] = new SqlParameter("@Question", employee.Question);
-            sqlParameters[8] = new SqlParameter("@Answer", employee.Answer);
-            ExecuteEditQuery(query, sqlParameters);
+        public List<Employee> GetAllEmployees() 
+        {
+            try
+            {
+                string query = "SELECT [EmployeeID] ,[Password],[Category],[FirstName],[LastName],[DateOfBirth],[Email],[PhoneNumber],[Question],[Answer]" +
+                    "FROM [ApplicatiebouwChapeau].[Employee]";
+                SqlParameter[] sqlParameters = new SqlParameter[0];
+                return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            }
+            catch (Exception e)
+            {
+                // if something went wrong, it will be written in the errorlogger. 
+                throw new Exception("Employees could not be loaded properly. Please try again " + e.Message);
+            }
         }
 
         private List<Employee> ReadTables(DataTable dataTable)
@@ -38,8 +38,10 @@ namespace ChapeauDAO
                 {
                     Employee employee = new Employee()
                     {
+                        EmployeeID = (int)dr["EmployeeID"],
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
+                        Password = (string)dr["Password"],
                         Category = (int)dr["Category"],
                         DateOfBirth = (DateTime)dr["DateOfBirth"],
                         Email = (string)dr["Email"],
@@ -56,7 +58,5 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
-
-
     }
 }

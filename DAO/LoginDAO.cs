@@ -7,19 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauModel;
 using ErrorHandling;
+using HashingAlgorithms;
 
 
 namespace ChapeauDAO
 {
     public class LoginDAO : BaseDao
     {  
-        public Employee Login(int werknemersNummer, string password) 
+        // login Method + query
+        public Employee Login(Employee employee) 
         {
-            // ofzoiets... 
-            string query = "SELECT EmployeeID from Employee where EmployeeID = @werknemersNummer";
+            string query = "SELECT EmployeeID from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@EmployeeID", werknemersNummer);
-            sqlParameters[1] = new SqlParameter("@password", password);
+            sqlParameters[0] = new SqlParameter("@EmployeeID", employee.EmployeeID);
+            sqlParameters[1] = new SqlParameter("@password", employee.Password);
 
             if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
             {
@@ -31,23 +32,30 @@ namespace ChapeauDAO
             }
         }
 
+        // Datatable to read the Employee
         private Employee ReadUser(DataTable dataTable)
         {
             try
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Employee user = new Employee()
+                    Employee employee = new Employee()
                     {
-                        // deze moeten nog aangepast worden. OOK IN DE USER MODEL
-                        FirstName = (string)dr["firstName"],
-                        LastName = (string)dr["lastName"],
-                        IsAdmin = (bool)dr["adminStatus"]
+                        FirstName = (string)dr["FirstName"],
+                        LastName = (string)dr["LastName"],
+                        Password = (string)dr["Password"],
+                        Category = (int)dr["Category"],
+                        DateOfBirth = (DateTime)dr["DateOfBirth"],
+                        Email = (string)dr["Email"],
+                        PhoneNumber = (string)dr["PhoneNumber"],
+                        Question = (string)dr["Question"],
+                        Answer = (string)dr["Answer"]
+
                     };
-                    return user;
+                    return employee;
                 };
-                Employee newUser = new Employee();
-                return newUser;
+                Employee newEmployee = new Employee();
+                return newEmployee;
 
             }
             catch (Exception e)

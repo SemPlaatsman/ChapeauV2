@@ -10,24 +10,18 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class TableForm : Form
+    public partial class PaymentMethod : Form
     {
-        public TableForm()
+        public PaymentMethod()
         {
             InitializeComponent();
         }
 
-        private void buttonCheckout_Click(object sender, EventArgs e)
-        {
-            CheckoutForm checkoutForm = new CheckoutForm();
-            checkoutForm.ShowDialog();
-        }
-
-        private void buttonBack_Click(object sender, EventArgs e)
+        private void AnnulerenBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
+            CheckoutForm checkoutForm = new CheckoutForm();
+            checkoutForm.ShowDialog();
             this.Close();
         }
     }
