@@ -18,8 +18,7 @@ namespace ChapeauUI
         }
 
         private void AfrekenenBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             PaymentMethod paymentMethod = new PaymentMethod();
             paymentMethod.ShowDialog();
             this.Close();

@@ -24,5 +24,29 @@ namespace ChapeauUI
             checkoutForm.ShowDialog();
             this.Close();
         }
+
+        private void ContantBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReceiptForm receiptForm = new ReceiptForm();
+            receiptForm.ShowDialog();
+            this.Close();
+        }
+
+        private void PinBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReceiptForm receiptForm = new ReceiptForm();
+            receiptForm.ShowDialog();
+            this.Close();
+        }
+
+        private void CreditCardBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReceiptForm receiptForm = new ReceiptForm();
+            receiptForm.ShowDialog();
+            this.Close();
+        }
     }
 }
