@@ -64,7 +64,7 @@ namespace ChapeauUI
             // hier komt een switch case die bekijkt wat voor EmployeeType er inlogt. 
             // op basis daarvan wordt de ingelogde doorverwezen naar de juiste pagina
             EmployeeService employeeService = new EmployeeService();
-            List<Employee> allEmployees = employeeService.GetAllEmployees(); // is dit nodig?
+            List<Employee> allEmployees = employeeService.GetAllEmployees(); // LoginService .Login() wil ik maar die werkt niet. 
             EmployeeType employeeType = new EmployeeType();
             switch (employeeType)
             {
