@@ -31,11 +31,11 @@ namespace ChapeauUI
         {
             this.buttonBackToTableOverview = new System.Windows.Forms.Button();
             this.rekeningLbl = new System.Windows.Forms.Label();
-            this.rekeningListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.checkoutTotalPriceLbl = new System.Windows.Forms.Label();
             this.AfrekenenBtn = new System.Windows.Forms.Button();
             this.HandmatigBtn = new System.Windows.Forms.Button();
+            this.rekeningListView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // buttonBackToTableOverview
@@ -57,32 +57,23 @@ namespace ChapeauUI
             this.rekeningLbl.TabIndex = 1;
             this.rekeningLbl.Text = "Rekening:";
             // 
-            // rekeningListBox
-            // 
-            this.rekeningListBox.FormattingEnabled = true;
-            this.rekeningListBox.ItemHeight = 20;
-            this.rekeningListBox.Location = new System.Drawing.Point(47, 108);
-            this.rekeningListBox.Name = "rekeningListBox";
-            this.rekeningListBox.Size = new System.Drawing.Size(322, 224);
-            this.rekeningListBox.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(47, 335);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(134, 20);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Totaal";
+            this.label1.Text = "Totaal zonder BTW";
             // 
-            // label2
+            // checkoutTotalPriceLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(302, 335);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "0,00 EUR";
+            this.checkoutTotalPriceLbl.AutoSize = true;
+            this.checkoutTotalPriceLbl.Location = new System.Drawing.Point(302, 335);
+            this.checkoutTotalPriceLbl.Name = "checkoutTotalPriceLbl";
+            this.checkoutTotalPriceLbl.Size = new System.Drawing.Size(67, 20);
+            this.checkoutTotalPriceLbl.TabIndex = 4;
+            this.checkoutTotalPriceLbl.Text = "0,00 EUR";
             // 
             // AfrekenenBtn
             // 
@@ -104,16 +95,25 @@ namespace ChapeauUI
             this.HandmatigBtn.UseVisualStyleBackColor = true;
             this.HandmatigBtn.Click += new System.EventHandler(this.HandmatigBtn_Click);
             // 
+            // rekeningListView
+            // 
+            this.rekeningListView.HideSelection = false;
+            this.rekeningListView.Location = new System.Drawing.Point(47, 108);
+            this.rekeningListView.Name = "rekeningListView";
+            this.rekeningListView.Size = new System.Drawing.Size(322, 224);
+            this.rekeningListView.TabIndex = 7;
+            this.rekeningListView.UseCompatibleStateImageBehavior = false;
+            // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 480);
+            this.Controls.Add(this.rekeningListView);
             this.Controls.Add(this.HandmatigBtn);
             this.Controls.Add(this.AfrekenenBtn);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.checkoutTotalPriceLbl);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.rekeningListBox);
             this.Controls.Add(this.rekeningLbl);
             this.Controls.Add(this.buttonBackToTableOverview);
             this.Name = "CheckoutForm";
@@ -127,10 +127,10 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Button buttonBackToTableOverview;
         private System.Windows.Forms.Label rekeningLbl;
-        private System.Windows.Forms.ListBox rekeningListBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label checkoutTotalPriceLbl;
         private System.Windows.Forms.Button AfrekenenBtn;
         private System.Windows.Forms.Button HandmatigBtn;
+        private System.Windows.Forms.ListView rekeningListView;
     }
 }
