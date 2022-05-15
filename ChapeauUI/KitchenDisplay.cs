@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
-using ChapeauModel;
+using HashingAlgorithms;
 using ChapeauLogica;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
@@ -22,8 +23,8 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            KitchenService ks = new KitchenService();
-            List<KitchenOrderOverview> koo = ks.GetKitchenOverviews();
+            KitchenService kitchenService = new KitchenService();
+            List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
         }
     }
 }
