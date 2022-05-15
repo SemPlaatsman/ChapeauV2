@@ -66,10 +66,10 @@ namespace ChapeauUI
 
             //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
 
-            /*            this.Hide();
-                        TableOverviewForm tableOverviewForm = new TableOverviewForm();
-                        tableOverviewForm.ShowDialog();
-                        this.Close();*/
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
         }
 
         private void LoginWithRightJobType() 
