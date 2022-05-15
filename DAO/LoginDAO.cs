@@ -41,6 +41,7 @@ namespace ChapeauDAO
                 {
                     Employee employee = new Employee()
                     {
+                        EmployeeID = (int)dr["EmployeeID"],
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
                         Password = (string)dr["Password"],

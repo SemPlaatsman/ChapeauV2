@@ -29,8 +29,7 @@ namespace ChapeauDAO
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e);
             }
             return conn;
         }
@@ -52,8 +51,7 @@ namespace ChapeauDAO
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e);
             }
         }
 
@@ -72,7 +70,7 @@ namespace ChapeauDAO
             }
             catch (SqlException e)
             {
-                ErrorLogger.WriteLogToFile(e.Message);
+                ErrorLogger.WriteLogToFile(e);
             }
             finally
             {
@@ -100,9 +98,8 @@ namespace ChapeauDAO
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
+                ErrorLogger.WriteLogToFile(e);
                 return null;
-                throw;
             }
             finally
             {
