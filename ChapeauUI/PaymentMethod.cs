@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ErrorHandling;
+using HashingAlgorithms;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
@@ -16,12 +20,10 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+        ReceiptForm receipt = new ReceiptForm();
 
         private void AnnulerenBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            CheckoutForm checkoutForm = new CheckoutForm();
-            checkoutForm.ShowDialog();
+        {            
             this.Close();
         }
 
@@ -31,6 +33,7 @@ namespace ChapeauUI
             ReceiptForm receiptForm = new ReceiptForm();
             receiptForm.ShowDialog();
             this.Close();
+            
         }
 
         private void PinBtn_Click(object sender, EventArgs e)

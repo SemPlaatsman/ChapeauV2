@@ -16,15 +16,19 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+        //public int selectedTable = 0;
 
         private void buttonTable1_Click(object sender, EventArgs e)
         {
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable1.BackColor = Color.Red;
-            TableForm tableForm = new TableForm();
+            int TableId = 1;
+            TableForm tableForm = new TableForm(TableId);
             tableForm.ShowDialog();
             this.Close();
 
+            //selectedTable = 1;            
+            //CheckoutForm checkoutForm = new CheckoutForm(selectedTable);
             buttonTable1.BackColor = Color.Red;
         }
 
