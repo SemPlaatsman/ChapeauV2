@@ -18,7 +18,7 @@ namespace LoginService
         }
 
         // Parameter is a class object. 
-        public Employee LoginUser(Employee employee)
+        public Employee Login(Employee employee)
         {
             return loginDAO.Login(employee);
         }

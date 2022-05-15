@@ -63,11 +63,19 @@ namespace ChapeauUI
         {
             // hier komt een switch case die bekijkt wat voor EmployeeType er inlogt. 
             // op basis daarvan wordt de ingelogde doorverwezen naar de juiste pagina
+            EmployeeService employeeService = new EmployeeService();
+            List<Employee> allEmployees = employeeService.GetAllEmployees(); // LoginService .Login() wil ik maar die werkt niet. 
+            EmployeeType employeeType = new EmployeeType();
+            switch (employeeType)
+            {
+                // even kijken hoe ik dit aan ga pakken.
+                
+            }
 
-/*            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
-            this.Close();*/
+            /*            this.Hide();
+                        TableOverviewForm tableOverviewForm = new TableOverviewForm();
+                        tableOverviewForm.ShowDialog();
+                        this.Close();*/
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
