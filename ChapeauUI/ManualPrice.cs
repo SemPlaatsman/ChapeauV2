@@ -21,7 +21,7 @@ namespace ChapeauUI
         {            
             PaymentMethod paymentMethod = new PaymentMethod();
             paymentMethod.ShowDialog();
-            this.Close();
+            this.Close();            
         }
     }
 }
