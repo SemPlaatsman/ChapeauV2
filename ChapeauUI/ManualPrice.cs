@@ -12,16 +12,20 @@ namespace ChapeauUI
 {
     public partial class ManualPrice : Form
     {
-        public ManualPrice()
+        private decimal totalPrice;
+        public ManualPrice(decimal totalPrice)
         {
             InitializeComponent();
+            this.totalPrice = totalPrice;
+            totalPriceLbl.Text = totalPrice.ToString();
         }
 
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {            
             PaymentMethod paymentMethod = new PaymentMethod();
             paymentMethod.ShowDialog();
-            this.Close();            
+            this.Close();
+            
         }
     }
 }

@@ -67,7 +67,7 @@ namespace ChapeauUI
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
         {            
-            ManualPrice manualPrice = new ManualPrice();
+            ManualPrice manualPrice = new ManualPrice(totalPrice);
             manualPrice.ShowDialog();            
         }
     }
