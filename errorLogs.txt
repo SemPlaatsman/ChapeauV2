@@ -157,3 +157,11 @@ The statement has been terminated.
    at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
    at ChapeauDAO.BaseDao.ExecuteEditQuery(String query, SqlParameter[] sqlParameters) in C:\Users\joche\OneDrive\Documenten\GitHub\ChapeauV2\DAO\BaseDAO.cs:line 69
+[16-5-2022 18:30:43] : Invalid column name 'TypeName'.    at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAO.BaseDao.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\Users\sempl\OneDrive\Documenten\Project Applicatiebouw\ChapeauV2\DAO\BaseDAO.cs:line 93
