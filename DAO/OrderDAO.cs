@@ -13,7 +13,7 @@ namespace ChapeauDAO
     {
         public void InsertOrder(int TableID)
         {
-            string query = $"INSERT INTO Order (TableID) VALUES (@TableID)";
+            string query = $"INSERT INTO ApplicatiebouwChapeau.Order (TableID) VALUES (@TableID)";
             SqlParameter[] sql = new SqlParameter[1];
             sql[0] = new SqlParameter("@TableID", TableID);
             ExecuteEditQuery(query, sql);
