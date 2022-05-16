@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Order));
             this.buttonTerug = new System.Windows.Forms.Button();
             this.buttonVoorgerecht = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTerug
@@ -44,20 +46,33 @@
             // buttonVoorgerecht
             // 
             this.buttonVoorgerecht.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonVoorgerecht.Image = global::ChapeauUI.Properties.Resources.chunks_wreak_menu_gastronomy_39826;
+            this.buttonVoorgerecht.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonVoorgerecht.Image = ((System.Drawing.Image)(resources.GetObject("buttonVoorgerecht.Image")));
+            this.buttonVoorgerecht.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonVoorgerecht.Location = new System.Drawing.Point(12, 90);
             this.buttonVoorgerecht.Name = "buttonVoorgerecht";
-            this.buttonVoorgerecht.Size = new System.Drawing.Size(498, 121);
+            this.buttonVoorgerecht.Size = new System.Drawing.Size(498, 111);
             this.buttonVoorgerecht.TabIndex = 1;
             this.buttonVoorgerecht.Text = "Voorgerecht";
             this.buttonVoorgerecht.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonVoorgerecht.UseVisualStyleBackColor = true;
+            this.buttonVoorgerecht.Paint += new System.Windows.Forms.PaintEventHandler(this.buttonVoorgerecht_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 207);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(498, 111);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonVoorgerecht);
             this.Controls.Add(this.buttonTerug);
             this.Name = "Order";
@@ -70,5 +85,6 @@
 
         private System.Windows.Forms.Button buttonTerug;
         private System.Windows.Forms.Button buttonVoorgerecht;
+        private System.Windows.Forms.Button button1;
     }
 }

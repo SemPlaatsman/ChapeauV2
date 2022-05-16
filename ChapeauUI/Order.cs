@@ -16,5 +16,10 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
+
+        private void buttonVoorgerecht_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
