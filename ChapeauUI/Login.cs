@@ -61,21 +61,42 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // hier komt een switch case die bekijkt wat voor EmployeeType er inlogt. 
-            // op basis daarvan wordt de ingelogde doorverwezen naar de juiste pagina
-            EmployeeService employeeService = new EmployeeService();
-            List<Employee> allEmployees = employeeService.GetAllEmployees(); // LoginService .Login() wil ik maar die werkt niet. 
+            //string PIN = textBoxLoginPIN.Text;
+            LoginService loginService = new LoginService();
+            try
+            {
+                loginService.Login((Employee)listViewNames.SelectedItems[0].Tag);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
+
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
+        }
+
+        private void LoginWithRightJobType() 
+        {
+
             EmployeeType employeeType = new EmployeeType();
-            switch (employeeType)
+            
+            switch (employeeType.Category)
             {
                 // even kijken hoe ik dit aan ga pakken.
-                
+
             }
 
                         this.Hide();
                         TableOverviewForm tableOverviewForm = new TableOverviewForm();
                         tableOverviewForm.ShowDialog();
                         this.Close();
+
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
