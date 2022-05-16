@@ -10,7 +10,7 @@ namespace ChapeauModel
     {
         public int ProductId;
         public bool IsDiner;
-        public string Type;
+        public TypeOfProduct Type;
         public string ProductName;
         public decimal Price;
         public int Stock;

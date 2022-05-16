@@ -13,7 +13,7 @@ namespace ChapeauDAO
     {
         public List<OrderGerecht> GetAllOrderGerechten()
         {
-            string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, T.TypeName, M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark " +
+            string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, M.[Type], M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark " +
                 "FROM ApplicatiebouwChapeau.OrderGerecht AS O " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON O.ItemId = M.ProductID " +
                 "JOIN ApplicatiebouwChapeau.TypeOfProduct AS T ON M.[Type] = T.TypeID " +
@@ -35,7 +35,7 @@ namespace ChapeauDAO
                     {
                         ProductId = (int)dr["ProductId"],
                         IsDiner = (bool)dr["IsDiner"],
-                        Type = (string)dr["TypeName"],
+                        Type = (TypeOfProduct)(int)dr["Type"],
                         ProductName = (string)dr["ProductName"],
                         Price = (decimal)dr["Price"],
                         Stock = (int)dr["Stock"],
