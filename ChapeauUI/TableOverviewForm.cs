@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
+        private List<Table> tables;
         public TableOverviewForm()
         {
             InitializeComponent();
+            AssignTables();
         }
         //public int selectedTable = 0;
 
@@ -27,8 +31,6 @@ namespace ChapeauUI
             tableForm.ShowDialog();
             this.Close();
 
-            //selectedTable = 1;            
-            //CheckoutForm checkoutForm = new CheckoutForm(selectedTable);
             buttonTable1.BackColor = Color.Red;
         }
 
@@ -44,6 +46,30 @@ namespace ChapeauUI
             Login loginForm = new Login();
             loginForm.ShowDialog();
             this.Close();
+        }
+
+        private void TableClick(object sender, EventArgs e) 
+        {
+            
+
+        }
+
+        private void AssignTables()
+        {
+            TableService tableService = new TableService();
+            tables = tableService.GetAllTables();
+
+            int tableTagIndex = 0;
+            foreach (Control control in this.Controls)
+            {
+                
+                if (control.GetType() == typeof(Button) && control != buttonUitloggen)
+                {
+                    control.Click += TableClick;
+                    control.Tag = tables[tableTagIndex++];
+                }
+            }
+
         }
     }
 }

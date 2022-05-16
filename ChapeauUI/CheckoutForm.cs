@@ -45,7 +45,7 @@ namespace ChapeauUI
                 rekeningListView.Items.Add(li);
                 totalPrice += order.Price;
             }
-            checkoutTotalPriceLbl.Text = totalPrice.ToString();
+            checkoutTotalPriceLbl.Text = $"€{totalPrice.ToString()}";
         }
 
         //private void listViewNames_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace ChapeauUI
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
         {            
-            ManualPrice manualPrice = new ManualPrice();
+            ManualPrice manualPrice = new ManualPrice(totalPrice);
             manualPrice.ShowDialog();            
         }
     }
