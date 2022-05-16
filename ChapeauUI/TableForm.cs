@@ -35,5 +35,25 @@ namespace ChapeauUI
             tableOverviewForm.ShowDialog();
             this.Close();
         }
+
+        private void buttonNewOrder_Click(object sender, EventArgs e)
+        {
+            OrderService orderService = new OrderService();
+            List<Table> tables = orderService.tables();
+            foreach (Table table in tables) 
+            {
+                if (table.TabelID == TableId)
+                {
+                    if (table.IsOccupied)
+                    {
+                        orderService.InsertNewOrder(TableId);
+                    }
+                }
+            }
+            this.Hide();
+            Order order = new Order(TableId);  
+            order.ShowDialog();
+            this.Close();
+        }
     }
 }
