@@ -16,6 +16,7 @@ namespace ChapeauUI
 {
     public partial class KitchenDisplay : Form
     {
+        int nrOfBoxes = 0;
         public KitchenDisplay()
         {
             InitializeComponent();
@@ -23,9 +24,14 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            KitchenService kitchenService = new KitchenService();
-            List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
-            MessageBox.Show("Success");
+            //KitchenService kitchenService = new KitchenService();
+            //List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
+
+            TextBox txtBox = new TextBox();
+            txtBox.Location = new Point(nrOfBoxes, 50);
+            nrOfBoxes += 15;
+            txtBox.Visible = true;
+            Controls.Add(txtBox);
         }
     }
 }
