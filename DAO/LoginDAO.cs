@@ -17,10 +17,10 @@ namespace ChapeauDAO
         // login Method + query
         public Employee Login(Employee employee) 
         {
-            string query = "SELECT EmployeeID from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
+            string query = "SELECT [EmployeeID], [Password] from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@EmployeeID", employee.EmployeeID);
-            sqlParameters[1] = new SqlParameter("@password", employee.Password);
+            sqlParameters[1] = new SqlParameter("@Password", employee.Password);
 
             if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
             {
@@ -42,16 +42,7 @@ namespace ChapeauDAO
                     Employee employee = new Employee()
                     {
                         EmployeeID = (int)dr["EmployeeID"],
-                        FirstName = (string)dr["FirstName"],
-                        LastName = (string)dr["LastName"],
-                        Password = (string)dr["Password"],
-                        Category = (int)dr["Category"],
-                        DateOfBirth = (DateTime)dr["DateOfBirth"],
-                        Email = (string)dr["Email"],
-                        PhoneNumber = (string)dr["PhoneNumber"],
-                        Question = (string)dr["Question"],
-                        Answer = (string)dr["Answer"]
-
+                        Password = (string)dr["Password"]
                     };
                     return employee;
                 };
