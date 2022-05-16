@@ -14,13 +14,11 @@ namespace ChapeauUI
 {
     public partial class Order : Form
     {
-        public Order()
+        public Order(int TableId)
         {
             InitializeComponent();
             
         }
-
-        
 
         private void Order_Load(object sender, EventArgs e)
         {
@@ -134,6 +132,11 @@ namespace ChapeauUI
         private void buttonTerugBestelling_Click(object sender, EventArgs e)
         {
             panelBestellen.Visible = false;
+        }
+
+        private void buttonToevoegen_Click(object sender, EventArgs e)
+        {
+            //listViewGerechten.SelectedItems;
         }
     }
 }
