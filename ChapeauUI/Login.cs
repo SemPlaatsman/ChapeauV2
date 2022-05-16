@@ -91,10 +91,10 @@ namespace ChapeauUI
                 // even kijken hoe ik dit aan ga pakken.
 
             }
-                        this.Hide();
-                        TableOverviewForm tableOverviewForm = new TableOverviewForm();
-                        tableOverviewForm.ShowDialog();
-                        this.Close();
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
 
         }
 

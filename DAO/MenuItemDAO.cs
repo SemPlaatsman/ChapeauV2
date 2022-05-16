@@ -16,9 +16,8 @@ namespace ChapeauDAO
         {
             try
             {
-                string query = "SELECT [ProductID],[IsDiner],[TypeName],[ProductName],[Price],[Stock],[IsAlcoholic] " +
-                    "FROM [ApplicatiebouwChapeau].[MenuItem] " +
-                    "JOIN ApplicatiebouwChapeau.TypeOfProduct ON MenuItem.[Type] = TypeOfProduct.TypeID ";
+                string query = "SELECT [ProductID],[IsDiner],[Type],[ProductName],[Price],[Stock],[IsAlcoholic] " +
+                    "FROM [ApplicatiebouwChapeau].[MenuItem] ";
                 SqlParameter[] sqlParameters = new SqlParameter[0];
                 return ReadTables(ExecuteSelectQuery(query, sqlParameters));
             }
@@ -39,7 +38,7 @@ namespace ChapeauDAO
                     {
                         ProductId = (int)dr["ProductID"],
                         IsDiner = (bool)dr["IsDiner"],
-                        Type = (string)dr["TypeName"],
+                        Type = (TypeOfProduct)(int)dr["Type"],
                         ProductName = (string)dr["ProductName"],
                         Price = (decimal)dr["Price"],
                         Stock = (int)dr["Stock"],
