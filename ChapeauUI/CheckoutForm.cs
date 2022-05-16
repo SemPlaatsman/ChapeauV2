@@ -45,7 +45,7 @@ namespace ChapeauUI
                 rekeningListView.Items.Add(li);
                 totalPrice += order.Price;
             }
-            checkoutTotalPriceLbl.Text = totalPrice.ToString();
+            checkoutTotalPriceLbl.Text = $"€{totalPrice.ToString()}";
         }
 
         //private void listViewNames_Click(object sender, EventArgs e)

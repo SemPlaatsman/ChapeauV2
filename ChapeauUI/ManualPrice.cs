@@ -17,7 +17,7 @@ namespace ChapeauUI
         {
             InitializeComponent();
             this.totalPrice = totalPrice;
-            totalPriceLbl.Text = totalPrice.ToString();
+            totalPriceLbl.Text = $"€{totalPrice.ToString()}";
         }
 
         private void AfrekenenBtn_Click(object sender, EventArgs e)
