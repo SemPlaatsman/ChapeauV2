@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
-using ChapeauModel;
+using HashingAlgorithms;
 using ChapeauLogica;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
     public partial class KitchenDisplay : Form
     {
+        int nrOfBoxes = 0;
         public KitchenDisplay()
         {
             InitializeComponent();
@@ -22,8 +24,14 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            KitchenService ks = new KitchenService();
-            List<KitchenOrderOverview> koo = ks.GetKitchenOverviews();
+            //KitchenService kitchenService = new KitchenService();
+            //List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
+
+            TextBox txtBox = new TextBox();
+            txtBox.Location = new Point(nrOfBoxes, 50);
+            nrOfBoxes += 15;
+            txtBox.Visible = true;
+            Controls.Add(txtBox);
         }
     }
 }

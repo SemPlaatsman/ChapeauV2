@@ -13,17 +13,17 @@ namespace ChapeauDAO
     {
         public List<BarOrderOverview> GetBarOverviews()
         {
-            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], T.[TypeName], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark] " +
+            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
-                "JOIN ApplicatiebouwChapeau.TypeOfProduct AS T ON M.[Type] = T.[TypeID] " +
-                "WHERE M.[Type] = 3 AND OG.[OrderId] IN(SELECT DISTINCT O2.[OrderId] " +
+                "WHERE M.[Type] = @typeOfDrink AND OG.[OrderId] IN(SELECT DISTINCT O2.[OrderId] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O2 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG2 ON O2.[OrderID] = OG2.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M2 ON OG2.[ItemId] = M2.[ProductID] " +
-                "WHERE (OG2.[Status] = 0 OR OG2.[Status] IS NULL) AND M2.[Type] = 3); ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+                "WHERE (OG2.[Status] = 0 OR OG2.[Status] IS NULL) AND M2.[Type] = @typeOfDrink); ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -40,7 +40,7 @@ namespace ChapeauDAO
                     {
                         ProductId = (int)dr["ProductId"],
                         IsDiner = (bool)dr["IsDiner"],
-                        Type = (string)dr["TypeName"],
+                        Type = (TypeOfProduct)(int)dr["Type"],
                         ProductName = (string)dr["ProductName"],
                         Price = (decimal)dr["Price"],
                         Stock = (int)dr["Stock"],

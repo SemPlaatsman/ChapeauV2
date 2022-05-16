@@ -13,10 +13,17 @@ namespace ChapeauDAO
     {
         public void InsertOrder(int TableID)
         {
-            string query = $"INSERT INTO ApplicatiebouwChapeau.Order (TableID) VALUES (@TableID)";
-            SqlParameter[] sql = new SqlParameter[1];
-            sql[0] = new SqlParameter("@TableID", TableID);
-            ExecuteEditQuery(query, sql);
+            try
+            {
+                string query = $"INSERT INTO [ApplicatiebouwChapeau].[Order] (TableID) VALUES (@TableID)";
+                SqlParameter[] sql = new SqlParameter[1];
+                sql[0] = new SqlParameter("@TableID", TableID);
+                ExecuteEditQuery(query, sql);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Tables could not be inserted properly. Please try again " + e.Message);
+            }
         }
         public List<Table> GetAllTables()
         {
@@ -55,6 +62,20 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
+        public void AlterTables(int tableID)
+        {
+            try
+            {
+                string query = $"Update [ApplicatiebouwChapeau].[Table] set IsOccupied = 1 where TableID = @TableID";
+                SqlParameter[] sqlParameter = new SqlParameter[1];
+                sqlParameter[0] = new SqlParameter("@TableID", tableID);
+                ExecuteEditQuery(query, sqlParameter);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Data could not be altered in the database. please try again" + e.Message);
+            }
 
+        }
     }
 }

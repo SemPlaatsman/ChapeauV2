@@ -41,7 +41,7 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             foreach (MenuItem m in orderedItems)
             {
-                if (m.Type == "Voorgerecht")
+                if (m.Type == TypeOfProduct.Voorgerecht)
                 {
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);
@@ -64,7 +64,7 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             foreach (MenuItem m in orderedItems)
             {
-                if (m.Type == "Hoofdgerecht")
+                if (m.Type == TypeOfProduct.Hoofdgerecht)
                 {
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);
@@ -87,7 +87,7 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             foreach (MenuItem m in orderedItems)
             {
-                if (m.Type == "Nagerecht")
+                if (m.Type == TypeOfProduct.Nagerecht)
                 {
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);
@@ -109,7 +109,7 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             foreach (MenuItem m in orderedItems)
             {
-                if (m.Type == "Drinken")
+                if (m.Type == TypeOfProduct.Drinken)
                 {
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);

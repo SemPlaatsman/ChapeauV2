@@ -25,16 +25,16 @@ namespace ChapeauModel
         {
             switch (orderGerecht.MenuItem.Type)
             {
-                case "Voorgerecht":
+                case TypeOfProduct.Voorgerecht:
                     Voorgerechten.Add(orderGerecht);
                     break;
-                case "Tussengerecht":
+                case TypeOfProduct.Tussengerecht:
                     Tussengerechten.Add(orderGerecht);
                     break;
-                case "Hoofdgerecht":
+                case TypeOfProduct.Hoofdgerecht:
                     Hoofdgerechten.Add(orderGerecht);
                     break;
-                case "Nagerecht":
+                case TypeOfProduct.Nagerecht:
                     Nagerechten.Add(orderGerecht);
                     break;
                 default:
