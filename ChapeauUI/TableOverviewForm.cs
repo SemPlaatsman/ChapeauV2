@@ -12,7 +12,6 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        // List<Table>
         public TableOverviewForm()
         {
             
