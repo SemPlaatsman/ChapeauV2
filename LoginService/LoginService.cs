@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauModel;
 
-namespace LoginService
+namespace ChapeauLogica
 {
     public class LoginService
     {

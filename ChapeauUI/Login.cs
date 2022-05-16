@@ -61,8 +61,17 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            EmployeeService employeeService = new EmployeeService();
-            List<Employee> allEmployees = employeeService.GetAllEmployees(); // LoginService .Login() wil ik maar die werkt niet. 
+            //string PIN = textBoxLoginPIN.Text;
+            LoginService loginService = new LoginService();
+            try
+            {
+                loginService.Login((Employee)listViewNames.SelectedItems[0].Tag);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
             //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
 
