@@ -31,6 +31,10 @@ namespace ChapeauUI
         {
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewDone = new System.Windows.Forms.ListView();
+            this.columnOrderId = new System.Windows.Forms.ColumnHeader();
+            this.columnTableId = new System.Windows.Forms.ColumnHeader();
+            this.ColumnBestellingen = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // button1
@@ -45,18 +49,45 @@ namespace ChapeauUI
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnOrderId,
+            this.columnTableId,
+            this.ColumnBestellingen});
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(154, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(180, 426);
+            this.listView1.Size = new System.Drawing.Size(365, 612);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // listViewDone
+            // 
+            this.listViewDone.HideSelection = false;
+            this.listViewDone.Location = new System.Drawing.Point(801, 12);
+            this.listViewDone.Name = "listViewDone";
+            this.listViewDone.Size = new System.Drawing.Size(371, 612);
+            this.listViewDone.TabIndex = 2;
+            this.listViewDone.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnOrderId
+            // 
+            this.columnOrderId.Text = "Order Id";
+            // 
+            // columnTableId
+            // 
+            this.columnTableId.Text = "Table Id";
+            // 
+            // ColumnBestellingen
+            // 
+            this.ColumnBestellingen.Text = "Bestellingen";
             // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 636);
+            this.Controls.Add(this.listViewDone);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Name = "KitchenDisplay";
@@ -69,5 +100,9 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnOrderId;
+        private System.Windows.Forms.ColumnHeader columnTableId;
+        private System.Windows.Forms.ColumnHeader ColumnBestellingen;
+        private System.Windows.Forms.ListView listViewDone;
     }
 }
