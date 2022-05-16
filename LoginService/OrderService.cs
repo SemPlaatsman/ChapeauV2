@@ -24,5 +24,9 @@ namespace ChapeauLogica
         {
             orderDAO.InsertOrder(TableID);
         }
+        public void AlterTables(int tableId)
+        {
+            orderDAO.AlterTables(tableId);
+        }
     }
 }

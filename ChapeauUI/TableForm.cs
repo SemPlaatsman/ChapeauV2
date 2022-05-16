@@ -44,9 +44,10 @@ namespace ChapeauUI
             {
                 if (table.TabelID == TableId)
                 {
-                    if (table.IsOccupied)
+                    if (!table.IsOccupied)
                     {
                         orderService.InsertNewOrder(TableId);
+                        orderService.AlterTables(TableId);
                     }
                 }
             }
