@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.totalPriceLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.newPriceTextBox = new System.Windows.Forms.TextBox();
             this.AfrekenenBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,14 +54,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Het originele bedrag is:";
             // 
-            // label3
+            // totalPriceLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "0,00";
+            this.totalPriceLbl.AutoSize = true;
+            this.totalPriceLbl.Location = new System.Drawing.Point(183, 41);
+            this.totalPriceLbl.Name = "totalPriceLbl";
+            this.totalPriceLbl.Size = new System.Drawing.Size(36, 20);
+            this.totalPriceLbl.TabIndex = 2;
+            this.totalPriceLbl.Text = "0,00";
             // 
             // label4
             // 
@@ -72,12 +72,12 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Het nieuwe bedrag hier:";
             // 
-            // textBox1
+            // newPriceTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 111);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 27);
-            this.textBox1.TabIndex = 4;
+            this.newPriceTextBox.Location = new System.Drawing.Point(12, 111);
+            this.newPriceTextBox.Name = "newPriceTextBox";
+            this.newPriceTextBox.Size = new System.Drawing.Size(177, 27);
+            this.newPriceTextBox.TabIndex = 4;
             // 
             // AfrekenenBtn
             // 
@@ -95,9 +95,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 197);
             this.Controls.Add(this.AfrekenenBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.newPriceTextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.totalPriceLbl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ManualPrice";
@@ -111,9 +111,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label totalPriceLbl;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox newPriceTextBox;
         private System.Windows.Forms.Button AfrekenenBtn;
     }
 }

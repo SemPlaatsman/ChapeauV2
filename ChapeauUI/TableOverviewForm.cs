@@ -31,8 +31,6 @@ namespace ChapeauUI
             tableForm.ShowDialog();
             this.Close();
 
-            //selectedTable = 1;            
-            //CheckoutForm checkoutForm = new CheckoutForm(selectedTable);
             buttonTable1.BackColor = Color.Red;
         }
 
