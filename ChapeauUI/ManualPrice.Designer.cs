@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.totalPriceLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.newPriceTextBox = new System.Windows.Forms.TextBox();
             this.AfrekenenBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -72,12 +72,12 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Het nieuwe bedrag hier:";
             // 
-            // textBox1
+            // newPriceTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 111);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 27);
-            this.textBox1.TabIndex = 4;
+            this.newPriceTextBox.Location = new System.Drawing.Point(12, 111);
+            this.newPriceTextBox.Name = "newPriceTextBox";
+            this.newPriceTextBox.Size = new System.Drawing.Size(177, 27);
+            this.newPriceTextBox.TabIndex = 4;
             // 
             // AfrekenenBtn
             // 
@@ -95,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 197);
             this.Controls.Add(this.AfrekenenBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.newPriceTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.totalPriceLbl);
             this.Controls.Add(this.label2);
@@ -113,7 +113,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label totalPriceLbl;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox newPriceTextBox;
         private System.Windows.Forms.Button AfrekenenBtn;
     }
 }
