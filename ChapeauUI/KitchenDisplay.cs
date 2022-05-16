@@ -25,6 +25,7 @@ namespace ChapeauUI
         {
             KitchenService kitchenService = new KitchenService();
             List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
+            MessageBox.Show("Success");
         }
     }
 }
