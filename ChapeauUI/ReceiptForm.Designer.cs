@@ -51,15 +51,15 @@
             this.receiptTotaalStreep = new System.Windows.Forms.Label();
             this.receiptTipLbl = new System.Windows.Forms.Label();
             this.BonPnl = new System.Windows.Forms.Panel();
-            this.TerugBtn = new System.Windows.Forms.Button();
-            this.OpmerkingBtn = new System.Windows.Forms.Button();
-            this.UitprintenBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.totaalMetBtwLbl = new System.Windows.Forms.Label();
             this.btwPriceLbl = new System.Windows.Forms.Label();
             this.receiptTotaalArtikelLbl = new System.Windows.Forms.Label();
             this.receiptBtwLbl = new System.Windows.Forms.Label();
             this.receiptTotaalArtikelPrijsLbl = new System.Windows.Forms.Label();
+            this.TerugBtn = new System.Windows.Forms.Button();
+            this.OpmerkingBtn = new System.Windows.Forms.Button();
+            this.UitprintenBtn = new System.Windows.Forms.Button();
             receiptTijdBetalingDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BonPnl.SuspendLayout();
@@ -293,33 +293,6 @@
             this.BonPnl.Size = new System.Drawing.Size(426, 864);
             this.BonPnl.TabIndex = 24;
             // 
-            // TerugBtn
-            // 
-            this.TerugBtn.Location = new System.Drawing.Point(12, 12);
-            this.TerugBtn.Name = "TerugBtn";
-            this.TerugBtn.Size = new System.Drawing.Size(103, 43);
-            this.TerugBtn.TabIndex = 25;
-            this.TerugBtn.Text = "Terug";
-            this.TerugBtn.UseVisualStyleBackColor = true;
-            // 
-            // OpmerkingBtn
-            // 
-            this.OpmerkingBtn.Location = new System.Drawing.Point(86, 938);
-            this.OpmerkingBtn.Name = "OpmerkingBtn";
-            this.OpmerkingBtn.Size = new System.Drawing.Size(168, 59);
-            this.OpmerkingBtn.TabIndex = 26;
-            this.OpmerkingBtn.Text = "Opmerkingen";
-            this.OpmerkingBtn.UseVisualStyleBackColor = true;
-            // 
-            // UitprintenBtn
-            // 
-            this.UitprintenBtn.Location = new System.Drawing.Point(311, 938);
-            this.UitprintenBtn.Name = "UitprintenBtn";
-            this.UitprintenBtn.Size = new System.Drawing.Size(162, 59);
-            this.UitprintenBtn.TabIndex = 27;
-            this.UitprintenBtn.Text = "Uitprinten";
-            this.UitprintenBtn.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -373,6 +346,34 @@
             this.receiptTotaalArtikelPrijsLbl.Size = new System.Drawing.Size(36, 20);
             this.receiptTotaalArtikelPrijsLbl.TabIndex = 28;
             this.receiptTotaalArtikelPrijsLbl.Text = "0,00";
+            // 
+            // TerugBtn
+            // 
+            this.TerugBtn.Location = new System.Drawing.Point(12, 12);
+            this.TerugBtn.Name = "TerugBtn";
+            this.TerugBtn.Size = new System.Drawing.Size(103, 43);
+            this.TerugBtn.TabIndex = 25;
+            this.TerugBtn.Text = "Terug";
+            this.TerugBtn.UseVisualStyleBackColor = true;
+            this.TerugBtn.Click += new System.EventHandler(this.TerugBtn_Click);
+            // 
+            // OpmerkingBtn
+            // 
+            this.OpmerkingBtn.Location = new System.Drawing.Point(86, 938);
+            this.OpmerkingBtn.Name = "OpmerkingBtn";
+            this.OpmerkingBtn.Size = new System.Drawing.Size(168, 59);
+            this.OpmerkingBtn.TabIndex = 26;
+            this.OpmerkingBtn.Text = "Opmerkingen";
+            this.OpmerkingBtn.UseVisualStyleBackColor = true;
+            // 
+            // UitprintenBtn
+            // 
+            this.UitprintenBtn.Location = new System.Drawing.Point(311, 938);
+            this.UitprintenBtn.Name = "UitprintenBtn";
+            this.UitprintenBtn.Size = new System.Drawing.Size(162, 59);
+            this.UitprintenBtn.TabIndex = 27;
+            this.UitprintenBtn.Text = "Uitprinten";
+            this.UitprintenBtn.UseVisualStyleBackColor = true;
             // 
             // ReceiptForm
             // 
