@@ -92,6 +92,11 @@ namespace ChapeauUI
 
             }
 
+                        this.Hide();
+                        TableOverviewForm tableOverviewForm = new TableOverviewForm();
+                        tableOverviewForm.ShowDialog();
+                        this.Close();
+
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
