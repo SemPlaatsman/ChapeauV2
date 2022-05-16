@@ -7,24 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
+        private List<Table> tables;
         public TableOverviewForm()
         {
             InitializeComponent();
-            this.buttonTable1.Click += TableClick;
-            this.buttonTable2.Click += TableClick;
-            this.buttonTable3.Click += TableClick;
-            this.buttonTable4.Click += TableClick;
-            this.buttonTable5.Click += TableClick;
-            this.buttonTable6.Click += TableClick;
-            this.buttonTable7.Click += TableClick;
-            this.buttonTable8.Click += TableClick;
-            this.buttonTable9.Click += TableClick;
-            this.buttonTable10.Click += TableClick;
+            AssignTables();
         }
         //public int selectedTable = 0;
 
@@ -57,6 +51,24 @@ namespace ChapeauUI
         private void TableClick(object sender, EventArgs e) 
         {
             
+
+        }
+
+        private void AssignTables()
+        {
+            TableService tableService = new TableService();
+            tables = tableService.GetAllTables();
+
+            int tableTagIndex = 0;
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    control.Click += TableClick;
+                    control.Tag = tables[tableTagIndex++];
+                }
+            }
+
         }
     }
 }
