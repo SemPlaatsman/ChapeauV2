@@ -35,13 +35,13 @@
             this.buttonDrankjes = new System.Windows.Forms.Button();
             this.buttonBestel = new System.Windows.Forms.Button();
             this.panelBestellen = new System.Windows.Forms.Panel();
+            this.listViewGerechten = new System.Windows.Forms.ListView();
             this.labelTypeGerecht = new System.Windows.Forms.Label();
             this.labelZoeken = new System.Windows.Forms.Label();
             this.textBoxZoeken = new System.Windows.Forms.TextBox();
             this.buttonTerugBestelling = new System.Windows.Forms.Button();
             this.buttonToevoegen = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listViewGerechten = new System.Windows.Forms.ListView();
             this.panelBestellen.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +131,15 @@
             this.panelBestellen.Size = new System.Drawing.Size(522, 641);
             this.panelBestellen.TabIndex = 6;
             // 
+            // listViewGerechten
+            // 
+            this.listViewGerechten.HideSelection = false;
+            this.listViewGerechten.Location = new System.Drawing.Point(12, 121);
+            this.listViewGerechten.Name = "listViewGerechten";
+            this.listViewGerechten.Size = new System.Drawing.Size(497, 315);
+            this.listViewGerechten.TabIndex = 7;
+            this.listViewGerechten.UseCompatibleStateImageBehavior = false;
+            // 
             // labelTypeGerecht
             // 
             this.labelTypeGerecht.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -176,6 +185,7 @@
             this.buttonToevoegen.TabIndex = 2;
             this.buttonToevoegen.Text = "Toevoegen";
             this.buttonToevoegen.UseVisualStyleBackColor = true;
+            this.buttonToevoegen.Click += new System.EventHandler(this.buttonToevoegen_Click);
             // 
             // textBox1
             // 
@@ -184,15 +194,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(172, 100);
             this.textBox1.TabIndex = 1;
-            // 
-            // listViewGerechten
-            // 
-            this.listViewGerechten.HideSelection = false;
-            this.listViewGerechten.Location = new System.Drawing.Point(12, 121);
-            this.listViewGerechten.Name = "listViewGerechten";
-            this.listViewGerechten.Size = new System.Drawing.Size(497, 315);
-            this.listViewGerechten.TabIndex = 7;
-            this.listViewGerechten.UseCompatibleStateImageBehavior = false;
             // 
             // Order
             // 
