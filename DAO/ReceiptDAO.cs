@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace ChapeauDAO
 {
-    public class Order
+    public class ReceiptDAO : BaseDao
     {
-        public int OrderId;
-        public int TableId;
+
     }
 }

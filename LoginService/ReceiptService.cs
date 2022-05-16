@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace ChapeauLogica
 {
-    public class Order
+    public class ReceiptService
     {
-        public int OrderId;
-        public int TableId;
+
     }
 }

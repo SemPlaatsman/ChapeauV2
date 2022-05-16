@@ -7,19 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ErrorHandling;
+using HashingAlgorithms;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
     public partial class TableForm : Form
     {
-        public TableForm()
+        private int TableId;
+        public TableForm(int TableId)
         {
+            this.TableId = TableId;
             InitializeComponent();
         }
-
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm();
+            CheckoutForm checkoutForm = new CheckoutForm(TableId);
             checkoutForm.ShowDialog();
         }
 

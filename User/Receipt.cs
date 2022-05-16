@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class Order
+    public class Receipt
     {
-        public int OrderId;
-        public int TableId;
+
     }
 }

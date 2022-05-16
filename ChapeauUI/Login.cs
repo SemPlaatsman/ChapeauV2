@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
 using HashingAlgorithms;
+using ChapeauModel;
+using ChapeauLogica;
 
 namespace ChapeauUI
 {
@@ -17,6 +19,28 @@ namespace ChapeauUI
         public Login()
         {
             InitializeComponent();
+            ShowListView();
+        }
+
+        private void ShowListView() 
+        {
+            EmployeeService employeeService = new EmployeeService();
+            List<Employee> allEmployees = employeeService.GetAllEmployees();
+
+            listViewNames.View = View.Details;
+            listViewNames.FullRowSelect = true;
+            listViewNames.Columns.Add("Lastname", 200);
+            listViewNames.Columns.Add("Firstname", 200);
+            listViewNames.Columns.Add("Phone Number", 182);
+
+            foreach (Employee employee in allEmployees)
+            {
+                ListViewItem li = new ListViewItem(employee.LastName);
+                li.SubItems.Add(employee.FirstName);
+                li.SubItems.Add(employee.PhoneNumber);
+                li.Tag = employee;
+                listViewNames.Items.Add(li);
+            }
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -37,10 +61,29 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
-            this.Close();
+            // hier komt een switch case die bekijkt wat voor EmployeeType er inlogt. 
+            // op basis daarvan wordt de ingelogde doorverwezen naar de juiste pagina
+            EmployeeService employeeService = new EmployeeService();
+            List<Employee> allEmployees = employeeService.GetAllEmployees(); // LoginService .Login() wil ik maar die werkt niet. 
+            EmployeeType employeeType = new EmployeeType();
+            switch (employeeType)
+            {
+                // even kijken hoe ik dit aan ga pakken.
+                
+            }
+
+            /*            this.Hide();
+                        TableOverviewForm tableOverviewForm = new TableOverviewForm();
+                        tableOverviewForm.ShowDialog();
+                        this.Close();*/
         }
+
+        private void listViewNames_Click(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)(listViewNames.SelectedItems[0].Tag);
+            textBoxLoginWerknemerNummer.Text = employee.EmployeeID.ToString();
+        }
+
+
     }
 }
