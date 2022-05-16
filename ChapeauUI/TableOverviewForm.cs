@@ -15,8 +15,7 @@ namespace ChapeauUI
         public TableOverviewForm()
         {
             InitializeComponent();
-        }
-        //public int selectedTable = 0;
+        }        
 
         private void buttonTable1_Click(object sender, EventArgs e)
         {
@@ -27,8 +26,6 @@ namespace ChapeauUI
             tableForm.ShowDialog();
             this.Close();
 
-            //selectedTable = 1;            
-            //CheckoutForm checkoutForm = new CheckoutForm(selectedTable);
             buttonTable1.BackColor = Color.Red;
         }
 
