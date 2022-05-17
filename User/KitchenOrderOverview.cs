@@ -41,5 +41,36 @@ namespace ChapeauModel
                     throw new Exception($"An attempts was made to add a OrderGerecht with the type {orderGerecht.MenuItem.Type} to a {this.GetType().Name} which is not possible!");
             }
         }
+
+        public void ResolveConflicts()
+        {
+            if (HeeftMeeBezigStatus(Voorgerechten))
+                VeranderNaarMeeBezig(Voorgerechten);
+
+            if (HeeftMeeBezigStatus(Tussengerechten))
+                VeranderNaarMeeBezig(Tussengerechten);
+
+            if (HeeftMeeBezigStatus(Hoofdgerechten))
+                VeranderNaarMeeBezig(Hoofdgerechten);
+
+            if (HeeftMeeBezigStatus(Nagerechten))
+                VeranderNaarMeeBezig(Nagerechten);
+        }
+
+        private bool HeeftMeeBezigStatus(List<OrderGerecht> gerechten)
+        {
+            foreach (OrderGerecht orderGerecht in gerechten)
+                if (orderGerecht.Status == OrderStatus.MeeBezig)
+                    return true;
+
+            return false;
+        }
+
+        private void VeranderNaarMeeBezig(List<OrderGerecht> gerechten)
+        {
+            foreach (OrderGerecht orderGerecht in gerechten)
+                if (orderGerecht.Status == OrderStatus.MoetNog)
+                    orderGerecht.Status = OrderStatus.MeeBezig;
+        }
     }
 }

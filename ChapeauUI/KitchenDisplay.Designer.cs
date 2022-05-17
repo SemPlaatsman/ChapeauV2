@@ -31,10 +31,11 @@ namespace ChapeauUI
         {
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.listViewDone = new System.Windows.Forms.ListView();
             this.columnOrderId = new System.Windows.Forms.ColumnHeader();
             this.columnTableId = new System.Windows.Forms.ColumnHeader();
             this.ColumnBestellingen = new System.Windows.Forms.ColumnHeader();
+            this.listViewDone = new System.Windows.Forms.ListView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // button1
@@ -61,15 +62,6 @@ namespace ChapeauUI
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // listViewDone
-            // 
-            this.listViewDone.HideSelection = false;
-            this.listViewDone.Location = new System.Drawing.Point(801, 12);
-            this.listViewDone.Name = "listViewDone";
-            this.listViewDone.Size = new System.Drawing.Size(371, 612);
-            this.listViewDone.TabIndex = 2;
-            this.listViewDone.UseCompatibleStateImageBehavior = false;
-            // 
             // columnOrderId
             // 
             this.columnOrderId.Text = "Order Id";
@@ -82,11 +74,28 @@ namespace ChapeauUI
             // 
             this.ColumnBestellingen.Text = "Bestellingen";
             // 
+            // listViewDone
+            // 
+            this.listViewDone.HideSelection = false;
+            this.listViewDone.Location = new System.Drawing.Point(801, 12);
+            this.listViewDone.Name = "listViewDone";
+            this.listViewDone.Size = new System.Drawing.Size(371, 612);
+            this.listViewDone.TabIndex = 2;
+            this.listViewDone.UseCompatibleStateImageBehavior = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(525, 1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(270, 631);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 636);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.listViewDone);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
@@ -104,5 +113,6 @@ namespace ChapeauUI
         private System.Windows.Forms.ColumnHeader columnTableId;
         private System.Windows.Forms.ColumnHeader ColumnBestellingen;
         private System.Windows.Forms.ListView listViewDone;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
