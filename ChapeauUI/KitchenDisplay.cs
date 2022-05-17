@@ -16,10 +16,11 @@ namespace ChapeauUI
 {
     public partial class KitchenDisplay : Form
     {
-        int nrOfBoxes = 0;
+        int nrOfBoxes = 20;
         public KitchenDisplay()
         {
             InitializeComponent();
+            FillLists();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,10 +29,21 @@ namespace ChapeauUI
             //List<KitchenOrderOverview> kitchenOrderOverview = kitchenService.GetKitchenOverviews();
 
             TextBox txtBox = new TextBox();
-            txtBox.Location = new Point(nrOfBoxes, 50);
-            nrOfBoxes += 15;
+            txtBox.Location = new Point(600, nrOfBoxes);
+            nrOfBoxes += 25;
             txtBox.Visible = true;
-            Controls.Add(txtBox);
+            //Controls.Add(txtBox);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.WrapContents = false;
+            flowLayoutPanel1.Controls.Add(txtBox);
         }
+
+        private void FillLists()
+        {
+
+        }
+
+
     }
 }
