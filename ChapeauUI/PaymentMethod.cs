@@ -28,8 +28,7 @@ namespace ChapeauUI
         }
 
         private void ContantBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             ReceiptForm receiptForm = new ReceiptForm();
             receiptForm.ShowDialog();
             this.Close();
@@ -37,16 +36,14 @@ namespace ChapeauUI
         }
 
         private void PinBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             ReceiptForm receiptForm = new ReceiptForm();
             receiptForm.ShowDialog();
             this.Close();
         }
 
         private void CreditCardBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        {            
             ReceiptForm receiptForm = new ReceiptForm();
             receiptForm.ShowDialog();
             this.Close();

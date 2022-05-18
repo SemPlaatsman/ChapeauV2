@@ -42,7 +42,8 @@ namespace ChapeauDAO
                         IsAlcoholic = (bool)dr["IsAlcoholic"]
                     },
                     OrderId = (int)dr["OrderId"],
-                    Status = (bool?)dr["Status"],
+                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (OrderStatus)((int)dr["Status"] + 1),
+                    /*Bovenstaande regel code komt van Kitchen- en BarDAO*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
                     Remark = (string)dr["Remark"]
                 };
@@ -50,7 +51,7 @@ namespace ChapeauDAO
             }
             return orderGerechten;
         }
-        public void InsertOrderGerecht(int itemID, int orderID, int status, DateTime timeOfOrder, string remark)
+        public void InsertOrderGerecht(int itemID, int orderID, bool? status, DateTime timeOfOrder, string remark)
         {
             string query = "INSERT INTO ApplicatiebouwChapeau.OrderGerecht (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@itemID, @OrderID, @Status, @TimeOfOrder, Remark)";
             SqlParameter[] sql = new SqlParameter[5];
@@ -58,7 +59,7 @@ namespace ChapeauDAO
             sql[1] = new SqlParameter("@OrderID", orderID);
             sql[2] = new SqlParameter("@Status", status);
             sql[3] = new SqlParameter("@TimeOfOrder", timeOfOrder);
-            sql[4] = new SqlParameter("@Remark", status);
+            sql[4] = new SqlParameter("@Remark", remark);
             ExecuteEditQuery(query, sql);
         }
     }

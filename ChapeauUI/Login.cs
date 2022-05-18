@@ -83,10 +83,9 @@ namespace ChapeauUI
 
         private void LoginWithRightJobType() 
         {
+            Employee employee = new Employee();
 
-            EmployeeType employeeType = new EmployeeType();
-            
-            switch (employeeType.Category)
+            switch (employee.Category)
             {
                 // even kijken hoe ik dit aan ga pakken.
 
