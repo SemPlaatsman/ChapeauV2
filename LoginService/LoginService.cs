@@ -18,9 +18,9 @@ namespace ChapeauLogica
         }
 
         // Parameter is a class object. 
-        public Employee Login(Employee employee)
+        public Employee Login(int employeeID)
         {
-            return loginDAO.Login(employee);
+            return loginDAO.Login(employeeID);
         }
     }
 }

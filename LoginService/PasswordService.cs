@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
+using ChapeauModel;
+using HashingAlgorithms;
 
-namespace HashingAlgorithms
+namespace ChapeauLogica
 {
-    public class SaltHasher
+    public class PasswordService
     {
-        public HashSaltResult HashWithSalt(string password)
+        // er komt nog van HashSaltResult bij
+
+
+        /*   private bool PasswordVerify(string enteredPassword, Password hashSalt)
+           {
+               byte[] saltInBytes = Convert.FromBase64String(hashSalt.Salt);
+               Rfc2898DeriveBytes rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltInBytes, 10000);
+               return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == hashSalt.Digest;
+           }*/
+        public Password HashWithSalt(string password)
         {
             HashAlgorithm hashAlgo = SHA512.Create();
             byte[] saltBytes = this.GetSaltBytes();
@@ -19,7 +30,7 @@ namespace HashingAlgorithms
             passwordWithSaltBytes.AddRange(passwordAsBytes);
             passwordWithSaltBytes.AddRange(saltBytes);
             byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            return new HashSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
+            return new Password(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
 
         public byte[] GenerateSalt(int saltLength)
@@ -45,5 +56,15 @@ namespace HashingAlgorithms
             }
             return saltBytes;
         }
+        private bool PasswordVerify(string password, string hashSalt) 
+        {
+            string checkPassword = HashWithSalt(password).Digest;
+
+            if (checkPassword == hashSalt)
+                return true;
+            return false;
+        }
+
+
     }
 }

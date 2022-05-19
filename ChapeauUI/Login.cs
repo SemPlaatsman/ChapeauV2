@@ -63,9 +63,12 @@ namespace ChapeauUI
         {
             //string PIN = textBoxLoginPIN.Text;
             LoginService loginService = new LoginService();
+            int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
+            Employee employee = loginService.Login(employeeID);
+            MessageBox.Show(employee.Password);
             try
             {
-                loginService.Login((Employee)listViewNames.SelectedItems[0].Tag);
+
             }
             catch (Exception)
             {

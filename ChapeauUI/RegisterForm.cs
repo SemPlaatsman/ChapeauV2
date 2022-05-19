@@ -44,7 +44,7 @@ namespace ChapeauUI
             //MessageBox.Show($"{comboBoxRegisterJob.SelectedIndex}");
             if (RegisterCheckMethod())
             {
-                SaltHasher sh = new SaltHasher();
+                PasswordService sh = new PasswordService();
                 Employee employee = new Employee()
                 {
                     FirstName = textBoxRegisterFirstname.Text,
