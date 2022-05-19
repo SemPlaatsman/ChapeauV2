@@ -44,13 +44,13 @@ namespace ChapeauUI
             //MessageBox.Show($"{comboBoxRegisterJob.SelectedIndex}");
             if (RegisterCheckMethod())
             {
-                SaltHasher sh = new SaltHasher();
+                PasswordService sh = new PasswordService();
                 Employee employee = new Employee()
                 {
                     FirstName = textBoxRegisterFirstname.Text,
                     LastName = textBoxRegisterLastname.Text,
                     Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, 
-                    Category = comboBoxRegisterJob.SelectedIndex,
+                    Category = (EmployeeCategory)comboBoxRegisterJob.SelectedIndex,
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
                     PhoneNumber = textBoxRegisterPhoneNumber.Text,

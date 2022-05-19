@@ -47,7 +47,7 @@ namespace ChapeauDAO
                         IsAlcoholic = (bool)dr["IsAlcoholic"]
                     },
                     OrderId = (int)dr["OrderId"],
-                    Status = (Convert.IsDBNull(dr["Status"])) ? null : (bool)dr["Status"],
+                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (bool)dr["Status"] ? OrderStatus.Klaar : OrderStatus.MeeBezig,
                     /* De bovenstaande regel code kijkt eerst of Convert.IsDBNull(...) true returned. 
                     Als dat zo is dan wordt de waarde null gebruikt, 
                     als Convert.IsDBNull false returned dan wordt (bool)dr["Status"] gebruikt (die de andere twee waardes van een nullable bool kan hebben).

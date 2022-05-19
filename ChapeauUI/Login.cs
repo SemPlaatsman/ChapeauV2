@@ -61,41 +61,40 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            //string PIN = textBoxLoginPIN.Text;
+            PasswordService passwordService = new PasswordService();
             LoginService loginService = new LoginService();
+            int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
+            Employee employee = loginService.Login(employeeID);
+           // MessageBox.Show(employee.Password);
             try
             {
-                loginService.Login((Employee)listViewNames.SelectedItems[0].Tag);
+                string checkPassword = passwordService.HashWithSalt(textBoxLoginPIN.Text).Digest;
+                if (employee.Password == checkPassword)
+                {
+                    LoginWithRightJobType(employee);
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
 
             //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
 
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
-            this.Close();
+
         }
 
-        private void LoginWithRightJobType() 
+        private void LoginWithRightJobType(Employee employee) 
         {
-
-            EmployeeType employeeType = new EmployeeType();
-            
-            switch (employeeType.Category)
+            switch (employee.Category)
             {
-                // even kijken hoe ik dit aan ga pakken.
-
+                case EmployeeCategory.Serveerster:
+                    this.Hide();
+                    TableOverviewForm tableOverviewForm = new TableOverviewForm();
+                    tableOverviewForm.ShowDialog();
+                    this.Close();
+                    break;
             }
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
-            this.Close();
-
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
