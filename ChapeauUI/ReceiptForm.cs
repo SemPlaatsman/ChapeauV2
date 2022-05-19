@@ -16,10 +16,20 @@ namespace ChapeauUI
 {
     public partial class ReceiptForm : Form
     {
-        public ReceiptForm()
+        private string betaalMethode;
+        public ReceiptForm(string BetaalMethode)
         {
             InitializeComponent();
+            betaalMethode = BetaalMethode;
+            FillReceipt();
         }
+
+        public void FillReceipt()
+        {
+            betaalMethodeLbl.Text = betaalMethode;
+            datumLbl.Text = DateTime.Now.ToString("g");
+        }
+
 
         private void TerugBtn_Click(object sender, EventArgs e)
         {            
