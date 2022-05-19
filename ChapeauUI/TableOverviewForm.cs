@@ -14,13 +14,13 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee Employee;
+        private Employee Employee; // toevoegen in de constructor later. 
         private List<Table> tables;
-        public TableOverviewForm(Employee employee)
+        public TableOverviewForm()
         {
             InitializeComponent();
             AssignTables();
-            this.Employee = employee;
+            //this.Employee = employee;
         }
         //public int selectedTable = 0;
 
