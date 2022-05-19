@@ -15,12 +15,11 @@ namespace ChapeauDAO
     public class LoginDAO : BaseDao
     {  
         // login Method + query
-        public Employee Login(Employee employee) 
+        public Employee Login(int employeeID) 
         {
-            string query = "SELECT [EmployeeID], [Password] from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@EmployeeID", employee.EmployeeID);
-            sqlParameters[1] = new SqlParameter("@Password", employee.Password);
+            string query = "SELECT [EmployeeID], [Password], [Category], [FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Question], [Answer] from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@EmployeeID", employeeID);
 
             if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
             {
@@ -42,7 +41,15 @@ namespace ChapeauDAO
                     Employee employee = new Employee()
                     {
                         EmployeeID = (int)dr["EmployeeID"],
-                        Password = (string)dr["Password"]
+                        Password = (string)dr["Password"],
+                        Category = (EmployeeCategory)dr["Category"],
+                        FirstName = (string)dr["FirstName"],
+                        LastName = (string)dr["LastName"],
+                        DateOfBirth = (DateTime)dr["DateOfBirth"],
+                        Email = (string)dr["Email"],
+                        PhoneNumber = (string)dr["PhoneNumber"],
+                        Question = (string)dr["Question"],
+                        Answer = (string)dr["Answer"]                        
                     };
                     return employee;
                 };
