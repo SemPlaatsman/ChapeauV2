@@ -20,31 +20,36 @@ namespace ChapeauUI
         {
             InitializeComponent();
         }
-        ReceiptForm receipt = new ReceiptForm();
+        private string betaalMethode;
+        //ReceiptForm receipt = new ReceiptForm();
 
         private void AnnulerenBtn_Click(object sender, EventArgs e)
         {            
             this.Close();
         }
 
+
         private void ContantBtn_Click(object sender, EventArgs e)
-        {            
-            ReceiptForm receiptForm = new ReceiptForm();
+        {
+            betaalMethode = "Contant";
+            ReceiptForm receiptForm = new ReceiptForm(betaalMethode);
             receiptForm.ShowDialog();
             this.Close();
             
         }
 
         private void PinBtn_Click(object sender, EventArgs e)
-        {            
-            ReceiptForm receiptForm = new ReceiptForm();
+        {
+            betaalMethode = "Pin";
+            ReceiptForm receiptForm = new ReceiptForm(betaalMethode);
             receiptForm.ShowDialog();
             this.Close();
         }
 
         private void CreditCardBtn_Click(object sender, EventArgs e)
-        {            
-            ReceiptForm receiptForm = new ReceiptForm();
+        {
+            betaalMethode = "CreditCard";
+            ReceiptForm receiptForm = new ReceiptForm(betaalMethode);
             receiptForm.ShowDialog();
             this.Close();
         }
