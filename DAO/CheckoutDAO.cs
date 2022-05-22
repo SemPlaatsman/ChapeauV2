@@ -36,7 +36,7 @@ namespace ChapeauDAO
             catch (Exception e)
             {
                 //Toont een foutmelding als de order niet geladen kan worden.
-                throw new Exception("Order kan niet geladen worden. probeer het later opnieuw " + e.Message);
+                throw new Exception("Order kan niet geladen worden. probeer het later opnieuw" + e.Message);
             }
         }
 
