@@ -15,13 +15,7 @@ namespace ChapeauDAO
         {
             try
             {
-                //string query = "SELECT MenuItem.[ProductName], MenuItem.[Price] " +
-                //"FROM ApplicatiebouwChapeau.[Order] " +
-                //"JOIN ApplicatiebouwChapeau.OrderGerecht ON[Order].[OrderId] = OrderGerecht.[OrderId] " + 
-                //"JOIN ApplicatiebouwChapeau.MenuItem ON OrderGerecht.[ItemId] = MenuItem.[ProductID] " +
-                //"JOIN ApplicatiebouwChapeau.TypeOfProduct ON MenuItem.[Type] = TypeOfProduct.[TypeID] " +
-                //"WHERE[Order].[OrderId] = @TableId;";
-
+                
                 string query = "SELECT MenuItem.[ProductName], MenuItem.[Price] " +
                 "FROM ApplicatiebouwChapeau.[Order] " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht ON [Order].[OrderID] = [OrderGerecht].[OrderId] " +

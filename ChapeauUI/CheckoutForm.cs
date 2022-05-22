@@ -17,6 +17,7 @@ namespace ChapeauUI
     public partial class CheckoutForm : Form
     {
         private int tableId;
+        private decimal newTotal;
         public CheckoutForm(int TableId)
         {
             InitializeComponent();
@@ -61,13 +62,13 @@ namespace ChapeauUI
         //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {            
-            PaymentMethod paymentMethod = new PaymentMethod();
+            PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal);
             paymentMethod.ShowDialog();            
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
         {            
-            ManualPrice manualPrice = new ManualPrice(totalPrice);
+            ManualPrice manualPrice = new ManualPrice(totalPrice, tableId);
             manualPrice.ShowDialog();            
         }
     }
