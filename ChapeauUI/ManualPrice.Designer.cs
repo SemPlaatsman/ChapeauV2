@@ -78,6 +78,7 @@
             this.newPriceTextBox.Name = "newPriceTextBox";
             this.newPriceTextBox.Size = new System.Drawing.Size(177, 27);
             this.newPriceTextBox.TabIndex = 4;
+            this.newPriceTextBox.TextChanged += new System.EventHandler(this.newPriceTextbox_TextChanged);
             // 
             // AfrekenenBtn
             // 

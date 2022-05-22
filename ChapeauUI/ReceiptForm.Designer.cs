@@ -33,8 +33,6 @@
             this.receiptChapeau = new System.Windows.Forms.Label();
             this.receiptStraat = new System.Windows.Forms.Label();
             this.receiptPostCode = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.receiptTotaalBetaalMethodeLbl = new System.Windows.Forms.Label();
             this.receiptTotaalOriginelePrijsLbl = new System.Windows.Forms.Label();
             this.receiptBetaling = new System.Windows.Forms.Label();
@@ -49,6 +47,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.receiptTotaalStreep = new System.Windows.Forms.Label();
             this.BonPnl = new System.Windows.Forms.Panel();
+            this.itemsListBox = new System.Windows.Forms.ListView();
             this.betaalMethodeLbl = new System.Windows.Forms.Label();
             this.datumLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,6 +59,8 @@
             this.TerugBtn = new System.Windows.Forms.Button();
             this.OpmerkingBtn = new System.Windows.Forms.Button();
             this.UitprintenBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tipTotalLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BonPnl.SuspendLayout();
             this.SuspendLayout();
@@ -100,24 +101,6 @@
             this.receiptPostCode.TabIndex = 3;
             this.receiptPostCode.Text = "3891 EV Zeewolde";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 308);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "HIER KOMEN DE ARTIKELEN";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 328);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(196, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "HIER KOMEN DE ARTIKELEN";
-            // 
             // receiptTotaalBetaalMethodeLbl
             // 
             this.receiptTotaalBetaalMethodeLbl.AutoSize = true;
@@ -157,16 +140,16 @@
             // receiptTotaalPrijsLbl
             // 
             this.receiptTotaalPrijsLbl.AutoSize = true;
-            this.receiptTotaalPrijsLbl.Location = new System.Drawing.Point(44, 590);
+            this.receiptTotaalPrijsLbl.Location = new System.Drawing.Point(44, 610);
             this.receiptTotaalPrijsLbl.Name = "receiptTotaalPrijsLbl";
-            this.receiptTotaalPrijsLbl.Size = new System.Drawing.Size(50, 20);
+            this.receiptTotaalPrijsLbl.Size = new System.Drawing.Size(105, 20);
             this.receiptTotaalPrijsLbl.TabIndex = 13;
-            this.receiptTotaalPrijsLbl.Text = "Totaal";
+            this.receiptTotaalPrijsLbl.Text = "Totaal betaald";
             // 
             // receiptTotaalToonPrijsLbl
             // 
             this.receiptTotaalToonPrijsLbl.AutoSize = true;
-            this.receiptTotaalToonPrijsLbl.Location = new System.Drawing.Point(299, 590);
+            this.receiptTotaalToonPrijsLbl.Location = new System.Drawing.Point(299, 610);
             this.receiptTotaalToonPrijsLbl.Name = "receiptTotaalToonPrijsLbl";
             this.receiptTotaalToonPrijsLbl.Size = new System.Drawing.Size(67, 20);
             this.receiptTotaalToonPrijsLbl.TabIndex = 14;
@@ -232,7 +215,7 @@
             // receiptTotaalStreep
             // 
             this.receiptTotaalStreep.AutoSize = true;
-            this.receiptTotaalStreep.Location = new System.Drawing.Point(283, 570);
+            this.receiptTotaalStreep.Location = new System.Drawing.Point(283, 590);
             this.receiptTotaalStreep.Name = "receiptTotaalStreep";
             this.receiptTotaalStreep.Size = new System.Drawing.Size(99, 20);
             this.receiptTotaalStreep.TabIndex = 23;
@@ -241,6 +224,9 @@
             // BonPnl
             // 
             this.BonPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BonPnl.Controls.Add(this.tipTotalLbl);
+            this.BonPnl.Controls.Add(this.label2);
+            this.BonPnl.Controls.Add(this.itemsListBox);
             this.BonPnl.Controls.Add(this.betaalMethodeLbl);
             this.BonPnl.Controls.Add(this.datumLbl);
             this.BonPnl.Controls.Add(this.label1);
@@ -260,9 +246,7 @@
             this.BonPnl.Controls.Add(this.receiptOpmerkingenTbl);
             this.BonPnl.Controls.Add(this.receiptPostCode);
             this.BonPnl.Controls.Add(this.receiptLabel11);
-            this.BonPnl.Controls.Add(this.label4);
             this.BonPnl.Controls.Add(this.receiptLabel10);
-            this.BonPnl.Controls.Add(this.label5);
             this.BonPnl.Controls.Add(this.geholpenDoorLbl);
             this.BonPnl.Controls.Add(this.receiptTotaalToonPrijsLbl);
             this.BonPnl.Controls.Add(this.receiptTotaalPrijsLbl);
@@ -272,6 +256,16 @@
             this.BonPnl.Name = "BonPnl";
             this.BonPnl.Size = new System.Drawing.Size(426, 864);
             this.BonPnl.TabIndex = 24;
+            // 
+            // itemsListBox
+            // 
+            this.itemsListBox.HideSelection = false;
+            this.itemsListBox.Location = new System.Drawing.Point(41, 293);
+            this.itemsListBox.Name = "itemsListBox";
+            this.itemsListBox.Scrollable = false;
+            this.itemsListBox.Size = new System.Drawing.Size(340, 78);
+            this.itemsListBox.TabIndex = 35;
+            this.itemsListBox.UseCompatibleStateImageBehavior = false;
             // 
             // betaalMethodeLbl
             // 
@@ -334,9 +328,9 @@
             this.receiptBtwLbl.AutoSize = true;
             this.receiptBtwLbl.Location = new System.Drawing.Point(41, 417);
             this.receiptBtwLbl.Name = "receiptBtwLbl";
-            this.receiptBtwLbl.Size = new System.Drawing.Size(135, 20);
+            this.receiptBtwLbl.Size = new System.Drawing.Size(134, 20);
             this.receiptBtwLbl.TabIndex = 29;
-            this.receiptBtwLbl.Text = "(BTW                     x";
+            this.receiptBtwLbl.Text = "(BTW                    =";
             // 
             // receiptTotaalArtikelPrijsLbl
             // 
@@ -375,6 +369,24 @@
             this.UitprintenBtn.Text = "Uitprinten";
             this.UitprintenBtn.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 580);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 20);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Fooi bedrag";
+            // 
+            // tipTotalLbl
+            // 
+            this.tipTotalLbl.AutoSize = true;
+            this.tipTotalLbl.Location = new System.Drawing.Point(299, 583);
+            this.tipTotalLbl.Name = "tipTotalLbl";
+            this.tipTotalLbl.Size = new System.Drawing.Size(36, 20);
+            this.tipTotalLbl.TabIndex = 37;
+            this.tipTotalLbl.Text = "0,00";
+            // 
             // ReceiptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -399,8 +411,6 @@
         private System.Windows.Forms.Label receiptChapeau;
         private System.Windows.Forms.Label receiptStraat;
         private System.Windows.Forms.Label receiptPostCode;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label receiptTotaalBetaalMethodeLbl;
         private System.Windows.Forms.Label receiptTotaalOriginelePrijsLbl;
         private System.Windows.Forms.Label receiptBetaling;
@@ -426,5 +436,8 @@
         private System.Windows.Forms.Label receiptTotaalArtikelPrijsLbl;
         private System.Windows.Forms.Label datumLbl;
         private System.Windows.Forms.Label betaalMethodeLbl;
+        private System.Windows.Forms.ListView itemsListBox;
+        private System.Windows.Forms.Label tipTotalLbl;
+        private System.Windows.Forms.Label label2;
     }
 }
