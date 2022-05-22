@@ -42,11 +42,13 @@
             this.geholpenDoorLbl = new System.Windows.Forms.Label();
             this.receiptLabel10 = new System.Windows.Forms.Label();
             this.receiptLabel11 = new System.Windows.Forms.Label();
-            this.receiptOpmerkingenTbl = new System.Windows.Forms.TableLayoutPanel();
             this.receiptLijn = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.receiptTotaalStreep = new System.Windows.Forms.Label();
             this.BonPnl = new System.Windows.Forms.Panel();
+            this.remarkTextbox = new System.Windows.Forms.TextBox();
+            this.tipTotalLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.itemsListBox = new System.Windows.Forms.ListView();
             this.betaalMethodeLbl = new System.Windows.Forms.Label();
             this.datumLbl = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.TerugBtn = new System.Windows.Forms.Button();
             this.OpmerkingBtn = new System.Windows.Forms.Button();
             this.UitprintenBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tipTotalLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BonPnl.SuspendLayout();
             this.SuspendLayout();
@@ -182,18 +182,6 @@
             this.receiptLabel11.TabIndex = 18;
             this.receiptLabel11.Text = "Opmerking";
             // 
-            // receiptOpmerkingenTbl
-            // 
-            this.receiptOpmerkingenTbl.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.receiptOpmerkingenTbl.ColumnCount = 1;
-            this.receiptOpmerkingenTbl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.receiptOpmerkingenTbl.Location = new System.Drawing.Point(49, 716);
-            this.receiptOpmerkingenTbl.Name = "receiptOpmerkingenTbl";
-            this.receiptOpmerkingenTbl.RowCount = 1;
-            this.receiptOpmerkingenTbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.receiptOpmerkingenTbl.Size = new System.Drawing.Size(333, 74);
-            this.receiptOpmerkingenTbl.TabIndex = 19;
-            // 
             // receiptLijn
             // 
             this.receiptLijn.AutoSize = true;
@@ -224,6 +212,7 @@
             // BonPnl
             // 
             this.BonPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BonPnl.Controls.Add(this.remarkTextbox);
             this.BonPnl.Controls.Add(this.tipTotalLbl);
             this.BonPnl.Controls.Add(this.label2);
             this.BonPnl.Controls.Add(this.itemsListBox);
@@ -243,7 +232,6 @@
             this.BonPnl.Controls.Add(this.receiptChapeau);
             this.BonPnl.Controls.Add(this.receiptLijn);
             this.BonPnl.Controls.Add(this.receiptStraat);
-            this.BonPnl.Controls.Add(this.receiptOpmerkingenTbl);
             this.BonPnl.Controls.Add(this.receiptPostCode);
             this.BonPnl.Controls.Add(this.receiptLabel11);
             this.BonPnl.Controls.Add(this.receiptLabel10);
@@ -256,6 +244,32 @@
             this.BonPnl.Name = "BonPnl";
             this.BonPnl.Size = new System.Drawing.Size(426, 864);
             this.BonPnl.TabIndex = 24;
+            // 
+            // remarkTextbox
+            // 
+            this.remarkTextbox.Location = new System.Drawing.Point(41, 721);
+            this.remarkTextbox.Multiline = true;
+            this.remarkTextbox.Name = "remarkTextbox";
+            this.remarkTextbox.Size = new System.Drawing.Size(341, 89);
+            this.remarkTextbox.TabIndex = 38;
+            // 
+            // tipTotalLbl
+            // 
+            this.tipTotalLbl.AutoSize = true;
+            this.tipTotalLbl.Location = new System.Drawing.Point(299, 583);
+            this.tipTotalLbl.Name = "tipTotalLbl";
+            this.tipTotalLbl.Size = new System.Drawing.Size(36, 20);
+            this.tipTotalLbl.TabIndex = 37;
+            this.tipTotalLbl.Text = "0,00";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 580);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 20);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Fooi bedrag";
             // 
             // itemsListBox
             // 
@@ -357,8 +371,9 @@
             this.OpmerkingBtn.Name = "OpmerkingBtn";
             this.OpmerkingBtn.Size = new System.Drawing.Size(168, 59);
             this.OpmerkingBtn.TabIndex = 26;
-            this.OpmerkingBtn.Text = "Opmerkingen";
+            this.OpmerkingBtn.Text = "Opmerking toevoegen";
             this.OpmerkingBtn.UseVisualStyleBackColor = true;
+            this.OpmerkingBtn.Click += new System.EventHandler(this.OpmerkingBtn_Click);
             // 
             // UitprintenBtn
             // 
@@ -368,24 +383,7 @@
             this.UitprintenBtn.TabIndex = 27;
             this.UitprintenBtn.Text = "Uitprinten";
             this.UitprintenBtn.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 580);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 20);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "Fooi bedrag";
-            // 
-            // tipTotalLbl
-            // 
-            this.tipTotalLbl.AutoSize = true;
-            this.tipTotalLbl.Location = new System.Drawing.Point(299, 583);
-            this.tipTotalLbl.Name = "tipTotalLbl";
-            this.tipTotalLbl.Size = new System.Drawing.Size(36, 20);
-            this.tipTotalLbl.TabIndex = 37;
-            this.tipTotalLbl.Text = "0,00";
+            this.UitprintenBtn.Click += new System.EventHandler(this.UitprintenBtn_Click);
             // 
             // ReceiptForm
             // 
@@ -420,7 +418,6 @@
         private System.Windows.Forms.Label geholpenDoorLbl;
         private System.Windows.Forms.Label receiptLabel10;
         private System.Windows.Forms.Label receiptLabel11;
-        private System.Windows.Forms.TableLayoutPanel receiptOpmerkingenTbl;
         private System.Windows.Forms.Label receiptLijn;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label receiptTotaalStreep;
@@ -439,5 +436,6 @@
         private System.Windows.Forms.ListView itemsListBox;
         private System.Windows.Forms.Label tipTotalLbl;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox remarkTextbox;
     }
 }

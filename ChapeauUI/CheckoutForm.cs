@@ -22,10 +22,13 @@ namespace ChapeauUI
         {
             InitializeComponent();
             tableId = TableId;
-            this.Text += $" for Table {tableId}";
+            this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
         public decimal totalPrice = 0;
+        public decimal btwTotaal = 0;
+        public decimal btwItem = 0;
+        public decimal totalWithBtw = 0;
 
         private void ShowListView()
         {
@@ -35,18 +38,35 @@ namespace ChapeauUI
 
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
-            rekeningListView.Columns.Add("ProductName", 254);
-            rekeningListView.Columns.Add("Price", 64);
+            rekeningListView.Columns.Add("Keer", 45);
+            rekeningListView.Columns.Add("Naam Product", 209);
+            rekeningListView.Columns.Add("Prijs", 64);
 
             foreach (Checkout order in orders)
             {
-                ListViewItem li = new ListViewItem(order.ProductName);
+                ListViewItem li = new ListViewItem(order.Quantity.ToString());
+                li.SubItems.Add(order.ProductName);
                 li.SubItems.Add(string.Format("{0:#,##0.00}", Convert.ToDecimal(order.Price)));
                 li.Tag = order;
-                rekeningListView.Items.Add(li);
-                totalPrice += order.Price;
+                rekeningListView.Items.Add(li);                
+                totalPrice += order.Price * order.Quantity;                
+
+                if (order.IsAlcoholic)
+                {
+                    btwItem = order.Price / 100 * 21;
+                    btwItem = btwItem * order.Quantity;
+                    btwTotaal += btwItem;
+                }
+                if (!order.IsAlcoholic)
+                {
+                    btwItem = order.Price / 100 * 9;
+                    btwItem = btwItem * order.Quantity;
+                    btwTotaal += btwItem;
+                }
             }
-            checkoutTotalPriceLbl.Text = $"€{totalPrice.ToString()}";
+
+            totalPrice = totalPrice + btwTotaal;
+            checkoutTotalPriceLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice):0.00}");
         }
 
         //private void listViewNames_Click(object sender, EventArgs e)

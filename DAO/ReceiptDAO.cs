@@ -36,7 +36,7 @@ namespace ChapeauDAO
             catch (Exception e)
             {
                 //Toont een foutmelding als de order niet geladen kan worden.
-                throw new Exception("Order could not be loaded properly. Please try again " + e.Message);
+                throw new Exception("Order kan niet geladen worden. probeer het later opnieuw " + e.Message);
             }
         }
 
@@ -61,7 +61,7 @@ namespace ChapeauDAO
             }
             catch (Exception e)
             {
-                throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
+                throw new Exception("De data kan niet geladen worden uit de database. probeer het later opnieuw" + e.Message);
             }
         }
     }

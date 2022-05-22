@@ -21,7 +21,7 @@ namespace ChapeauUI
             AfrekenenBtn.Enabled = false;
             this.totalPrice = totalPrice;
             this.tableId = TableId;
-            totalPriceLbl.Text = $"€{totalPrice.ToString()}";            
+            totalPriceLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice):0.00}");
         }
         
         private void newPriceTextbox_TextChanged(object sender, EventArgs e)
