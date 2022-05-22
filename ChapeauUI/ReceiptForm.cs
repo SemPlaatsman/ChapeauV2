@@ -43,9 +43,9 @@ namespace ChapeauUI
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
-            itemsListBox.Columns.Add("ProductName", 213);
-            itemsListBox.Columns.Add("Quantity", 68);
-            itemsListBox.Columns.Add("Price", 54);
+            itemsListBox.Columns.Add("Naam Product", 193);
+            itemsListBox.Columns.Add("Aantal", 88);
+            itemsListBox.Columns.Add("Prijs", 54);
 
             foreach (Receipt order in orders)
             {
@@ -94,6 +94,22 @@ namespace ChapeauUI
         private void TerugBtn_Click(object sender, EventArgs e)
         {            
             this.Close();
+        }
+
+        private void OpmerkingBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Opmerking opgeslagen");
+        }
+
+        private void UitprintenBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
+            this.Hide();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            tableOverviewForm.ShowDialog();
+            this.Close();
+
+            //hier moet ik alleen de order nog sluiten
         }
     }
 }
