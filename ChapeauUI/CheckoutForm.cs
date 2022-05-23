@@ -25,10 +25,10 @@ namespace ChapeauUI
             this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
-        public decimal totalPrice = 0;
-        public decimal btwTotaal = 0;
-        public decimal btwItem = 0;
-        public decimal totalWithBtw = 0;
+        private decimal totalPrice = 0;
+        private decimal btwTotaal = 0;
+        private decimal btwItem = 0;
+        private decimal totalWithBtw = 0;
 
         private void ShowListView()
         {
@@ -38,9 +38,9 @@ namespace ChapeauUI
 
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
-            rekeningListView.Columns.Add("Keer", 45);
-            rekeningListView.Columns.Add("Naam Product", 209);
-            rekeningListView.Columns.Add("Prijs", 64);
+            rekeningListView.Columns.Add("Keer", 43);
+            rekeningListView.Columns.Add("Naam Product", 233);
+            rekeningListView.Columns.Add("Prijs", 42);
 
             foreach (Checkout order in orders)
             {
@@ -53,27 +53,31 @@ namespace ChapeauUI
 
                 if (order.IsAlcoholic)
                 {
-                    btwItem = order.Price / 100 * 21;
+                    btwItem = CheckBtwHigh(order.Price);
                     btwItem = btwItem * order.Quantity;
                     btwTotaal += btwItem;
                 }
                 if (!order.IsAlcoholic)
                 {
-                    btwItem = order.Price / 100 * 9;
+                    btwItem = CheckBtwLow(order.Price);
                     btwItem = btwItem * order.Quantity;
                     btwTotaal += btwItem;
                 }
             }
 
-            totalPrice = totalPrice + btwTotaal;
-            checkoutTotalPriceLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice):0.00}");
+            totalWithBtw = totalPrice + btwTotaal;
+            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalWithBtw):0.00}");
         }
 
-        //private void listViewNames_Click(object sender, EventArgs e)
-        //{
-        //    Checkout checkout = (checkout)(rekeningListView.SelectedItems[0].Tag);
-        //    textBoxLoginWerknemerNummer.Text = checkout.ProductName.ToString();
-        //}
+        private decimal CheckBtwHigh(decimal price)
+        {
+            return price / 100 * 21;
+        }
+        private decimal CheckBtwLow(decimal price)
+        {
+            return price / 100 * 9;
+        }
+        
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)
         {            
@@ -87,9 +91,17 @@ namespace ChapeauUI
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
-        {            
-            ManualPrice manualPrice = new ManualPrice(totalPrice, tableId);
-            manualPrice.ShowDialog();            
+        {
+            try
+            {
+                ManualPrice manualPrice = new ManualPrice(totalWithBtw, tableId);
+                manualPrice.ShowDialog();            
+            }
+            catch (Exception ex)
+            {
+                //Toont een foutmelding als de order niet bestaat en of geladen kan worden.
+                throw new Exception("Order bestaat niet en of kan niet geladen worden. probeer het later opnieuw " + ex.Message);
+            }
         }
     }
 }

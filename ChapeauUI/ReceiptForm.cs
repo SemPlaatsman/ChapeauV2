@@ -27,11 +27,11 @@ namespace ChapeauUI
             newTotal = NewTotal;
             FillReceipt();
         }
-        public decimal totalPrice = 0;
-        public int totaalItems = 0;
-        public decimal btwTotaal = 0;
-        public decimal btwItem = 0;
-        public decimal totalWithBtw = 0;
+        private decimal totalPrice = 0;
+        private int totaalItems = 0;
+        private decimal btwTotaal = 0;
+        private decimal btwItem = 0;
+        private decimal totalWithBtw = 0;
         public void FillReceipt()
         {
             betaalMethodeLbl.Text = betaalMethode;
@@ -43,9 +43,9 @@ namespace ChapeauUI
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
-            itemsListBox.Columns.Add("Naam Product", 193);
-            itemsListBox.Columns.Add("Aantal", 88);
-            itemsListBox.Columns.Add("Prijs", 54);
+            itemsListBox.Columns.Add("Naam Product", 237);
+            itemsListBox.Columns.Add("Aantal", 56);
+            itemsListBox.Columns.Add("Prijs", 42);
 
             foreach (Receipt order in orders)
             {
@@ -59,17 +59,22 @@ namespace ChapeauUI
 
                 if(order.IsAlcoholic)
                 {
-                    btwItem = order.Price / 100 * 21;
+                    btwItem = CheckBtwHigh(order.Price);
                     btwItem = btwItem * order.Quantity;
                     btwTotaal += btwItem; 
                 }
                 if (!order.IsAlcoholic)
                 {
-                    btwItem = order.Price / 100 * 9;
+                    btwItem = CheckBtwLow(order.Price);
                     btwItem = btwItem * order.Quantity;
                     btwTotaal += btwItem;
                 }
             }
+            FillLabels();
+        }
+
+        public void FillLabels()
+        {
             //Listview gevuld
             receiptTotaalArtikelLbl.Text = $"Totaal {totaalItems} artikelen";
             receiptTotaalArtikelPrijsLbl.Text = $"€{totalPrice.ToString()}";
@@ -77,17 +82,33 @@ namespace ChapeauUI
             totalWithBtw = btwTotaal + totalPrice;
             totaalMetBtwLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw));
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
-            
+
             tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(newTotal - totalWithBtw));
 
-            if (newTotal == 0)
+            if (newTotal <= 0)
             {
                 receiptTotaalToonPrijsLbl.Text = receiptTotaalOriginelePrijsLbl.Text;
+                tipTotalLbl.Text = "€0,00";
+            }
+            else if (newTotal < totalWithBtw)
+            {
+                tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw - newTotal));
+                tipOrDiscountLbl.Text = "Uw korting:";
+                receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
             }
             else
             {
                 receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
             }
+        }
+
+        private decimal CheckBtwHigh(decimal price)
+        {
+            return price / 100 * 21;
+        }
+        private decimal CheckBtwLow(decimal price)
+        {
+            return price / 100 * 9;
         }
 
 
