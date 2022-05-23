@@ -20,7 +20,7 @@ namespace ChapeauDAO
                 "FROM ApplicatiebouwChapeau.[Order] AS O3 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG3 ON O3.[OrderID] = OG3.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M3 ON OG3.[ItemId] = M3.[ProductID] " +
-                "WHERE OG3.ItemId = OG1.ItemId AND O3.TableID = O1.TableID) AS Quantity " +
+                "WHERE OG3.ItemId = OG1.ItemId AND O3.OrderID = O1.OrderID) AS Quantity " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O1 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG1 ON O1.[OrderID] = OG1.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M1 ON OG1.[ItemId] = M1.[ProductID] " +

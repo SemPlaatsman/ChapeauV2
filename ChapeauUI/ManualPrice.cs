@@ -15,13 +15,13 @@ namespace ChapeauUI
         private decimal totalPrice;
         private int tableId;
         private decimal newTotal;
-        public ManualPrice(decimal totalPrice, int TableId)
+        public ManualPrice(decimal totalWithBtw, int TableId)
         {
             InitializeComponent();       
             AfrekenenBtn.Enabled = false;
-            this.totalPrice = totalPrice;
+            this.totalPrice = totalWithBtw;
             this.tableId = TableId;
-            totalPriceLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice):0.00}");
+            totalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
         }
         
         private void newPriceTextbox_TextChanged(object sender, EventArgs e)
