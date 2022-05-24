@@ -8,6 +8,11 @@ namespace ChapeauModel
 {
     public class Receipt
     {
-
+        public string ProductName { get; set; }
+        public decimal Price { get; set; }
+        public int TableId { get; set; }
+        public bool IsAlcoholic { get; set; }
+        public int Quantity { get; set; }
+        
     }
 }
