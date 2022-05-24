@@ -119,6 +119,5 @@ namespace ChapeauUI
         {
             return new Regex(@"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}").Match(email).Success;
         }
-
     }
 }
