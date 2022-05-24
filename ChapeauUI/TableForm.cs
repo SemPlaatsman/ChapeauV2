@@ -30,10 +30,10 @@ namespace ChapeauUI
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
             this.Close();
+            //TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            //tableOverviewForm.ShowDialog();
+            //this.Close();
         }
 
         private void buttonNewOrder_Click(object sender, EventArgs e)

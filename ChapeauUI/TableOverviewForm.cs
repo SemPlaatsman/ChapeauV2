@@ -70,7 +70,6 @@ namespace ChapeauUI
             int tableTagIndex = 0;
             foreach (Control control in this.Controls)
             {
-                
                 if (control.GetType() == typeof(Button) && control != buttonUitloggen)
                 {
                     control.Click += TableClick;
