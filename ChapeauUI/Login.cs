@@ -63,7 +63,6 @@ namespace ChapeauUI
             int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
 
             Employee employee = loginService.Login(employeeID);
-           // MessageBox.Show(employee.Password);
             try
             {
                 string checkPassword = passwordService.HashWithSalt(textBoxLoginPIN.Text).Digest;
@@ -85,7 +84,7 @@ namespace ChapeauUI
 
         private void LoginWithRightJobType(Employee employee)
         {
-            // deze methode zorgt ervoor dat je doorverwezen wordt naar de juiste pagina.
+            // deze switch case zorgt ervoor dat je doorverwezen wordt naar de juiste pagina.
             switch (employee.Category)
             {
                 case EmployeeCategory.Serveerster:
