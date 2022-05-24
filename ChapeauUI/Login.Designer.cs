@@ -117,6 +117,7 @@ namespace ChapeauUI
             this.buttonWachtwoordVergeten.TabIndex = 11;
             this.buttonWachtwoordVergeten.Text = "Wachtwoord vergeten?";
             this.buttonWachtwoordVergeten.UseVisualStyleBackColor = true;
+            this.buttonWachtwoordVergeten.Click += new System.EventHandler(this.buttonWachtwoordVergeten_Click);
             // 
             // pictureBox1
             // 
@@ -140,6 +141,7 @@ namespace ChapeauUI
             // labelLoginError
             // 
             this.labelLoginError.AutoSize = true;
+            this.labelLoginError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelLoginError.ForeColor = System.Drawing.Color.Red;
             this.labelLoginError.Location = new System.Drawing.Point(25, 536);
             this.labelLoginError.Name = "labelLoginError";

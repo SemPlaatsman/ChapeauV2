@@ -51,6 +51,7 @@ namespace ChapeauUI
             this.buttonBackToLogin.TabIndex = 1;
             this.buttonBackToLogin.Text = "Uitloggen";
             this.buttonBackToLogin.UseVisualStyleBackColor = true;
+            this.buttonBackToLogin.Click += new System.EventHandler(this.buttonBackToLogin_Click);
             // 
             // OwnerForm
             // 
