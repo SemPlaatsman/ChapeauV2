@@ -21,6 +21,7 @@ namespace ChapeauUI
         {
             this.TableId = TableId;
             InitializeComponent();
+            this.Text += $" for Table {TableId}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
@@ -42,7 +43,7 @@ namespace ChapeauUI
             List<Table> tables = orderService.tables();
             foreach (Table table in tables) 
             {
-                if (table.TabelID == TableId)
+                if (table.TableID == TableId)
                 {
                     if (!table.IsOccupied)
                     {
