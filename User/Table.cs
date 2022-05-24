@@ -8,7 +8,7 @@ namespace ChapeauModel
 {
     public class Table
     {
-        public int TabelID;
+        public int TableID;
         public int EmployeeID;
         public bool IsOccupied;
         public int AmountOfGuests;

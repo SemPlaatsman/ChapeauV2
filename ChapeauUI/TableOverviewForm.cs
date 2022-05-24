@@ -28,24 +28,24 @@ namespace ChapeauUI
         {
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable1.BackColor = Color.Red;
-            int TableId = 1;
-            TableForm tableForm = new TableForm(TableId);
-            tableForm.ShowDialog();
-            this.Close();
+            //int TableId = 1;
+            //TableForm tableForm = new TableForm(TableId);
+            //tableForm.ShowDialog();
+            //this.Close();
 
-            buttonTable1.BackColor = Color.Red;
+            //buttonTable1.BackColor = Color.Red;
         }
 
         private void buttonTable2_Click(object sender, EventArgs e)
         {
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable2.BackColor = Color.Red;
-            int TableId = 2;
-            TableForm tableForm = new TableForm(TableId);
-            tableForm.ShowDialog();
-            this.Close();
+            //int TableId = 2;
+            //TableForm tableForm = new TableForm(TableId);
+            //tableForm.ShowDialog();
+            //this.Close();
 
-            buttonTable1.BackColor = Color.Red;
+            //buttonTable1.BackColor = Color.Red;
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
@@ -58,26 +58,43 @@ namespace ChapeauUI
 
         private void TableClick(object sender, EventArgs e) 
         {
+            //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
+            int tableID = ((Table)((Button)sender).Tag).TableID;
             
-
+            //maak een nieuwe TableForm en geef het bijbehorende tableID mee
+            TableForm tableForm = new TableForm(tableID);
+            tableForm.ShowDialog();
         }
 
         private void AssignTables()
         {
+            //pak alle Tables die in database staan
             TableService tableService = new TableService();
             tables = tableService.GetAllTables();
 
-            int tableTagIndex = 0;
             foreach (Control control in this.Controls)
             {
-                
+                //als een Control een Button is en niet de uitlog-button is, voeg dan aan die button de TableClick event toe en assign een tag
                 if (control.GetType() == typeof(Button) && control != buttonUitloggen)
                 {
                     control.Click += TableClick;
-                    control.Tag = tables[tableTagIndex++];
+                    AssignTag(control);
                 }
             }
 
+        }
+
+        private void AssignTag(Control control)
+        {
+            foreach (Table table in tables)
+            {
+                //als de TableID van een table uit de database overeenkomt met de text van de button voeg dan die Table aan de tag van die button toe
+                if (table.TableID == int.Parse(control.Text))
+                {
+                    control.Tag = table;
+                    break;
+                }
+            }
         }
     }
 }

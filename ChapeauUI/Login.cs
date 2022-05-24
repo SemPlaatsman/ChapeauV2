@@ -83,7 +83,7 @@ namespace ChapeauUI
             //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
         }
 
-        private void LoginWithRightJobType(Employee employee) 
+        private void LoginWithRightJobType(Employee employee)
         {
             // deze methode zorgt ervoor dat je doorverwezen wordt naar de juiste pagina.
             switch (employee.Category)
