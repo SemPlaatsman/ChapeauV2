@@ -22,13 +22,13 @@ namespace ChapeauUI
         public ReceiptForm(string BetaalMethode, int TableId, decimal NewTotal)
         {
             InitializeComponent();
-            betaalMethode = BetaalMethode;
+            betaalMethode = BetaalMethode; //enum toepassen.  Engels en NL door elkaar? 
             tableId = TableId;
             newTotal = NewTotal;
             FillReceipt();
         }
         private decimal totalPrice = 0;
-        private int totaalItems = 0;
+        private int totaalItems = 0; // hier weer Engels
         private decimal btwTotaal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
