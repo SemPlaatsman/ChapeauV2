@@ -240,3 +240,4 @@ The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
    at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\DAO\BaseDAO.cs:line 27
+[24-5-2022 15:31:25] : test    at ChapeauUI.Login.buttonLogin_Click(Object sender, EventArgs e) in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\ChapeauUI\Login.cs:line 58
