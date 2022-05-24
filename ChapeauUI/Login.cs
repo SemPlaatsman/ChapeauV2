@@ -99,6 +99,17 @@ namespace ChapeauUI
                     tableOverviewForm.ShowDialog();
                     this.Close();
                     break;
+                case EmployeeCategory.Chef:
+                    this.Hide();
+                    KitchenDisplay kitchenDisplay = new KitchenDisplay();
+                    kitchenDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                case EmployeeCategory.Bartender:
+                    BarDisplay barDisplay = new BarDisplay();
+                    barDisplay.ShowDialog();
+                    this.Close();
+                    break;
                 // hier komen alle overige cases. 
             }
         }
