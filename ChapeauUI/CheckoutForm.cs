@@ -46,7 +46,7 @@ namespace ChapeauUI
             {
                 ListViewItem li = new ListViewItem(order.Quantity.ToString());
                 li.SubItems.Add(order.ProductName);
-                li.SubItems.Add(string.Format("{0:#,##0.00}", Convert.ToDecimal(order.Price)));
+                li.SubItems.Add(string.Format($"{Convert.ToDecimal(order.Price):0.00}"));
                 li.Tag = order;
                 rekeningListView.Items.Add(li);                
                 totalPrice += order.Price * order.Quantity;                
@@ -71,11 +71,11 @@ namespace ChapeauUI
 
         private decimal CheckBtwHigh(decimal price)
         {
-            return price / 100 * 21;
+            return price * 0.21M;
         }
         private decimal CheckBtwLow(decimal price)
         {
-            return price / 100 * 9;
+            return price * 0.09M;
         }
         
 
