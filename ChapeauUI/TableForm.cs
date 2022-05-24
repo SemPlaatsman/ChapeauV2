@@ -56,5 +56,17 @@ namespace ChapeauUI
             order.ShowDialog();
             this.Close();
         }
+
+        private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTable.Checked)
+            {
+                // achtergrond kleur moet naar rood. 
+            }
+            else
+            {
+                // achtergrond kleur default. Groen
+            }
+        }
     }
 }
