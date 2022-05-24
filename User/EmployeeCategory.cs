@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauLogica
+namespace ChapeauModel
 {
-    public class PasswordCheck
+    public enum EmployeeCategory
     {
-        private void PasswordVerify() 
-        {
-        
-        }
+        Chef = 1, Serveerster, Bartender, Eigenaar
     }
 }

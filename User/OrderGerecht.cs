@@ -11,7 +11,7 @@ namespace ChapeauModel
         public int OrderGerechtId;
         public MenuItem MenuItem;
         public int OrderId;
-        public bool? Status;
+        public OrderStatus Status;
         public DateTime TimeOfOrder;
         public string Remark;
     }

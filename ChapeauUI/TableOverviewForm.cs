@@ -14,11 +14,13 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
+        private Employee Employee; // toevoegen in de constructor later. 
         private List<Table> tables;
         public TableOverviewForm()
         {
             InitializeComponent();
             AssignTables();
+            //this.Employee = employee;
         }
         //public int selectedTable = 0;
 
@@ -38,6 +40,12 @@ namespace ChapeauUI
         {
             // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
             // als bezet is, dan buttonTable2.BackColor = Color.Red;
+            int TableId = 2;
+            TableForm tableForm = new TableForm(TableId);
+            tableForm.ShowDialog();
+            this.Close();
+
+            buttonTable1.BackColor = Color.Red;
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace ChapeauDAO
                     {
                         FirstName = (string)dr["FirstName"],
                         LastName = (string)dr["LastName"],
-                        Category = (int)dr["Category"],
+                        Category = (EmployeeCategory)(int)dr["Category"],
                         DateOfBirth = (DateTime)dr["DateOfBirth"],
                         Email = (string)dr["Email"],
                         PhoneNumber = (string)dr["PhoneNumber"],

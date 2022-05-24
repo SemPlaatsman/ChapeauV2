@@ -17,7 +17,7 @@ namespace ChapeauModel
 
         public void Add(OrderGerecht orderGerecht)
         {
-            if (orderGerecht.MenuItem.Type.Equals("Drinken"))
+            if (orderGerecht.MenuItem.Type == TypeOfProduct.Drinken)
                 Drinken.Add(orderGerecht);
             else
                 throw new Exception($"An attempts was made to add a OrderGerecht with the type {orderGerecht.MenuItem.Type} to a {this.GetType().Name} which is not possible!");

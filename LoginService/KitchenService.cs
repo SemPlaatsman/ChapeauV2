@@ -19,8 +19,7 @@ namespace ChapeauLogica
 
         public List<KitchenOrderOverview> GetKitchenOverviews()
         {
-            List<KitchenOrderOverview> kitchenOverviews = kitchenDAO.GetKitchenOverviews();
-            return kitchenOverviews;
+            return kitchenDAO.GetKitchenOverviews();
         }
     }
 }

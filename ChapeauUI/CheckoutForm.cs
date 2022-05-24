@@ -17,14 +17,18 @@ namespace ChapeauUI
     public partial class CheckoutForm : Form
     {
         private int tableId;
+        private decimal newTotal;
         public CheckoutForm(int TableId)
         {
             InitializeComponent();
             tableId = TableId;
-            this.Text += $" for Table {tableId}";
+            this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
-        public decimal totalPrice = 0;
+        private decimal totalPrice = 0;
+        private decimal btwTotaal = 0;
+        private decimal btwItem = 0;
+        private decimal totalWithBtw = 0;
 
         private void ShowListView()
         {
@@ -34,25 +38,46 @@ namespace ChapeauUI
 
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
-            rekeningListView.Columns.Add("ProductName", 254);
-            rekeningListView.Columns.Add("Price", 64);
+            rekeningListView.Columns.Add("Keer", 43);
+            rekeningListView.Columns.Add("Naam Product", 233);
+            rekeningListView.Columns.Add("Prijs", 42);
 
             foreach (Checkout order in orders)
             {
-                ListViewItem li = new ListViewItem(order.ProductName);
+                ListViewItem li = new ListViewItem(order.Quantity.ToString());
+                li.SubItems.Add(order.ProductName);
                 li.SubItems.Add(string.Format("{0:#,##0.00}", Convert.ToDecimal(order.Price)));
                 li.Tag = order;
-                rekeningListView.Items.Add(li);
-                totalPrice += order.Price;
+                rekeningListView.Items.Add(li);                
+                totalPrice += order.Price * order.Quantity;                
+
+                if (order.IsAlcoholic)
+                {
+                    btwItem = CheckBtwHigh(order.Price);
+                    btwItem = btwItem * order.Quantity;
+                    btwTotaal += btwItem;
+                }
+                if (!order.IsAlcoholic)
+                {
+                    btwItem = CheckBtwLow(order.Price);
+                    btwItem = btwItem * order.Quantity;
+                    btwTotaal += btwItem;
+                }
             }
-            checkoutTotalPriceLbl.Text = $"€{totalPrice.ToString()}";
+
+            totalWithBtw = totalPrice + btwTotaal;
+            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalWithBtw):0.00}");
         }
 
-        //private void listViewNames_Click(object sender, EventArgs e)
-        //{
-        //    Checkout checkout = (checkout)(rekeningListView.SelectedItems[0].Tag);
-        //    textBoxLoginWerknemerNummer.Text = checkout.ProductName.ToString();
-        //}
+        private decimal CheckBtwHigh(decimal price)
+        {
+            return price / 100 * 21;
+        }
+        private decimal CheckBtwLow(decimal price)
+        {
+            return price / 100 * 9;
+        }
+        
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)
         {            
@@ -61,14 +86,22 @@ namespace ChapeauUI
         //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {            
-            PaymentMethod paymentMethod = new PaymentMethod();
+            PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal);
             paymentMethod.ShowDialog();            
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
-        {            
-            ManualPrice manualPrice = new ManualPrice(totalPrice);
-            manualPrice.ShowDialog();            
+        {
+            try
+            {
+                ManualPrice manualPrice = new ManualPrice(totalWithBtw, tableId);
+                manualPrice.ShowDialog();            
+            }
+            catch (Exception ex)
+            {
+                //Toont een foutmelding als de order niet bestaat en of geladen kan worden.
+                throw new Exception("Order bestaat niet en of kan niet geladen worden. probeer het later opnieuw " + ex.Message);
+            }
         }
     }
 }
