@@ -84,7 +84,7 @@ namespace ChapeauUI
 
         }
 
-        private void LoginWithRightJobType(Employee employee) 
+        private void LoginWithRightJobType(Employee employee)
         {
             switch (employee.Category)
             {
