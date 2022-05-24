@@ -53,18 +53,16 @@ namespace ChapeauUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            PasswordService passwordService = new PasswordService();
-            LoginService loginService = new LoginService();
-            if (textBoxLoginWerknemerNummer.Text == "")
-            {
-                labelLoginError.Text = "Kies eerst een werknemer";
-                return;
-            }
-            int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
-
-            Employee employee = loginService.Login(employeeID);
             try
             {
+                PasswordService passwordService = new PasswordService();
+                LoginService loginService = new LoginService();
+                if (textBoxLoginWerknemerNummer.Text == "")
+                {
+                    throw new ChapeauException("Kies eerst een werknemer");
+                }
+                int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
+                Employee employee = loginService.Login(employeeID);
                 string checkPassword = passwordService.HashWithSalt(textBoxLoginPIN.Text).Digest;
                 if (employee.Password == checkPassword)
                 {
@@ -72,13 +70,19 @@ namespace ChapeauUI
                 }
                 if (employee.Password != checkPassword)
                 {
-                    labelLoginError.Text = "Gebruikersnaam - wachtwoord combinatie komt niet overeen";
+                   throw new ChapeauException("Gebruikersnaam - wachtwoord combinatie komt niet overeen");
                 }
             }
-            catch (Exception)
+            catch (ChapeauException cex) 
             {
-                throw;
+                labelLoginError.Text = cex.Message;
             }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteLogToFile(ex);
+                labelLoginError.Text = "Er is iets mis gegaan, neem contact op met de administrator!";
+            }
+            
             //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
         }
 
