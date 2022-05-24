@@ -225,7 +225,7 @@ namespace ChapeauUI
             this.buttonTable8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable8.Name = "buttonTable8";
             this.buttonTable8.Size = new System.Drawing.Size(164, 98);
-            this.buttonTable8.TabIndex = 26;
+            this.buttonTable8.TabIndex = 27;
             this.buttonTable8.Text = "8";
             this.buttonTable8.UseVisualStyleBackColor = false;
             // 
@@ -237,7 +237,7 @@ namespace ChapeauUI
             this.buttonTable7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable7.Name = "buttonTable7";
             this.buttonTable7.Size = new System.Drawing.Size(164, 98);
-            this.buttonTable7.TabIndex = 27;
+            this.buttonTable7.TabIndex = 26;
             this.buttonTable7.Text = "7";
             this.buttonTable7.UseVisualStyleBackColor = false;
             // 
