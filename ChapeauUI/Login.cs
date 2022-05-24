@@ -73,19 +73,24 @@ namespace ChapeauUI
                 {
                     LoginWithRightJobType(employee);
                 }
+                if (employee.Password != checkPassword)
+                {                   
+                    labelLoginError.Text = "Gebruikersnaam - wachtwoord combinatie komt niet overeen";
+                }
             }
             catch (Exception)
             {
                 throw;
             }
 
-            //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
+            //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
 
 
         }
 
         private void LoginWithRightJobType(Employee employee) 
         {
+            // deze methode zorgt ervoor dat je doorverwezen wordt naar de juiste pagina.
             switch (employee.Category)
             {
                 case EmployeeCategory.Serveerster:
@@ -94,15 +99,27 @@ namespace ChapeauUI
                     tableOverviewForm.ShowDialog();
                     this.Close();
                     break;
+                case EmployeeCategory.Chef:
+                    this.Hide();
+                    KitchenDisplay kitchenDisplay = new KitchenDisplay();
+                    kitchenDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                case EmployeeCategory.Bartender:
+                    BarDisplay barDisplay = new BarDisplay();
+                    barDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                // hier komen alle overige cases. 
             }
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
         {
+            // door middel van de tag property kun je een hele Employee object meegeven.
             Employee employee = (Employee)(listViewNames.SelectedItems[0].Tag);
             textBoxLoginWerknemerNummer.Text = employee.EmployeeID.ToString();
         }
-
 
     }
 }

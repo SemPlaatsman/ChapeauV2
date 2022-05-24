@@ -43,6 +43,7 @@ namespace ChapeauUI
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listViewNames = new System.Windows.Forms.ListView();
+            this.labelLoginError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -165,12 +166,23 @@ namespace ChapeauUI
             this.listViewNames.UseCompatibleStateImageBehavior = false;
             this.listViewNames.Click += new System.EventHandler(this.listViewNames_Click);
             // 
+            // labelLoginError
+            // 
+            this.labelLoginError.AutoSize = true;
+            this.labelLoginError.ForeColor = System.Drawing.Color.Red;
+            this.labelLoginError.Location = new System.Drawing.Point(25, 536);
+            this.labelLoginError.Name = "labelLoginError";
+            this.labelLoginError.Size = new System.Drawing.Size(15, 20);
+            this.labelLoginError.TabIndex = 14;
+            this.labelLoginError.Text = "-";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 714);
+            this.Controls.Add(this.labelLoginError);
             this.Controls.Add(this.listViewNames);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonRegister);
@@ -207,6 +219,7 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox checkBoxViewPIN;
         private System.Windows.Forms.ListView listViewNames;
+        private System.Windows.Forms.Label labelLoginError;
     }
 }
 
