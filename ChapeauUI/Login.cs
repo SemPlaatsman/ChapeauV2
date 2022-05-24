@@ -43,14 +43,6 @@ namespace ChapeauUI
             }
         }
 
-        private void buttonRegister_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.ShowDialog();
-            this.Close();
-        }
-
         private void checkBoxViewPIN_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxViewPIN.Checked)
@@ -63,7 +55,13 @@ namespace ChapeauUI
         {
             PasswordService passwordService = new PasswordService();
             LoginService loginService = new LoginService();
+            if (textBoxLoginWerknemerNummer.Text == "")
+            {
+                labelLoginError.Text = "Kies eerst een werknemer";
+                return;
+            }
             int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
+
             Employee employee = loginService.Login(employeeID);
            // MessageBox.Show(employee.Password);
             try
@@ -73,19 +71,21 @@ namespace ChapeauUI
                 {
                     LoginWithRightJobType(employee);
                 }
+                if (employee.Password != checkPassword)
+                {
+                    labelLoginError.Text = "Gebruikersnaam - wachtwoord combinatie komt niet overeen";
+                }
             }
             catch (Exception)
             {
                 throw;
             }
-
-            //d.m.v. de LoginWithRightJobType() wordt er bepaalde naar welk inlog scherm verwezen wordt. 
-
-
+            //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
         }
 
         private void LoginWithRightJobType(Employee employee) 
         {
+            // deze methode zorgt ervoor dat je doorverwezen wordt naar de juiste pagina.
             switch (employee.Category)
             {
                 case EmployeeCategory.Serveerster:
@@ -94,15 +94,35 @@ namespace ChapeauUI
                     tableOverviewForm.ShowDialog();
                     this.Close();
                     break;
+                case EmployeeCategory.Chef:
+                    this.Hide();
+                    KitchenDisplay kitchenDisplay = new KitchenDisplay();
+                    kitchenDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                case EmployeeCategory.Bartender:
+                    BarDisplay barDisplay = new BarDisplay();
+                    barDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                case EmployeeCategory.Eigenaar:
+                    OwnerForm ownerForm = new OwnerForm();
+                    ownerForm.ShowDialog();
+                    this.Close();
+                    break;
             }
         }
 
         private void listViewNames_Click(object sender, EventArgs e)
         {
+            // door middel van de tag property kun je een hele Employee object meegeven.
             Employee employee = (Employee)(listViewNames.SelectedItems[0].Tag);
             textBoxLoginWerknemerNummer.Text = employee.EmployeeID.ToString();
         }
 
-
+        private void buttonWachtwoordVergeten_Click(object sender, EventArgs e)
+        {
+            labelLoginError.Text = "Neem contact op met de eigenaar voor een nieuw wachtwoord";
+        }
     }
 }

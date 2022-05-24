@@ -12,15 +12,6 @@ namespace ChapeauLogica
 {
     public class PasswordService
     {
-        // er komt nog van HashSaltResult bij
-
-
-        /*   private bool PasswordVerify(string enteredPassword, Password hashSalt)
-           {
-               byte[] saltInBytes = Convert.FromBase64String(hashSalt.Salt);
-               Rfc2898DeriveBytes rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltInBytes, 10000);
-               return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == hashSalt.Digest;
-           }*/
         public Password HashWithSalt(string password)
         {
             HashAlgorithm hashAlgo = SHA512.Create();
@@ -64,7 +55,5 @@ namespace ChapeauLogica
                 return true;
             return false;
         }
-
-
     }
 }
