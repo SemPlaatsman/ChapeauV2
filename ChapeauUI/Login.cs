@@ -55,7 +55,13 @@ namespace ChapeauUI
         {
             PasswordService passwordService = new PasswordService();
             LoginService loginService = new LoginService();
+            if (textBoxLoginWerknemerNummer.Text == "")
+            {
+                labelLoginError.Text = "Kies eerst een werknemer";
+                return;
+            }
             int employeeID = int.Parse(textBoxLoginWerknemerNummer.Text);
+
             Employee employee = loginService.Login(employeeID);
            // MessageBox.Show(employee.Password);
             try
@@ -66,7 +72,7 @@ namespace ChapeauUI
                     LoginWithRightJobType(employee);
                 }
                 if (employee.Password != checkPassword)
-                {                   
+                {
                     labelLoginError.Text = "Gebruikersnaam - wachtwoord combinatie komt niet overeen";
                 }
             }
@@ -74,10 +80,7 @@ namespace ChapeauUI
             {
                 throw;
             }
-
             //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
-
-
         }
 
         private void LoginWithRightJobType(Employee employee) 
@@ -107,7 +110,6 @@ namespace ChapeauUI
                     ownerForm.ShowDialog();
                     this.Close();
                     break;
-                // hier komen alle overige cases. 
             }
         }
 
@@ -118,5 +120,9 @@ namespace ChapeauUI
             textBoxLoginWerknemerNummer.Text = employee.EmployeeID.ToString();
         }
 
+        private void buttonWachtwoordVergeten_Click(object sender, EventArgs e)
+        {
+            labelLoginError.Text = "Neem contact op met de eigenaar voor een nieuw wachtwoord";
+        }
     }
 }

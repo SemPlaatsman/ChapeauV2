@@ -24,5 +24,13 @@ namespace ChapeauUI
             registerForm.ShowDialog();
             this.Close();
         }
+
+        private void buttonBackToLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login login = new Login();
+            login.ShowDialog();
+            this.Close();
+        }
     }
 }
