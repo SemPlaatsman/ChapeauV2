@@ -35,12 +35,9 @@ namespace ChapeauUI
             this.labelLoginPIN = new System.Windows.Forms.Label();
             this.textBoxLoginWerknemerNummer = new System.Windows.Forms.TextBox();
             this.textBoxLoginPIN = new System.Windows.Forms.TextBox();
-            this.labelNogGeenWNR = new System.Windows.Forms.Label();
-            this.buttonRegister = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBoxViewPIN = new System.Windows.Forms.CheckBox();
             this.buttonWachtwoordVergeten = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listViewNames = new System.Windows.Forms.ListView();
             this.labelLoginError = new System.Windows.Forms.Label();
@@ -91,25 +88,6 @@ namespace ChapeauUI
             this.textBoxLoginPIN.Size = new System.Drawing.Size(79, 27);
             this.textBoxLoginPIN.TabIndex = 6;
             // 
-            // labelNogGeenWNR
-            // 
-            this.labelNogGeenWNR.AutoSize = true;
-            this.labelNogGeenWNR.Location = new System.Drawing.Point(37, 618);
-            this.labelNogGeenWNR.Name = "labelNogGeenWNR";
-            this.labelNogGeenWNR.Size = new System.Drawing.Size(269, 20);
-            this.labelNogGeenWNR.TabIndex = 7;
-            this.labelNogGeenWNR.Text = "Heb je nog geen werknemersnummer? ";
-            // 
-            // buttonRegister
-            // 
-            this.buttonRegister.Location = new System.Drawing.Point(37, 651);
-            this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(109, 29);
-            this.buttonRegister.TabIndex = 8;
-            this.buttonRegister.Text = "Registreren";
-            this.buttonRegister.UseVisualStyleBackColor = true;
-            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.checkBoxViewPIN);
@@ -139,13 +117,6 @@ namespace ChapeauUI
             this.buttonWachtwoordVergeten.TabIndex = 11;
             this.buttonWachtwoordVergeten.Text = "Wachtwoord vergeten?";
             this.buttonWachtwoordVergeten.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(25, 594);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(307, 108);
-            this.panel2.TabIndex = 10;
             // 
             // pictureBox1
             // 
@@ -185,14 +156,11 @@ namespace ChapeauUI
             this.Controls.Add(this.labelLoginError);
             this.Controls.Add(this.listViewNames);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.buttonRegister);
-            this.Controls.Add(this.labelNogGeenWNR);
             this.Controls.Add(this.textBoxLoginPIN);
             this.Controls.Add(this.textBoxLoginWerknemerNummer);
             this.Controls.Add(this.labelLoginPIN);
             this.Controls.Add(this.labelLoginWerknemersNummer);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Login";
             this.Text = "Welkom bij Chapeau";
@@ -211,10 +179,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Label labelLoginPIN;
         private System.Windows.Forms.TextBox textBoxLoginWerknemerNummer;
         private System.Windows.Forms.TextBox textBoxLoginPIN;
-        private System.Windows.Forms.Label labelNogGeenWNR;
-        private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonWachtwoordVergeten;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox checkBoxViewPIN;

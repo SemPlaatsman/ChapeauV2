@@ -43,14 +43,6 @@ namespace ChapeauUI
             }
         }
 
-        private void buttonRegister_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.ShowDialog();
-            this.Close();
-        }
-
         private void checkBoxViewPIN_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxViewPIN.Checked)
@@ -108,6 +100,11 @@ namespace ChapeauUI
                 case EmployeeCategory.Bartender:
                     BarDisplay barDisplay = new BarDisplay();
                     barDisplay.ShowDialog();
+                    this.Close();
+                    break;
+                case EmployeeCategory.Eigenaar:
+                    OwnerForm ownerForm = new OwnerForm();
+                    ownerForm.ShowDialog();
                     this.Close();
                     break;
                 // hier komen alle overige cases. 
