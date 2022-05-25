@@ -31,11 +31,20 @@ namespace ChapeauUI
 
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {
-            totalPrice = decimal.Parse(newPriceTextBox.Text);
+            
             newTotal = Convert.ToDecimal(newPriceTextBox.Text);
-            PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal);
-            paymentMethod.ShowDialog();
-            this.Close();            
+
+            if(newTotal < totalPrice)
+            {
+                MessageBox.Show("Het nieuwe bedrag mag niet lager zijn dan het originele bedrag");
+            }
+            else
+            {
+                totalPrice = decimal.Parse(newPriceTextBox.Text);
+                PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal);
+                paymentMethod.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

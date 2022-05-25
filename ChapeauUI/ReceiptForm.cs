@@ -32,13 +32,16 @@ namespace ChapeauUI
         private decimal btwTotaal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
+        private string employee;
+
+        ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
         {
             betaalMethodeLbl.Text = betaalMethode;
             datumLbl.Text = DateTime.Now.ToString("g");
 
             //vul de listview
-            ReceiptService receiptService = new ReceiptService();
+            
             List<Receipt> orders = receiptService.GetOrderList(tableId);
 
             itemsListBox.View = View.Details;
@@ -82,6 +85,7 @@ namespace ChapeauUI
             totalWithBtw = btwTotaal + totalPrice;
             totaalMetBtwLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw));
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
+            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(tableId)}";
 
             tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(newTotal - totalWithBtw));
 
@@ -90,12 +94,12 @@ namespace ChapeauUI
                 receiptTotaalToonPrijsLbl.Text = receiptTotaalOriginelePrijsLbl.Text;
                 tipTotalLbl.Text = "€0,00";
             }
-            else if (newTotal < totalWithBtw)
-            {
-                tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw - newTotal));
-                tipOrDiscountLbl.Text = "Uw korting:";
-                receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
-            }
+            //else if (newTotal < totalWithBtw)
+            //{
+            //    tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw - newTotal));
+            //    tipOrDiscountLbl.Text = "Uw korting:";
+            //    receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
+            //}
             else
             {
                 receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");

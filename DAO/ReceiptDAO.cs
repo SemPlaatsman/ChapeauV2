@@ -40,6 +40,38 @@ namespace ChapeauDAO
             }
         }
 
+        public string Host(int TableId)
+        {
+            try
+            {
+                string query = "select EM.FirstName "+
+                "from ApplicatiebouwChapeau.[Table] as TA "+
+                "join ApplicatiebouwChapeau.[Employee] as EM on TA.EmployeeID = EM.EmployeeID "+
+                "where TA.TableID = @tableId; ";
+
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@tableId", TableId);
+                return ReadHostTables(ExecuteSelectQuery(query, sqlParameters));
+            }
+            catch (Exception e)
+            {
+                //Toont een foutmelding als de order niet geladen kan worden.
+                throw new Exception("Order kan niet geladen worden. probeer het later opnieuw " + e.Message);
+            }
+        }
+
+        private string ReadHostTables(DataTable dataTable)
+        {
+            try
+            {
+                return (string)dataTable.Rows[0]["FirstName"];
+            }
+            catch (Exception e)
+            {
+                throw new Exception("De data kan niet geladen worden uit de database. probeer het later opnieuw" + e.Message);
+            }
+        }
+
         private List<Receipt> ReadTables(DataTable dataTable)
         {
             try
