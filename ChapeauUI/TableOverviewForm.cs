@@ -14,7 +14,8 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee Employee; // toevoegen in de constructor later. 
+        private Employee employee; // toevoegen in de constructor later. 
+        TableService tableService = new TableService();
         private List<Table> tables;
         public TableOverviewForm()
         {
@@ -94,6 +95,42 @@ namespace ChapeauUI
                     control.Tag = table;
                     break;
                 }
+            }
+        }
+
+        private void TableOverviewForm_Load(object sender, EventArgs e)
+        {
+            // soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            AssignTables();
+            SetColor();
+
+            // kleur veranderen afhankelijk van IsOccupied
+
+        }
+
+        private void SetColor() 
+        {
+            foreach (Control control in this.Controls)
+            {
+                Table table = null;
+                //als een Control een Button is en niet de uitlog-button is, voeg dan aan die button de TableClick event toe en assign een tag
+                if (control.GetType() == typeof(Button) && control != buttonUitloggen)
+                {
+                    table = (Table)control.Tag;
+                    ChangeColor(control, table);
+                }
+            }
+        }
+
+        private void ChangeColor(Control control, Table table) 
+        {
+            if (!table.IsOccupied)
+            {
+                control.BackColor = Color.Green;
+            }
+            else
+            {
+                control.BackColor = Color.Red;
             }
         }
     }
