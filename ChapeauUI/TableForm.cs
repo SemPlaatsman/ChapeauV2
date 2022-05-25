@@ -17,10 +17,11 @@ namespace ChapeauUI
     public partial class TableForm : Form
     {
         private int TableId;
-        public TableForm(int TableId)
+        public TableForm(int TableId) // Table table. Hele object meegeven, want minder werk. 
         {
             this.TableId = TableId;
             InitializeComponent();
+            this.Text += $" for Table {TableId}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
@@ -30,10 +31,10 @@ namespace ChapeauUI
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            tableOverviewForm.ShowDialog();
             this.Close();
+            //TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            //tableOverviewForm.ShowDialog();
+            //this.Close();
         }
 
         private void buttonNewOrder_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace ChapeauUI
             List<Table> tables = orderService.tables();
             foreach (Table table in tables) 
             {
-                if (table.TabelID == TableId)
+                if (table.TableID == TableId)
                 {
                     if (!table.IsOccupied)
                     {
