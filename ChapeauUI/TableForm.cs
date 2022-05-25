@@ -17,7 +17,7 @@ namespace ChapeauUI
     public partial class TableForm : Form
     {
         private int TableId;
-        public TableForm(int TableId)
+        public TableForm(int TableId) // Table table. Hele object meegeven, want minder werk. 
         {
             this.TableId = TableId;
             InitializeComponent();
