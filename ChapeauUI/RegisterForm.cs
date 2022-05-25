@@ -25,9 +25,8 @@ namespace ChapeauUI
         private void buttonBackToInlog_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
-            Login loginForm = new Login();
-            loginForm.ShowDialog();
+            OwnerForm ownerForm = new OwnerForm();
+            ownerForm.ShowDialog();
             this.Close();
         }
 
