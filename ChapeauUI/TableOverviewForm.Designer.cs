@@ -153,7 +153,6 @@ namespace ChapeauUI
             this.buttonTable1.TabIndex = 20;
             this.buttonTable1.Text = "1";
             this.buttonTable1.UseVisualStyleBackColor = false;
-            this.buttonTable1.Click += new System.EventHandler(this.buttonTable1_Click);
             // 
             // buttonTable2
             // 
@@ -165,7 +164,6 @@ namespace ChapeauUI
             this.buttonTable2.TabIndex = 21;
             this.buttonTable2.Text = "2";
             this.buttonTable2.UseVisualStyleBackColor = false;
-            this.buttonTable2.Click += new System.EventHandler(this.buttonTable2_Click);
             // 
             // buttonTable3
             // 

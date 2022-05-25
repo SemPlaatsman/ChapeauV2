@@ -20,34 +20,9 @@ namespace ChapeauUI
         public TableOverviewForm()
         {
             InitializeComponent();
-            AssignTables();
             //this.Employee = employee;
         }
         //public int selectedTable = 0;
-
-        private void buttonTable1_Click(object sender, EventArgs e)
-        {
-            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
-            // als bezet is, dan buttonTable1.BackColor = Color.Red;
-            //int TableId = 1;
-            //TableForm tableForm = new TableForm(TableId);
-            //tableForm.ShowDialog();
-            //this.Close();
-
-            //buttonTable1.BackColor = Color.Red;
-        }
-
-        private void buttonTable2_Click(object sender, EventArgs e)
-        {
-            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
-            // als bezet is, dan buttonTable2.BackColor = Color.Red;
-            //int TableId = 2;
-            //TableForm tableForm = new TableForm(TableId);
-            //tableForm.ShowDialog();
-            //this.Close();
-
-            //buttonTable1.BackColor = Color.Red;
-        }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
         {
@@ -102,10 +77,8 @@ namespace ChapeauUI
         {
             // soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
             AssignTables();
-            SetColor();
-
             // kleur veranderen afhankelijk van IsOccupied
-
+            SetColor();
         }
 
         private void SetColor() 
