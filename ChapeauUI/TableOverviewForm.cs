@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee employee; // toevoegen in de constructor later. 
+        private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
         public TableOverviewForm()
@@ -22,7 +22,6 @@ namespace ChapeauUI
             InitializeComponent();
             //this.Employee = employee;
         }
-        //public int selectedTable = 0;
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
         {
@@ -36,6 +35,7 @@ namespace ChapeauUI
         {
             //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
             int tableID = ((Table)((Button)sender).Tag).TableID;
+            // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
             TableForm tableForm = new TableForm(tableID);
@@ -75,7 +75,7 @@ namespace ChapeauUI
 
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
-            // soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
             AssignTables();
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
@@ -106,5 +106,8 @@ namespace ChapeauUI
                 control.BackColor = Color.Red;
             }
         }
+
+        // methode met iets van een checkbox maken zodat gemakkelijk bepaald kan worden of het bezet is of niet. 
+        // hierbij gebruik maken van een foreach loop (if !checkbox.Checked => backColor.Green); ofzo....
     }
 }
