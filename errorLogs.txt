@@ -274,7 +274,7 @@ The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
    at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\DAO\BaseDAO.cs:line 27
-[25-5-2022 19:35:45] : Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=94; handshake=166; [Login] initialization=10; authentication=8; [Post-Login] complete=14024;     at System.Data.ProviderBase.DbConnectionPool.CheckPoolBlockingPeriod(Exception e)
+
    at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
@@ -284,8 +284,7 @@ The statement has been terminated.
    at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
-   at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\DAO\BaseDAO.cs:line 27
-[25-5-2022 19:36:09] : Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=193; handshake=131; [Login] initialization=11; authentication=4; [Post-Login] complete=14014;     at System.Data.ProviderBase.DbConnectionPool.CheckPoolBlockingPeriod(Exception e)
+
    at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
@@ -295,8 +294,7 @@ The statement has been terminated.
    at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
-   at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\DAO\BaseDAO.cs:line 27
-[26-5-2022 10:31:34] : Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=126; handshake=95; [Login] initialization=12; authentication=4; [Post-Login] complete=14018;     at System.Data.ProviderBase.DbConnectionPool.CheckPoolBlockingPeriod(Exception e)
+
    at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
    at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
@@ -306,6 +304,7 @@ The statement has been terminated.
    at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
+
    at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\larsh\Desktop\School\Periode 4\Project\ChapeauV2\DAO\BaseDAO.cs:line 27
 [26-5-2022 10:31:55] : Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=108; handshake=81; [Login] initialization=12; authentication=5; [Post-Login] complete=14010;     at System.Data.ProviderBase.DbConnectionPool.CheckPoolBlockingPeriod(Exception e)
    at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
