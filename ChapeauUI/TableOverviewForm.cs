@@ -57,7 +57,6 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
-
         }
 
         private void AssignTag(Control control)
@@ -100,6 +99,7 @@ namespace ChapeauUI
             if (!table.IsOccupied)
             {
                 control.BackColor = Color.Green;
+                // checkboxes koppelen hierin. 
             }
             else
             {
