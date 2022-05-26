@@ -30,12 +30,14 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnOrderId = new System.Windows.Forms.ColumnHeader();
-            this.columnTableId = new System.Windows.Forms.ColumnHeader();
-            this.ColumnBestellingen = new System.Windows.Forms.ColumnHeader();
-            this.listViewDone = new System.Windows.Forms.ListView();
+            this.listViewMeeBezig = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -48,59 +50,72 @@ namespace ChapeauUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listView1
+            // listViewMeeBezig
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnOrderId,
-            this.columnTableId,
-            this.ColumnBestellingen});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(154, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(365, 612);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnOrderId
-            // 
-            this.columnOrderId.Text = "Order Id";
-            // 
-            // columnTableId
-            // 
-            this.columnTableId.Text = "Table Id";
-            // 
-            // ColumnBestellingen
-            // 
-            this.ColumnBestellingen.Text = "Bestellingen";
-            // 
-            // listViewDone
-            // 
-            this.listViewDone.HideSelection = false;
-            this.listViewDone.Location = new System.Drawing.Point(801, 12);
-            this.listViewDone.Name = "listViewDone";
-            this.listViewDone.Size = new System.Drawing.Size(371, 612);
-            this.listViewDone.TabIndex = 2;
-            this.listViewDone.UseCompatibleStateImageBehavior = false;
+            this.listViewMeeBezig.HideSelection = false;
+            this.listViewMeeBezig.Location = new System.Drawing.Point(866, 12);
+            this.listViewMeeBezig.Name = "listViewMeeBezig";
+            this.listViewMeeBezig.Size = new System.Drawing.Size(706, 612);
+            this.listViewMeeBezig.TabIndex = 2;
+            this.listViewMeeBezig.UseCompatibleStateImageBehavior = false;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(525, 1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(270, 631);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(146, 83);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // dataGridViewMoetNog
+            // 
+            this.dataGridViewMoetNog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMoetNog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewButtonColumn1});
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(154, 12);
+            this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
+            this.dataGridViewMoetNog.RowTemplate.Height = 25;
+            this.dataGridViewMoetNog.Size = new System.Drawing.Size(706, 612);
+            this.dataGridViewMoetNog.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Table Id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Bestellingen";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 496;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "Verwerk";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Text = "";
             // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 636);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.dataGridViewMoetNog);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.listViewDone);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewMeeBezig);
             this.Controls.Add(this.button1);
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -108,11 +123,12 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnOrderId;
-        private System.Windows.Forms.ColumnHeader columnTableId;
-        private System.Windows.Forms.ColumnHeader ColumnBestellingen;
-        private System.Windows.Forms.ListView listViewDone;
+        private System.Windows.Forms.ListView listViewMeeBezig;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridView dataGridViewMoetNog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
     }
 }

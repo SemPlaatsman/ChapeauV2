@@ -107,10 +107,6 @@
       <Property Name="Category" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ChapeauModel.EmployeeCategory">
-    <Position X="20.5" Y="10.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="ChapeauModel.KitchenOrderOverview">
     <Position X="22.75" Y="10.5" Width="1.5" />
     <TypeIdentifier />
@@ -130,16 +126,8 @@
       <Field Name="Status" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ChapeauModel.OrderStatus">
-    <Position X="13.5" Y="10.25" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="ChapeauModel.Password">
     <Position X="9.25" Y="6.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="ChapeauModel.TypeOfProduct">
-    <Position X="15.75" Y="10.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="ChapeauModel.Receipt">
@@ -156,6 +144,18 @@
   </Class>
   <Class Name="ChapeauModel.Order">
     <Position X="23" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.EmployeeCategory">
+    <Position X="20.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.OrderStatus">
+    <Position X="13.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.TypeOfProduct">
+    <Position X="15.75" Y="10.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
