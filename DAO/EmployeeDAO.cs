@@ -16,7 +16,7 @@ namespace ChapeauDAO
         {
             try
             {
-                string query = "SELECT [EmployeeID] ,[Password],[Category],[FirstName],[LastName],[DateOfBirth],[Email],[PhoneNumber],[Question],[Answer]" +
+                string query = "SELECT [EmployeeID] ,[Password],[Category],[FirstName],[LastName],[DateOfBirth],[Email],[PhoneNumber],[Question],[Answer] " +
                     "FROM [ApplicatiebouwChapeau].[Employee]";
                 SqlParameter[] sqlParameters = new SqlParameter[0];
                 return ReadTables(ExecuteSelectQuery(query, sqlParameters));

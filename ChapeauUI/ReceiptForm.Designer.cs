@@ -143,9 +143,9 @@
             this.receiptTotaalPrijsLbl.AutoSize = true;
             this.receiptTotaalPrijsLbl.Location = new System.Drawing.Point(44, 676);
             this.receiptTotaalPrijsLbl.Name = "receiptTotaalPrijsLbl";
-            this.receiptTotaalPrijsLbl.Size = new System.Drawing.Size(105, 20);
+            this.receiptTotaalPrijsLbl.Size = new System.Drawing.Size(108, 20);
             this.receiptTotaalPrijsLbl.TabIndex = 13;
-            this.receiptTotaalPrijsLbl.Text = "Totaal betaald";
+            this.receiptTotaalPrijsLbl.Text = "Totaal betaald:";
             // 
             // receiptTotaalToonPrijsLbl
             // 
@@ -179,9 +179,9 @@
             this.receiptLabel11.AutoSize = true;
             this.receiptLabel11.Location = new System.Drawing.Point(49, 759);
             this.receiptLabel11.Name = "receiptLabel11";
-            this.receiptLabel11.Size = new System.Drawing.Size(83, 20);
+            this.receiptLabel11.Size = new System.Drawing.Size(86, 20);
             this.receiptLabel11.TabIndex = 18;
-            this.receiptLabel11.Text = "Opmerking";
+            this.receiptLabel11.Text = "Opmerking:";
             // 
             // receiptLijn
             // 
@@ -268,9 +268,9 @@
             this.tipOrDiscountLbl.AutoSize = true;
             this.tipOrDiscountLbl.Location = new System.Drawing.Point(44, 646);
             this.tipOrDiscountLbl.Name = "tipOrDiscountLbl";
-            this.tipOrDiscountLbl.Size = new System.Drawing.Size(90, 20);
+            this.tipOrDiscountLbl.Size = new System.Drawing.Size(93, 20);
             this.tipOrDiscountLbl.TabIndex = 36;
-            this.tipOrDiscountLbl.Text = "Fooi bedrag";
+            this.tipOrDiscountLbl.Text = "Fooi bedrag:";
             // 
             // itemsListBox
             // 

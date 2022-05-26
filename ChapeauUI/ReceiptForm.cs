@@ -19,26 +19,29 @@ namespace ChapeauUI
         private string betaalMethode;
         private int tableId;
         private decimal newTotal;
-        public ReceiptForm(string BetaalMethode, int TableId, decimal NewTotal)
+        public ReceiptForm(string betaalMethode, int tableId, decimal newTotal)
         {
             InitializeComponent();
-            betaalMethode = BetaalMethode;
-            tableId = TableId;
-            newTotal = NewTotal;
+            this.betaalMethode = betaalMethode; //enum toepassen.  Engels en NL door elkaar? 
+            this.tableId = tableId;
+            this.newTotal = newTotal;
             FillReceipt();
         }
         private decimal totalPrice = 0;
-        private int totaalItems = 0;
+        private int totaalItems = 0; // hier weer Engels
         private decimal btwTotaal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
+        private string employee;
+
+        ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
         {
             betaalMethodeLbl.Text = betaalMethode;
             datumLbl.Text = DateTime.Now.ToString("g");
 
             //vul de listview
-            ReceiptService receiptService = new ReceiptService();
+            
             List<Receipt> orders = receiptService.GetOrderList(tableId);
 
             itemsListBox.View = View.Details;
@@ -78,24 +81,27 @@ namespace ChapeauUI
             //Listview gevuld
             receiptTotaalArtikelLbl.Text = $"Totaal {totaalItems} artikelen";
             receiptTotaalArtikelPrijsLbl.Text = $"€{totalPrice.ToString()}";
-            btwPriceLbl.Text = string.Format("{0:#,##0.00}", Convert.ToDecimal(btwTotaal));
+            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotaal):0.00}");
             totalWithBtw = btwTotaal + totalPrice;
-            totaalMetBtwLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw));
+            totaalMetBtwLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
+            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(tableId)}";
 
-            tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(newTotal - totalWithBtw));
+            tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
 
             if (newTotal <= 0)
             {
                 receiptTotaalToonPrijsLbl.Text = receiptTotaalOriginelePrijsLbl.Text;
                 tipTotalLbl.Text = "€0,00";
             }
+
             else if (newTotal < totalWithBtw)
             {
-                tipTotalLbl.Text = string.Format("€" + "{0:#,##0.00}", Convert.ToDecimal(totalWithBtw - newTotal));
+                tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw - newTotal):0.00}");
                 tipOrDiscountLbl.Text = "Uw korting:";
                 receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
             }
+
             else
             {
                 receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
@@ -104,11 +110,11 @@ namespace ChapeauUI
 
         private decimal CheckBtwHigh(decimal price)
         {
-            return price / 100 * 21;
+            return price * 0.21M;
         }
         private decimal CheckBtwLow(decimal price)
         {
-            return price / 100 * 9;
+            return price * 0.09M;
         }
 
 

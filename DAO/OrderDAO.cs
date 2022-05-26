@@ -48,7 +48,7 @@ namespace ChapeauDAO
                 {
                     Table table = new Table()
                     {
-                        TabelID = (int)dr["TableID"],
+                        TableID = (int)dr["TableID"],
                         EmployeeID = (int)dr["EmployeeID"],
                         IsOccupied = (bool)dr["IsOccupied"],
                         AmountOfGuests = (int)dr["AmountOfGuests"]

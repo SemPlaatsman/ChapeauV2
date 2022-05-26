@@ -13,6 +13,7 @@ namespace ChapeauModel
         public int TableId { get; set; }
         public bool IsAlcoholic { get; set; }
         public int Quantity { get; set; }
-        
+        public string FirstName { get; set; }
+
     }
 }

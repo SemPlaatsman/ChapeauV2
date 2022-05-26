@@ -37,7 +37,6 @@ namespace ChapeauUI
             this.labelRegisterPin = new System.Windows.Forms.Label();
             this.labelRegisterPinRepeat = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
-            this.labelComboniatie = new System.Windows.Forms.Label();
             this.textBoxRegisterFirstname = new System.Windows.Forms.TextBox();
             this.textBoxRegisterLastname = new System.Windows.Forms.TextBox();
             this.textBoxRegisterEmail = new System.Windows.Forms.TextBox();
@@ -123,23 +122,13 @@ namespace ChapeauUI
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(223, 518);
+            this.buttonRegister.Location = new System.Drawing.Point(223, 512);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(113, 34);
+            this.buttonRegister.Size = new System.Drawing.Size(113, 67);
             this.buttonRegister.TabIndex = 8;
             this.buttonRegister.Text = "Registeren";
             this.buttonRegister.UseVisualStyleBackColor = true;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
-            // 
-            // labelComboniatie
-            // 
-            this.labelComboniatie.AutoSize = true;
-            this.labelComboniatie.Location = new System.Drawing.Point(155, 566);
-            this.labelComboniatie.Name = "labelComboniatie";
-            this.labelComboniatie.Size = new System.Drawing.Size(587, 40);
-            this.labelComboniatie.TabIndex = 9;
-            this.labelComboniatie.Text = "De combinatie van jouw werknemersnummer en pincode is belangrijk om in te loggen." +
-    " \r\nSchrijf het ergens op, of onthoud het goed. ";
             // 
             // textBoxRegisterFirstname
             // 
@@ -221,18 +210,17 @@ namespace ChapeauUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(223, 364);
+            this.label2.Location = new System.Drawing.Point(223, 361);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(420, 60);
+            this.label2.Size = new System.Drawing.Size(444, 40);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Mocht je in de toekomst je wachtwoord toch vergeten, \r\ndan kunnen we een nieuw wa" +
-    "chtwoord voor je instellen d.m.v. \r\neen vraag en een antwoord. Deze mag je zelf " +
-    "verzinnen";
+            this.label2.Text = "Door middel van een vraag en een antwoord kunnen werknemers \r\neen nieuw wachtwoor" +
+    "d instellen";
             // 
             // labelVraag
             // 
             this.labelVraag.AutoSize = true;
-            this.labelVraag.Location = new System.Drawing.Point(137, 438);
+            this.labelVraag.Location = new System.Drawing.Point(137, 413);
             this.labelVraag.Name = "labelVraag";
             this.labelVraag.Size = new System.Drawing.Size(50, 20);
             this.labelVraag.TabIndex = 20;
@@ -241,7 +229,7 @@ namespace ChapeauUI
             // labelAntwoord
             // 
             this.labelAntwoord.AutoSize = true;
-            this.labelAntwoord.Location = new System.Drawing.Point(109, 471);
+            this.labelAntwoord.Location = new System.Drawing.Point(109, 446);
             this.labelAntwoord.Name = "labelAntwoord";
             this.labelAntwoord.Size = new System.Drawing.Size(78, 20);
             this.labelAntwoord.TabIndex = 21;
@@ -249,14 +237,14 @@ namespace ChapeauUI
             // 
             // textBoxRegisterQuestion
             // 
-            this.textBoxRegisterQuestion.Location = new System.Drawing.Point(223, 438);
+            this.textBoxRegisterQuestion.Location = new System.Drawing.Point(223, 413);
             this.textBoxRegisterQuestion.Name = "textBoxRegisterQuestion";
             this.textBoxRegisterQuestion.Size = new System.Drawing.Size(256, 27);
             this.textBoxRegisterQuestion.TabIndex = 22;
             // 
             // textBoxRegisterAnswer
             // 
-            this.textBoxRegisterAnswer.Location = new System.Drawing.Point(223, 471);
+            this.textBoxRegisterAnswer.Location = new System.Drawing.Point(223, 446);
             this.textBoxRegisterAnswer.Name = "textBoxRegisterAnswer";
             this.textBoxRegisterAnswer.Size = new System.Drawing.Size(256, 27);
             this.textBoxRegisterAnswer.TabIndex = 23;
@@ -282,7 +270,7 @@ namespace ChapeauUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 714);
+            this.ClientSize = new System.Drawing.Size(706, 672);
             this.Controls.Add(this.dateTimePickerDateOfBirth);
             this.Controls.Add(this.labelGeboorte);
             this.Controls.Add(this.textBoxRegisterAnswer);
@@ -299,7 +287,6 @@ namespace ChapeauUI
             this.Controls.Add(this.textBoxRegisterEmail);
             this.Controls.Add(this.textBoxRegisterLastname);
             this.Controls.Add(this.textBoxRegisterFirstname);
-            this.Controls.Add(this.labelComboniatie);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.labelRegisterPinRepeat);
             this.Controls.Add(this.labelRegisterPin);
@@ -325,7 +312,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Label labelRegisterPin;
         private System.Windows.Forms.Label labelRegisterPinRepeat;
         private System.Windows.Forms.Button buttonRegister;
-        private System.Windows.Forms.Label labelComboniatie;
         private System.Windows.Forms.TextBox textBoxRegisterFirstname;
         private System.Windows.Forms.TextBox textBoxRegisterLastname;
         private System.Windows.Forms.TextBox textBoxRegisterEmail;

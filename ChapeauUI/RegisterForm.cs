@@ -25,9 +25,8 @@ namespace ChapeauUI
         private void buttonBackToInlog_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
-            Login loginForm = new Login();
-            loginForm.ShowDialog();
+            OwnerForm ownerForm = new OwnerForm();
+            ownerForm.ShowDialog();
             this.Close();
         }
 
@@ -49,13 +48,13 @@ namespace ChapeauUI
                 {
                     FirstName = textBoxRegisterFirstname.Text,
                     LastName = textBoxRegisterLastname.Text,
-                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest, 
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest,
                     Category = (EmployeeCategory)comboBoxRegisterJob.SelectedIndex,
                     DateOfBirth = dateTimePickerDateOfBirth.Value,
                     Email = textBoxRegisterEmail.Text,
                     PhoneNumber = textBoxRegisterPhoneNumber.Text,
-                    Question = textBoxRegisterQuestion.Text, // eventueel .ToLower()?
-                    Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest
+                    Question = textBoxRegisterQuestion.Text,
+                    Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest.ToLower()
                 };
 
                 RegisterService registerService = new RegisterService();
@@ -69,14 +68,13 @@ namespace ChapeauUI
 
         private bool RegisterCheckMethod() 
         {
-            // eventueel omzetten naar false. Aanroepmethode moet dan !RegisterCheckMethod() worden. 
             bool registerCheck = true;
             string firstname = textBoxRegisterFirstname.Text;
             string lastname = textBoxRegisterLastname.Text;
             string email = textBoxRegisterEmail.Text;
             string phoneNumber = textBoxRegisterPhoneNumber.Text;
             int jobType = comboBoxRegisterJob.SelectedIndex;
-            string PIN =  textBoxRegisterPIN.Text; // dit moet als HashSaltResult, hoe?
+            string PIN =  textBoxRegisterPIN.Text; 
             string PINRepeat = textBoxRegisterPINRepeat.Text;
             string question = textBoxRegisterQuestion.Text;
             string answer = textBoxRegisterAnswer.Text;
@@ -101,16 +99,16 @@ namespace ChapeauUI
                 {
                     textBoxRegisterPINRepeat.Clear();
                     throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");                    
-                }
-                // als ik hier een false in gooi dan kom ik nooit in true. 
+                } 
             }
             catch (ChapeauException chapeau)
             {
                 MessageBox.Show(chapeau.Message);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // normale exceptions besteed voor de logger.
+                ErrorLogger.WriteLogToFile(exception);
+                MessageBox.Show(exception.Message);
             }
             return registerCheck;
         }
