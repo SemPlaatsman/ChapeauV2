@@ -8,7 +8,7 @@ using ChapeauDAO;
 
 namespace ChapeauLogica
 {
-    public class ReceiptService
+    public class ReceiptService : ReceiptDAO
     {
         private ReceiptDAO receiptDAO;
 
@@ -21,6 +21,10 @@ namespace ChapeauLogica
         {
             List<Receipt> orders = receiptDAO.Order(TableId);
             return orders;
+        }
+        public string GetHost(int TableId)
+        {
+            return receiptDAO.Host(TableId);
         }
     }
 }

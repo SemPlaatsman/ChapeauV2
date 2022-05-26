@@ -17,7 +17,7 @@ namespace ChapeauUI
     public partial class TableForm : Form
     {
         private int TableId;
-        public TableForm(int TableId)
+        public TableForm(int TableId) // Table table. Hele object meegeven, want minder werk. 
         {
             this.TableId = TableId;
             InitializeComponent();
@@ -60,6 +60,10 @@ namespace ChapeauUI
 
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
         {
+            // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked. 
+            // Komt vanuit een andere form, hoe ga ik dit doen... 
+
+
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 

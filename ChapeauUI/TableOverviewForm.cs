@@ -14,38 +14,13 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee Employee; // toevoegen in de constructor later. 
+        private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
+        TableService tableService = new TableService();
         private List<Table> tables;
         public TableOverviewForm()
         {
             InitializeComponent();
-            AssignTables();
             //this.Employee = employee;
-        }
-        //public int selectedTable = 0;
-
-        private void buttonTable1_Click(object sender, EventArgs e)
-        {
-            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
-            // als bezet is, dan buttonTable1.BackColor = Color.Red;
-            //int TableId = 1;
-            //TableForm tableForm = new TableForm(TableId);
-            //tableForm.ShowDialog();
-            //this.Close();
-
-            //buttonTable1.BackColor = Color.Red;
-        }
-
-        private void buttonTable2_Click(object sender, EventArgs e)
-        {
-            // pop up met; hoeveel gasten komen hier zitten? koppelen met database 
-            // als bezet is, dan buttonTable2.BackColor = Color.Red;
-            //int TableId = 2;
-            //TableForm tableForm = new TableForm(TableId);
-            //tableForm.ShowDialog();
-            //this.Close();
-
-            //buttonTable1.BackColor = Color.Red;
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
@@ -60,6 +35,7 @@ namespace ChapeauUI
         {
             //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
             int tableID = ((Table)((Button)sender).Tag).TableID;
+            // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
             TableForm tableForm = new TableForm(tableID);
@@ -81,7 +57,6 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
-
         }
 
         private void AssignTag(Control control)
@@ -96,5 +71,43 @@ namespace ChapeauUI
                 }
             }
         }
+
+        private void TableOverviewForm_Load(object sender, EventArgs e)
+        {
+            // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            AssignTables();
+            // kleur veranderen afhankelijk van IsOccupied
+            SetColor();
+        }
+
+        private void SetColor() 
+        {
+            foreach (Control control in this.Controls)
+            {
+                Table table = null;
+                //als een Control een Button is en niet de uitlog-button is, voeg dan aan die button de TableClick event toe en assign een tag
+                if (control.GetType() == typeof(Button) && control != buttonUitloggen)
+                {
+                    table = (Table)control.Tag;
+                    ChangeColor(control, table);
+                }
+            }
+        }
+
+        private void ChangeColor(Control control, Table table) 
+        {
+            if (!table.IsOccupied)
+            {
+                control.BackColor = Color.Green;
+                // checkboxes koppelen hierin. 
+            }
+            else
+            {
+                control.BackColor = Color.Red;
+            }
+        }
+
+        // methode met iets van een checkbox maken zodat gemakkelijk bepaald kan worden of het bezet is of niet. 
+        // hierbij gebruik maken van een foreach loop (if !checkbox.Checked => backColor.Green); ofzo....
     }
 }
