@@ -62,16 +62,24 @@ namespace ChapeauUI
         {
             // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked. 
             // Komt vanuit een andere form, hoe ga ik dit doen... 
-
+            TableService tableService = new TableService();
+            Table table = null;
+            
 
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
+                tableService.UpdateTableOccupy(table);
             }
             else
             {
                 // achtergrond kleur default. Groen
+                tableService.UpdateTableOccupy(table);
             }
+
+            // alle tafels updaten? 
+            tableService.GetAllTables();
+
         }
     }
 }

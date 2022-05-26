@@ -22,5 +22,12 @@ namespace ChapeauLogica
             List<Table> tables = tableDAO.GetAllTables();
             return tables;
         }
+
+        public void UpdateTableOccupy(Table table) 
+        {
+            tableDAO.UpdateTableOccupy(table);
+        }
+
+
     }
 }
