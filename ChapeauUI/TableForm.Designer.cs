@@ -37,6 +37,7 @@ namespace ChapeauUI
             this.labelStatus = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.checkBoxTable = new System.Windows.Forms.CheckBox();
+            this.labelCurrentEmployee = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,11 +110,21 @@ namespace ChapeauUI
             this.checkBoxTable.UseVisualStyleBackColor = true;
             this.checkBoxTable.CheckedChanged += new System.EventHandler(this.checkBoxTable_CheckedChanged);
             // 
+            // labelCurrentEmployee
+            // 
+            this.labelCurrentEmployee.AutoSize = true;
+            this.labelCurrentEmployee.Location = new System.Drawing.Point(43, 264);
+            this.labelCurrentEmployee.Name = "labelCurrentEmployee";
+            this.labelCurrentEmployee.Size = new System.Drawing.Size(91, 20);
+            this.labelCurrentEmployee.TabIndex = 8;
+            this.labelCurrentEmployee.Text = "Medewerker";
+            // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 448);
+            this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.labelStatus);
@@ -138,5 +149,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.CheckBox checkBoxTable;
+        private System.Windows.Forms.Label labelCurrentEmployee;
     }
 }
