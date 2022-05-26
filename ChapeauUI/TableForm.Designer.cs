@@ -134,6 +134,7 @@ namespace ChapeauUI
             this.Controls.Add(this.buttonBack);
             this.Name = "TableForm";
             this.Text = "TableForm";
+            this.Load += new System.EventHandler(this.TableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

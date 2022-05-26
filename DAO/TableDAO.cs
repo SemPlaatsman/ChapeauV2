@@ -19,14 +19,19 @@ namespace ChapeauDAO
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void UpdateTableOccupy(Table table) 
+        public void UpdateTableOccupy(Table table, bool isChecked) 
         {
-            string query = "UPDATE ApplicatiebouwChapeau.[Table] SET IsOccupied = @true where IsOccupied = @false;";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@TableID", table.TableID);
 
-            if (table.IsOccupied == false)
+            if (isChecked)
             {
-                query = "UPDATE ApplicatiebouwChapeau.[Table] SET IsOccupied = @false where IsOccupied = @true;";
+                query = "UPDATE ApplicatiebouwChapeau.[Table] SET IsOccupied = 1 where IsOccupied = 0 AND TableID = @TableID;";
+            }
+            else
+            {
+                query = "UPDATE ApplicatiebouwChapeau.[Table] SET IsOccupied = 0 where IsOccupied = 1 AND TableID = @TableID;";
             }
             ExecuteEditQuery(query, sqlParameters);
         }

@@ -23,9 +23,9 @@ namespace ChapeauLogica
             return tables;
         }
 
-        public void UpdateTableOccupy(Table table) 
+        public void UpdateTableOccupy(Table table, bool isChecked) 
         {
-            tableDAO.UpdateTableOccupy(table);
+            tableDAO.UpdateTableOccupy(table, isChecked);
         }
 
 
