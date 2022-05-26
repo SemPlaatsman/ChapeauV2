@@ -14,6 +14,7 @@ namespace ChapeauUI
 {
     public partial class Order : Form
     {
+        List<OrderGerecht> selectedItems;
         public Order(int TableId)
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace ChapeauUI
         private void Order_Load(object sender, EventArgs e)
         {
             panelBestellen.Visible = false;
+            panelItemSelected.Visible = false;
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
             listViewGerechten.Columns.Add("ID", 100);
@@ -133,10 +135,28 @@ namespace ChapeauUI
         {
             panelBestellen.Visible = false;
         }
-
-        private void buttonToevoegen_Click(object sender, EventArgs e)
+        private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //listViewGerechten.SelectedItems;
+            panelItemSelected.Visible = true;
+            labelSelectedItem.Text= listViewGerechten.SelectedItems[0].SubItems[1].Text;
+
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            textBoxRemark.Clear();
+            textBoxAmount.Clear();
+            panelItemSelected.Visible = false;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            selectedItems = new List<OrderGerecht>();
+            if (textBoxAmount.Text == "")
+            {
+                MessageBox.Show("Voeg een aantal toe.");
+            }
+            
         }
     }
 }
