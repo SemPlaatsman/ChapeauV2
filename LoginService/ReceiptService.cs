@@ -22,5 +22,9 @@ namespace ChapeauLogica
             List<Receipt> orders = receiptDAO.Order(TableId);
             return orders;
         }
+        public string GetHost(int TableId)
+        {
+            return receiptDAO.Host(TableId);
+        }
     }
 }
