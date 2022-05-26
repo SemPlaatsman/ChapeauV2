@@ -8,7 +8,7 @@ using ChapeauDAO;
 
 namespace ChapeauLogica
 {
-    public class ReceiptService
+    public class ReceiptService : ReceiptDAO
     {
         private ReceiptDAO receiptDAO;
 
