@@ -22,7 +22,7 @@ namespace ChapeauDAO
         {
             try
             {
-                if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken || conn.State != ConnectionState.Open)
+                if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
                 {
                     conn.Open();
                 }
