@@ -22,5 +22,16 @@ namespace ChapeauLogica
             List<Table> tables = tableDAO.GetAllTables();
             return tables;
         }
+
+        public void UpdateTableOccupy(Table table, bool isChecked) 
+        {
+            tableDAO.UpdateTableOccupy(table, isChecked);
+        }
+
+        public void SetEmployee(Employee employee, Table table) 
+        {
+            tableDAO.SetEmployee(employee, table);
+        }
+
     }
 }

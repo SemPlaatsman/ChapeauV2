@@ -17,10 +17,10 @@ namespace ChapeauUI
         private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
-        public TableOverviewForm()
+        public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
-            //this.Employee = employee;
+            this.employee = employee;
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
@@ -38,11 +38,11 @@ namespace ChapeauUI
             // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
-            TableForm tableForm = new TableForm(tableID);
-            tableForm.ShowDialog();
+            TableForm tableForm = new TableForm(tableID, this, this.employee);
+            tableForm.ShowDialog(); // deze opent 5x ?????????????
         }
 
-        private void AssignTables()
+        public void AssignTables()
         {
             //pak alle Tables die in database staan
             TableService tableService = new TableService();
@@ -57,6 +57,7 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
+            SetColor();
         }
 
         private void AssignTag(Control control)
@@ -80,7 +81,7 @@ namespace ChapeauUI
             SetColor();
         }
 
-        private void SetColor() 
+        public void SetColor()
         {
             foreach (Control control in this.Controls)
             {
@@ -106,8 +107,5 @@ namespace ChapeauUI
                 control.BackColor = Color.Red;
             }
         }
-
-        // methode met iets van een checkbox maken zodat gemakkelijk bepaald kan worden of het bezet is of niet. 
-        // hierbij gebruik maken van een foreach loop (if !checkbox.Checked => backColor.Green); ofzo....
     }
 }
