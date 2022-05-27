@@ -81,7 +81,7 @@ namespace ChapeauUI
             SetColor();
         }
 
-        private void SetColor() 
+        public void SetColor()
         {
             foreach (Control control in this.Controls)
             {
