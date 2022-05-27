@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
@@ -15,10 +16,13 @@ namespace ChapeauUI
         private decimal totalPrice;
         private int tableId;
         private decimal newTotal;
-        public ManualPrice(decimal totalWithBtw, int TableId)
+        private Employee employee;
+       
+        public ManualPrice(decimal totalWithBtw, int TableId, Employee employee)
         {
             InitializeComponent();       
             AfrekenenBtn.Enabled = false;
+            this.employee = employee;
             this.totalPrice = totalWithBtw;
             this.tableId = TableId;
             totalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
@@ -41,7 +45,7 @@ namespace ChapeauUI
             else
             {
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
-                PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal);
+                PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal, this.employee);
                 paymentMethod.ShowDialog();
                 this.Close();
             }

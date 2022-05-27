@@ -28,6 +28,10 @@ namespace ChapeauLogica
             tableDAO.UpdateTableOccupy(table, isChecked);
         }
 
+        public void SetEmployee(Employee employee, Table table) 
+        {
+            tableDAO.SetEmployee(employee, table);
+        }
 
     }
 }
