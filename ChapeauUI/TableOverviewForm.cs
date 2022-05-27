@@ -79,6 +79,7 @@ namespace ChapeauUI
             AssignTables();
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
+            this.timerRefreshOverview.Start();
         }
 
         private void SetColor() 
@@ -106,6 +107,11 @@ namespace ChapeauUI
             {
                 control.BackColor = Color.Red;
             }
+        }
+
+        private void timerRefreshOverview_Tick(object sender, EventArgs e)
+        {
+            AssignTables();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableOverviewForm));
             this.labelTable1 = new System.Windows.Forms.Label();
             this.labelTable2 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace ChapeauUI
             this.buttonTable9 = new System.Windows.Forms.Button();
             this.buttonTable10 = new System.Windows.Forms.Button();
             this.buttonUitloggen = new System.Windows.Forms.Button();
+            this.timerRefreshOverview = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // labelTable1
@@ -266,6 +268,11 @@ namespace ChapeauUI
             this.buttonUitloggen.UseVisualStyleBackColor = false;
             this.buttonUitloggen.Click += new System.EventHandler(this.buttonUitloggen_Click);
             // 
+            // timerRefreshOverview
+            // 
+            this.timerRefreshOverview.Interval = 3000;
+            this.timerRefreshOverview.Tick += new System.EventHandler(this.timerRefreshOverview_Tick);
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -322,5 +329,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonTable9;
         private System.Windows.Forms.Button buttonTable10;
         private System.Windows.Forms.Button buttonUitloggen;
+        private System.Windows.Forms.Timer timerRefreshOverview;
     }
 }
