@@ -16,14 +16,14 @@ namespace ChapeauUI
 {
     public partial class CheckoutForm : Form
     {
-        private int tableId;
+        private Table tableId;
         private decimal newTotal;
         private Employee employee;
-        public CheckoutForm(int TableId, Employee employee)
+        public CheckoutForm(Table TableId, Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
-            tableId = TableId;
+            this.tableId = TableId;
             this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
@@ -88,7 +88,7 @@ namespace ChapeauUI
         //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {            
-            PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal, employee);
+            PaymentMethod paymentMethod = new PaymentMethod(this.tableId, newTotal, employee);
             paymentMethod.ShowDialog();            
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
@@ -96,7 +96,7 @@ namespace ChapeauUI
         {
             try
             {
-                ManualPrice manualPrice = new ManualPrice(totalWithBtw, tableId, this.employee);
+                ManualPrice manualPrice = new ManualPrice(totalWithBtw, this.tableId, this.employee);
                 manualPrice.ShowDialog();            
             }
             catch (Exception ex)

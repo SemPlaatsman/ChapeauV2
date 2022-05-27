@@ -14,11 +14,11 @@ namespace ChapeauUI
     public partial class ManualPrice : Form
     {
         private decimal totalPrice;
-        private int tableId;
+        private Table tableId;
         private decimal newTotal;
         private Employee employee;
        
-        public ManualPrice(decimal totalWithBtw, int TableId, Employee employee)
+        public ManualPrice(decimal totalWithBtw, Table TableId, Employee employee)
         {
             InitializeComponent();       
             AfrekenenBtn.Enabled = false;
@@ -45,7 +45,7 @@ namespace ChapeauUI
             else
             {
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
-                PaymentMethod paymentMethod = new PaymentMethod(tableId, newTotal, this.employee);
+                PaymentMethod paymentMethod = new PaymentMethod(this.tableId, newTotal, this.employee);
                 paymentMethod.ShowDialog();
                 this.Close();
             }

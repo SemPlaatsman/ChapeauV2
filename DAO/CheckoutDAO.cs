@@ -11,7 +11,7 @@ namespace ChapeauDAO
 {
     public class CheckoutDAO : BaseDao
     {
-        public List<Checkout> Order(int TableId)
+        public List<Checkout> Order(Table TableId)
         {
             try
             {                
