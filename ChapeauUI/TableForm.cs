@@ -16,31 +16,30 @@ namespace ChapeauUI
 {
     public partial class TableForm : Form
     {
-        private int TableId;
+        private Table table;
         private TableOverviewForm overviewForm;
         private Employee employee;
-        public TableForm(int TableId, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
+        private Employee employeeConnectedToTable;
+        private EmployeeService employeeService;
+        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
         {
+            this.employeeService = new EmployeeService();
+            this.employeeConnectedToTable = employeeService.GetEmployee(table);
             this.overviewForm = overviewForm;
-            this.TableId = TableId;
+            this.table = table;
             this.employee = employee;
             InitializeComponent();
-            this.Text += $" for Table {TableId}";
+            this.Text += $" for Table {table}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm(TableId, this.employee);
+            CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
             checkoutForm.ShowDialog();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            // HIJ BLIJFT MAAR OPENEN!!!!
-
             this.Close();
-/*            TableOverviewForm form = new TableOverviewForm();
-            form.ShowDialog();
-            this.Hide();*/
         }
 
         private void buttonNewOrder_Click(object sender, EventArgs e)
@@ -49,55 +48,51 @@ namespace ChapeauUI
             List<Table> tables = orderService.tables();
             foreach (Table table in tables) 
             {
-                if (table.TableID == TableId)
+                if (this.table.TableID == table.TableID)
                 {
                     if (!table.IsOccupied)
                     {
-                        orderService.InsertNewOrder(TableId);
-                        orderService.AlterTables(TableId);
+                        orderService.InsertNewOrder(table);
+                        orderService.AlterTables(table);
                     }
                 }
             }
             this.Hide();
-            Order order = new Order(TableId, employee);  
+            Order order = new Order(table, employee);  
             order.ShowDialog();
             this.Close();
         }
 
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
         {
-            // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked.  
             TableService tableService = new TableService();
             Table table = null;
            
-            // employee koppelen aan een tafel, om te zien en bijhouden wie de bestelling opneemt. (firstName, employeeID) als geheel object meegeven.
-            Employee employee = null;
-            EmployeeService employeeService = new EmployeeService();
-            
-
             // Dit later omzetten naar Table Object. 
             List<Table> tables = tableService.GetAllTables();
-            table = tables.Find(x => x.TableID == this.TableId);
-
+            table = tables.Find(x => x.TableID == this.table.TableID);
 
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
                 tableService.UpdateTableOccupy(table, true);
                 tableService.SetEmployee(this.employee, table);
-                //this.overviewForm.AssignTables();
+                this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
+                labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
+                // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
                 this.overviewForm.SetColor();
             }
             else
             {
                 // achtergrond kleur default. Groen
                 tableService.UpdateTableOccupy(table, false);
-                //this.overviewForm.AssignTables();
+                labelCurrentEmployee.Text = "Geen medewerker gekoppeld";
                 this.overviewForm.SetColor();
             }
 
             // alle tafels updaten? 
             tableService.GetAllTables();
+
         }
 
         private void TableForm_Load(object sender, EventArgs e)
@@ -106,7 +101,7 @@ namespace ChapeauUI
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
             Table table = null;
-            table = tables.Find(x => x.TableID == this.TableId);
+            table = tables.Find(x => x.TableID == this.table.TableID);
 
             if (table.IsOccupied)
             {
