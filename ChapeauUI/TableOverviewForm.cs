@@ -82,7 +82,7 @@ namespace ChapeauUI
             this.timerRefreshOverview.Start();
         }
 
-        private void SetColor() 
+        public void SetColor()
         {
             foreach (Control control in this.Controls)
             {

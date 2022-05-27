@@ -85,13 +85,15 @@ namespace ChapeauUI
                 // achtergrond kleur moet naar rood. 
                 tableService.UpdateTableOccupy(table, true);
                 tableService.SetEmployee(this.employee, table);
-                this.overviewForm.AssignTables();
+                //this.overviewForm.AssignTables();
+                this.overviewForm.SetColor();
             }
             else
             {
                 // achtergrond kleur default. Groen
                 tableService.UpdateTableOccupy(table, false);
-                this.overviewForm.AssignTables();
+                //this.overviewForm.AssignTables();
+                this.overviewForm.SetColor();
             }
 
             // alle tafels updaten? 
