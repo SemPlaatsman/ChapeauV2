@@ -36,6 +36,7 @@
             this.buttonBestel = new System.Windows.Forms.Button();
             this.panelBestellen = new System.Windows.Forms.Panel();
             this.panelItemSelected = new System.Windows.Forms.Panel();
+            this.labelErrorMessage = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxRemark = new System.Windows.Forms.TextBox();
@@ -50,8 +51,20 @@
             this.labelZoeken = new System.Windows.Forms.Label();
             this.textBoxZoeken = new System.Windows.Forms.TextBox();
             this.buttonTerugBestelling = new System.Windows.Forms.Button();
+            this.buttonViewOrder = new System.Windows.Forms.Button();
+            this.panelViewOrder = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
+            this.buttonPlus = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listViewViewOrder = new System.Windows.Forms.ListView();
             this.panelBestellen.SuspendLayout();
             this.panelItemSelected.SuspendLayout();
+            this.panelViewOrder.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTerug
@@ -69,7 +82,7 @@
             this.buttonVoorgerecht.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonVoorgerecht.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonVoorgerecht.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVoorgerecht.Location = new System.Drawing.Point(12, 90);
+            this.buttonVoorgerecht.Location = new System.Drawing.Point(12, 58);
             this.buttonVoorgerecht.Name = "buttonVoorgerecht";
             this.buttonVoorgerecht.Size = new System.Drawing.Size(498, 111);
             this.buttonVoorgerecht.TabIndex = 1;
@@ -81,7 +94,7 @@
             // buttonHoofdgerecht
             // 
             this.buttonHoofdgerecht.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonHoofdgerecht.Location = new System.Drawing.Point(12, 207);
+            this.buttonHoofdgerecht.Location = new System.Drawing.Point(12, 175);
             this.buttonHoofdgerecht.Name = "buttonHoofdgerecht";
             this.buttonHoofdgerecht.Size = new System.Drawing.Size(498, 111);
             this.buttonHoofdgerecht.TabIndex = 2;
@@ -93,7 +106,7 @@
             // buttonNagerecht
             // 
             this.buttonNagerecht.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonNagerecht.Location = new System.Drawing.Point(12, 324);
+            this.buttonNagerecht.Location = new System.Drawing.Point(12, 292);
             this.buttonNagerecht.Name = "buttonNagerecht";
             this.buttonNagerecht.Size = new System.Drawing.Size(498, 111);
             this.buttonNagerecht.TabIndex = 3;
@@ -105,7 +118,7 @@
             // buttonDrankjes
             // 
             this.buttonDrankjes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonDrankjes.Location = new System.Drawing.Point(12, 441);
+            this.buttonDrankjes.Location = new System.Drawing.Point(12, 409);
             this.buttonDrankjes.Name = "buttonDrankjes";
             this.buttonDrankjes.Size = new System.Drawing.Size(498, 111);
             this.buttonDrankjes.TabIndex = 4;
@@ -134,6 +147,7 @@
             this.panelBestellen.Controls.Add(this.labelZoeken);
             this.panelBestellen.Controls.Add(this.textBoxZoeken);
             this.panelBestellen.Controls.Add(this.buttonTerugBestelling);
+            this.panelBestellen.Controls.Add(this.buttonViewOrder);
             this.panelBestellen.Location = new System.Drawing.Point(0, -1);
             this.panelBestellen.Name = "panelBestellen";
             this.panelBestellen.Size = new System.Drawing.Size(522, 641);
@@ -141,6 +155,7 @@
             // 
             // panelItemSelected
             // 
+            this.panelItemSelected.Controls.Add(this.labelErrorMessage);
             this.panelItemSelected.Controls.Add(this.buttonAdd);
             this.panelItemSelected.Controls.Add(this.buttonCancel);
             this.panelItemSelected.Controls.Add(this.textBoxRemark);
@@ -154,6 +169,15 @@
             this.panelItemSelected.Name = "panelItemSelected";
             this.panelItemSelected.Size = new System.Drawing.Size(353, 294);
             this.panelItemSelected.TabIndex = 8;
+            // 
+            // labelErrorMessage
+            // 
+            this.labelErrorMessage.AutoSize = true;
+            this.labelErrorMessage.Location = new System.Drawing.Point(8, 87);
+            this.labelErrorMessage.Name = "labelErrorMessage";
+            this.labelErrorMessage.Size = new System.Drawing.Size(12, 15);
+            this.labelErrorMessage.TabIndex = 9;
+            this.labelErrorMessage.Text = "-";
             // 
             // buttonAdd
             // 
@@ -209,7 +233,6 @@
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(23, 23);
             this.textBoxAmount.TabIndex = 3;
-            this.textBoxAmount.Text = "1";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelAmount
@@ -290,11 +313,124 @@
             this.buttonTerugBestelling.UseVisualStyleBackColor = true;
             this.buttonTerugBestelling.Click += new System.EventHandler(this.buttonTerugBestelling_Click);
             // 
+            // buttonViewOrder
+            // 
+            this.buttonViewOrder.Location = new System.Drawing.Point(36, 532);
+            this.buttonViewOrder.Name = "buttonViewOrder";
+            this.buttonViewOrder.Size = new System.Drawing.Size(169, 32);
+            this.buttonViewOrder.TabIndex = 7;
+            this.buttonViewOrder.Text = "Bekijk opgenomen items";
+            this.buttonViewOrder.UseVisualStyleBackColor = true;
+            this.buttonViewOrder.Click += new System.EventHandler(this.buttonViewOrder_Click);
+            // 
+            // panelViewOrder
+            // 
+            this.panelViewOrder.Controls.Add(this.listViewViewOrder);
+            this.panelViewOrder.Controls.Add(this.label6);
+            this.panelViewOrder.Controls.Add(this.label5);
+            this.panelViewOrder.Controls.Add(this.button2);
+            this.panelViewOrder.Controls.Add(this.textBox1);
+            this.panelViewOrder.Controls.Add(this.buttonPlus);
+            this.panelViewOrder.Controls.Add(this.buttonMinus);
+            this.panelViewOrder.Controls.Add(this.button1);
+            this.panelViewOrder.Controls.Add(this.label4);
+            this.panelViewOrder.Location = new System.Drawing.Point(0, 0);
+            this.panelViewOrder.Name = "panelViewOrder";
+            this.panelViewOrder.Size = new System.Drawing.Size(522, 641);
+            this.panelViewOrder.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(138, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 37);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Geselecteerde items:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 27);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Terug";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // buttonMinus
+            // 
+            this.buttonMinus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonMinus.Location = new System.Drawing.Point(31, 495);
+            this.buttonMinus.Name = "buttonMinus";
+            this.buttonMinus.Size = new System.Drawing.Size(75, 51);
+            this.buttonMinus.TabIndex = 3;
+            this.buttonMinus.Text = "-";
+            this.buttonMinus.UseVisualStyleBackColor = true;
+            // 
+            // buttonPlus
+            // 
+            this.buttonPlus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPlus.Location = new System.Drawing.Point(166, 495);
+            this.buttonPlus.Name = "buttonPlus";
+            this.buttonPlus.Size = new System.Drawing.Size(75, 51);
+            this.buttonPlus.TabIndex = 4;
+            this.buttonPlus.Text = "+";
+            this.buttonPlus.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(290, 448);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(219, 142);
+            this.textBox1.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(352, 597);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 31);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Voeg toe";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(290, 425);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Opmerking:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(31, 425);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 21);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Aantal:";
+            // 
+            // listViewViewOrder
+            // 
+            this.listViewViewOrder.HideSelection = false;
+            this.listViewViewOrder.Location = new System.Drawing.Point(12, 49);
+            this.listViewViewOrder.Name = "listViewViewOrder";
+            this.listViewViewOrder.Size = new System.Drawing.Size(497, 373);
+            this.listViewViewOrder.TabIndex = 9;
+            this.listViewViewOrder.UseCompatibleStateImageBehavior = false;
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
+            this.Controls.Add(this.panelViewOrder);
             this.Controls.Add(this.panelBestellen);
             this.Controls.Add(this.buttonBestel);
             this.Controls.Add(this.buttonDrankjes);
@@ -309,6 +445,8 @@
             this.panelBestellen.PerformLayout();
             this.panelItemSelected.ResumeLayout(false);
             this.panelItemSelected.PerformLayout();
+            this.panelViewOrder.ResumeLayout(false);
+            this.panelViewOrder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +475,17 @@
         private System.Windows.Forms.Label labelAmount;
         private System.Windows.Forms.Label labelSelectedItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelErrorMessage;
+        private System.Windows.Forms.Button buttonViewOrder;
+        private System.Windows.Forms.Panel panelViewOrder;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonPlus;
+        private System.Windows.Forms.Button buttonMinus;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListView listViewViewOrder;
     }
 }

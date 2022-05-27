@@ -26,7 +26,7 @@ namespace ChapeauUI
             newTotal = NewTotal;
             this.employee = employee;
         }
-        private string betaalMethode;
+        private string paymentMethod;
         
         //ReceiptForm receipt = new ReceiptForm();
 
@@ -38,8 +38,10 @@ namespace ChapeauUI
 
         private void ContantBtn_Click(object sender, EventArgs e)
         {
+
             betaalMethode = "Contant";
             ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
             
@@ -47,16 +49,20 @@ namespace ChapeauUI
 
         private void PinBtn_Click(object sender, EventArgs e)
         {
+
             betaalMethode = "Pin";
             ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
         }
 
         private void CreditCardBtn_Click(object sender, EventArgs e)
         {
+
             betaalMethode = "CreditCard";
             ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
         }
