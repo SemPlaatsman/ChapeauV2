@@ -17,8 +17,10 @@ namespace ChapeauUI
     public partial class TableForm : Form
     {
         private int TableId;
-        public TableForm(int TableId) // Table table. Hele object meegeven, want minder werk. 
+        private TableOverviewForm overviewForm;
+        public TableForm(int TableId, TableOverviewForm overviewForm) // Table table. Hele object meegeven, want minder werk. 
         {
+            this.overviewForm = overviewForm;
             this.TableId = TableId;
             InitializeComponent();
             this.Text += $" for Table {TableId}";
@@ -32,9 +34,6 @@ namespace ChapeauUI
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
-            //TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            //tableOverviewForm.ShowDialog();
-            //this.Close();
         }
 
         private void buttonNewOrder_Click(object sender, EventArgs e)
@@ -62,16 +61,49 @@ namespace ChapeauUI
         {
             // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked. 
             // Komt vanuit een andere form, hoe ga ik dit doen... 
+            TableService tableService = new TableService();
+            Table table = null;
 
+
+            // Dit later omzetten naar Table Object. 
+            List<Table> tables = tableService.GetAllTables();
+            table = tables.Find(x => x.TableID == this.TableId);            
+            
 
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
+                tableService.UpdateTableOccupy(table, true);
+                this.overviewForm.AssignTables();
             }
             else
             {
                 // achtergrond kleur default. Groen
+                tableService.UpdateTableOccupy(table, false);
+                this.overviewForm.AssignTables();
             }
+
+            // alle tafels updaten? 
+            tableService.GetAllTables();
+        }
+
+        private void TableForm_Load(object sender, EventArgs e)
+        {
+            TableService tableService = new TableService();
+            tableService.GetAllTables();
+            List<Table> tables = tableService.GetAllTables();
+            Table table = null;
+            table = tables.Find(x => x.TableID == this.TableId);
+
+            if (table.IsOccupied)
+            {
+                checkBoxTable.Checked = true;
+            }
+            else
+            {
+                checkBoxTable.Checked = false;
+            }
+
         }
     }
 }
