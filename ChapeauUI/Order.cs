@@ -15,7 +15,6 @@ namespace ChapeauUI
     public partial class Order : Form
     {
         private List<OrderGerecht> selectedItems;
-        public Order(int TableId)
         private Employee employee;
 
         public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen

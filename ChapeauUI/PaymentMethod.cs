@@ -39,8 +39,8 @@ namespace ChapeauUI
         private void ContantBtn_Click(object sender, EventArgs e)
         {
 
-            betaalMethode = "Contant";
-            ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+            paymentMethod = "Contant";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();
@@ -50,8 +50,8 @@ namespace ChapeauUI
         private void PinBtn_Click(object sender, EventArgs e)
         {
 
-            betaalMethode = "Pin";
-            ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+            paymentMethod = "Pin";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();
@@ -60,8 +60,8 @@ namespace ChapeauUI
         private void CreditCardBtn_Click(object sender, EventArgs e)
         {
 
-            betaalMethode = "CreditCard";
-            ReceiptForm receiptForm = new ReceiptForm(betaalMethode, this.tableId.TableID, newTotal, this.employee);
+            paymentMethod = "CreditCard";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();
