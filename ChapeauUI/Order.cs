@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class Order : Form
     {
-        List<OrderGerecht> selectedItems;
+        private List<OrderGerecht> selectedItems;
         public Order(int TableId)
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace ChapeauUI
         {
             panelBestellen.Visible = false;
             panelItemSelected.Visible = false;
+            panelViewOrder.Visible = false; 
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
             listViewGerechten.Columns.Add("ID", 100);
@@ -137,9 +138,14 @@ namespace ChapeauUI
         }
         private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
+            textBoxAmount.Text = "1";
+            labelErrorMessage.Text = "";
+            if (listViewGerechten.SelectedItems.Count == 0)
+            {
+                return;
+            }
             panelItemSelected.Visible = true;
             labelSelectedItem.Text= listViewGerechten.SelectedItems[0].SubItems[1].Text;
-
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -151,12 +157,34 @@ namespace ChapeauUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            labelErrorMessage.Text = "";
             selectedItems = new List<OrderGerecht>();
-            if (textBoxAmount.Text == "")
+            int amount = int.Parse(textBoxAmount.Text);
+            if (amount < 1)
             {
-                MessageBox.Show("Voeg een aantal toe.");
+                labelErrorMessage.ForeColor = Color.Red;
+                labelErrorMessage.Text = "Aantal kan niet onder de 1 zijn.";
+            }
+            else
+            {
+                OrderGerecht gerecht = new OrderGerecht();
+                gerecht.OrderGerechtId = int.Parse(listViewGerechten.SelectedItems[0].Text);
+                //gerecht.OrderId = 
+                gerecht.Status = OrderStatus.MoetNog;
+                gerecht.TimeOfOrder = DateTime.Now;
+                gerecht.Remark = textBoxRemark.Text;
+                selectedItems = new List<OrderGerecht>();
+                for (int i = 0; i < amount; i++)
+                {
+                    selectedItems.Add(gerecht);
+                }
             }
             
+        }
+
+        private void buttonViewOrder_Click(object sender, EventArgs e)
+        {
+            panelViewOrder.Visible = true;
         }
     }
 }
