@@ -19,12 +19,13 @@ namespace ChapeauUI
         private string betaalMethode;
         private int tableId;
         private decimal newTotal;
-        public ReceiptForm(string betaalMethode, int tableId, decimal newTotal)
+        public ReceiptForm(string betaalMethode, int tableId, decimal newTotal, Employee employee)
         {
             InitializeComponent();
             this.betaalMethode = betaalMethode; //enum toepassen.  Engels en NL door elkaar? 
             this.tableId = tableId;
             this.newTotal = newTotal;
+            this.employee = employee;
             FillReceipt();
         }
         private decimal totalPrice = 0;
@@ -32,7 +33,7 @@ namespace ChapeauUI
         private decimal btwTotaal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
-        private string employee;
+        private Employee employee;
 
         ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
@@ -132,7 +133,7 @@ namespace ChapeauUI
         {
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
             this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);
             tableOverviewForm.ShowDialog();
             this.Close();
 
