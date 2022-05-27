@@ -18,21 +18,25 @@ namespace ChapeauUI
     {
         private int TableId;
         private TableOverviewForm overviewForm;
-        public TableForm(int TableId, TableOverviewForm overviewForm) // Table table. Hele object meegeven, want minder werk. 
+        private Employee employee;
+        public TableForm(int TableId, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
         {
             this.overviewForm = overviewForm;
             this.TableId = TableId;
+            this.employee = employee;
             InitializeComponent();
             this.Text += $" for Table {TableId}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm(TableId);
+            CheckoutForm checkoutForm = new CheckoutForm(TableId, this.employee);
             checkoutForm.ShowDialog();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // HIJ BLIJFT MAAR OPENEN!!!!
+
             this.Close();
 /*            TableOverviewForm form = new TableOverviewForm();
             form.ShowDialog();
@@ -55,28 +59,32 @@ namespace ChapeauUI
                 }
             }
             this.Hide();
-            Order order = new Order(TableId);  
+            Order order = new Order(TableId, employee);  
             order.ShowDialog();
             this.Close();
         }
 
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
         {
-            // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked. 
-            // Komt vanuit een andere form, hoe ga ik dit doen... 
+            // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked.  
             TableService tableService = new TableService();
             Table table = null;
-
+           
+            // employee koppelen aan een tafel, om te zien en bijhouden wie de bestelling opneemt. (firstName, employeeID) als geheel object meegeven.
+            Employee employee = null;
+            EmployeeService employeeService = new EmployeeService();
+            
 
             // Dit later omzetten naar Table Object. 
             List<Table> tables = tableService.GetAllTables();
-            table = tables.Find(x => x.TableID == this.TableId);            
-            
+            table = tables.Find(x => x.TableID == this.TableId);
+
 
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
                 tableService.UpdateTableOccupy(table, true);
+                tableService.SetEmployee(this.employee, table);
                 this.overviewForm.AssignTables();
             }
             else
@@ -106,7 +114,6 @@ namespace ChapeauUI
             {
                 checkBoxTable.Checked = false;
             }
-
         }
     }
 }

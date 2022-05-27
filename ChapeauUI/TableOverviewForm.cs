@@ -17,10 +17,10 @@ namespace ChapeauUI
         private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
-        public TableOverviewForm()
+        public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
-            //this.Employee = employee;
+            this.employee = employee;
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace ChapeauUI
             // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
-            TableForm tableForm = new TableForm(tableID, this);
+            TableForm tableForm = new TableForm(tableID, this, this.employee);
             tableForm.ShowDialog(); // deze opent 5x ?????????????
         }
 
