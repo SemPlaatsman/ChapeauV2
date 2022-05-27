@@ -25,9 +25,7 @@ namespace ChapeauUI
             this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
-        private decimal totalPrice = 0;
-        private decimal btwTotaal = 0;
-        private decimal btwItem = 0;
+        private decimal totalPrice = 0;        
         private decimal totalWithBtw = 0;
 
         private void ShowListView()
@@ -49,35 +47,10 @@ namespace ChapeauUI
                 li.SubItems.Add(string.Format($"{Convert.ToDecimal(order.Price):0.00}"));
                 li.Tag = order;
                 rekeningListView.Items.Add(li);                
-                totalPrice += order.Price * order.Quantity;                
-
-                if (order.IsAlcoholic)
-                {
-                    btwItem = CheckBtwHigh(order.Price);
-                    btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem;
-                }
-                if (!order.IsAlcoholic)
-                {
-                    btwItem = CheckBtwLow(order.Price);
-                    btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem;
-                }
+                totalPrice += order.Price * order.Quantity;                   
             }
-
-            totalWithBtw = totalPrice + btwTotaal;
-            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalWithBtw):0.00}");
+            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
         }
-
-        private decimal CheckBtwHigh(decimal price)
-        {
-            return price * 0.21M;
-        }
-        private decimal CheckBtwLow(decimal price)
-        {
-            return price * 0.09M;
-        }
-        
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)
         {            
@@ -94,7 +67,7 @@ namespace ChapeauUI
         {
             try
             {
-                ManualPrice manualPrice = new ManualPrice(totalWithBtw, tableId);
+                ManualPrice manualPrice = new ManualPrice(totalPrice, tableId);
                 manualPrice.ShowDialog();            
             }
             catch (Exception ex)
