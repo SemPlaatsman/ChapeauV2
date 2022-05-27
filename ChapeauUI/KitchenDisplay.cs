@@ -29,6 +29,7 @@ namespace ChapeauUI
         
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show($"{((int)OrderStatus.MeeBezig - 1)}");
             //KitchenService kitchenService = new KitchenService();
             //List<KitchenOrderOverview> kitchenOrderOverviews = kitchenService.GetKitchenOverviews();
 
@@ -50,8 +51,8 @@ namespace ChapeauUI
 
             dataGridViewMoetNog.Columns[0].Width = 57;
             dataGridViewMoetNog.Columns[1].Width = 72;
-            dataGridViewMoetNog.Columns[2].Width = 480;
-            dataGridViewMoetNog.Columns[3].Width = 94;
+            dataGridViewMoetNog.Columns[2].Width = 435;
+            dataGridViewMoetNog.Columns[3].Width = 83;
 
             foreach (KitchenOrderOverview kitchenOverview in kitchenOrderOverviews)
             {
@@ -93,6 +94,14 @@ namespace ChapeauUI
                 list += $"{kvp.Key} : {kvp.Value}x\n";
             }
             return list;
+        }
+
+        private void dataGridViewMoetNog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+
+            }
         }
     }
 }

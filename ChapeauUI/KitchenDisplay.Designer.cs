@@ -42,7 +42,7 @@ namespace ChapeauUI
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(41, 124);
+            this.button1.Location = new System.Drawing.Point(221, 672);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -55,13 +55,13 @@ namespace ChapeauUI
             this.listViewMeeBezig.HideSelection = false;
             this.listViewMeeBezig.Location = new System.Drawing.Point(866, 12);
             this.listViewMeeBezig.Name = "listViewMeeBezig";
-            this.listViewMeeBezig.Size = new System.Drawing.Size(706, 612);
+            this.listViewMeeBezig.Size = new System.Drawing.Size(650, 612);
             this.listViewMeeBezig.TabIndex = 2;
             this.listViewMeeBezig.UseCompatibleStateImageBehavior = false;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 652);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(146, 83);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -77,8 +77,9 @@ namespace ChapeauUI
             this.dataGridViewMoetNog.Location = new System.Drawing.Point(154, 12);
             this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
             this.dataGridViewMoetNog.RowTemplate.Height = 25;
-            this.dataGridViewMoetNog.Size = new System.Drawing.Size(706, 612);
+            this.dataGridViewMoetNog.Size = new System.Drawing.Size(650, 612);
             this.dataGridViewMoetNog.TabIndex = 3;
+            this.dataGridViewMoetNog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMoetNog_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -96,13 +97,14 @@ namespace ChapeauUI
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Bestellingen";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 496;
+            this.dataGridViewTextBoxColumn3.Width = 458;
             // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.HeaderText = "Verwerk";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
             this.dataGridViewButtonColumn1.Text = "";
+            this.dataGridViewButtonColumn1.Width = 80;
             // 
             // KitchenDisplay
             // 

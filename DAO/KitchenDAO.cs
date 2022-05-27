@@ -11,8 +11,30 @@ namespace ChapeauDAO
 {
     public class KitchenDAO : BaseDao
     {
+        private void PushLateOrders()
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET[Status] = 0 WHERE OrderGerechtId IN (SELECT OG1.OrderGerechtId " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG1 " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M1 ON M1.ProductID = OG1.ItemId " +
+                "WHERE OG1.[Status] IS NULL AND OrderID IN (SELECT DISTINCT OG2.OrderId " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG2 " +
+                "WHERE OG2.[Status] = 0 AND OG2.[Status] IS NOT NULL) " +
+                "AND M1.[Type] IN (SELECT M3.[Type] " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG3 " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M3 ON M3.ProductID = OG3.ItemId " +
+                "WHERE OG3.OrderId = OG1.OrderId AND OG3.[Status] = 0 AND OG3.[Status] IS NOT NULL) " +
+                "AND M1.[Type] != @typeOfDrink); ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            ///sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         public List<KitchenOrderOverview> GetKitchenOverviews()
         {
+            PushLateOrders();
+
             string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
@@ -24,6 +46,7 @@ namespace ChapeauDAO
                 "WHERE (OG2.[Status] = 0 OR OG2.[Status] IS NULL) AND M2.[Type] != @typeOfDrink); ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
