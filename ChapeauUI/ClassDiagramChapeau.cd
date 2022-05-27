@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapeauDAO.BarDAO">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.BaseDao">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.CheckoutDAO">
+    <Position X="13.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.EmployeeDAO">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.KitchenDAO">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.LoginDAO">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.MenuItemDAO">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.OrderDAO">
+    <Position X="22.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.OrderGerechtDAO">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.ReceiptDAO">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.RegisterDAO">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauDAO.TableDAO">
+    <Position X="25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.BarService">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.CheckoutService">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.EmployeeService">
+    <Position X="20.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.KitchenService">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.LoginService">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.MenuItemService">
+    <Position X="16" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.OrderGerechtService">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.OrderService">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.PasswordService">
+    <Position X="8" Y="9.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.RegisterService">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.TableService">
+    <Position X="25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.BarOrderOverview">
+    <Position X="25" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.Checkout">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.Employee">
+    <Position X="20.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Category" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauModel.KitchenOrderOverview">
+    <Position X="22.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.MenuItem">
+    <Position X="16" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="Type" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauModel.OrderGerecht">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="MenuItem" />
+      <Field Name="Status" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ChapeauModel.Password">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.Receipt">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauLogica.ReceiptService">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.Table">
+    <Position X="25.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.Order">
+    <Position X="23" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.EmployeeCategory">
+    <Position X="20.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.OrderStatus">
+    <Position X="13.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChapeauModel.TypeOfProduct">
+    <Position X="15.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

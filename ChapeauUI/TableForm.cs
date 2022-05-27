@@ -17,24 +17,30 @@ namespace ChapeauUI
     public partial class TableForm : Form
     {
         private int TableId;
-        public TableForm(int TableId) // Table table. Hele object meegeven, want minder werk. 
+        private TableOverviewForm overviewForm;
+        private Employee employee;
+        public TableForm(int TableId, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
         {
+            this.overviewForm = overviewForm;
             this.TableId = TableId;
+            this.employee = employee;
             InitializeComponent();
             this.Text += $" for Table {TableId}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm(TableId);
+            CheckoutForm checkoutForm = new CheckoutForm(TableId, this.employee);
             checkoutForm.ShowDialog();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // HIJ BLIJFT MAAR OPENEN!!!!
+
             this.Close();
-            //TableOverviewForm tableOverviewForm = new TableOverviewForm();
-            //tableOverviewForm.ShowDialog();
-            //this.Close();
+/*            TableOverviewForm form = new TableOverviewForm();
+            form.ShowDialog();
+            this.Hide();*/
         }
 
         private void buttonNewOrder_Click(object sender, EventArgs e)
@@ -53,20 +59,62 @@ namespace ChapeauUI
                 }
             }
             this.Hide();
-            Order order = new Order(TableId);  
+            Order order = new Order(TableId, employee);  
             order.ShowDialog();
             this.Close();
         }
 
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
         {
+            // Hierin wil ik Table object meegeven. Als ifOccupied = true, dan checkbox.Checked.  
+            TableService tableService = new TableService();
+            Table table = null;
+           
+            // employee koppelen aan een tafel, om te zien en bijhouden wie de bestelling opneemt. (firstName, employeeID) als geheel object meegeven.
+            Employee employee = null;
+            EmployeeService employeeService = new EmployeeService();
+            
+
+            // Dit later omzetten naar Table Object. 
+            List<Table> tables = tableService.GetAllTables();
+            table = tables.Find(x => x.TableID == this.TableId);
+
+
             if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
+                tableService.UpdateTableOccupy(table, true);
+                tableService.SetEmployee(this.employee, table);
+                //this.overviewForm.AssignTables();
+                this.overviewForm.SetColor();
             }
             else
             {
                 // achtergrond kleur default. Groen
+                tableService.UpdateTableOccupy(table, false);
+                //this.overviewForm.AssignTables();
+                this.overviewForm.SetColor();
+            }
+
+            // alle tafels updaten? 
+            tableService.GetAllTables();
+        }
+
+        private void TableForm_Load(object sender, EventArgs e)
+        {
+            TableService tableService = new TableService();
+            tableService.GetAllTables();
+            List<Table> tables = tableService.GetAllTables();
+            Table table = null;
+            table = tables.Find(x => x.TableID == this.TableId);
+
+            if (table.IsOccupied)
+            {
+                checkBoxTable.Checked = true;
+            }
+            else
+            {
+                checkBoxTable.Checked = false;
             }
         }
     }

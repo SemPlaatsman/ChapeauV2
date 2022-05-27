@@ -14,15 +14,14 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee employee; // toevoegen in de constructor later. 
+        private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
-        public TableOverviewForm()
+        public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
-            //this.Employee = employee;
+            this.employee = employee;
         }
-        //public int selectedTable = 0;
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
         {
@@ -36,13 +35,14 @@ namespace ChapeauUI
         {
             //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
             int tableID = ((Table)((Button)sender).Tag).TableID;
+            // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
-            TableForm tableForm = new TableForm(tableID);
-            tableForm.ShowDialog();
+            TableForm tableForm = new TableForm(tableID, this, this.employee);
+            tableForm.ShowDialog(); // deze opent 5x ?????????????
         }
 
-        private void AssignTables()
+        public void AssignTables()
         {
             //pak alle Tables die in database staan
             TableService tableService = new TableService();
@@ -57,7 +57,7 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
-
+            SetColor();
         }
 
         private void AssignTag(Control control)
@@ -75,13 +75,13 @@ namespace ChapeauUI
 
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
-            // soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
             AssignTables();
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
         }
 
-        private void SetColor() 
+        public void SetColor()
         {
             foreach (Control control in this.Controls)
             {
@@ -100,6 +100,7 @@ namespace ChapeauUI
             if (!table.IsOccupied)
             {
                 control.BackColor = Color.Green;
+                // checkboxes koppelen hierin. 
             }
             else
             {

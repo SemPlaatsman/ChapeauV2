@@ -42,22 +42,55 @@ namespace ChapeauModel
             }
         }
 
-        public void ResolveConflicts()
+        public List<OrderGerecht> GetNextOrderList()
         {
-            if (HeeftMeeBezigStatus(Voorgerechten))
-                VeranderNaarMeeBezig(Voorgerechten);
-
-            if (HeeftMeeBezigStatus(Tussengerechten))
-                VeranderNaarMeeBezig(Tussengerechten);
-
-            if (HeeftMeeBezigStatus(Hoofdgerechten))
-                VeranderNaarMeeBezig(Hoofdgerechten);
-
-            if (HeeftMeeBezigStatus(Nagerechten))
-                VeranderNaarMeeBezig(Nagerechten);
+            if (Voorgerechten.Count != 0 && ListNotCompleted(Voorgerechten))
+            {
+                return Voorgerechten;
+            }
+            else if (Tussengerechten.Count != 0 && ListNotCompleted(Tussengerechten))
+            {
+                return Tussengerechten;
+            }
+            else if (Hoofdgerechten.Count != 0 && ListNotCompleted(Hoofdgerechten))
+            {
+                return Hoofdgerechten;
+            }
+            else if (Nagerechten.Count != 0 && ListNotCompleted(Nagerechten))
+            {
+                return Nagerechten;
+            }
+            return new List<OrderGerecht>();
         }
 
-        private bool HeeftMeeBezigStatus(List<OrderGerecht> gerechten)
+        public bool ListNotCompleted(List<OrderGerecht> gerechten)
+        {
+            foreach (OrderGerecht gerecht in gerechten)
+            {
+                if (gerecht.Status != OrderStatus.Klaar)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void ResolveConflicts()
+        {
+            if (HasMeeBezigStatus(Voorgerechten))
+                ChangeToMeeBezig(Voorgerechten);
+
+            if (HasMeeBezigStatus(Tussengerechten))
+                ChangeToMeeBezig(Tussengerechten);
+
+            if (HasMeeBezigStatus(Hoofdgerechten))
+                ChangeToMeeBezig(Hoofdgerechten);
+
+            if (HasMeeBezigStatus(Nagerechten))
+                ChangeToMeeBezig(Nagerechten);
+        }
+
+        private bool HasMeeBezigStatus(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht orderGerecht in gerechten)
                 if (orderGerecht.Status == OrderStatus.MeeBezig)
@@ -66,7 +99,7 @@ namespace ChapeauModel
             return false;
         }
 
-        private void VeranderNaarMeeBezig(List<OrderGerecht> gerechten)
+        private void ChangeToMeeBezig(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht orderGerecht in gerechten)
                 if (orderGerecht.Status == OrderStatus.MoetNog)

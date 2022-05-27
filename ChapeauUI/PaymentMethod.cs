@@ -18,11 +18,13 @@ namespace ChapeauUI
     {
         private int tableId;
         private decimal newTotal;
-        public PaymentMethod(int TableId, decimal NewTotal)
+        private Employee employee;
+        public PaymentMethod(int TableId, decimal NewTotal, Employee employee)
         {
             InitializeComponent();
             tableId = TableId;
             newTotal = NewTotal;
+            this.employee = employee;
         }
         private string paymentMethod;
         
@@ -36,8 +38,10 @@ namespace ChapeauUI
 
         private void ContantBtn_Click(object sender, EventArgs e)
         {
-            paymentMethod = "Contant";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal);
+
+            betaalMethode = "Contant";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
             
@@ -45,16 +49,20 @@ namespace ChapeauUI
 
         private void PinBtn_Click(object sender, EventArgs e)
         {
-            paymentMethod = "Pin";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal);
+
+            betaalMethode = "Pin";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
         }
 
         private void CreditCardBtn_Click(object sender, EventArgs e)
         {
-            paymentMethod = "CreditCard";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal);
+
+            betaalMethode = "CreditCard";
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, tableId, newTotal, this.employee);
+
             receiptForm.ShowDialog();
             this.Close();
         }
