@@ -17,7 +17,7 @@ namespace ChapeauLogica
             checkoutDAO = new CheckoutDAO();
         }
 
-        public List<Checkout> GetOrderList(int TableId)
+        public List<Checkout> GetOrderList(Table TableId)
         {
             List<Checkout> orders = checkoutDAO.Order(TableId);
             return orders;
