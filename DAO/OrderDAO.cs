@@ -11,13 +11,13 @@ namespace ChapeauDAO
 {
     public class OrderDAO : BaseDao
     {
-        public void InsertOrder(int TableID)
+        public void InsertOrder(Table TableID)
         {
             try
             {
                 string query = $"INSERT INTO [ApplicatiebouwChapeau].[Order] (TableID) VALUES (@TableID)";
                 SqlParameter[] sql = new SqlParameter[1];
-                sql[0] = new SqlParameter("@TableID", TableID);
+                sql[0] = new SqlParameter("@TableID", TableID.TableID);
                 ExecuteEditQuery(query, sql);
             }
             catch (Exception e)
@@ -62,13 +62,13 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
-        public void AlterTables(int tableID)
+        public void AlterTables(Table tableID)
         {
             try
             {
                 string query = $"Update [ApplicatiebouwChapeau].[Table] set IsOccupied = 1 where TableID = @TableID";
                 SqlParameter[] sqlParameter = new SqlParameter[1];
-                sqlParameter[0] = new SqlParameter("@TableID", tableID);
+                sqlParameter[0] = new SqlParameter("@TableID", tableID.TableID);
                 ExecuteEditQuery(query, sqlParameter);
             }
             catch(Exception e)

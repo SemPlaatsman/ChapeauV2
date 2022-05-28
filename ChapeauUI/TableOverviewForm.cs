@@ -34,11 +34,11 @@ namespace ChapeauUI
         private void TableClick(object sender, EventArgs e) 
         {
             //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
-            int tableID = ((Table)((Button)sender).Tag).TableID;
+            Table table = ((Table)((Button)sender).Tag);
             // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
             //maak een nieuwe TableForm en geef het bijbehorende tableID mee
-            TableForm tableForm = new TableForm(tableID, this, this.employee);
+            TableForm tableForm = new TableForm(table, this, this.employee);
             tableForm.ShowDialog(); // deze opent 5x ?????????????
         }
 
@@ -53,8 +53,24 @@ namespace ChapeauUI
                 //als een Control een Button is en niet de uitlog-button is, voeg dan aan die button de TableClick event toe en assign een tag
                 if (control.GetType() == typeof(Button) && control != buttonUitloggen)
                 {
-                    control.Click += TableClick;
                     AssignTag(control);
+                }
+            }
+            SetColor();
+        }
+
+        private void AssignEvent() 
+        {
+            //pak alle Tables die in database staan
+            TableService tableService = new TableService();
+            tables = tableService.GetAllTables();
+
+            foreach (Control control in this.Controls)
+            {
+                //als een Control een Button is en niet de uitlog-button is, voeg dan aan die button de TableClick event toe en assign een tag
+                if (control.GetType() == typeof(Button) && control != buttonUitloggen)
+                {
+                    control.Click += TableClick;
                 }
             }
             SetColor();
@@ -77,8 +93,10 @@ namespace ChapeauUI
         {
             // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
             AssignTables();
+            AssignEvent();
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
+            this.timerRefreshOverview.Start();
         }
 
         public void SetColor()
@@ -99,13 +117,17 @@ namespace ChapeauUI
         {
             if (!table.IsOccupied)
             {
-                control.BackColor = Color.Green;
-                // checkboxes koppelen hierin. 
+                control.BackColor = Color.LightGreen;
             }
             else
             {
                 control.BackColor = Color.Red;
             }
+        }
+
+        private void timerRefreshOverview_Tick(object sender, EventArgs e)
+        {
+            AssignTables();
         }
     }
 }

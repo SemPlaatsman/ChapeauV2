@@ -20,11 +20,11 @@ namespace ChapeauLogica
             List<Table> tables = orderDAO.GetAllTables();
             return tables;
         }
-        public void InsertNewOrder(int TableID)
+        public void InsertNewOrder(Table TableID)
         {
             orderDAO.InsertOrder(TableID);
         }
-        public void AlterTables(int tableId)
+        public void AlterTables(Table tableId)
         {
             orderDAO.AlterTables(tableId);
         }

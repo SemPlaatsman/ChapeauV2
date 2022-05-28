@@ -22,5 +22,11 @@ namespace ChapeauLogica
             List<Employee> employees = employeedb.GetAllEmployees();
             return employees;
         }
+
+        public Employee GetEmployee(Table table) 
+        {
+            Employee employee = employeedb.GetEmployee(table);
+            return employee; 
+        }
     }
 }
