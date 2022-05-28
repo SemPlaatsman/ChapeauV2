@@ -26,6 +26,8 @@ namespace ChapeauUI
             dataGridViewMoetNog.RowHeadersVisible = false;
             dataGridViewMoetNog.ReadOnly = true;
             dataGridViewMoetNog.Columns[3].ReadOnly = false;
+            dataGridViewMoetNog.BackgroundColor = SystemColors.Control;
+            dataGridViewMoetNog.BorderStyle = BorderStyle.None;
 
             flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
             flowLayoutMeeBezig.AutoScroll = true;
@@ -45,12 +47,18 @@ namespace ChapeauUI
 
             dataGridViewMoetNog.Columns[0].Width = 57;
             dataGridViewMoetNog.Columns[1].Width = 72;
-            dataGridViewMoetNog.Columns[2].Width = 435;
-            dataGridViewMoetNog.Columns[3].Width = 83;
+            dataGridViewMoetNog.Columns[2].Width = 425;
+            dataGridViewMoetNog.Columns[3].Width = 75;
 
             foreach (KitchenOrderOverview kitchenOverview in kitchenOrderOverviews)
             {
-                List<OrderGerecht> gerechten = kitchenOverview.GetNextOrderList();
+                List<OrderGerecht> gerechten = kitchenOverview.GetNextMeeBezigList();
+                if (gerechten.Count > 0)
+                {
+                    AddToMeeBezigLayout(kitchenOverview);
+                    continue;
+                }
+                gerechten = kitchenOverview.GetNextMoetNogList();
                 if (gerechten.Count > 0)
                 {
                     DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
@@ -93,29 +101,69 @@ namespace ChapeauUI
 
         private void AddToMeeBezigLayout(KitchenOrderOverview kitchenOrderOverview)
         {
+            List<OrderGerecht> gerechten = kitchenOrderOverview.GetNextMeeBezigList();
+
             Label orderLabel = new Label();
             orderLabel.Text = $"Order {kitchenOrderOverview.OrderId} voor tafel {kitchenOrderOverview.TableId}";
             orderLabel.Visible = true;
             orderLabel.AutoSize = true;
-            orderLabel.Font = new Font("Arial", 12);
+            orderLabel.Font = new Font("Segoe UI", 12);
             this.Controls.Add(orderLabel);
             flowLayoutMeeBezig.Controls.Add(orderLabel);
-            
+
             DataGridView dataGridView = new DataGridView();
 
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn());
+            DataGridViewTextBoxColumn txtBoxColumn = new DataGridViewTextBoxColumn();
+            txtBoxColumn.HeaderText = "Bestelling";
+            txtBoxColumn.Width = 491;
+            dataGridView.Columns.Add(txtBoxColumn);
 
-            dataGridView.Columns.Add(new DataGridViewButtonColumn());
-            dataGridView.Columns[0].HeaderText = "Done";
-            dataGridView.Columns[0].Width = 100;
+            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
+            buttonColumn.HeaderText = "Klaar?";
+            buttonColumn.Width = 87;
+            dataGridView.Columns.Add(buttonColumn);
 
-            dataGridView.Width = 644;
-            dataGridView.Height = CalculateDataGridViewHeight(dataGridView);
+            dataGridView.Width = 582;
             dataGridView.Visible = true;
             dataGridView.ReadOnly = true;
+            dataGridView.Columns[1].ReadOnly = false;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView.CellContentClick += dataGridViewsMeeBezig_CellContentClick;
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.BackgroundColor = SystemColors.Control;
+            dataGridView.Tag = kitchenOrderOverview;
             this.Controls.Add(dataGridView);
             flowLayoutMeeBezig.Controls.Add(dataGridView);
+
+            
+            foreach (OrderGerecht orderGerecht in gerechten)
+            {
+                DataGridViewRow row = (DataGridViewRow)dataGridView.Rows[0].Clone();
+                row.Cells[0].Value = orderGerecht.MenuItem.ProductName;
+                if (!string.IsNullOrEmpty(orderGerecht.Remark))
+                {
+                    row.Cells[0].Value += $" ({orderGerecht.Remark})";
+                }
+
+                DataGridViewButtonCell buttonCell = new DataGridViewButtonCell();
+                buttonCell.FlatStyle = FlatStyle.Popup;
+                if (orderGerecht.Status == OrderStatus.Klaar)
+                {
+                    buttonCell.Style.BackColor = Color.MediumSpringGreen;
+                    buttonCell.Value = "Klaar";
+                }
+                else
+                {
+                    buttonCell.Style.BackColor = Color.OrangeRed;
+                    buttonCell.Value = "Moet nog";
+                }
+                row.Cells[1] = buttonCell;
+                row.Tag = orderGerecht;
+                dataGridView.Rows.Add(row);
+            }
+            dataGridView.Height = CalculateDataGridViewHeight(dataGridView);
         }
 
         private void dataGridViewsMeeBezig_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -146,7 +194,7 @@ namespace ChapeauUI
                 //MessageBox.Show(test);
                 //TODO: verander status naar mee bezig
                 //TODO: reload lists
-                AddToMeeBezigLayout((KitchenOrderOverview)dataGridViewMoetNog.Rows[e.RowIndex].Tag);
+                //AddToMeeBezigLayout((KitchenOrderOverview)dataGridViewMoetNog.Rows[e.RowIndex].Tag);
             }
         }
     }
