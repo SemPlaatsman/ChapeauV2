@@ -42,37 +42,91 @@ namespace ChapeauModel
             }
         }
 
-        public List<OrderGerecht> GetNextOrderList()
+        public List<OrderGerecht> GetNextMoetNogList()
         {
-            if (Voorgerechten.Count != 0 && ListNotCompleted(Voorgerechten))
+            if (Voorgerechten.Count != 0 && !ListHasMeeBezig(Voorgerechten) && !ListCompleted(Voorgerechten))
             {
                 return Voorgerechten;
             }
-            else if (Tussengerechten.Count != 0 && ListNotCompleted(Tussengerechten))
+            else if (Tussengerechten.Count != 0 && !ListHasMeeBezig(Tussengerechten) && !ListCompleted(Tussengerechten))
             {
                 return Tussengerechten;
             }
-            else if (Hoofdgerechten.Count != 0 && ListNotCompleted(Hoofdgerechten))
+            else if (Hoofdgerechten.Count != 0 && !ListHasMeeBezig(Hoofdgerechten) && !ListCompleted(Hoofdgerechten))
             {
                 return Hoofdgerechten;
             }
-            else if (Nagerechten.Count != 0 && ListNotCompleted(Nagerechten))
+            else if (Nagerechten.Count != 0 && !ListHasMeeBezig(Nagerechten) && !ListCompleted(Nagerechten))
             {
                 return Nagerechten;
             }
             return new List<OrderGerecht>();
         }
 
-        public bool ListNotCompleted(List<OrderGerecht> gerechten)
+        public List<OrderGerecht> GetNextMeeBezigList()
+        {
+            if (Voorgerechten.Count != 0 && ListHasMeeBezig(Voorgerechten))
+            {
+                return Voorgerechten;
+            }
+            else if (Tussengerechten.Count != 0 && ListHasMeeBezig(Tussengerechten))
+            {
+                return Tussengerechten;
+            }
+            else if (Hoofdgerechten.Count != 0 && ListHasMeeBezig(Hoofdgerechten))
+            {
+                return Hoofdgerechten;
+            }
+            else if (Nagerechten.Count != 0 && ListHasMeeBezig(Nagerechten))
+            {
+                return Nagerechten;
+            }
+            return new List<OrderGerecht>();
+        }
+
+        public List<OrderGerecht> GetNextKlaarList()
+        {
+            if (Voorgerechten.Count != 0 && ListCompleted(Voorgerechten))
+            {
+                return Voorgerechten;
+            }
+            else if (Tussengerechten.Count != 0 && ListCompleted(Tussengerechten))
+            {
+                return Tussengerechten;
+            }
+            else if (Hoofdgerechten.Count != 0 && ListCompleted(Hoofdgerechten))
+            {
+                return Hoofdgerechten;
+            }
+            else if (Nagerechten.Count != 0 && ListCompleted(Nagerechten))
+            {
+                return Nagerechten;
+            }
+            return new List<OrderGerecht>();
+        }
+
+        public bool ListHasMeeBezig(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
             {
-                if (gerecht.Status != OrderStatus.Klaar)
+                if (gerecht.Status == OrderStatus.MeeBezig)
                 {
                     return true;
                 }
             }
             return false;
+        }
+
+        public bool ListCompleted(List<OrderGerecht> gerechten)
+        {
+            foreach (OrderGerecht gerecht in gerechten)
+            {
+                if (gerecht.Status != OrderStatus.Klaar)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public void ResolveConflicts()
