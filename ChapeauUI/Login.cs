@@ -93,7 +93,7 @@ namespace ChapeauUI
             {
                 case EmployeeCategory.Serveerster:
                     this.Hide();
-                    TableOverviewForm tableOverviewForm = new TableOverviewForm();
+                    TableOverviewForm tableOverviewForm = new TableOverviewForm(employee);
                     tableOverviewForm.ShowDialog();
                     this.Close();
                     break;

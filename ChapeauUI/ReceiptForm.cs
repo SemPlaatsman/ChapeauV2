@@ -16,28 +16,31 @@ namespace ChapeauUI
 {
     public partial class ReceiptForm : Form
     {
-        private string betaalMethode;
+        private string paymentMethod;
         private int tableId;
         private decimal newTotal;
-        public ReceiptForm(string betaalMethode, int tableId, decimal newTotal)
+
+        public ReceiptForm(string paymentMethod, int tableId, decimal newTotal, Employee employee)
+
         {
             InitializeComponent();
-            this.betaalMethode = betaalMethode; //enum toepassen.  Engels en NL door elkaar? 
+            this.paymentMethod = paymentMethod;  
             this.tableId = tableId;
             this.newTotal = newTotal;
+            this.employee = employee;
             FillReceipt();
         }
         private decimal totalPrice = 0;
-        private int totaalItems = 0; // hier weer Engels
-        private decimal btwTotaal = 0;
+        private int totalItems = 0; 
+        private decimal btwTotal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
-        private string employee;
+        private Employee employee;
 
         ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
         {
-            betaalMethodeLbl.Text = betaalMethode;
+            betaalMethodeLbl.Text = paymentMethod;
             datumLbl.Text = DateTime.Now.ToString("g");
 
             //vul de listview
@@ -58,19 +61,19 @@ namespace ChapeauUI
                 li.Tag = order;
                 itemsListBox.Items.Add(li);
                 totalPrice += order.Price * order.Quantity;
-                totaalItems += order.Quantity;
+                totalItems += order.Quantity;
 
                 if(order.IsAlcoholic)
                 {
                     btwItem = CheckBtwHigh(order.Price);
                     btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem; 
+                    btwTotal += btwItem; 
                 }
                 if (!order.IsAlcoholic)
                 {
                     btwItem = CheckBtwLow(order.Price);
                     btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem;
+                    btwTotal += btwItem;
                 }
             }
             FillLabels();
@@ -79,10 +82,11 @@ namespace ChapeauUI
         public void FillLabels()
         {
             //Listview gevuld
-            receiptTotaalArtikelLbl.Text = $"Totaal {totaalItems} artikelen";
-            receiptTotaalArtikelPrijsLbl.Text = $"€{totalPrice.ToString()}";
-            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotaal):0.00}");
-            totalWithBtw = btwTotaal + totalPrice;
+            receiptTotaalArtikelLbl.Text = $"Totaal {totalItems} artikelen";
+            //hier wordt de totale prijs zonder btw getoont.
+            receiptTotaalArtikelPrijsLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
+            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotal):0.00}");
+            totalWithBtw = totalPrice;
             totaalMetBtwLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
             geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(tableId)}";
@@ -123,18 +127,18 @@ namespace ChapeauUI
             this.Close();
         }
 
-        private void OpmerkingBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Opmerking opgeslagen");
-        }
-
         private void UitprintenBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
             this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();
+            TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);
             tableOverviewForm.ShowDialog();
             this.Close();
+
+            if(remarkTextbox.Text != "")
+            {
+                //methide voor remark toevoegen
+            }
 
             //hier moet ik alleen de order nog sluiten
         }

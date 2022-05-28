@@ -16,7 +16,11 @@ namespace ChapeauUI
     {
         private List<OrderGerecht> selectedItems;
         public Order(int TableId)
+        private Employee employee;
+        public Order(int TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+
         {
+            this.employee = employee;
             InitializeComponent();
             
         }
@@ -127,7 +131,7 @@ namespace ChapeauUI
         private void buttonTerug_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm();  
+            TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);  
             tableOverviewForm.ShowDialog();
             this.Close();
         }
