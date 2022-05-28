@@ -138,6 +138,7 @@
             this.buttonBestel.TabIndex = 5;
             this.buttonBestel.Text = "Bestel";
             this.buttonBestel.UseVisualStyleBackColor = true;
+            this.buttonBestel.Click += new System.EventHandler(this.buttonBestel_Click);
             // 
             // panelBestellen
             // 
@@ -405,6 +406,7 @@
             this.buttonMinus.TabIndex = 3;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
             // 
             // button1
             // 
@@ -414,6 +416,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Terug";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -480,13 +483,13 @@
         private System.Windows.Forms.Button buttonViewOrder;
         private System.Windows.Forms.Panel panelViewOrder;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonPlus;
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewViewOrder;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

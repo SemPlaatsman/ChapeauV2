@@ -28,10 +28,6 @@ namespace ChapeauLogica
         {
             orderDAO.AlterTables(tableId);
         }
-        public List<CurrentOrderItem> GetCurrentOrderItems(Table table)
-        {
-            List<CurrentOrderItem> orderItems = orderDAO.GetCurrentOrder(table);
-            return orderItems;
-        }
+       
     }
 }

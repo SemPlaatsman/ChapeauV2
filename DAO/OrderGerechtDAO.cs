@@ -54,7 +54,7 @@ namespace ChapeauDAO
         {
             try
             {
-                string query = "INSERT INTO ApplicatiebouwChapeau.OrderGerecht (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@ItemID, @OrderID, @Status, @TimeOfOrder, @Remark)";
+                string query = "INSERT INTO [ApplicatiebouwChapeau].[OrderGerecht] (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@ItemID, @OrderID, @Status, @TimeOfOrder, @Remark)";
                 SqlParameter[] sql = new SqlParameter[5];
                 sql[0] = new SqlParameter("@ItemID", orderGerecht.MenuItem.ProductId);
                 sql[1] = new SqlParameter("@OrderID", orderGerecht.OrderId);

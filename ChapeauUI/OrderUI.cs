@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class OrderUI : Form
     {
-        private List<OrderGerecht> selectedItems;
+        private List<SelectedItems> selectedItems;
         private Employee employee;
         private Table table;
 
@@ -164,7 +164,7 @@ namespace ChapeauUI
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             labelErrorMessage.Text = "";
-            selectedItems = new List<OrderGerecht>();
+            selectedItems = new List<SelectedItems>();
             int amount = int.Parse(textBoxAmount.Text);
             if (amount < 1)
             {
@@ -179,13 +179,13 @@ namespace ChapeauUI
                 gerecht.Status = OrderStatus.MoetNog;
                 gerecht.TimeOfOrder = DateTime.Now;
                 gerecht.Remark = textBoxRemark.Text;
-                selectedItems = new List<OrderGerecht>();
+                selectedItems = new List<SelectedItems>();
                 for (int i = 0; i < amount; i++)
                 {
                     selectedItems.Add(gerecht);
                 }
+                panelItemSelected.Visible = false;
             }
-            
         }
 
         private void buttonViewOrder_Click(object sender, EventArgs e)
@@ -204,40 +204,51 @@ namespace ChapeauUI
         private void RefreshListView()
         {
             listViewViewOrder.Items.Clear();
-            OrderService orderService = new OrderService();
-            List<CurrentOrderItem> orderItems = new List<CurrentOrderItem>(orderService.GetCurrentOrderItems(table));
-            foreach (CurrentOrderItem orderItem in orderItems)
+            selectedItems = new List<SelectedItems>();
+            MenuItemService menuItemService = new MenuItemService();
+            foreach (OrderGerecht orderitem in selectedItems)
             {
-                ListViewItem li = new ListViewItem(orderItem.ItemId.ToString());
-                li.SubItems.Add(orderItem.ProductName);
-                li.SubItems.Add(orderItem.Quantity.ToString());
-                li.SubItems.Add(string.Format($"{Convert.ToDecimal(orderItem.Price):0.00}"));
-                li.SubItems.Add(orderItem.IsAlcoholic.ToString());
-                li.SubItems.Add(orderItem.Remark);
-                li.Tag = orderItems;
-                listViewViewOrder.Items.Add(li);
+                ListViewItem item = new ListViewItem(orderitem.OrderGerechtId.ToString());
+                item.SubItems.Add(orderitem.OrderId.ToString());
+                item.SubItems.Add(orderitem.Status.ToString());
+                item.SubItems.Add(orderitem.TimeOfOrder.ToString());
+                item.SubItems.Add(orderitem.Remark.ToString());
             }
             
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            OrderGerechtService orderGerechtService = new OrderGerechtService();
-            OrderGerecht orderGerecht = new OrderGerecht();
-            orderGerecht.MenuItem.ProductId = 10;//int.Parse(listViewViewOrder.SelectedItems[0].Text);
-            orderGerecht.OrderId = 26;
-            orderGerecht.Status = OrderStatus.MoetNog;
-            orderGerecht.TimeOfOrder = DateTime.Now;
-            if (listViewViewOrder.SelectedItems[0].SubItems[5].Text == "")
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panelViewOrder.Visible = false;
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            selectedItems = new List<OrderGerecht>();
+            foreach (OrderGerecht o in selectedItems)
             {
-                orderGerecht.Remark = ".";
-            }
-            else
-            {
-                orderGerecht.Remark = listViewViewOrder.SelectedItems[0].SubItems[5].Text;
-            }
-            orderGerechtService.InsertOrderGerecht(orderGerecht);
+                if (o.OrderGerechtId == int.Parse(listViewViewOrder.SelectedItems[0].Text))
+                {
+                    
+                }
+            } 
+           
             RefreshListView();
+        }
+
+        private void buttonBestel_Click(object sender, EventArgs e)
+        {
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
+            selectedItems = new List<OrderGerecht>();
+            foreach (OrderGerecht orderGerecht in selectedItems)
+            {
+                orderGerechtService.InsertOrderGerecht(orderGerecht);
+            }
         }
     }
 }
