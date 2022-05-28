@@ -30,8 +30,7 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.listViewMeeBezig = new System.Windows.Forms.ListView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,21 +49,12 @@ namespace ChapeauUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listViewMeeBezig
+            // flowLayoutMeeBezig
             // 
-            this.listViewMeeBezig.HideSelection = false;
-            this.listViewMeeBezig.Location = new System.Drawing.Point(866, 12);
-            this.listViewMeeBezig.Name = "listViewMeeBezig";
-            this.listViewMeeBezig.Size = new System.Drawing.Size(650, 612);
-            this.listViewMeeBezig.TabIndex = 2;
-            this.listViewMeeBezig.UseCompatibleStateImageBehavior = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 652);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(146, 83);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(668, 12);
+            this.flowLayoutMeeBezig.Name = "flowLayoutMeeBezig";
+            this.flowLayoutMeeBezig.Size = new System.Drawing.Size(650, 612);
+            this.flowLayoutMeeBezig.TabIndex = 1;
             // 
             // dataGridViewMoetNog
             // 
@@ -74,7 +64,7 @@ namespace ChapeauUI
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewButtonColumn1});
-            this.dataGridViewMoetNog.Location = new System.Drawing.Point(154, 12);
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
             this.dataGridViewMoetNog.RowTemplate.Height = 25;
             this.dataGridViewMoetNog.Size = new System.Drawing.Size(650, 612);
@@ -112,8 +102,7 @@ namespace ChapeauUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.dataGridViewMoetNog);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.listViewMeeBezig);
+            this.Controls.Add(this.flowLayoutMeeBezig);
             this.Controls.Add(this.button1);
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
@@ -125,8 +114,7 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listViewMeeBezig;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutMeeBezig;
         private System.Windows.Forms.DataGridView dataGridViewMoetNog;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
