@@ -30,13 +30,15 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.listViewMeeBezig = new System.Windows.Forms.ListView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblMoetNog = new System.Windows.Forms.Label();
+            this.lblMeeBezig = new System.Windows.Forms.Label();
+            this.lblKlaar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,21 +52,12 @@ namespace ChapeauUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listViewMeeBezig
+            // flowLayoutMeeBezig
             // 
-            this.listViewMeeBezig.HideSelection = false;
-            this.listViewMeeBezig.Location = new System.Drawing.Point(866, 12);
-            this.listViewMeeBezig.Name = "listViewMeeBezig";
-            this.listViewMeeBezig.Size = new System.Drawing.Size(650, 612);
-            this.listViewMeeBezig.TabIndex = 2;
-            this.listViewMeeBezig.UseCompatibleStateImageBehavior = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 652);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(146, 83);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(668, 52);
+            this.flowLayoutMeeBezig.Name = "flowLayoutMeeBezig";
+            this.flowLayoutMeeBezig.Size = new System.Drawing.Size(606, 612);
+            this.flowLayoutMeeBezig.TabIndex = 1;
             // 
             // dataGridViewMoetNog
             // 
@@ -74,7 +67,7 @@ namespace ChapeauUI
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewButtonColumn1});
-            this.dataGridViewMoetNog.Location = new System.Drawing.Point(154, 12);
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 52);
             this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
             this.dataGridViewMoetNog.RowTemplate.Height = 25;
             this.dataGridViewMoetNog.Size = new System.Drawing.Size(650, 612);
@@ -106,31 +99,66 @@ namespace ChapeauUI
             this.dataGridViewButtonColumn1.Text = "";
             this.dataGridViewButtonColumn1.Width = 80;
             // 
+            // lblMoetNog
+            // 
+            this.lblMoetNog.AutoSize = true;
+            this.lblMoetNog.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMoetNog.Location = new System.Drawing.Point(12, 9);
+            this.lblMoetNog.Name = "lblMoetNog";
+            this.lblMoetNog.Size = new System.Drawing.Size(140, 37);
+            this.lblMoetNog.TabIndex = 4;
+            this.lblMoetNog.Text = "Moet nog:";
+            // 
+            // lblMeeBezig
+            // 
+            this.lblMeeBezig.AutoSize = true;
+            this.lblMeeBezig.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMeeBezig.Location = new System.Drawing.Point(668, 9);
+            this.lblMeeBezig.Name = "lblMeeBezig";
+            this.lblMeeBezig.Size = new System.Drawing.Size(147, 37);
+            this.lblMeeBezig.TabIndex = 5;
+            this.lblMeeBezig.Text = "Mee bezig:";
+            // 
+            // lblKlaar
+            // 
+            this.lblKlaar.AutoSize = true;
+            this.lblKlaar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblKlaar.Location = new System.Drawing.Point(1280, 9);
+            this.lblKlaar.Name = "lblKlaar";
+            this.lblKlaar.Size = new System.Drawing.Size(83, 37);
+            this.lblKlaar.TabIndex = 6;
+            this.lblKlaar.Text = "Klaar:";
+            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.lblKlaar);
+            this.Controls.Add(this.lblMeeBezig);
+            this.Controls.Add(this.lblMoetNog);
             this.Controls.Add(this.dataGridViewMoetNog);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.listViewMeeBezig);
+            this.Controls.Add(this.flowLayoutMeeBezig);
             this.Controls.Add(this.button1);
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listViewMeeBezig;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutMeeBezig;
         private System.Windows.Forms.DataGridView dataGridViewMoetNog;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.Label lblMoetNog;
+        private System.Windows.Forms.Label lblMeeBezig;
+        private System.Windows.Forms.Label lblKlaar;
     }
 }
