@@ -21,5 +21,10 @@ namespace ChapeauLogica
             List<MenuItem> menuItems = _menuItemDAO.GetAllMenuItems();
             return menuItems;
         }
+        public List<MenuItem> GetMenuItemsFromOrder(Order order)
+        {
+            List<MenuItem> menuItems = _menuItemDAO.GetMenuItemsFromOrder(order);
+            return menuItems;
+        }
     }
 }

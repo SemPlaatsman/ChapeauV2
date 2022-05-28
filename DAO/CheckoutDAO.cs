@@ -29,7 +29,7 @@ namespace ChapeauDAO
                 "ORDER BY O2.OrderID DESC);";
 
                 SqlParameter[] sqlParameters = new SqlParameter[1];
-                sqlParameters[0] = new SqlParameter("@tableId", TableId);
+                sqlParameters[0] = new SqlParameter("@tableId", TableId.TableID);
                 return ReadTables(ExecuteSelectQuery(query, sqlParameters));
             }
             catch (Exception e)

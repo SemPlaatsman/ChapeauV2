@@ -12,14 +12,16 @@ using ChapeauLogica;
 
 namespace ChapeauUI
 {
-    public partial class Order : Form
+    public partial class OrderUI : Form
     {
         private List<OrderGerecht> selectedItems;
         private Employee employee;
+        private Table table;
 
-        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public OrderUI(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
 
         {
+            this.table = TableId;
             this.employee = employee;
             InitializeComponent();
             
@@ -191,15 +193,51 @@ namespace ChapeauUI
             panelViewOrder.Visible = true;
             listViewViewOrder.View = View.Details;
             listViewViewOrder.FullRowSelect = true;
-            listViewViewOrder.Columns.Add("ID", 100);
-            listViewViewOrder.Columns.Add("Name", 100);
-            listViewViewOrder.Columns.Add("Price", 100);
-            listViewViewOrder.Columns.Add("Stock", 100);
+            listViewViewOrder.Columns.Add("Id", 10);
+            listViewViewOrder.Columns.Add("Naam", 100);
+            listViewViewOrder.Columns.Add("Aantal", 100);
+            listViewViewOrder.Columns.Add("Prijs", 100);
             listViewViewOrder.Columns.Add("Alcoholic", 100);
+            listViewViewOrder.Columns.Add("Opmerking", 200);
+            RefreshListView();
         }
-        private void RefreshListView(List<OrderGerecht> selectedItems)
+        private void RefreshListView()
         {
-           
+            listViewViewOrder.Items.Clear();
+            OrderService orderService = new OrderService();
+            List<CurrentOrderItem> orderItems = new List<CurrentOrderItem>(orderService.GetCurrentOrderItems(table));
+            foreach (CurrentOrderItem orderItem in orderItems)
+            {
+                ListViewItem li = new ListViewItem(orderItem.ItemId.ToString());
+                li.SubItems.Add(orderItem.ProductName);
+                li.SubItems.Add(orderItem.Quantity.ToString());
+                li.SubItems.Add(string.Format($"{Convert.ToDecimal(orderItem.Price):0.00}"));
+                li.SubItems.Add(orderItem.IsAlcoholic.ToString());
+                li.SubItems.Add(orderItem.Remark);
+                li.Tag = orderItems;
+                listViewViewOrder.Items.Add(li);
+            }
+            
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
+            OrderGerecht orderGerecht = new OrderGerecht();
+            orderGerecht.MenuItem.ProductId = 10;//int.Parse(listViewViewOrder.SelectedItems[0].Text);
+            orderGerecht.OrderId = 26;
+            orderGerecht.Status = OrderStatus.MoetNog;
+            orderGerecht.TimeOfOrder = DateTime.Now;
+            if (listViewViewOrder.SelectedItems[0].SubItems[5].Text == "")
+            {
+                orderGerecht.Remark = ".";
+            }
+            else
+            {
+                orderGerecht.Remark = listViewViewOrder.SelectedItems[0].SubItems[5].Text;
+            }
+            orderGerechtService.InsertOrderGerecht(orderGerecht);
+            RefreshListView();
         }
     }
 }

@@ -21,7 +21,6 @@ namespace ChapeauDAO
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-
         private List<OrderGerecht> ReadTables(DataTable dataTable)
         {
             List<OrderGerecht> orderGerechten = new List<OrderGerecht>();
@@ -51,16 +50,23 @@ namespace ChapeauDAO
             }
             return orderGerechten;
         }
-        public void InsertOrderGerecht(int itemID, int orderID, bool? status, DateTime timeOfOrder, string remark)
+        public void InsertOrderGerecht(OrderGerecht orderGerecht)
         {
-            string query = "INSERT INTO ApplicatiebouwChapeau.OrderGerecht (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@itemID, @OrderID, @Status, @TimeOfOrder, Remark)";
-            SqlParameter[] sql = new SqlParameter[5];
-            sql[0] = new SqlParameter("@ItemID", itemID);
-            sql[1] = new SqlParameter("@OrderID", orderID);
-            sql[2] = new SqlParameter("@Status", status);
-            sql[3] = new SqlParameter("@TimeOfOrder", timeOfOrder);
-            sql[4] = new SqlParameter("@Remark", remark);
-            ExecuteEditQuery(query, sql);
+            try
+            {
+                string query = "INSERT INTO ApplicatiebouwChapeau.OrderGerecht (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@ItemID, @OrderID, @Status, @TimeOfOrder, @Remark)";
+                SqlParameter[] sql = new SqlParameter[5];
+                sql[0] = new SqlParameter("@ItemID", orderGerecht.MenuItem.ProductId);
+                sql[1] = new SqlParameter("@OrderID", orderGerecht.OrderId);
+                sql[2] = new SqlParameter("@Status", orderGerecht.Status);
+                sql[3] = new SqlParameter("@TimeOfOrder", orderGerecht.TimeOfOrder);
+                sql[4] = new SqlParameter("@Remark", orderGerecht.Remark);
+                ExecuteEditQuery(query, sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Data could not be inserted in the database. please try again" + ex.Message);
+            }
         }
     }
 }

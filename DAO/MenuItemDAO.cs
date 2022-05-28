@@ -26,6 +26,16 @@ namespace ChapeauDAO
                 throw new Exception("Menuitems could not be loaded properly. Please try again " + e.Message);
             }
         }
+        public List<MenuItem> GetMenuItemsFromOrder(Order Order)
+        {
+            string query = "Select [ProductID],[IsDiner],[Type],[ProductName],[Price],[Stock],[IsAlcoholic] " +
+                           "From[ApplicatiebouwChapeau].[MenuItem] as M " +
+                           "Join [ApplicatiebouwChapeau].[OrderGerecht] as O on M.[ProductID] = O.ItemId " +
+                           "Where O.OrderId = @OrderID;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", Order.OrderId);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
         private List<MenuItem> ReadTables(DataTable dataTable)
         {
             try
