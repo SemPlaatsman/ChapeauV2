@@ -27,5 +27,10 @@ namespace ChapeauLogica
         {
             orderGerechtDAO.ChangeStatus(orderGerecht, newStatus);
         }
+
+        public void InsertOrderGerecht(OrderGerecht orderGerecht)
+        {
+            orderGerechtDAO.InsertOrderGerecht(orderGerecht);
+        }
     }
 }
