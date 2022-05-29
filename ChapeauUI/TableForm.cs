@@ -58,7 +58,7 @@ namespace ChapeauUI
                 }
             }
             this.Hide();
-            OrderUI order = new OrderUI(table, employee);  
+            Order order = new Order(table, employee);  
             order.ShowDialog();
             this.Close();
         }

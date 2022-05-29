@@ -12,13 +12,13 @@ using ChapeauLogica;
 
 namespace ChapeauUI
 {
-    public partial class OrderUI : Form
+    public partial class Order : Form
     {
         private List<OrderGerecht> selectedItems;
         private Employee employee;
         private Table table;
 
-        public OrderUI(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
 
         {
             this.table = TableId;
