@@ -35,7 +35,7 @@ namespace ChapeauUI
             this.buttonCheckout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelStatus = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewOrder = new System.Windows.Forms.ListView();
             this.checkBoxTable = new System.Windows.Forms.CheckBox();
             this.labelCurrentEmployee = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -94,15 +94,15 @@ namespace ChapeauUI
             this.labelStatus.TabIndex = 5;
             this.labelStatus.Text = "Status: ";
             // 
-            // listView1
+            // listViewOrder
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(190, 55);
-            this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(197, 206);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewOrder.HideSelection = false;
+            this.listViewOrder.Location = new System.Drawing.Point(190, 55);
+            this.listViewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewOrder.Name = "listViewOrder";
+            this.listViewOrder.Size = new System.Drawing.Size(197, 206);
+            this.listViewOrder.TabIndex = 6;
+            this.listViewOrder.UseCompatibleStateImageBehavior = false;
             // 
             // checkBoxTable
             // 
@@ -132,7 +132,7 @@ namespace ChapeauUI
             this.ClientSize = new System.Drawing.Size(423, 336);
             this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewOrder);
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonCheckout);
@@ -155,7 +155,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonCheckout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelStatus;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewOrder;
         private System.Windows.Forms.CheckBox checkBoxTable;
         private System.Windows.Forms.Label labelCurrentEmployee;
     }

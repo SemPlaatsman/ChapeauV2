@@ -36,7 +36,6 @@ namespace ChapeauDAO
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        // Table table misschien ook nog meegeven. 
         public void SetEmployee(Employee employee, Table table)
         {
             string query = "Update ApplicatiebouwChapeau.[Table] SET [EmployeeID] = @EmployeeID where [TableID] = @TableID;";
@@ -45,6 +44,21 @@ namespace ChapeauDAO
             sqlParameters[1] = new SqlParameter("@TableID", table.TableID);
 
             ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public Table ShowOrder(Order order)
+        {
+            string query = " select OrderGerechtId, ItemId, x.OrderID, [status], TimeOfOrder, Remark, [isServed] from ApplicatiebouwChapeau.[OrderGerecht] as o " +
+                "join [ApplicatiebouwChapeau].[Order] as x on o.OrderId = x.OrderID " +
+                "where x.OrderID = @OrderID AND [IsServed] != 1";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", order.OrderId);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private Table ReadTable(DataTable dataTable)
+        {
+
         }
 
         private List<Table> ReadTables(DataTable dataTable)

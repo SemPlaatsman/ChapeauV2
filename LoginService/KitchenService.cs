@@ -21,5 +21,10 @@ namespace ChapeauLogica
         {
             return kitchenDAO.GetKitchenOverviews();
         }
+
+        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
+        {
+            return kitchenDAO.ReadyToServe(orderGerecht);
+        }
     }
 }

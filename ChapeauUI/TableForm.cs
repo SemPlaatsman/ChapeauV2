@@ -21,7 +21,7 @@ namespace ChapeauUI
         private Employee employee;
         private Employee employeeConnectedToTable;
         private EmployeeService employeeService;
-        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
+        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) 
         {
             this.employeeService = new EmployeeService();
             this.employeeConnectedToTable = employeeService.GetEmployee(table);
@@ -42,6 +42,16 @@ namespace ChapeauUI
             this.Close();
         }
 
+        private void ShowListView() 
+        {
+            // iets nodig om te items te showen die georderd zijn op deze tafel. 
+
+
+            listViewOrder.View = View.Details;
+            listViewOrder.Columns.Add("Naam", 150);
+            listViewOrder.Columns.Add("Status", 80);
+        
+        }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
             OrderService orderService = new OrderService();
@@ -97,6 +107,7 @@ namespace ChapeauUI
 
         private void TableForm_Load(object sender, EventArgs e)
         {
+            ShowListView();
             TableService tableService = new TableService();
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
@@ -112,5 +123,6 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
+
     }
 }
