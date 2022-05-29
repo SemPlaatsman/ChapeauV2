@@ -132,6 +132,9 @@ namespace ChapeauUI
             AssignTables();
 /*            if (this.KitchenOrderOverview.ListCompleted(orderGerecht))
             {
+                order ophalen uit DB van foreach table table in tables.
+                per order, status bekijken. 
+                if status == 1, dan gereed. 
                 
             }*/
         }
