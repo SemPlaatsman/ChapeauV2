@@ -33,7 +33,7 @@ namespace ChapeauDAO
                            "Join [ApplicatiebouwChapeau].[OrderGerecht] as O on M.[ProductID] = O.ItemId " +
                            "Where O.ItemId = @OrderGerechtID;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@OrderGerechtID", orderGerecht);
+            sqlParameters[0] = new SqlParameter("@OrderGerechtID", orderGerecht.OrderGerechtId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
         private List<MenuItem> ReadTables(DataTable dataTable)
