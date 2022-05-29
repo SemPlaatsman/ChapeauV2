@@ -16,10 +16,12 @@ namespace ChapeauUI
     {
         private List<OrderGerecht> selectedItems;
         private Employee employee;
+        private Table table;
 
-        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public Order(Table TableId, Employee employee) 
 
         {
+            this.table = TableId;
             this.employee = employee;
             InitializeComponent();
             
@@ -128,6 +130,8 @@ namespace ChapeauUI
             }
         }
 
+
+
         private void buttonTerug_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -135,11 +139,15 @@ namespace ChapeauUI
             tableOverviewForm.ShowDialog();
             this.Close();
         }
-
         private void buttonTerugBestelling_Click(object sender, EventArgs e)
         {
             panelBestellen.Visible = false;
         }
+
+
+
+
+
         private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxAmount.Text = "1";
@@ -172,18 +180,18 @@ namespace ChapeauUI
             else
             {
                 OrderGerecht gerecht = new OrderGerecht();
-                gerecht.OrderGerechtId = int.Parse(listViewGerechten.SelectedItems[0].Text);
+                gerecht.MenuItem.ProductId = ((MenuItem)listViewGerechten.SelectedItems[0].Tag).ProductId;
                 //gerecht.OrderId = 
                 gerecht.Status = OrderStatus.MoetNog;
                 gerecht.TimeOfOrder = DateTime.Now;
                 gerecht.Remark = textBoxRemark.Text;
-                selectedItems = new List<OrderGerecht>();
                 for (int i = 0; i < amount; i++)
                 {
                     selectedItems.Add(gerecht);
                 }
+                panelItemSelected.Visible = false;
+                RefreshListView(selectedItems);
             }
-            
         }
 
         private void buttonViewOrder_Click(object sender, EventArgs e)
@@ -191,15 +199,70 @@ namespace ChapeauUI
             panelViewOrder.Visible = true;
             listViewViewOrder.View = View.Details;
             listViewViewOrder.FullRowSelect = true;
-            listViewViewOrder.Columns.Add("ID", 100);
-            listViewViewOrder.Columns.Add("Name", 100);
-            listViewViewOrder.Columns.Add("Price", 100);
-            listViewViewOrder.Columns.Add("Stock", 100);
+            listViewViewOrder.Columns.Add("Id", 50);
+            listViewViewOrder.Columns.Add("Naam", 100);
+            listViewViewOrder.Columns.Add("Prijs", 100);
             listViewViewOrder.Columns.Add("Alcoholic", 100);
+            listViewViewOrder.Columns.Add("Opmerking", 200);
+            
         }
         private void RefreshListView(List<OrderGerecht> selectedItems)
         {
+            MenuItemService menuItemService = new MenuItemService();
+            foreach (OrderGerecht O in selectedItems)
+            {
+                List<MenuItem> menuItems = menuItemService.GetMenuItemsFromOrder(O);
+                MenuItem menuItem = menuItems.FirstOrDefault();
+                ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
+                item.SubItems.Add(menuItem.ProductName);
+                item.SubItems.Add(menuItem.Price.ToString());
+                item.SubItems.Add(menuItem.IsAlcoholic.ToString());
+                item.SubItems.Add(O.Remark.ToString());
+                listViewViewOrder.Items.Add(item);
+            }
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panelViewOrder.Visible = false;
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            selectedItems = new List<OrderGerecht>();
+            foreach (ListViewItem item in listViewViewOrder.Items)
+            {
+
+            }
+            foreach (OrderGerecht o in selectedItems)
+            {
+                if (o.OrderGerechtId == ((OrderGerecht)listViewViewOrder.SelectedItems[0].Tag).OrderGerechtId)
+                {
+                    
+                }
+            } 
            
+        }
+
+
+
+
+
+
+
+        private void buttonBestel_Click(object sender, EventArgs e)
+        {
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
+            selectedItems = new List<OrderGerecht>();
+            foreach (OrderGerecht orderGerecht in selectedItems)
+            {
+                orderGerechtService.InsertOrderGerecht(orderGerecht);
+            }
         }
     }
 }

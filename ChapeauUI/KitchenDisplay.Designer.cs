@@ -32,14 +32,17 @@ namespace ChapeauUI
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblMoetNog = new System.Windows.Forms.Label();
             this.lblMeeBezig = new System.Windows.Forms.Label();
-            this.lblKlaar = new System.Windows.Forms.Label();
+            this.lblOverzicht = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTijd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -65,6 +68,7 @@ namespace ChapeauUI
             this.dataGridViewMoetNog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
+            this.ColumnTijd,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewButtonColumn1});
             this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 52);
@@ -73,31 +77,6 @@ namespace ChapeauUI
             this.dataGridViewMoetNog.Size = new System.Drawing.Size(650, 612);
             this.dataGridViewMoetNog.TabIndex = 3;
             this.dataGridViewMoetNog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMoetNog_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Order Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Table Id";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Bestellingen";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 458;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.HeaderText = "Verwerk";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.Text = "";
-            this.dataGridViewButtonColumn1.Width = 80;
             // 
             // lblMoetNog
             // 
@@ -119,22 +98,62 @@ namespace ChapeauUI
             this.lblMeeBezig.TabIndex = 5;
             this.lblMeeBezig.Text = "Mee bezig:";
             // 
-            // lblKlaar
+            // lblOverzicht
             // 
-            this.lblKlaar.AutoSize = true;
-            this.lblKlaar.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblKlaar.Location = new System.Drawing.Point(1280, 9);
-            this.lblKlaar.Name = "lblKlaar";
-            this.lblKlaar.Size = new System.Drawing.Size(83, 37);
-            this.lblKlaar.TabIndex = 6;
-            this.lblKlaar.Text = "Klaar:";
+            this.lblOverzicht.AutoSize = true;
+            this.lblOverzicht.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOverzicht.Location = new System.Drawing.Point(1280, 9);
+            this.lblOverzicht.Name = "lblOverzicht";
+            this.lblOverzicht.Size = new System.Drawing.Size(134, 37);
+            this.lblOverzicht.TabIndex = 6;
+            this.lblOverzicht.Text = "Overzicht:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(1280, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(292, 612);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Table Id";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 75;
+            // 
+            // ColumnTijd
+            // 
+            this.ColumnTijd.HeaderText = "Tijd";
+            this.ColumnTijd.Name = "ColumnTijd";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Bestellingen";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 458;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "Verwerk";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Text = "";
+            this.dataGridViewButtonColumn1.Width = 80;
             // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.lblKlaar);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblOverzicht);
             this.Controls.Add(this.lblMeeBezig);
             this.Controls.Add(this.lblMoetNog);
             this.Controls.Add(this.dataGridViewMoetNog);
@@ -143,6 +162,7 @@ namespace ChapeauUI
             this.Name = "KitchenDisplay";
             this.Text = "KitchenDisplay";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,12 +173,14 @@ namespace ChapeauUI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutMeeBezig;
         private System.Windows.Forms.DataGridView dataGridViewMoetNog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.Label lblMoetNog;
         private System.Windows.Forms.Label lblMeeBezig;
-        private System.Windows.Forms.Label lblKlaar;
+        private System.Windows.Forms.Label lblOverzicht;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTijd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
     }
 }
