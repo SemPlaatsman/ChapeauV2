@@ -17,7 +17,7 @@ namespace ChapeauUI
         private List<OrderGerecht> selectedItems;
         private Employee employee;
 
-        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public Order(Table TableId, Employee employee) 
 
         {
             this.employee = employee;
