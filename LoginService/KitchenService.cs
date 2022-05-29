@@ -21,5 +21,10 @@ namespace ChapeauLogica
         {
             return kitchenDAO.GetKitchenOverviews();
         }
+
+        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            kitchenDAO.ChangeNextOrderStatus(orderGerecht, newStatus);
+        }
     }
 }
