@@ -17,10 +17,13 @@ namespace ChapeauUI
         private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
+        private KitchenOrderOverview KitchenOrderOverview;
+        private List<OrderGerecht> orderGerecht;
         public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
+            this.KitchenOrderOverview = new KitchenOrderOverview();
         }
 
         private void buttonUitloggen_Click(object sender, EventArgs e)
@@ -33,13 +36,12 @@ namespace ChapeauUI
 
         private void TableClick(object sender, EventArgs e) 
         {
-            //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de int tableID
+            //parse een sender naar een Button, parse de Tag van die Button naar een Table en geef de TableID van die Table aan de Table table
             Table table = ((Table)((Button)sender).Tag);
-            // beter om een Tabel table(ID) object mee te geven ipv alleen een int? 
             
-            //maak een nieuwe TableForm en geef het bijbehorende tableID mee
+            //maak een nieuwe TableForm en geef het bijbehorende table mee
             TableForm tableForm = new TableForm(table, this, this.employee);
-            tableForm.ShowDialog(); // deze opent 5x ?????????????
+            tableForm.ShowDialog(); 
         }
 
         public void AssignTables()
@@ -128,6 +130,14 @@ namespace ChapeauUI
         private void timerRefreshOverview_Tick(object sender, EventArgs e)
         {
             AssignTables();
+/*            if (this.KitchenOrderOverview.ListCompleted(orderGerecht))
+            {
+                order ophalen uit DB van foreach table table in tables.
+                per order, status bekijken. 
+                if status == 1, dan gereed. 
+                
+            }*/
         }
+
     }
 }

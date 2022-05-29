@@ -17,7 +17,7 @@ namespace ChapeauUI
         private List<OrderGerecht> selectedItems;
         private Employee employee;
 
-        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public Order(Table TableId, Employee employee) 
 
         {
             this.employee = employee;
@@ -189,6 +189,17 @@ namespace ChapeauUI
         private void buttonViewOrder_Click(object sender, EventArgs e)
         {
             panelViewOrder.Visible = true;
+            listViewViewOrder.View = View.Details;
+            listViewViewOrder.FullRowSelect = true;
+            listViewViewOrder.Columns.Add("ID", 100);
+            listViewViewOrder.Columns.Add("Name", 100);
+            listViewViewOrder.Columns.Add("Price", 100);
+            listViewViewOrder.Columns.Add("Stock", 100);
+            listViewViewOrder.Columns.Add("Alcoholic", 100);
+        }
+        private void RefreshListView(List<OrderGerecht> selectedItems)
+        {
+           
         }
     }
 }
