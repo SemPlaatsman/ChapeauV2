@@ -38,7 +38,7 @@ namespace ChapeauModel
                     Nagerechten.Add(orderGerecht);
                     break;
                 default:
-                    throw new Exception($"An attempts was made to add a OrderGerecht with the type {orderGerecht.MenuItem.Type} to a {this.GetType().Name} which is not possible!");
+                    throw new Exception($"An attempt was made to add an OrderGerecht with the type {orderGerecht.MenuItem.Type} to a {this.GetType().Name} which is not possible!");
             }
         }
 

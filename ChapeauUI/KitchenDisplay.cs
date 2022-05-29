@@ -25,9 +25,10 @@ namespace ChapeauUI
             dataGridViewMoetNog.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridViewMoetNog.RowHeadersVisible = false;
             dataGridViewMoetNog.ReadOnly = true;
-            dataGridViewMoetNog.Columns[3].ReadOnly = false;
+            dataGridViewMoetNog.Columns[4].ReadOnly = false;
             dataGridViewMoetNog.BackgroundColor = SystemColors.Control;
             dataGridViewMoetNog.BorderStyle = BorderStyle.None;
+            dataGridViewMoetNog.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => column.SortMode = DataGridViewColumnSortMode.NotSortable);
 
             flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
             flowLayoutMeeBezig.AutoScroll = true;
@@ -36,6 +37,7 @@ namespace ChapeauUI
         
         private void button1_Click(object sender, EventArgs e)
         {
+            FillLists();
             //KitchenService kitchenService = new KitchenService();
             //List<KitchenOrderOverview> kitchenOrderOverviews = kitchenService.GetKitchenOverviews();
         }
@@ -46,9 +48,10 @@ namespace ChapeauUI
             List<KitchenOrderOverview> kitchenOrderOverviews = kitchenService.GetKitchenOverviews();
 
             dataGridViewMoetNog.Columns[0].Width = 57;
-            dataGridViewMoetNog.Columns[1].Width = 72;
-            dataGridViewMoetNog.Columns[2].Width = 425;
-            dataGridViewMoetNog.Columns[3].Width = 75;
+            dataGridViewMoetNog.Columns[1].Width = 53;
+            dataGridViewMoetNog.Columns[2].Width = 44;
+            dataGridViewMoetNog.Columns[3].Width = 400;
+            dataGridViewMoetNog.Columns[4].Width = 75;
 
             foreach (KitchenOrderOverview kitchenOverview in kitchenOrderOverviews)
             {
@@ -64,12 +67,21 @@ namespace ChapeauUI
                     DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
                     row.Cells[0].Value = kitchenOverview.OrderId.ToString();
                     row.Cells[1].Value = kitchenOverview.TableId.ToString();
-                    row.Cells[2].Value = GetMenuItems(gerechten);
-                    row.Cells[3].Value = "Verwerk";
+                    row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
+                    row.Cells[3].Value = GetMenuItems(gerechten);
+                    row.Cells[4].Value = "Verwerk";
                     row.Tag = kitchenOverview;
                     dataGridViewMoetNog.Rows.Add(row);
                 }
             }
+
+            FillOverviewList();
+        }
+
+        private void FillOverviewList()
+        {
+            //TODO: vul een lijst met alle orders
+            
         }
 
         private string GetMenuItems(List<OrderGerecht> gerechten)
@@ -128,6 +140,7 @@ namespace ChapeauUI
             dataGridView.ReadOnly = true;
             dataGridView.Columns[1].ReadOnly = false;
             dataGridView.RowHeadersVisible = false;
+            dataGridView.Columns.Cast<DataGridViewColumn>().ToList().ForEach(column => column.SortMode = DataGridViewColumnSortMode.NotSortable);
             dataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView.CellContentClick += dataGridViewsMeeBezig_CellContentClick;
@@ -160,6 +173,7 @@ namespace ChapeauUI
                     buttonCell.Value = "Moet nog";
                 }
                 row.Cells[1] = buttonCell;
+                row.MinimumHeight = 30;
                 row.Tag = orderGerecht;
                 dataGridView.Rows.Add(row);
             }
@@ -188,7 +202,7 @@ namespace ChapeauUI
 
         private void dataGridViewMoetNog_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3 && dataGridViewMoetNog.Rows[e.RowIndex].Tag != null)
+            if (e.ColumnIndex == 4 && dataGridViewMoetNog.Rows[e.RowIndex].Tag != null)
             {
                 //string test = $"{((KitchenOrderOverview)dataGridViewMoetNog.Rows[e.RowIndex].Tag).OrderId}";
                 //MessageBox.Show(test);
