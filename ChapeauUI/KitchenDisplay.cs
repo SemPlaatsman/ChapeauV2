@@ -37,6 +37,7 @@ namespace ChapeauUI
         
         private void button1_Click(object sender, EventArgs e)
         {
+            FillLists();
             //KitchenService kitchenService = new KitchenService();
             //List<KitchenOrderOverview> kitchenOrderOverviews = kitchenService.GetKitchenOverviews();
         }
@@ -66,7 +67,7 @@ namespace ChapeauUI
                     DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
                     row.Cells[0].Value = kitchenOverview.OrderId.ToString();
                     row.Cells[1].Value = kitchenOverview.TableId.ToString();
-                    //row.Cells[2].Value = gerechten.Find()
+                    row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
                     row.Cells[3].Value = GetMenuItems(gerechten);
                     row.Cells[4].Value = "Verwerk";
                     row.Tag = kitchenOverview;
@@ -74,10 +75,10 @@ namespace ChapeauUI
                 }
             }
 
-            FillKlaarList();
+            FillOverviewList();
         }
 
-        private void FillKlaarList()
+        private void FillOverviewList()
         {
             //TODO: vul een lijst met alle orders
             
