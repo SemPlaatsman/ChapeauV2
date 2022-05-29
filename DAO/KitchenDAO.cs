@@ -35,11 +35,11 @@ namespace ChapeauDAO
         {
             PushLateOrders();
 
-            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark] " +
+            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
-                "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] IN(SELECT DISTINCT O2.[OrderId] " +
+                "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] IN (SELECT DISTINCT O2.[OrderId] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O2 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG2 ON O2.[OrderID] = OG2.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M2 ON OG2.[ItemId] = M2.[ProductID] " +
@@ -49,6 +49,7 @@ namespace ChapeauDAO
             //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
 
         private List<KitchenOrderOverview> ReadTables(DataTable dataTable)
         { 
@@ -76,8 +77,9 @@ namespace ChapeauDAO
                     als Convert.IsDBNull false returned dan wordt (bool)dr["Status"] gebruikt (die de andere twee waardes van een nullable bool kan hebben).
                     Dit wordt gedaan omdat je een DBNull niet direct naar een nullable bool kan casten.*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
-                    Remark = Convert.IsDBNull(dr["Remark"]) ? String.Empty : (string)dr["Remark"]
+                    Remark = Convert.IsDBNull(dr["Remark"]) ? String.Empty : (string)dr["Remark"],
                     /* Zelfde reden als hierboven is genoemd alleen dan maak ik een empty string wanneer de value null is.*/
+                    IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
                 };
                 Order order = new Order()
                 {

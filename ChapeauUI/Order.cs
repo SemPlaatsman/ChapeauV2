@@ -18,7 +18,7 @@ namespace ChapeauUI
         private Employee employee;
         private Table table;
 
-        public Order(Table TableId, Employee employee) // ieder formulier moet een Employee Object meekrijgen
+        public Order(Table TableId, Employee employee) 
 
         {
             this.table = TableId;

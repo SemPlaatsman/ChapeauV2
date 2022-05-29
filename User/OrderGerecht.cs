@@ -14,5 +14,6 @@ namespace ChapeauModel
         public OrderStatus Status;
         public DateTime TimeOfOrder;
         public string Remark;
+        public ServeerStatus IsServed;
     }
 }
