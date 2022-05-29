@@ -139,12 +139,6 @@ namespace ChapeauUI
             tableOverviewForm.ShowDialog();
             this.Close();
         }
-
-
-
-
-
-
         private void buttonTerugBestelling_Click(object sender, EventArgs e)
         {
             panelBestellen.Visible = false;
@@ -186,7 +180,7 @@ namespace ChapeauUI
             else
             {
                 OrderGerecht gerecht = new OrderGerecht();
-                gerecht.OrderGerechtId = int.Parse(listViewGerechten.SelectedItems[0].Text);
+                gerecht.MenuItem.ProductId = ((MenuItem)listViewGerechten.SelectedItems[0].Tag).ProductId;
                 //gerecht.OrderId = 
                 gerecht.Status = OrderStatus.MoetNog;
                 gerecht.TimeOfOrder = DateTime.Now;
@@ -207,7 +201,6 @@ namespace ChapeauUI
             listViewViewOrder.FullRowSelect = true;
             listViewViewOrder.Columns.Add("Id", 50);
             listViewViewOrder.Columns.Add("Naam", 100);
-            listViewViewOrder.Columns.Add("Aantal", 100);
             listViewViewOrder.Columns.Add("Prijs", 100);
             listViewViewOrder.Columns.Add("Alcoholic", 100);
             listViewViewOrder.Columns.Add("Opmerking", 200);
@@ -215,17 +208,18 @@ namespace ChapeauUI
         }
         private void RefreshListView(List<OrderGerecht> selectedItems)
         {
-            listViewViewOrder.Items.Clear();
-            foreach (OrderGerecht orderitem in selectedItems)
+            MenuItemService menuItemService = new MenuItemService();
+            foreach (OrderGerecht O in selectedItems)
             {
-                ListViewItem item = new ListViewItem(orderitem.OrderGerechtId.ToString());
-                item.SubItems.Add(orderitem.OrderId.ToString());
-                item.SubItems.Add(orderitem.Status.ToString());
-                item.SubItems.Add(orderitem.TimeOfOrder.ToString());
-                item.SubItems.Add(orderitem.Remark.ToString());
+                List<MenuItem> menuItems = menuItemService.GetMenuItemsFromOrder(O);
+                MenuItem menuItem = menuItems.FirstOrDefault();
+                ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
+                item.SubItems.Add(menuItem.ProductName);
+                item.SubItems.Add(menuItem.Price.ToString());
+                item.SubItems.Add(menuItem.IsAlcoholic.ToString());
+                item.SubItems.Add(O.Remark.ToString());
                 listViewViewOrder.Items.Add(item);
             }
-            
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
@@ -247,7 +241,7 @@ namespace ChapeauUI
             }
             foreach (OrderGerecht o in selectedItems)
             {
-                if (o.OrderGerechtId == int.Parse(listViewViewOrder.SelectedItems[0].Text))
+                if (o.OrderGerechtId == ((OrderGerecht)listViewViewOrder.SelectedItems[0].Tag).OrderGerechtId)
                 {
                     
                 }
