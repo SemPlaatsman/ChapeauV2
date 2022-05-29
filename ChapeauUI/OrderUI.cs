@@ -14,7 +14,7 @@ namespace ChapeauUI
 {
     public partial class OrderUI : Form
     {
-        private List<SelectedItems> selectedItems;
+        private List<OrderGerecht> selectedItems;
         private Employee employee;
         private Table table;
 
@@ -130,6 +130,8 @@ namespace ChapeauUI
             }
         }
 
+
+
         private void buttonTerug_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -138,10 +140,20 @@ namespace ChapeauUI
             this.Close();
         }
 
+
+
+
+
+
         private void buttonTerugBestelling_Click(object sender, EventArgs e)
         {
             panelBestellen.Visible = false;
         }
+
+
+
+
+
         private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxAmount.Text = "1";
@@ -164,7 +176,7 @@ namespace ChapeauUI
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             labelErrorMessage.Text = "";
-            selectedItems = new List<SelectedItems>();
+            selectedItems = new List<OrderGerecht>();
             int amount = int.Parse(textBoxAmount.Text);
             if (amount < 1)
             {
@@ -179,12 +191,12 @@ namespace ChapeauUI
                 gerecht.Status = OrderStatus.MoetNog;
                 gerecht.TimeOfOrder = DateTime.Now;
                 gerecht.Remark = textBoxRemark.Text;
-                selectedItems = new List<SelectedItems>();
                 for (int i = 0; i < amount; i++)
                 {
                     selectedItems.Add(gerecht);
                 }
                 panelItemSelected.Visible = false;
+                RefreshListView(selectedItems);
             }
         }
 
@@ -193,19 +205,17 @@ namespace ChapeauUI
             panelViewOrder.Visible = true;
             listViewViewOrder.View = View.Details;
             listViewViewOrder.FullRowSelect = true;
-            listViewViewOrder.Columns.Add("Id", 10);
+            listViewViewOrder.Columns.Add("Id", 50);
             listViewViewOrder.Columns.Add("Naam", 100);
             listViewViewOrder.Columns.Add("Aantal", 100);
             listViewViewOrder.Columns.Add("Prijs", 100);
             listViewViewOrder.Columns.Add("Alcoholic", 100);
             listViewViewOrder.Columns.Add("Opmerking", 200);
-            RefreshListView();
+            
         }
-        private void RefreshListView()
+        private void RefreshListView(List<OrderGerecht> selectedItems)
         {
             listViewViewOrder.Items.Clear();
-            selectedItems = new List<SelectedItems>();
-            MenuItemService menuItemService = new MenuItemService();
             foreach (OrderGerecht orderitem in selectedItems)
             {
                 ListViewItem item = new ListViewItem(orderitem.OrderGerechtId.ToString());
@@ -213,6 +223,7 @@ namespace ChapeauUI
                 item.SubItems.Add(orderitem.Status.ToString());
                 item.SubItems.Add(orderitem.TimeOfOrder.ToString());
                 item.SubItems.Add(orderitem.Remark.ToString());
+                listViewViewOrder.Items.Add(item);
             }
             
         }
@@ -230,6 +241,10 @@ namespace ChapeauUI
         private void buttonMinus_Click(object sender, EventArgs e)
         {
             selectedItems = new List<OrderGerecht>();
+            foreach (ListViewItem item in listViewViewOrder.Items)
+            {
+
+            }
             foreach (OrderGerecht o in selectedItems)
             {
                 if (o.OrderGerechtId == int.Parse(listViewViewOrder.SelectedItems[0].Text))
@@ -238,8 +253,13 @@ namespace ChapeauUI
                 }
             } 
            
-            RefreshListView();
         }
+
+
+
+
+
+
 
         private void buttonBestel_Click(object sender, EventArgs e)
         {
