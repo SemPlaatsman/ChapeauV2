@@ -21,6 +21,18 @@ namespace ChapeauDAO
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
+        public void ChangeStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET[Status] = @newStatus " +
+                "WHERE OrderGerechtId = @orderGerechtId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@orderGerechtId", orderGerecht.OrderGerechtId);
+            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<OrderGerecht> ReadTables(DataTable dataTable)
         {
             List<OrderGerecht> orderGerechten = new List<OrderGerecht>();
