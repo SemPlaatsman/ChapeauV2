@@ -32,6 +32,9 @@ namespace ChapeauLogica
         {
             tableDAO.SetEmployee(employee, table);
         }
-
+        public void AlterTables(Table tableId, int occupation)
+        {
+            tableDAO.AlterTables(tableId, occupation);
+        }
     }
 }

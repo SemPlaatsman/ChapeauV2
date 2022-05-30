@@ -21,7 +21,7 @@ namespace ChapeauUI
         private Employee employee;
         private Employee employeeConnectedToTable;
         private EmployeeService employeeService;
-        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
+        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) 
         {
             this.employeeService = new EmployeeService();
             this.employeeConnectedToTable = employeeService.GetEmployee(table);
@@ -29,12 +29,19 @@ namespace ChapeauUI
             this.table = table;
             this.employee = employee;
             InitializeComponent();
-            this.Text += $" for Table {table}";
+            this.Text += $" for Table {table.TableID}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
-            checkoutForm.ShowDialog();
+            if (table.IsOccupied)
+            {
+                CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
+                checkoutForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Er is nog niks besteld");
+            }
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -42,10 +49,26 @@ namespace ChapeauUI
             this.Close();
         }
 
+        private void ShowListView()
+        {
+            // iets nodig om te items te showen die georderd zijn op deze tafel. 
+            listViewOrder.View = View.Details;
+            listViewOrder.Columns.Add("Naam", 150);
+            listViewOrder.Columns.Add("Status", 80);
+
+/*            foreach (var item in collection)
+            {
+                Iets met ListItem li... 
+                li.add.iets();
+            }*/
+
+        }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
+            TableService tableService = new TableService();
             OrderService orderService = new OrderService();
             List<Table> tables = orderService.tables();
+            int occupation = 1;
             foreach (Table table in tables) 
             {
                 if (this.table.TableID == table.TableID)
@@ -53,7 +76,16 @@ namespace ChapeauUI
                     if (!table.IsOccupied)
                     {
                         orderService.InsertNewOrder(table);
-                        orderService.AlterTables(table);
+                        tableService.AlterTables(table, occupation);
+
+                        // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
+                        // achtergrond kleur moet naar rood. 
+                        tableService.UpdateTableOccupy(table, true);
+                        tableService.SetEmployee(this.employee, table);
+                        this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
+                        labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
+                        // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
+                        this.overviewForm.SetColor();
                     }
                 }
             }
@@ -72,7 +104,7 @@ namespace ChapeauUI
             List<Table> tables = tableService.GetAllTables();
             table = tables.Find(x => x.TableID == this.table.TableID);
 
-            if (checkBoxTable.Checked)
+/*            if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
                 tableService.UpdateTableOccupy(table, true);
@@ -88,7 +120,7 @@ namespace ChapeauUI
                 tableService.UpdateTableOccupy(table, false);
                 labelCurrentEmployee.Text = "Geen medewerker gekoppeld";
                 this.overviewForm.SetColor();
-            }
+            }*/
 
             // alle tafels updaten? 
             tableService.GetAllTables();
@@ -97,6 +129,7 @@ namespace ChapeauUI
 
         private void TableForm_Load(object sender, EventArgs e)
         {
+            ShowListView();
             TableService tableService = new TableService();
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
@@ -112,5 +145,7 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
+       
+
     }
 }

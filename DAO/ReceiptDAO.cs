@@ -60,6 +60,54 @@ namespace ChapeauDAO
             }
         }
 
+        public void InsertReceipt(int TableId ,decimal totalPrice, decimal btwTotal, string paymentMethod, DateTime timeOfPayment)
+        {
+            try
+            {
+                string query = "INSERT INTO ApplicatiebouwChapeau.Receipt (OrderID, TotalPrice, TimeOfPayment, MethodOfPayment, BTW) " +
+                    "VALUES((SELECT TOP(1) OrderId " +
+                    "FROM ApplicatiebouwChapeau.[Order] " +
+                    "WHERE TableId = @tableId " +
+                    "ORDER BY OrderId DESC), @totalPrice, @timeOfPayment, @methodOfPayment, @bTW); ";
+
+                SqlParameter[] sqlParameters = new SqlParameter[5];
+                sqlParameters[0] = new SqlParameter("@tableId", TableId);
+
+                sqlParameters[1] = new SqlParameter("@totalPrice", totalPrice);
+                sqlParameters[2] = new SqlParameter("@methodOfPayment", paymentMethod);
+                sqlParameters[3] = new SqlParameter("@timeOfPayment", timeOfPayment);
+                sqlParameters[4] = new SqlParameter("@bTW", btwTotal);
+                ExecuteEditQuery(query, sqlParameters);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("De data kan niet geupload worden naar de database. probeer het later opnieuw" + e.Message);
+            }
+        }
+
+        public void InsertRemark(int tableId, string remark)
+        {
+            try
+            {
+                string query = "INSERT INTO ApplicatiebouwChapeau.Remark(RecieptID, Remark) " +
+                    "VALUES((SELECT TOP(1) ReceiptID " +
+                    "FROM ApplicatiebouwChapeau.[Receipt] AS R " +
+                    "JOIN ApplicatiebouwChapeau.[Order] AS O ON R.OrderID = O.OrderID " +
+                    "WHERE TableId = @tableId " +
+                    "ORDER BY R.OrderID DESC), @remark);";
+
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@tableId", tableId);
+
+                sqlParameters[1] = new SqlParameter("@remark", remark);
+                ExecuteEditQuery(query, sqlParameters);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("De data kan niet geupload worden naar de database. probeer het later opnieuw" + e.Message);
+            }
+        }
+
         private string ReadHostTables(DataTable dataTable)
         {
             try

@@ -36,7 +36,6 @@ namespace ChapeauDAO
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        // Table table misschien ook nog meegeven. 
         public void SetEmployee(Employee employee, Table table)
         {
             string query = "Update ApplicatiebouwChapeau.[Table] SET [EmployeeID] = @EmployeeID where [TableID] = @TableID;";
@@ -46,6 +45,7 @@ namespace ChapeauDAO
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
 
         private List<Table> ReadTables(DataTable dataTable)
         {
@@ -70,6 +70,22 @@ namespace ChapeauDAO
             {
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
+        }
+        public void AlterTables(Table table, int occupation)
+        {
+            try
+            {
+                string query = $"Update [ApplicatiebouwChapeau].[Table] set IsOccupied = @occupation where TableID = @TableID";
+                SqlParameter[] sqlParameter = new SqlParameter[2];
+                sqlParameter[0] = new SqlParameter("@TableID", table.TableID);
+                sqlParameter[1] = new SqlParameter("@occupation", occupation);
+                ExecuteEditQuery(query, sqlParameter);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Data could not be altered in the database. please try again" + e.Message);
+            }
+
         }
     }
 }

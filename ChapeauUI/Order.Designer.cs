@@ -377,6 +377,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Voeg toe";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -428,7 +429,7 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Geselecteerde items:";
             // 
-            // OrderUI
+            // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,7 +443,7 @@
             this.Controls.Add(this.buttonHoofdgerecht);
             this.Controls.Add(this.buttonVoorgerecht);
             this.Controls.Add(this.buttonTerug);
-            this.Name = "OrderUI";
+            this.Name = "Order";
             this.Text = "Order";
             this.Load += new System.EventHandler(this.Order_Load);
             this.panelBestellen.ResumeLayout(false);
