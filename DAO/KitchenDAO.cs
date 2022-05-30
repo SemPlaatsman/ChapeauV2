@@ -65,40 +65,6 @@ namespace ChapeauDAO
             return ReadTable(ExecuteSelectQuery(query, sqlParameter));
         }
 
-        private KitchenOrderOverview ReadTable(DataTable dataTable) 
-        {
-            KitchenOrderOverview kitchenOrderOverview = new KitchenOrderOverview();
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                OrderGerecht orderGerecht = new OrderGerecht()
-                {
-                    OrderGerechtId = (int)dr["OrderGerechtId"],
-                    MenuItem = new MenuItem()
-                    {
-                        ProductId = (int)dr["ProductId"],
-                        IsDiner = (bool)dr["IsDiner"],
-                        Type = (TypeOfProduct)(int)dr["Type"],
-                        ProductName = (string)dr["ProductName"],
-                        Price = (decimal)dr["Price"],
-                        Stock = (int)dr["Stock"],
-                        IsAlcoholic = (bool)dr["IsAlcoholic"]
-                    },
-                    OrderId = (int)dr["OrderId"],
-                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (bool)dr["Status"] ? OrderStatus.Klaar : OrderStatus.MeeBezig,
-                    /* De bovenstaande regel code kijkt eerst of Convert.IsDBNull(...) true returned. 
-                    Als dat zo is dan wordt de waarde null gebruikt, 
-                    als Convert.IsDBNull false returned dan wordt (bool)dr["Status"] gebruikt (die de andere twee waardes van een nullable bool kan hebben).
-                    Dit wordt gedaan omdat je een DBNull niet direct naar een nullable bool kan casten.*/
-                    TimeOfOrder = (DateTime)dr["TimeOfOrder"],
-                    Remark = Convert.IsDBNull(dr["Remark"]) ? String.Empty : (string)dr["Remark"],
-                    /* Zelfde reden als hierboven is genoemd alleen dan maak ik een empty string wanneer de value null is.*/
-                    IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
-                };
-                kitchenOrderOverview.Add(orderGerecht);
-            }
-            return kitchenOrderOverview;
-        }
-
         public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
             string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
