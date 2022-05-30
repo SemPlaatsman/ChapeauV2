@@ -17,13 +17,13 @@ namespace ChapeauUI
     public partial class ReceiptForm : Form
     {
         private string paymentMethod;
-        private int tableId;
+        private Table table;
         private decimal newTotal;
-        public ReceiptForm(string paymentMethod, int tableId, decimal newTotal, Employee employee)
+        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee)
         {
             InitializeComponent();
             this.paymentMethod = paymentMethod; 
-            this.tableId = tableId;
+            this.table = table;
             this.newTotal = newTotal;
             this.employee = employee;
             FillReceipt();
@@ -45,7 +45,7 @@ namespace ChapeauUI
 
             //vul de listview
 
-            List<Receipt> orders = receiptService.GetOrderList(tableId);
+            List<Receipt> orders = receiptService.GetOrderList(table.TableID);
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
@@ -96,7 +96,7 @@ namespace ChapeauUI
             totalWithBtw = totalPrice;
             totaalMetBtwLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
-            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(tableId)}";
+            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(table.TableID)}";
             tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
 
             if (newTotal <= 0)
@@ -128,34 +128,37 @@ namespace ChapeauUI
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
+            int occupation = 0;
+            TableService tableService = new TableService();
             if (!string.IsNullOrEmpty(remarkTextbox.Text))
             {
                 if (newTotal <= totalPrice)
                 {
-                    receiptService.StoreReceipt(tableId, totalPrice, btwTotal, paymentMethod, timeOfPayment);
-                    receiptService.InsertRemark(tableId, remarkTextbox.Text.ToString());
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
                 }
                 else
                 {
                     totalPrice = newTotal;
-                    receiptService.StoreReceipt(tableId, totalPrice, btwTotal, paymentMethod, timeOfPayment);
-                    receiptService.InsertRemark(tableId, remarkTextbox.Text.ToString());
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
                 }
             }
             else
             {
                 if (newTotal <= totalPrice)
                 {
-                    receiptService.StoreReceipt(tableId, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
                 }
                 else
                 {
                     totalPrice = newTotal;
-                    receiptService.StoreReceipt(tableId, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
                 }
             }
 
-            MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");            
+            MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
+            tableService.AlterTables(table, occupation);
             TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);
             tableOverviewForm.ShowDialog();
             this.Close();

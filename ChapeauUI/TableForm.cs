@@ -61,6 +61,7 @@ namespace ChapeauUI
             TableService tableService = new TableService();
             OrderService orderService = new OrderService();
             List<Table> tables = orderService.tables();
+            int occupation = 1;
             foreach (Table table in tables) 
             {
                 if (this.table.TableID == table.TableID)
@@ -68,7 +69,7 @@ namespace ChapeauUI
                     if (!table.IsOccupied)
                     {
                         orderService.InsertNewOrder(table);
-                        orderService.AlterTables(table);
+                        tableService.AlterTables(table, occupation);
 
                         // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
 /*                        // achtergrond kleur moet naar rood. 
@@ -137,6 +138,7 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
+       
 
     }
 }
