@@ -111,7 +111,7 @@ namespace ChapeauUI
             // 
             this.checkBoxTable.AutoSize = true;
             this.checkBoxTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxTable.Location = new System.Drawing.Point(173, 26);
+            this.checkBoxTable.Location = new System.Drawing.Point(174, 60);
             this.checkBoxTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxTable.Name = "checkBoxTable";
             this.checkBoxTable.Size = new System.Drawing.Size(66, 25);
@@ -124,7 +124,7 @@ namespace ChapeauUI
             // 
             this.labelCurrentEmployee.AutoSize = true;
             this.labelCurrentEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCurrentEmployee.Location = new System.Drawing.Point(275, 26);
+            this.labelCurrentEmployee.Location = new System.Drawing.Point(276, 61);
             this.labelCurrentEmployee.Name = "labelCurrentEmployee";
             this.labelCurrentEmployee.Size = new System.Drawing.Size(137, 42);
             this.labelCurrentEmployee.TabIndex = 8;
