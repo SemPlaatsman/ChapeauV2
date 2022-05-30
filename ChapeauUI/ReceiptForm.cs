@@ -49,9 +49,9 @@ namespace ChapeauUI
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
-            itemsListBox.Columns.Add("Naam Product", 237);
-            itemsListBox.Columns.Add("Aantal", 56);
-            itemsListBox.Columns.Add("Prijs", 42);
+            itemsListBox.Columns.Add("Naam Product", 214);
+            itemsListBox.Columns.Add("Aantal", 46);
+            itemsListBox.Columns.Add("Prijs", 34);
 
             foreach (Receipt order in orders)
             {

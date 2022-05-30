@@ -34,9 +34,5 @@ namespace ChapeauLogica
         {
             receiptDAO.InsertRemark(TableId, remark);
         }
-        public void UpdateTable()
-        {
-            receiptDAO.ChangeOccupancy();
-        }
     }
 }

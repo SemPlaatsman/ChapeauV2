@@ -33,8 +33,15 @@ namespace ChapeauUI
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {
-            CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
-            checkoutForm.ShowDialog();
+            if (table.IsOccupied)
+            {
+                CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
+                checkoutForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Er is nog niks besteld");
+            }
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
