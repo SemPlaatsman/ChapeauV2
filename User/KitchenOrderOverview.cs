@@ -128,36 +128,5 @@ namespace ChapeauModel
             }
             return true;
         }
-
-        public void ResolveConflicts()
-        {
-            if (HasMeeBezigStatus(Voorgerechten))
-                ChangeToMeeBezig(Voorgerechten);
-
-            if (HasMeeBezigStatus(Tussengerechten))
-                ChangeToMeeBezig(Tussengerechten);
-
-            if (HasMeeBezigStatus(Hoofdgerechten))
-                ChangeToMeeBezig(Hoofdgerechten);
-
-            if (HasMeeBezigStatus(Nagerechten))
-                ChangeToMeeBezig(Nagerechten);
-        }
-
-        private bool HasMeeBezigStatus(List<OrderGerecht> gerechten)
-        {
-            foreach (OrderGerecht orderGerecht in gerechten)
-                if (orderGerecht.Status == OrderStatus.MeeBezig)
-                    return true;
-
-            return false;
-        }
-
-        private void ChangeToMeeBezig(List<OrderGerecht> gerechten)
-        {
-            foreach (OrderGerecht orderGerecht in gerechten)
-                if (orderGerecht.Status == OrderStatus.MoetNog)
-                    orderGerecht.Status = OrderStatus.MeeBezig;
-        }
     }
 }

@@ -57,6 +57,7 @@ namespace ChapeauUI
                     listViewItem.SubItems.Add(m.Price.ToString());
                     listViewItem.SubItems.Add(m.Stock.ToString());
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
                     listViewGerechten.Items.Add(listViewItem);
                 }
             }
@@ -80,6 +81,7 @@ namespace ChapeauUI
                     listViewItem.SubItems.Add(m.Price.ToString());
                     listViewItem.SubItems.Add(m.Stock.ToString());
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
                     listViewGerechten.Items.Add(listViewItem);
                 }
             }
@@ -103,6 +105,7 @@ namespace ChapeauUI
                     listViewItem.SubItems.Add(m.Price.ToString());
                     listViewItem.SubItems.Add(m.Stock.ToString());
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
                     listViewGerechten.Items.Add(listViewItem);
                 }
             }
@@ -125,6 +128,7 @@ namespace ChapeauUI
                     listViewItem.SubItems.Add(m.Price.ToString());
                     listViewItem.SubItems.Add(m.Stock.ToString());
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
                     listViewGerechten.Items.Add(listViewItem);
                 }
             }
@@ -170,7 +174,7 @@ namespace ChapeauUI
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             labelErrorMessage.Text = "";
-            selectedItems = new List<OrderGerecht>();
+            this.selectedItems = new List<OrderGerecht>();
             int amount = int.Parse(textBoxAmount.Text);
             if (amount < 1)
             {
@@ -180,7 +184,7 @@ namespace ChapeauUI
             else
             {
                 OrderGerecht gerecht = new OrderGerecht();
-                gerecht.MenuItem.ProductId = ((MenuItem)listViewGerechten.SelectedItems[0].Tag).ProductId;
+                gerecht.MenuItem = ((MenuItem)listViewGerechten.SelectedItems[0].Tag);
                 //gerecht.OrderId = 
                 gerecht.Status = OrderStatus.MoetNog;
                 gerecht.TimeOfOrder = DateTime.Now;
@@ -211,7 +215,7 @@ namespace ChapeauUI
             MenuItemService menuItemService = new MenuItemService();
             foreach (OrderGerecht O in selectedItems)
             {
-                List<MenuItem> menuItems = menuItemService.GetMenuItemsFromOrder(O);
+                List<MenuItem> menuItems = menuItemService.GetMenuItemsFromOrder(O.MenuItem);
                 MenuItem menuItem = menuItems.FirstOrDefault();
                 ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
                 item.SubItems.Add(menuItem.ProductName);
@@ -224,7 +228,10 @@ namespace ChapeauUI
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            
+            foreach (ListViewItem item in listViewViewOrder.SelectedItems)
+            {
+                listViewViewOrder.Items.Add((ListViewItem)item.Clone());
+            }   
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -234,23 +241,12 @@ namespace ChapeauUI
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-            selectedItems = new List<OrderGerecht>();
-            foreach (ListViewItem item in listViewViewOrder.Items)
+            foreach (ListViewItem item in listViewViewOrder.SelectedItems)
             {
-
+                listViewViewOrder.Items.Remove(listViewViewOrder.SelectedItems[0]); 
             }
-            foreach (OrderGerecht o in selectedItems)
-            {
-                if (o.OrderGerechtId == ((OrderGerecht)listViewViewOrder.SelectedItems[0].Tag).OrderGerechtId)
-                {
-                    
-                }
-            } 
            
         }
-
-
-
 
 
 
@@ -263,6 +259,11 @@ namespace ChapeauUI
             {
                 orderGerechtService.InsertOrderGerecht(orderGerecht);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
