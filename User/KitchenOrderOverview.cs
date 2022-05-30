@@ -106,7 +106,7 @@ namespace ChapeauModel
             return new List<OrderGerecht>();
         }
 
-        public bool ListHasMeeBezig(List<OrderGerecht> gerechten)
+        public static bool ListHasMeeBezig(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
             {
@@ -118,7 +118,7 @@ namespace ChapeauModel
             return false;
         }
 
-        public bool ListCompleted(List<OrderGerecht> gerechten)
+        public static bool ListCompleted(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
             {

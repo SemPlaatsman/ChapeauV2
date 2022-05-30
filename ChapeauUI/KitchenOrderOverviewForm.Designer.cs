@@ -36,7 +36,6 @@ namespace ChapeauUI
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnCurrentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServeerStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnCurrentServeerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderOverview)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +59,6 @@ namespace ChapeauUI
             this.ColumnType,
             this.ColumnStatus,
             this.ColumnCurrentStatus,
-            this.ColumnServeerStatus,
             this.ColumnCurrentServeerStatus});
             this.dataGridViewOrderOverview.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewOrderOverview.Name = "dataGridViewOrderOverview";
@@ -93,8 +91,8 @@ namespace ChapeauUI
             this.ColumnStatus.DataPropertyName = "Status";
             this.ColumnStatus.HeaderText = "Status";
             this.ColumnStatus.Items.AddRange(new object[] {
-            "Moet nog",
-            "Mee bezig",
+            "Moet Nog",
+            "Mee Bezig",
             "Klaar"});
             this.ColumnStatus.MaxDropDownItems = 3;
             this.ColumnStatus.Name = "ColumnStatus";
@@ -105,19 +103,6 @@ namespace ChapeauUI
             // 
             this.ColumnCurrentStatus.HeaderText = "Huidige status";
             this.ColumnCurrentStatus.Name = "ColumnCurrentStatus";
-            // 
-            // ColumnServeerStatus
-            // 
-            this.ColumnServeerStatus.DataPropertyName = "ServeerStatus";
-            this.ColumnServeerStatus.HeaderText = "Serveer status";
-            this.ColumnServeerStatus.Items.AddRange(new object[] {
-            "Mee bezig",
-            "Kan geserveerd worden",
-            "Is geserveerd"});
-            this.ColumnServeerStatus.MaxDropDownItems = 3;
-            this.ColumnServeerStatus.Name = "ColumnServeerStatus";
-            this.ColumnServeerStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnServeerStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnCurrentServeerStatus
             // 
@@ -147,7 +132,6 @@ namespace ChapeauUI
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentStatus;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColumnServeerStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentServeerStatus;
     }
 }

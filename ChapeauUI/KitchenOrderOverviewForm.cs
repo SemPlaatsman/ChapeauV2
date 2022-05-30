@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
@@ -26,14 +27,15 @@ namespace ChapeauUI
             dataGridViewOrderOverview.Columns[0].ReadOnly = true;
             dataGridViewOrderOverview.Columns[1].ReadOnly = true;
             dataGridViewOrderOverview.Columns[2].ReadOnly = true;
+            dataGridViewOrderOverview.Columns[4].ReadOnly = true;
+            dataGridViewOrderOverview.Columns[5].ReadOnly = true;
 
-            dataGridViewOrderOverview.Columns[0].Width = 40;
-            dataGridViewOrderOverview.Columns[1].Width = 340;
-            dataGridViewOrderOverview.Columns[2].Width = 96;
-            dataGridViewOrderOverview.Columns[3].Width = 90;
-            dataGridViewOrderOverview.Columns[4].Width = 80;
+            dataGridViewOrderOverview.Columns[0].Width = 50;
+            dataGridViewOrderOverview.Columns[1].Width = 380;
+            dataGridViewOrderOverview.Columns[2].Width = 126;
+            dataGridViewOrderOverview.Columns[3].Width = 120;
+            dataGridViewOrderOverview.Columns[4].Width = 110;
             dataGridViewOrderOverview.Columns[5].Width = 150;
-            dataGridViewOrderOverview.Columns[6].Width = 140;
 
             this.Text = $"Overview van order {this.kitchenOrderOverview.OrderId} voor tafel {this.kitchenOrderOverview.TableId}";
 
@@ -44,14 +46,18 @@ namespace ChapeauUI
         {
             dataGridViewOrderOverview.AllowUserToAddRows = true;
 
+            dataGridViewOrderOverview.Rows.Clear();
+            KitchenService kitchenService = new KitchenService();
+            this.kitchenOrderOverview = kitchenService.GetKitchenOverview(this.kitchenOrderOverview);
+
             foreach (OrderGerecht orderGerecht in GetCombinedGerechten())
             {
                 DataGridViewRow row = (DataGridViewRow)dataGridViewOrderOverview.Rows[0].Clone();
                 row.Cells[0].Value = ((TimeSpan)(DateTime.Now - orderGerecht.TimeOfOrder)).ToString(@"hh\:mm");
                 row.Cells[1].Value = orderGerecht.MenuItem.ProductName;
                 row.Cells[2].Value = orderGerecht.MenuItem.Type;
-                row.Cells[4].Value = orderGerecht.Status;
-                row.Cells[6].Value = orderGerecht.IsServed;
+                row.Cells[4].Value = Regex.Replace($"{orderGerecht.Status}", "([A-Z])", " $1").Trim();
+                row.Cells[5].Value = Regex.Replace($"{orderGerecht.IsServed}", "([A-Z])", " $1").Trim();
                 row.MinimumHeight = 30;
                 row.Tag = orderGerecht;
                 dataGridViewOrderOverview.Rows.Add(row);
@@ -98,7 +104,23 @@ namespace ChapeauUI
 
         private void dataGridViewOrderOverview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+            DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridViewOrderOverview.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (((DataGridViewComboBoxCell)dataGridViewOrderOverview.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value != null)
+            {
+                OrderGerechtService orderGerechtService = new OrderGerechtService();
+                OrderGerecht orderGerecht = (OrderGerecht)dataGridViewOrderOverview.Rows[e.RowIndex].Tag;
+                orderGerechtService.ChangeOrderGerechtStatus(orderGerecht, TranslateStringToStatus(cb.Value.ToString()));
+                LoadKitchenOrderOverviewData();
+            }
+        }
 
+        private OrderStatus TranslateStringToStatus(string input)
+        {
+            return (OrderStatus)((DataGridViewComboBoxColumn)dataGridViewOrderOverview.Columns[3]).Items.IndexOf(input);
         }
     }
 }

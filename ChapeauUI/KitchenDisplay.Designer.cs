@@ -42,11 +42,14 @@ namespace ChapeauUI
             this.lblMeeBezig = new System.Windows.Forms.Label();
             this.lblOverzicht = new System.Windows.Forms.Label();
             this.dataGridViewOverzicht = new System.Windows.Forms.DataGridView();
+            this.buttonUitloggen = new System.Windows.Forms.Button();
             this.ColumnOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGerechtenStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnVoorgerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTussengerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnHoofdgerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNagerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOpen = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.buttonUitloggen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +153,10 @@ namespace ChapeauUI
             this.dataGridViewOverzicht.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnOrder,
             this.ColumnTable,
-            this.ColumnGerechtenStatus,
+            this.ColumnVoorgerechten,
+            this.ColumnTussengerechten,
+            this.ColumnHoofdgerechten,
+            this.ColumnNagerechten,
             this.ColumnOpen});
             this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 52);
             this.dataGridViewOverzicht.Name = "dataGridViewOverzicht";
@@ -158,26 +164,6 @@ namespace ChapeauUI
             this.dataGridViewOverzicht.Size = new System.Drawing.Size(400, 612);
             this.dataGridViewOverzicht.TabIndex = 7;
             this.dataGridViewOverzicht.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOverzicht_CellContentClick);
-            // 
-            // ColumnOrder
-            // 
-            this.ColumnOrder.HeaderText = "Order";
-            this.ColumnOrder.Name = "ColumnOrder";
-            // 
-            // ColumnTable
-            // 
-            this.ColumnTable.HeaderText = "Tafel";
-            this.ColumnTable.Name = "ColumnTable";
-            // 
-            // ColumnGerechtenStatus
-            // 
-            this.ColumnGerechtenStatus.HeaderText = "Status gerechten";
-            this.ColumnGerechtenStatus.Name = "ColumnGerechtenStatus";
-            // 
-            // ColumnOpen
-            // 
-            this.ColumnOpen.HeaderText = "Open overzicht";
-            this.ColumnOpen.Name = "ColumnOpen";
             // 
             // buttonUitloggen
             // 
@@ -192,6 +178,41 @@ namespace ChapeauUI
             this.buttonUitloggen.Text = "       Uitloggen";
             this.buttonUitloggen.UseVisualStyleBackColor = false;
             this.buttonUitloggen.Click += new System.EventHandler(this.buttonUitloggen_Click);
+            // 
+            // ColumnOrder
+            // 
+            this.ColumnOrder.HeaderText = "Order";
+            this.ColumnOrder.Name = "ColumnOrder";
+            // 
+            // ColumnTable
+            // 
+            this.ColumnTable.HeaderText = "Tafel";
+            this.ColumnTable.Name = "ColumnTable";
+            // 
+            // ColumnVoorgerechten
+            // 
+            this.ColumnVoorgerechten.HeaderText = "Voor-";
+            this.ColumnVoorgerechten.Name = "ColumnVoorgerechten";
+            // 
+            // ColumnTussengerechten
+            // 
+            this.ColumnTussengerechten.HeaderText = "Tussen-";
+            this.ColumnTussengerechten.Name = "ColumnTussengerechten";
+            // 
+            // ColumnHoofdgerechten
+            // 
+            this.ColumnHoofdgerechten.HeaderText = "Hoofd-";
+            this.ColumnHoofdgerechten.Name = "ColumnHoofdgerechten";
+            // 
+            // ColumnNagerechten
+            // 
+            this.ColumnNagerechten.HeaderText = "Na-";
+            this.ColumnNagerechten.Name = "ColumnNagerechten";
+            // 
+            // ColumnOpen
+            // 
+            this.ColumnOpen.HeaderText = "Open overzicht";
+            this.ColumnOpen.Name = "ColumnOpen";
             // 
             // KitchenDisplay
             // 
@@ -229,10 +250,13 @@ namespace ChapeauUI
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTijd;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.Button buttonUitloggen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGerechtenStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVoorgerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTussengerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoofdgerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNagerechten;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnOpen;
-        private System.Windows.Forms.Button buttonUitloggen;
     }
 }

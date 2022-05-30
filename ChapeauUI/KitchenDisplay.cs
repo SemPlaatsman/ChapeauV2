@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
@@ -36,12 +37,18 @@ namespace ChapeauUI
             dataGridViewMoetNog.Columns[4].Width = 80;
 
             SetDefaultGridProperties(dataGridViewOverzicht);
-            dataGridViewOverzicht.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dataGridViewOverzicht.Columns[0].Width = 42;
             dataGridViewOverzicht.Columns[1].Width = 38;
-            dataGridViewOverzicht.Columns[2].Width = 235;
-            dataGridViewOverzicht.Columns[3].Width = 65;
+            dataGridViewOverzicht.Columns[2].Width = 59;
+            dataGridViewOverzicht.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[3].Width = 59;
+            dataGridViewOverzicht.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[4].Width = 59;
+            dataGridViewOverzicht.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[5].Width = 59;
+            dataGridViewOverzicht.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[6].Width = 64;
 
             flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
             flowLayoutMeeBezig.AutoScroll = true;
@@ -110,11 +117,57 @@ namespace ChapeauUI
             DataGridViewRow row = (DataGridViewRow)dataGridViewOverzicht.Rows[0].Clone();
             row.Cells[0].Value = kitchenOverview.OrderId.ToString();
             row.Cells[1].Value = kitchenOverview.TableId.ToString();
-            row.Cells[2].Value = kitchenOverview.ToStringOverzicht();
-            row.Cells[3].Value = "Open";
-            row.MinimumHeight = 30;
+            row.Cells[2].Style.BackColor = GetColor(kitchenOverview.Voorgerechten);
+            row.Cells[2].Value = GetStatus(kitchenOverview.Voorgerechten);
+            row.Cells[3].Style.BackColor = GetColor(kitchenOverview.Tussengerechten);
+            row.Cells[3].Value = GetStatus(kitchenOverview.Tussengerechten);
+            row.Cells[4].Style.BackColor = GetColor(kitchenOverview.Hoofdgerechten);
+            row.Cells[4].Value = GetStatus(kitchenOverview.Hoofdgerechten);
+            row.Cells[5].Style.BackColor = GetColor(kitchenOverview.Nagerechten);
+            row.Cells[5].Value = GetStatus(kitchenOverview.Nagerechten);
+            row.Cells[6].Value = "Open";
+            row.MinimumHeight = dataGridViewOverzicht.Columns[6].Width;
             row.Tag = kitchenOverview;
             dataGridViewOverzicht.Rows.Add(row);
+        }
+        
+        private Color GetColor(List<OrderGerecht> gerechten)
+        {
+            if (gerechten.Count == 0)
+            {
+                return Color.Empty;
+            }
+            else if (KitchenOrderOverview.ListCompleted(gerechten))
+            {
+                return Color.MediumSpringGreen;
+            }
+            else if (gerechten[0].Status == OrderStatus.MoetNog)
+            {
+                return Color.OrangeRed;
+            }
+            return Color.Yellow;
+        }
+
+        private string GetStatus(List<OrderGerecht> gerechten)
+        {
+            string status = "";
+            if (gerechten.Count == 0)
+            {
+                return status;
+            }
+            else if (KitchenOrderOverview.ListCompleted(gerechten))
+            {
+                status = OrderStatus.Klaar.ToString();
+            }
+            else if (gerechten[0].Status == OrderStatus.MoetNog)
+            {
+                status = OrderStatus.MoetNog.ToString();
+            }
+            else
+            {
+                status = OrderStatus.MeeBezig.ToString();
+            }
+            return Regex.Replace($"{status}", "([A-Z])", " $1").Trim();
         }
 
         private string GetMenuItems(List<OrderGerecht> gerechten)
