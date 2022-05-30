@@ -27,8 +27,7 @@ namespace ChapeauUI
             this.Text += $" voor Tafel {tableId}";
             ShowListView();
         }
-        private decimal totalPrice = 0;        
-        private decimal totalWithBtw = 0;
+        private decimal totalPrice = 0;         
 
         private void ShowListView()
         {
@@ -69,8 +68,7 @@ namespace ChapeauUI
         {
             try
             {
-
-                ManualPrice manualPrice = new ManualPrice(totalWithBtw, this.tableId, this.employee);
+                ManualPrice manualPrice = new ManualPrice(totalPrice, this.tableId, this.employee);
 
                 manualPrice.ShowDialog();            
             }
