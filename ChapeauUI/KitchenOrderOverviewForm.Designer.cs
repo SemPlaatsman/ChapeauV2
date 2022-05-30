@@ -35,7 +35,9 @@ namespace ChapeauUI
             this.ColumnGerecht = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnCurrentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServeerStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnCurrentServeerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderOverview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,30 +59,38 @@ namespace ChapeauUI
             this.ColumnGerecht,
             this.ColumnType,
             this.ColumnStatus,
-            this.ColumnServeerStatus});
+            this.ColumnCurrentStatus,
+            this.ColumnServeerStatus,
+            this.ColumnCurrentServeerStatus});
             this.dataGridViewOrderOverview.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewOrderOverview.Name = "dataGridViewOrderOverview";
             this.dataGridViewOrderOverview.RowTemplate.Height = 25;
-            this.dataGridViewOrderOverview.Size = new System.Drawing.Size(776, 364);
+            this.dataGridViewOrderOverview.Size = new System.Drawing.Size(940, 364);
             this.dataGridViewOrderOverview.TabIndex = 1;
+            this.dataGridViewOrderOverview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderOverview_CellValueChanged);
+            this.dataGridViewOrderOverview.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridViewOrderOverview_CurrentCellDirtyStateChanged);
             // 
             // ColumnTijd
             // 
+            this.ColumnTijd.DataPropertyName = "TimeOfOrder";
             this.ColumnTijd.HeaderText = "Tijd";
             this.ColumnTijd.Name = "ColumnTijd";
             // 
             // ColumnGerecht
             // 
+            this.ColumnGerecht.DataPropertyName = "Gerecht";
             this.ColumnGerecht.HeaderText = "Gerecht";
             this.ColumnGerecht.Name = "ColumnGerecht";
             // 
             // ColumnType
             // 
+            this.ColumnType.DataPropertyName = "Type";
             this.ColumnType.HeaderText = "Type";
             this.ColumnType.Name = "ColumnType";
             // 
             // ColumnStatus
             // 
+            this.ColumnStatus.DataPropertyName = "Status";
             this.ColumnStatus.HeaderText = "Status";
             this.ColumnStatus.Items.AddRange(new object[] {
             "Moet nog",
@@ -91,8 +101,14 @@ namespace ChapeauUI
             this.ColumnStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // ColumnCurrentStatus
+            // 
+            this.ColumnCurrentStatus.HeaderText = "Huidige status";
+            this.ColumnCurrentStatus.Name = "ColumnCurrentStatus";
+            // 
             // ColumnServeerStatus
             // 
+            this.ColumnServeerStatus.DataPropertyName = "ServeerStatus";
             this.ColumnServeerStatus.HeaderText = "Serveer status";
             this.ColumnServeerStatus.Items.AddRange(new object[] {
             "Mee bezig",
@@ -103,11 +119,16 @@ namespace ChapeauUI
             this.ColumnServeerStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnServeerStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // ColumnCurrentServeerStatus
+            // 
+            this.ColumnCurrentServeerStatus.HeaderText = "Huidige serveer status";
+            this.ColumnCurrentServeerStatus.Name = "ColumnCurrentServeerStatus";
+            // 
             // KitchenOrderOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(964, 450);
             this.Controls.Add(this.dataGridViewOrderOverview);
             this.Controls.Add(this.buttonTerug);
             this.Name = "KitchenOrderOverviewForm";
@@ -125,6 +146,8 @@ namespace ChapeauUI
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGerecht;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentStatus;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnServeerStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentServeerStatus;
     }
 }

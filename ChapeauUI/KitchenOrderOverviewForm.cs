@@ -26,8 +26,16 @@ namespace ChapeauUI
             dataGridViewOrderOverview.Columns[0].ReadOnly = true;
             dataGridViewOrderOverview.Columns[1].ReadOnly = true;
             dataGridViewOrderOverview.Columns[2].ReadOnly = true;
+
+            dataGridViewOrderOverview.Columns[0].Width = 40;
+            dataGridViewOrderOverview.Columns[1].Width = 340;
+            dataGridViewOrderOverview.Columns[2].Width = 96;
+            dataGridViewOrderOverview.Columns[3].Width = 90;
+            dataGridViewOrderOverview.Columns[4].Width = 80;
+            dataGridViewOrderOverview.Columns[5].Width = 150;
+            dataGridViewOrderOverview.Columns[6].Width = 140;
+
             this.Text = $"Overview van order {this.kitchenOrderOverview.OrderId} voor tafel {this.kitchenOrderOverview.TableId}";
-            //dataGridViewOrderOverview.DataSource = GetCombinedGerechten();
 
             LoadKitchenOrderOverviewData();
         }
@@ -42,8 +50,8 @@ namespace ChapeauUI
                 row.Cells[0].Value = ((TimeSpan)(DateTime.Now - orderGerecht.TimeOfOrder)).ToString(@"hh\:mm");
                 row.Cells[1].Value = orderGerecht.MenuItem.ProductName;
                 row.Cells[2].Value = orderGerecht.MenuItem.Type;
-                //((DataGridViewComboBoxCell)row.Cells[3]).DataSource = GetStatus();
-                //((DataGridViewComboBoxCell)row.Cells[4]).DataSource = GetStatus();
+                row.Cells[4].Value = orderGerecht.Status;
+                row.Cells[6].Value = orderGerecht.IsServed;
                 row.MinimumHeight = 30;
                 row.Tag = orderGerecht;
                 dataGridViewOrderOverview.Rows.Add(row);
@@ -75,6 +83,22 @@ namespace ChapeauUI
         private void buttonTerug_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        //van: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datagridview.currentcelldirtystatechanged?view=windowsdesktop-6.0
+        //dit zorgt ervoor dat een verandering in de combobox gelijk naar de database wordt gepushed nadat er een keuze is gemaakt
+        private void dataGridViewOrderOverview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewOrderOverview.IsCurrentCellDirty)
+            {
+                dataGridViewOrderOverview.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dataGridViewOrderOverview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
