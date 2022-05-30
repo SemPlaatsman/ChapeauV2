@@ -29,7 +29,7 @@ namespace ChapeauUI
             this.table = table;
             this.employee = employee;
             InitializeComponent();
-            this.Text += $" for Table {table}";
+            this.Text += $" for Table {table.TableID}";
         }
         private void buttonCheckout_Click(object sender, EventArgs e)
         {

@@ -59,7 +59,7 @@
             this.receiptBtwLbl = new System.Windows.Forms.Label();
             this.receiptTotaalArtikelPrijsLbl = new System.Windows.Forms.Label();
             this.TerugBtn = new System.Windows.Forms.Button();
-            
+            this.PrintBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BonPnl.SuspendLayout();
             this.SuspendLayout();
@@ -369,14 +369,23 @@
             this.TerugBtn.Text = "Terug";
             this.TerugBtn.UseVisualStyleBackColor = true;
             this.TerugBtn.Click += new System.EventHandler(this.TerugBtn_Click);
-            
+            // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Location = new System.Drawing.Point(175, 754);
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.Size = new System.Drawing.Size(133, 34);
+            this.PrintBtn.TabIndex = 26;
+            this.PrintBtn.Text = "Uitprinten";
+            this.PrintBtn.UseVisualStyleBackColor = true;
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
             // 
             // ReceiptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 791);
-            
+            this.ClientSize = new System.Drawing.Size(496, 809);
+            this.Controls.Add(this.PrintBtn);
             this.Controls.Add(this.TerugBtn);
             this.Controls.Add(this.BonPnl);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -422,5 +431,6 @@
         private System.Windows.Forms.Label tipTotalLbl;
         private System.Windows.Forms.Label tipOrDiscountLbl;
         private System.Windows.Forms.TextBox remarkTextbox;
+        private System.Windows.Forms.Button PrintBtn;
     }
 }
