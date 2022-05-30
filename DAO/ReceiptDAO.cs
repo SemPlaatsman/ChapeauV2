@@ -108,6 +108,18 @@ namespace ChapeauDAO
             }
         }
 
+        public void ChangeOccupancy()
+        {
+            try
+            {
+                string query;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("De data kan niet geupload worden naar de database. probeer het later opnieuw" + e.Message);
+            }
+        }
+
         private string ReadHostTables(DataTable dataTable)
         {
             try

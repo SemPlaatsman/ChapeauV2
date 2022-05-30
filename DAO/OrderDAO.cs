@@ -62,21 +62,7 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
-        public void AlterTables(Table tableID)
-        {
-            try
-            {
-                string query = $"Update [ApplicatiebouwChapeau].[Table] set IsOccupied = 1 where TableID = @TableID";
-                SqlParameter[] sqlParameter = new SqlParameter[1];
-                sqlParameter[0] = new SqlParameter("@TableID", tableID.TableID);
-                ExecuteEditQuery(query, sqlParameter);
-            }
-            catch(Exception e)
-            {
-                throw new Exception("Data could not be altered in the database. please try again" + e.Message);
-            }
-
-        }
+       
         
         
     }
