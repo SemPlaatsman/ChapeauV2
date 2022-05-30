@@ -21,7 +21,7 @@ namespace ChapeauUI
         private Employee employee;
         private Employee employeeConnectedToTable;
         private EmployeeService employeeService;
-        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) // Table table. Hele object meegeven, want minder werk. 
+        public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) 
         {
             this.employeeService = new EmployeeService();
             this.employeeConnectedToTable = employeeService.GetEmployee(table);
@@ -42,8 +42,23 @@ namespace ChapeauUI
             this.Close();
         }
 
+        private void ShowListView()
+        {
+            // iets nodig om te items te showen die georderd zijn op deze tafel. 
+            listViewOrder.View = View.Details;
+            listViewOrder.Columns.Add("Naam", 150);
+            listViewOrder.Columns.Add("Status", 80);
+
+/*            foreach (var item in collection)
+            {
+                Iets met ListItem li... 
+                li.add.iets();
+            }*/
+
+        }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
+            TableService tableService = new TableService();
             OrderService orderService = new OrderService();
             List<Table> tables = orderService.tables();
             foreach (Table table in tables) 
@@ -54,6 +69,15 @@ namespace ChapeauUI
                     {
                         orderService.InsertNewOrder(table);
                         orderService.AlterTables(table);
+
+                        // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
+/*                        // achtergrond kleur moet naar rood. 
+                        tableService.UpdateTableOccupy(table, true);
+                        tableService.SetEmployee(this.employee, table);
+                        this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
+                        labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
+                        // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
+                        this.overviewForm.SetColor();*/
                     }
                 }
             }
@@ -97,6 +121,7 @@ namespace ChapeauUI
 
         private void TableForm_Load(object sender, EventArgs e)
         {
+            ShowListView();
             TableService tableService = new TableService();
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
@@ -112,5 +137,6 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
+
     }
 }
