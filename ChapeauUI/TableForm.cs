@@ -42,15 +42,19 @@ namespace ChapeauUI
             this.Close();
         }
 
-        private void ShowListView() 
+        private void ShowListView()
         {
             // iets nodig om te items te showen die georderd zijn op deze tafel. 
-
-
             listViewOrder.View = View.Details;
             listViewOrder.Columns.Add("Naam", 150);
             listViewOrder.Columns.Add("Status", 80);
-        
+
+/*            foreach (var item in collection)
+            {
+                Iets met ListItem li... 
+                li.add.iets();
+            }*/
+
         }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {

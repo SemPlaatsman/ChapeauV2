@@ -46,6 +46,7 @@ namespace ChapeauDAO
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        // WEET NIET WAAR IK DEZE MOET ZETTEN. tot en met regel 65... Welke DAO? Welk Datatype?
         public Table ShowOrder(Order order)
         {
             string query = " select OrderGerechtId, ItemId, x.OrderID, [status], TimeOfOrder, Remark, [isServed] from ApplicatiebouwChapeau.[OrderGerecht] as o " +
@@ -58,6 +59,7 @@ namespace ChapeauDAO
 
         private Table ReadTable(DataTable dataTable)
         {
+
 
         }
 
