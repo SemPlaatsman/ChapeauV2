@@ -40,19 +40,17 @@ namespace ChapeauUI
 
             dataGridViewOverzicht.Columns[0].Width = 42;
             dataGridViewOverzicht.Columns[1].Width = 38;
-            dataGridViewOverzicht.Columns[2].Width = 75;
-            dataGridViewOverzicht.Columns[3].Width = 75;
-            dataGridViewOverzicht.Columns[4].Width = 75;
-            dataGridViewOverzicht.Columns[5].Width = 75;
+            dataGridViewOverzicht.Columns[2].Width = 235;
+            dataGridViewOverzicht.Columns[3].Width = 65;
 
             flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
             flowLayoutMeeBezig.AutoScroll = true;
             flowLayoutMeeBezig.WrapContents = false;
 
-            ReloadKitchenDisplay();
+            LoadKitchenDisplayData();
         }
         
-        private void ReloadKitchenDisplay()
+        private void LoadKitchenDisplayData()
         {
             dataGridViewMoetNog.AllowUserToAddRows = true;
             dataGridViewOverzicht.AllowUserToAddRows = true;
@@ -65,7 +63,7 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ReloadKitchenDisplay();
+            LoadKitchenDisplayData();
         }
 
         private void FillLists()
@@ -88,23 +86,35 @@ namespace ChapeauUI
                 gerechten = kitchenOverview.GetNextMoetNogList();
                 if (gerechten.Count > 0)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
-                    row.Cells[0].Value = kitchenOverview.OrderId.ToString();
-                    row.Cells[1].Value = kitchenOverview.TableId.ToString();
-                    row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
-                    row.Cells[3].Value = GetMenuItems(gerechten);
-                    row.Cells[4].Value = "Verwerk";
-                    row.MinimumHeight = 30;
-                    row.Tag = kitchenOverview;
-                    dataGridViewMoetNog.Rows.Add(row);
+                    AddToMoetNogList(kitchenOverview, gerechten);
                 }
             }
+        }
+
+        private void AddToMoetNogList(KitchenOrderOverview kitchenOverview, List<OrderGerecht> gerechten)
+        {
+            DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
+            row.Cells[0].Value = kitchenOverview.OrderId.ToString();
+            row.Cells[1].Value = kitchenOverview.TableId.ToString();
+            row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
+            row.Cells[3].Value = GetMenuItems(gerechten);
+            row.Cells[4].Value = "Verwerk";
+            row.MinimumHeight = 30;
+            row.Tag = kitchenOverview;
+            dataGridViewMoetNog.Rows.Add(row);
         }
 
         private void AddToOverviewList(KitchenOrderOverview kitchenOverview)
         {
             //TODO: vul een lijst met alle orders
-
+            DataGridViewRow row = (DataGridViewRow)dataGridViewOverzicht.Rows[0].Clone();
+            row.Cells[0].Value = kitchenOverview.OrderId.ToString();
+            row.Cells[1].Value = kitchenOverview.TableId.ToString();
+            row.Cells[2].Value = kitchenOverview.ToStringOverzicht();
+            row.Cells[3].Value = "Open";
+            row.MinimumHeight = 30;
+            row.Tag = kitchenOverview;
+            dataGridViewOverzicht.Rows.Add(row);
         }
 
         private string GetMenuItems(List<OrderGerecht> gerechten)
@@ -223,7 +233,7 @@ namespace ChapeauUI
                 {
                     orderGerechtService.ChangeOrderGerechtStatus(orderGerecht, OrderStatus.Klaar);
                 }
-                ReloadKitchenDisplay();
+                LoadKitchenDisplayData();
             }
         }
 
@@ -250,11 +260,11 @@ namespace ChapeauUI
                 dataGridView.ClearSelection();
                 KitchenOrderOverview kitchenOverview = (KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag;
                 kitchenService.ChangeNextOrderStatus(kitchenOverview.GetNextMoetNogList()[0], OrderStatus.MeeBezig);
-                ReloadKitchenDisplay();
+                LoadKitchenDisplayData();
             }
         }
 
-        private void SetDefaultGridProperties(DataGridView dataGridView)
+        public static void SetDefaultGridProperties(DataGridView dataGridView)
         {
             dataGridView.Visible = true;
             dataGridView.ReadOnly = true;
@@ -266,5 +276,22 @@ namespace ChapeauUI
             dataGridView.BackgroundColor = SystemColors.Control;
         }
 
+        private void dataGridViewOverzicht_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+            if (dataGridView.Columns[e.ColumnIndex].CellType == typeof(DataGridViewButtonCell) && dataGridView.Rows[e.RowIndex].Tag != null)
+            {
+                KitchenOrderOverviewForm kitchenOrderOverviewForm = new KitchenOrderOverviewForm((KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag);
+                kitchenOrderOverviewForm.ShowDialog();
+            }
+        }
+
+        private void buttonUitloggen_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+            this.Close();
+        }
     }
 }
