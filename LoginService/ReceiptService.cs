@@ -26,5 +26,17 @@ namespace ChapeauLogica
         {
             return receiptDAO.Host(TableId);
         }
+        public void StoreReceipt( int TableId, decimal totalPrice, decimal btwTotal, string paymentMethod, DateTime timeOfPayment)
+        {
+            receiptDAO.InsertReceipt(TableId ,totalPrice, btwTotal, paymentMethod, timeOfPayment);
+        }
+        public void StoreRemark(int TableId, string remark)
+        {
+            receiptDAO.InsertRemark(TableId, remark);
+        }
+        public void UpdateTable()
+        {
+            receiptDAO.ChangeOccupancy();
+        }
     }
 }

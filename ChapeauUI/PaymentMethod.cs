@@ -16,13 +16,13 @@ namespace ChapeauUI
 {
     public partial class PaymentMethod : Form
     {
-        private Table tableId;
+        private Table table;
         private decimal newTotal;
         private Employee employee;
-        public PaymentMethod(Table TableId, decimal NewTotal, Employee employee)
+        public PaymentMethod(Table table, decimal NewTotal, Employee employee)
         {
             InitializeComponent();
-            this.tableId = TableId;
+            this.table = table;
             newTotal = NewTotal;
             this.employee = employee;
         }
@@ -40,7 +40,7 @@ namespace ChapeauUI
         {
 
             paymentMethod = "Contant";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();
@@ -51,7 +51,7 @@ namespace ChapeauUI
         {
 
             paymentMethod = "Pin";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();
@@ -61,7 +61,7 @@ namespace ChapeauUI
         {
 
             paymentMethod = "CreditCard";
-            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, this.tableId.TableID, newTotal, this.employee);
+            ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
 
             receiptForm.ShowDialog();
             this.Close();

@@ -16,34 +16,36 @@ namespace ChapeauUI
 {
     public partial class ReceiptForm : Form
     {
-        private string betaalMethode;
-        private int tableId;
+        private string paymentMethod;
+        private Table table;
         private decimal newTotal;
-        public ReceiptForm(string betaalMethode, int tableId, decimal newTotal, Employee employee)
+        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee)
         {
             InitializeComponent();
-            this.betaalMethode = betaalMethode; //enum toepassen.  Engels en NL door elkaar? 
-            this.tableId = tableId;
+            this.paymentMethod = paymentMethod; 
+            this.table = table;
             this.newTotal = newTotal;
             this.employee = employee;
             FillReceipt();
         }
         private decimal totalPrice = 0;
-        private int totaalItems = 0; // hier weer Engels
-        private decimal btwTotaal = 0;
+        private int totalItems = 0; 
+        private decimal btwTotal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
         private Employee employee;
+        private DateTime timeOfPayment;
 
         ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
         {
-            betaalMethodeLbl.Text = betaalMethode;
-            datumLbl.Text = DateTime.Now.ToString("g");
+            betaalMethodeLbl.Text = paymentMethod;
+            timeOfPayment = DateTime.Now;
+            datumLbl.Text = timeOfPayment.ToString("g");
 
             //vul de listview
-            
-            List<Receipt> orders = receiptService.GetOrderList(tableId);
+
+            List<Receipt> orders = receiptService.GetOrderList(table.TableID);
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
@@ -59,35 +61,42 @@ namespace ChapeauUI
                 li.Tag = order;
                 itemsListBox.Items.Add(li);
                 totalPrice += order.Price * order.Quantity;
-                totaalItems += order.Quantity;
+                totalItems += order.Quantity;
 
                 if(order.IsAlcoholic)
                 {
                     btwItem = CheckBtwHigh(order.Price);
                     btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem; 
+                    btwTotal += btwItem; 
                 }
                 if (!order.IsAlcoholic)
                 {
                     btwItem = CheckBtwLow(order.Price);
                     btwItem = btwItem * order.Quantity;
-                    btwTotaal += btwItem;
+                    btwTotal += btwItem;
                 }
             }
             FillLabels();
+        }
+        private decimal CheckBtwHigh(decimal price)
+        {
+            return price * 0.21M;
+        }
+        private decimal CheckBtwLow(decimal price)
+        {
+            return price * 0.09M;
         }
 
         public void FillLabels()
         {
             //Listview gevuld
-            receiptTotaalArtikelLbl.Text = $"Totaal {totaalItems} artikelen";
-            receiptTotaalArtikelPrijsLbl.Text = $"€{totalPrice.ToString()}";
-            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotaal):0.00}");
-            totalWithBtw = btwTotaal + totalPrice;
+            receiptTotaalArtikelLbl.Text = $"Totaal {totalItems} artikelen";
+            receiptTotaalArtikelPrijsLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
+            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotal):0.00}");
+            totalWithBtw = totalPrice;
             totaalMetBtwLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
-            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(tableId)}";
-
+            geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(table.TableID)}";
             tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
 
             if (newTotal <= 0)
@@ -109,14 +118,6 @@ namespace ChapeauUI
             }
         }
 
-        private decimal CheckBtwHigh(decimal price)
-        {
-            return price * 0.21M;
-        }
-        private decimal CheckBtwLow(decimal price)
-        {
-            return price * 0.09M;
-        }
 
 
         private void TerugBtn_Click(object sender, EventArgs e)
@@ -124,15 +125,40 @@ namespace ChapeauUI
             this.Close();
         }
 
-        private void OpmerkingBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Opmerking opgeslagen");
-        }
 
-        private void UitprintenBtn_Click(object sender, EventArgs e)
+        private void PrintBtn_Click(object sender, EventArgs e)
         {
+            int occupation = 0;
+            TableService tableService = new TableService();
+            if (!string.IsNullOrEmpty(remarkTextbox.Text))
+            {
+                if (newTotal <= totalPrice)
+                {
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
+                }
+                else
+                {
+                    totalPrice = newTotal;
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
+                }
+            }
+            else
+            {
+                if (newTotal <= totalPrice)
+                {
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                }
+                else
+                {
+                    totalPrice = newTotal;
+                    receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
+                }
+            }
+
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
-            this.Hide();
+            tableService.AlterTables(table, occupation);
             TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);
             tableOverviewForm.ShowDialog();
             this.Close();

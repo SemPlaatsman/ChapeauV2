@@ -53,6 +53,26 @@ namespace ChapeauUI
             this.buttonTable10 = new System.Windows.Forms.Button();
             this.buttonUitloggen = new System.Windows.Forms.Button();
             this.timerRefreshOverview = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxTable1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable5 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable6 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable7 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable8 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable9 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTable10 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable10)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTable1
@@ -268,12 +288,13 @@ namespace ChapeauUI
             // buttonUitloggen
             // 
             this.buttonUitloggen.BackColor = System.Drawing.Color.White;
+            this.buttonUitloggen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUitloggen.Image = ((System.Drawing.Image)(resources.GetObject("buttonUitloggen.Image")));
             this.buttonUitloggen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUitloggen.Location = new System.Drawing.Point(48, 650);
+            this.buttonUitloggen.Location = new System.Drawing.Point(158, 679);
             this.buttonUitloggen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUitloggen.Name = "buttonUitloggen";
-            this.buttonUitloggen.Size = new System.Drawing.Size(120, 50);
+            this.buttonUitloggen.Size = new System.Drawing.Size(178, 50);
             this.buttonUitloggen.TabIndex = 30;
             this.buttonUitloggen.Text = "       Uitloggen";
             this.buttonUitloggen.UseVisualStyleBackColor = false;
@@ -284,11 +305,112 @@ namespace ChapeauUI
             this.timerRefreshOverview.Interval = 3000;
             this.timerRefreshOverview.Tick += new System.EventHandler(this.timerRefreshOverview_Tick);
             // 
+            // pictureBoxTable1
+            // 
+            this.pictureBoxTable1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable1.Image")));
+            this.pictureBoxTable1.Location = new System.Drawing.Point(174, 49);
+            this.pictureBoxTable1.Name = "pictureBoxTable1";
+            this.pictureBoxTable1.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable1.TabIndex = 31;
+            this.pictureBoxTable1.TabStop = false;
+            // 
+            // pictureBoxTable2
+            // 
+            this.pictureBoxTable2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable2.Image")));
+            this.pictureBoxTable2.Location = new System.Drawing.Point(413, 49);
+            this.pictureBoxTable2.Name = "pictureBoxTable2";
+            this.pictureBoxTable2.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable2.TabIndex = 32;
+            this.pictureBoxTable2.TabStop = false;
+            // 
+            // pictureBoxTable3
+            // 
+            this.pictureBoxTable3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable3.Image")));
+            this.pictureBoxTable3.Location = new System.Drawing.Point(174, 170);
+            this.pictureBoxTable3.Name = "pictureBoxTable3";
+            this.pictureBoxTable3.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable3.TabIndex = 33;
+            this.pictureBoxTable3.TabStop = false;
+            // 
+            // pictureBoxTable4
+            // 
+            this.pictureBoxTable4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable4.Image")));
+            this.pictureBoxTable4.Location = new System.Drawing.Point(413, 170);
+            this.pictureBoxTable4.Name = "pictureBoxTable4";
+            this.pictureBoxTable4.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable4.TabIndex = 34;
+            this.pictureBoxTable4.TabStop = false;
+            // 
+            // pictureBoxTable5
+            // 
+            this.pictureBoxTable5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable5.Image")));
+            this.pictureBoxTable5.Location = new System.Drawing.Point(174, 301);
+            this.pictureBoxTable5.Name = "pictureBoxTable5";
+            this.pictureBoxTable5.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable5.TabIndex = 35;
+            this.pictureBoxTable5.TabStop = false;
+            // 
+            // pictureBoxTable6
+            // 
+            this.pictureBoxTable6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable6.Image")));
+            this.pictureBoxTable6.Location = new System.Drawing.Point(413, 301);
+            this.pictureBoxTable6.Name = "pictureBoxTable6";
+            this.pictureBoxTable6.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable6.TabIndex = 36;
+            this.pictureBoxTable6.TabStop = false;
+            // 
+            // pictureBoxTable7
+            // 
+            this.pictureBoxTable7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable7.Image")));
+            this.pictureBoxTable7.Location = new System.Drawing.Point(174, 428);
+            this.pictureBoxTable7.Name = "pictureBoxTable7";
+            this.pictureBoxTable7.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable7.TabIndex = 37;
+            this.pictureBoxTable7.TabStop = false;
+            // 
+            // pictureBoxTable8
+            // 
+            this.pictureBoxTable8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable8.Image")));
+            this.pictureBoxTable8.Location = new System.Drawing.Point(413, 428);
+            this.pictureBoxTable8.Name = "pictureBoxTable8";
+            this.pictureBoxTable8.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable8.TabIndex = 38;
+            this.pictureBoxTable8.TabStop = false;
+            // 
+            // pictureBoxTable9
+            // 
+            this.pictureBoxTable9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable9.Image")));
+            this.pictureBoxTable9.Location = new System.Drawing.Point(174, 553);
+            this.pictureBoxTable9.Name = "pictureBoxTable9";
+            this.pictureBoxTable9.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable9.TabIndex = 39;
+            this.pictureBoxTable9.TabStop = false;
+            // 
+            // pictureBoxTable10
+            // 
+            this.pictureBoxTable10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable10.Image")));
+            this.pictureBoxTable10.Location = new System.Drawing.Point(413, 553);
+            this.pictureBoxTable10.Name = "pictureBoxTable10";
+            this.pictureBoxTable10.Size = new System.Drawing.Size(52, 50);
+            this.pictureBoxTable10.TabIndex = 40;
+            this.pictureBoxTable10.TabStop = false;
+            // 
             // TableOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(517, 791);
+            this.Controls.Add(this.pictureBoxTable10);
+            this.Controls.Add(this.pictureBoxTable9);
+            this.Controls.Add(this.pictureBoxTable8);
+            this.Controls.Add(this.pictureBoxTable7);
+            this.Controls.Add(this.pictureBoxTable6);
+            this.Controls.Add(this.pictureBoxTable5);
+            this.Controls.Add(this.pictureBoxTable4);
+            this.Controls.Add(this.pictureBoxTable3);
+            this.Controls.Add(this.pictureBoxTable2);
+            this.Controls.Add(this.pictureBoxTable1);
             this.Controls.Add(this.buttonUitloggen);
             this.Controls.Add(this.buttonTable10);
             this.Controls.Add(this.buttonTable9);
@@ -314,6 +436,16 @@ namespace ChapeauUI
             this.Name = "TableOverviewForm";
             this.Text = "Table Overview";
             this.Load += new System.EventHandler(this.TableOverviewForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,5 +474,15 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonTable10;
         private System.Windows.Forms.Button buttonUitloggen;
         private System.Windows.Forms.Timer timerRefreshOverview;
+        private System.Windows.Forms.PictureBox pictureBoxTable1;
+        private System.Windows.Forms.PictureBox pictureBoxTable2;
+        private System.Windows.Forms.PictureBox pictureBoxTable3;
+        private System.Windows.Forms.PictureBox pictureBoxTable4;
+        private System.Windows.Forms.PictureBox pictureBoxTable5;
+        private System.Windows.Forms.PictureBox pictureBoxTable6;
+        private System.Windows.Forms.PictureBox pictureBoxTable7;
+        private System.Windows.Forms.PictureBox pictureBoxTable8;
+        private System.Windows.Forms.PictureBox pictureBoxTable9;
+        private System.Windows.Forms.PictureBox pictureBoxTable10;
     }
 }

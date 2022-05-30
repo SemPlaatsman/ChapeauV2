@@ -47,7 +47,7 @@ namespace ChapeauUI
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(10, 91);
+            this.buttonLogin.Location = new System.Drawing.Point(10, 115);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(103, 45);
@@ -59,24 +59,26 @@ namespace ChapeauUI
             // labelLoginWerknemersNummer
             // 
             this.labelLoginWerknemersNummer.AutoSize = true;
-            this.labelLoginWerknemersNummer.Location = new System.Drawing.Point(32, 254);
+            this.labelLoginWerknemersNummer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLoginWerknemersNummer.Location = new System.Drawing.Point(32, 366);
             this.labelLoginWerknemersNummer.Name = "labelLoginWerknemersNummer";
-            this.labelLoginWerknemersNummer.Size = new System.Drawing.Size(122, 15);
+            this.labelLoginWerknemersNummer.Size = new System.Drawing.Size(161, 21);
             this.labelLoginWerknemersNummer.TabIndex = 2;
             this.labelLoginWerknemersNummer.Text = "Werknemersnummer:";
             // 
             // labelLoginPIN
             // 
             this.labelLoginPIN.AutoSize = true;
-            this.labelLoginPIN.Location = new System.Drawing.Point(32, 286);
+            this.labelLoginPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLoginPIN.Location = new System.Drawing.Point(32, 398);
             this.labelLoginPIN.Name = "labelLoginPIN";
-            this.labelLoginPIN.Size = new System.Drawing.Size(27, 15);
+            this.labelLoginPIN.Size = new System.Drawing.Size(35, 21);
             this.labelLoginPIN.TabIndex = 3;
             this.labelLoginPIN.Text = "Pin:";
             // 
             // textBoxLoginWerknemerNummer
             // 
-            this.textBoxLoginWerknemerNummer.Location = new System.Drawing.Point(201, 254);
+            this.textBoxLoginWerknemerNummer.Location = new System.Drawing.Point(201, 366);
             this.textBoxLoginWerknemerNummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLoginWerknemerNummer.Name = "textBoxLoginWerknemerNummer";
             this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(70, 23);
@@ -84,7 +86,7 @@ namespace ChapeauUI
             // 
             // textBoxLoginPIN
             // 
-            this.textBoxLoginPIN.Location = new System.Drawing.Point(201, 286);
+            this.textBoxLoginPIN.Location = new System.Drawing.Point(201, 398);
             this.textBoxLoginPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLoginPIN.Name = "textBoxLoginPIN";
             this.textBoxLoginPIN.PasswordChar = '*';
@@ -96,19 +98,20 @@ namespace ChapeauUI
             this.panel1.Controls.Add(this.checkBoxViewPIN);
             this.panel1.Controls.Add(this.buttonWachtwoordVergeten);
             this.panel1.Controls.Add(this.buttonLogin);
-            this.panel1.Location = new System.Drawing.Point(22, 232);
+            this.panel1.Location = new System.Drawing.Point(22, 344);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 145);
+            this.panel1.Size = new System.Drawing.Size(513, 185);
             this.panel1.TabIndex = 9;
             // 
             // checkBoxViewPIN
             // 
             this.checkBoxViewPIN.AutoSize = true;
+            this.checkBoxViewPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxViewPIN.Location = new System.Drawing.Point(276, 55);
             this.checkBoxViewPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxViewPIN.Name = "checkBoxViewPIN";
-            this.checkBoxViewPIN.Size = new System.Drawing.Size(73, 19);
+            this.checkBoxViewPIN.Size = new System.Drawing.Size(92, 25);
             this.checkBoxViewPIN.TabIndex = 0;
             this.checkBoxViewPIN.Text = "View PIN";
             this.checkBoxViewPIN.UseVisualStyleBackColor = true;
@@ -116,7 +119,7 @@ namespace ChapeauUI
             // 
             // buttonWachtwoordVergeten
             // 
-            this.buttonWachtwoordVergeten.Location = new System.Drawing.Point(119, 91);
+            this.buttonWachtwoordVergeten.Location = new System.Drawing.Point(119, 115);
             this.buttonWachtwoordVergeten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonWachtwoordVergeten.Name = "buttonWachtwoordVergeten";
             this.buttonWachtwoordVergeten.Size = new System.Drawing.Size(103, 45);
@@ -128,10 +131,10 @@ namespace ChapeauUI
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(22, 464);
+            this.pictureBox1.Location = new System.Drawing.Point(285, 606);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(346, 187);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 140);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -141,7 +144,7 @@ namespace ChapeauUI
             this.listViewNames.Location = new System.Drawing.Point(22, 16);
             this.listViewNames.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewNames.Name = "listViewNames";
-            this.listViewNames.Size = new System.Drawing.Size(513, 212);
+            this.listViewNames.Size = new System.Drawing.Size(513, 324);
             this.listViewNames.TabIndex = 13;
             this.listViewNames.UseCompatibleStateImageBehavior = false;
             this.listViewNames.Click += new System.EventHandler(this.listViewNames_Click);
@@ -149,11 +152,11 @@ namespace ChapeauUI
             // labelLoginError
             // 
             this.labelLoginError.AutoSize = true;
-            this.labelLoginError.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelLoginError.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelLoginError.ForeColor = System.Drawing.Color.Red;
-            this.labelLoginError.Location = new System.Drawing.Point(22, 402);
+            this.labelLoginError.Location = new System.Drawing.Point(22, 557);
             this.labelLoginError.Name = "labelLoginError";
-            this.labelLoginError.Size = new System.Drawing.Size(12, 15);
+            this.labelLoginError.Size = new System.Drawing.Size(16, 21);
             this.labelLoginError.TabIndex = 14;
             this.labelLoginError.Text = "-";
             // 
@@ -161,8 +164,8 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(711, 684);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(560, 757);
             this.Controls.Add(this.labelLoginError);
             this.Controls.Add(this.listViewNames);
             this.Controls.Add(this.pictureBox1);
