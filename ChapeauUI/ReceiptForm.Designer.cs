@@ -168,7 +168,7 @@
             // receiptLabel10
             // 
             this.receiptLabel10.AutoSize = true;
-            this.receiptLabel10.Location = new System.Drawing.Point(28, 659);
+            this.receiptLabel10.Location = new System.Drawing.Point(43, 660);
             this.receiptLabel10.Name = "receiptLabel10";
             this.receiptLabel10.Size = new System.Drawing.Size(287, 15);
             this.receiptLabel10.TabIndex = 17;
@@ -241,7 +241,7 @@
             this.BonPnl.Controls.Add(this.receiptTotaalPrijsLbl);
             this.BonPnl.Controls.Add(this.receiptBetaling);
             this.BonPnl.Controls.Add(this.receiptDatum);
-            this.BonPnl.Location = new System.Drawing.Point(60, 46);
+            this.BonPnl.Location = new System.Drawing.Point(68, 45);
             this.BonPnl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BonPnl.Name = "BonPnl";
             this.BonPnl.Size = new System.Drawing.Size(373, 688);
@@ -372,7 +372,7 @@
             // 
             // PrintBtn
             // 
-            this.PrintBtn.Location = new System.Drawing.Point(175, 754);
+            this.PrintBtn.Location = new System.Drawing.Point(192, 749);
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.Size = new System.Drawing.Size(133, 34);
             this.PrintBtn.TabIndex = 26;
@@ -384,7 +384,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 809);
+            this.ClientSize = new System.Drawing.Size(516, 809);
             this.Controls.Add(this.PrintBtn);
             this.Controls.Add(this.TerugBtn);
             this.Controls.Add(this.BonPnl);
