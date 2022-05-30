@@ -71,13 +71,13 @@ namespace ChapeauUI
                         orderService.AlterTables(table);
 
                         // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
-/*                        // achtergrond kleur moet naar rood. 
+                        // achtergrond kleur moet naar rood. 
                         tableService.UpdateTableOccupy(table, true);
                         tableService.SetEmployee(this.employee, table);
                         this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
                         labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
                         // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
-                        this.overviewForm.SetColor();*/
+                        this.overviewForm.SetColor();
                     }
                 }
             }
@@ -96,7 +96,7 @@ namespace ChapeauUI
             List<Table> tables = tableService.GetAllTables();
             table = tables.Find(x => x.TableID == this.table.TableID);
 
-            if (checkBoxTable.Checked)
+/*            if (checkBoxTable.Checked)
             {
                 // achtergrond kleur moet naar rood. 
                 tableService.UpdateTableOccupy(table, true);
@@ -112,7 +112,7 @@ namespace ChapeauUI
                 tableService.UpdateTableOccupy(table, false);
                 labelCurrentEmployee.Text = "Geen medewerker gekoppeld";
                 this.overviewForm.SetColor();
-            }
+            }*/
 
             // alle tafels updaten? 
             tableService.GetAllTables();
