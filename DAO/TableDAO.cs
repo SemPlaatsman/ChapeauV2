@@ -36,7 +36,6 @@ namespace ChapeauDAO
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        // Table table misschien ook nog meegeven. 
         public void SetEmployee(Employee employee, Table table)
         {
             string query = "Update ApplicatiebouwChapeau.[Table] SET [EmployeeID] = @EmployeeID where [TableID] = @TableID;";
@@ -46,6 +45,7 @@ namespace ChapeauDAO
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
 
         private List<Table> ReadTables(DataTable dataTable)
         {
