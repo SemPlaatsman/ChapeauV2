@@ -288,12 +288,13 @@ namespace ChapeauUI
             // buttonUitloggen
             // 
             this.buttonUitloggen.BackColor = System.Drawing.Color.White;
+            this.buttonUitloggen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUitloggen.Image = ((System.Drawing.Image)(resources.GetObject("buttonUitloggen.Image")));
             this.buttonUitloggen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUitloggen.Location = new System.Drawing.Point(48, 650);
+            this.buttonUitloggen.Location = new System.Drawing.Point(158, 679);
             this.buttonUitloggen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUitloggen.Name = "buttonUitloggen";
-            this.buttonUitloggen.Size = new System.Drawing.Size(120, 50);
+            this.buttonUitloggen.Size = new System.Drawing.Size(178, 50);
             this.buttonUitloggen.TabIndex = 30;
             this.buttonUitloggen.Text = "       Uitloggen";
             this.buttonUitloggen.UseVisualStyleBackColor = false;
@@ -398,6 +399,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(517, 791);
             this.Controls.Add(this.pictureBoxTable10);
             this.Controls.Add(this.pictureBoxTable9);

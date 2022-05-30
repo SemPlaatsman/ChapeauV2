@@ -43,10 +43,11 @@ namespace ChapeauUI
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(38, 272);
+            this.buttonBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonBack.Location = new System.Drawing.Point(38, 571);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(82, 46);
+            this.buttonBack.Size = new System.Drawing.Size(100, 60);
             this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Terug";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -54,10 +55,11 @@ namespace ChapeauUI
             // 
             // buttonNewOrder
             // 
-            this.buttonNewOrder.Location = new System.Drawing.Point(168, 272);
+            this.buttonNewOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonNewOrder.Location = new System.Drawing.Point(199, 571);
             this.buttonNewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonNewOrder.Name = "buttonNewOrder";
-            this.buttonNewOrder.Size = new System.Drawing.Size(82, 46);
+            this.buttonNewOrder.Size = new System.Drawing.Size(100, 60);
             this.buttonNewOrder.TabIndex = 1;
             this.buttonNewOrder.Text = "Nieuwe bestelling";
             this.buttonNewOrder.UseVisualStyleBackColor = true;
@@ -65,10 +67,11 @@ namespace ChapeauUI
             // 
             // buttonCheckout
             // 
-            this.buttonCheckout.Location = new System.Drawing.Point(304, 272);
+            this.buttonCheckout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCheckout.Location = new System.Drawing.Point(360, 571);
             this.buttonCheckout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCheckout.Name = "buttonCheckout";
-            this.buttonCheckout.Size = new System.Drawing.Size(82, 46);
+            this.buttonCheckout.Size = new System.Drawing.Size(100, 60);
             this.buttonCheckout.TabIndex = 3;
             this.buttonCheckout.Text = "Afrekenen";
             this.buttonCheckout.UseVisualStyleBackColor = true;
@@ -77,7 +80,7 @@ namespace ChapeauUI
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(38, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(38, 25);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(99, 99);
@@ -88,7 +91,7 @@ namespace ChapeauUI
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.BackColor = System.Drawing.SystemColors.Control;
-            this.labelStatus.Location = new System.Drawing.Point(190, 32);
+            this.labelStatus.Location = new System.Drawing.Point(38, 157);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(45, 15);
             this.labelStatus.TabIndex = 5;
@@ -97,20 +100,21 @@ namespace ChapeauUI
             // listViewOrder
             // 
             this.listViewOrder.HideSelection = false;
-            this.listViewOrder.Location = new System.Drawing.Point(190, 55);
+            this.listViewOrder.Location = new System.Drawing.Point(38, 186);
             this.listViewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewOrder.Name = "listViewOrder";
-            this.listViewOrder.Size = new System.Drawing.Size(197, 206);
+            this.listViewOrder.Size = new System.Drawing.Size(422, 356);
             this.listViewOrder.TabIndex = 6;
             this.listViewOrder.UseCompatibleStateImageBehavior = false;
             // 
             // checkBoxTable
             // 
             this.checkBoxTable.AutoSize = true;
-            this.checkBoxTable.Location = new System.Drawing.Point(38, 163);
+            this.checkBoxTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxTable.Location = new System.Drawing.Point(173, 26);
             this.checkBoxTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxTable.Name = "checkBoxTable";
-            this.checkBoxTable.Size = new System.Drawing.Size(54, 19);
+            this.checkBoxTable.Size = new System.Drawing.Size(66, 25);
             this.checkBoxTable.TabIndex = 7;
             this.checkBoxTable.Text = "Bezet";
             this.checkBoxTable.UseVisualStyleBackColor = true;
@@ -119,9 +123,10 @@ namespace ChapeauUI
             // labelCurrentEmployee
             // 
             this.labelCurrentEmployee.AutoSize = true;
-            this.labelCurrentEmployee.Location = new System.Drawing.Point(38, 198);
+            this.labelCurrentEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCurrentEmployee.Location = new System.Drawing.Point(275, 26);
             this.labelCurrentEmployee.Name = "labelCurrentEmployee";
-            this.labelCurrentEmployee.Size = new System.Drawing.Size(102, 30);
+            this.labelCurrentEmployee.Size = new System.Drawing.Size(137, 42);
             this.labelCurrentEmployee.TabIndex = 8;
             this.labelCurrentEmployee.Text = "Geen medewerker\r\ngekoppeld";
             // 
@@ -129,7 +134,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 336);
+            this.ClientSize = new System.Drawing.Size(513, 663);
             this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
             this.Controls.Add(this.listViewOrder);

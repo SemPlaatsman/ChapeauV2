@@ -58,6 +58,7 @@ namespace ChapeauUI
         }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
+            TableService tableService = new TableService();
             OrderService orderService = new OrderService();
             List<Table> tables = orderService.tables();
             foreach (Table table in tables) 
@@ -68,6 +69,15 @@ namespace ChapeauUI
                     {
                         orderService.InsertNewOrder(table);
                         orderService.AlterTables(table);
+
+                        // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
+/*                        // achtergrond kleur moet naar rood. 
+                        tableService.UpdateTableOccupy(table, true);
+                        tableService.SetEmployee(this.employee, table);
+                        this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
+                        labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
+                        // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
+                        this.overviewForm.SetColor();*/
                     }
                 }
             }
