@@ -47,13 +47,15 @@ namespace ChapeauUI
             // 
             // buttonLogin
             // 
+            this.buttonLogin.BackColor = System.Drawing.Color.White;
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLogin.Location = new System.Drawing.Point(10, 115);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(103, 45);
             this.buttonLogin.TabIndex = 0;
             this.buttonLogin.Text = "Login";
-            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // labelLoginWerknemersNummer
@@ -119,13 +121,14 @@ namespace ChapeauUI
             // 
             // buttonWachtwoordVergeten
             // 
+            this.buttonWachtwoordVergeten.BackColor = System.Drawing.Color.White;
             this.buttonWachtwoordVergeten.Location = new System.Drawing.Point(119, 115);
             this.buttonWachtwoordVergeten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonWachtwoordVergeten.Name = "buttonWachtwoordVergeten";
             this.buttonWachtwoordVergeten.Size = new System.Drawing.Size(103, 45);
             this.buttonWachtwoordVergeten.TabIndex = 11;
             this.buttonWachtwoordVergeten.Text = "Wachtwoord vergeten?";
-            this.buttonWachtwoordVergeten.UseVisualStyleBackColor = true;
+            this.buttonWachtwoordVergeten.UseVisualStyleBackColor = false;
             this.buttonWachtwoordVergeten.Click += new System.EventHandler(this.buttonWachtwoordVergeten_Click);
             // 
             // pictureBox1

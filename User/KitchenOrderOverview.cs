@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ChapeauModel
 {
@@ -105,7 +106,7 @@ namespace ChapeauModel
             return new List<OrderGerecht>();
         }
 
-        public bool ListHasMeeBezig(List<OrderGerecht> gerechten)
+        public static bool ListHasMeeBezig(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
             {
@@ -117,7 +118,7 @@ namespace ChapeauModel
             return false;
         }
 
-        public bool ListCompleted(List<OrderGerecht> gerechten)
+        public static bool ListCompleted(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
             {
@@ -127,6 +128,14 @@ namespace ChapeauModel
                 }
             }
             return true;
+        }
+
+        public string ToStringOverzicht()
+        {
+            return $"Voorgerechten: {(Voorgerechten.Count != 0 ? Regex.Replace($"{Voorgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
+                $"Tussengerechten: {(Tussengerechten.Count != 0 ? Regex.Replace($"{Tussengerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
+                $"Hoofdgerechten: {(Hoofdgerechten.Count != 0 ? Regex.Replace($"{Hoofdgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
+                $"Nagerechten: {(Nagerechten.Count != 0 ? Regex.Replace($"{Nagerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}";
         }
     }
 }
