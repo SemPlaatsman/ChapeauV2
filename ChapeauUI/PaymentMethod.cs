@@ -17,8 +17,8 @@ namespace ChapeauUI
     public partial class PaymentMethod : Form
     {
         private Table table;
-        private decimal newTotal;
         private Employee employee;
+        private decimal newTotal;
         public PaymentMethod(Table table, decimal NewTotal, Employee employee)
         {
             InitializeComponent();
@@ -28,41 +28,37 @@ namespace ChapeauUI
         }
         private string paymentMethod;
         
-        //ReceiptForm receipt = new ReceiptForm();
-
         private void AnnulerenBtn_Click(object sender, EventArgs e)
         {            
+            this.Hide();
+            CheckoutForm checkoutForm = new CheckoutForm(table, employee);
+            checkoutForm.ShowDialog();
             this.Close();
         }
 
-
         private void ContantBtn_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
             paymentMethod = "Contant";
             ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
-
             receiptForm.ShowDialog();
             this.Close();
-            
         }
 
         private void PinBtn_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
             paymentMethod = "Pin";
             ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
-
             receiptForm.ShowDialog();
             this.Close();
         }
 
         private void CreditCardBtn_Click(object sender, EventArgs e)
-        {
-
+        {   
+            this.Hide();
             paymentMethod = "CreditCard";
             ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee);
-
             receiptForm.ShowDialog();
             this.Close();
         }

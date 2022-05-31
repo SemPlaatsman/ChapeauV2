@@ -26,15 +26,37 @@ namespace ChapeauDAO
                 throw new Exception("Menuitems could not be loaded properly. Please try again " + e.Message);
             }
         }
-        public List<MenuItem> GetMenuItemsFromOrder(MenuItem menuItem)
+        public MenuItem GetMenuItemsFromOrder(MenuItem menuItem)
         {
             string query = "Select [ProductID],[IsDiner],[Type],[ProductName],[Price],[Stock],[IsAlcoholic] " +
                            "From[ApplicatiebouwChapeau].[MenuItem] as M " +
-                           "Join [ApplicatiebouwChapeau].[OrderGerecht] as O on M.[ProductID] = O.ItemId " +
-                           "Where O.ItemId = @OrderGerechtID;";
+                           "Where M.ProductID = @MenuitemID;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@OrderGerechtID", menuItem.ProductId);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            sqlParameters[0] = new SqlParameter("@MenuitemID", menuItem.ProductId);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public MenuItem ReadTable(DataTable dataTable)
+        {
+            try
+            {
+                MenuItem menuItem = new MenuItem();
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    menuItem.ProductId = (int)dr["ProductID"];
+                    menuItem.IsDiner = (bool)dr["IsDiner"];
+                    menuItem.Type = (TypeOfProduct)(int)dr["Type"];
+                    menuItem.ProductName = (string)dr["ProductName"];
+                    menuItem.Price = (decimal)dr["Price"];
+                    menuItem.Stock = (int)dr["Stock"];
+                    menuItem.IsAlcoholic = (bool)dr["IsAlcoholic"];
+                }
+                return menuItem;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
+            }
         }
         private List<MenuItem> ReadTables(DataTable dataTable)
         {
@@ -63,6 +85,13 @@ namespace ChapeauDAO
             {
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
+        }
+        public void UpdateMenuItem(OrderGerecht orderGerecht)
+        {
+            string query = "Update [ApplicatiebouwChapeau].[MenuItem] set stock -= 1 where ProductID = 2; ";
+            SqlParameter[] sqlParameter = new SqlParameter[1];
+            sqlParameter[0] = new SqlParameter("@MenuItemId", orderGerecht.MenuItem.ProductId);
+            ExecuteEditQuery(query, sqlParameter);
         }
     }
 }

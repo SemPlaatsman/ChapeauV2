@@ -35,8 +35,10 @@ namespace ChapeauUI
         {
             if (table.IsOccupied)
             {
+                this.Hide();
                 CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
-                checkoutForm.ShowDialog();
+                checkoutForm.ShowDialog();                
+                this.Close();
             }
             else
             {

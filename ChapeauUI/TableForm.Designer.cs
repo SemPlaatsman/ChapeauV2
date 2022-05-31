@@ -43,6 +43,7 @@ namespace ChapeauUI
             // 
             // buttonBack
             // 
+            this.buttonBack.BackColor = System.Drawing.Color.White;
             this.buttonBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBack.Location = new System.Drawing.Point(38, 571);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -50,11 +51,12 @@ namespace ChapeauUI
             this.buttonBack.Size = new System.Drawing.Size(100, 60);
             this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Terug";
-            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonNewOrder
             // 
+            this.buttonNewOrder.BackColor = System.Drawing.Color.White;
             this.buttonNewOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonNewOrder.Location = new System.Drawing.Point(199, 571);
             this.buttonNewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -62,11 +64,12 @@ namespace ChapeauUI
             this.buttonNewOrder.Size = new System.Drawing.Size(100, 60);
             this.buttonNewOrder.TabIndex = 1;
             this.buttonNewOrder.Text = "Nieuwe bestelling";
-            this.buttonNewOrder.UseVisualStyleBackColor = true;
+            this.buttonNewOrder.UseVisualStyleBackColor = false;
             this.buttonNewOrder.Click += new System.EventHandler(this.buttonNewOrder_Click);
             // 
             // buttonCheckout
             // 
+            this.buttonCheckout.BackColor = System.Drawing.Color.White;
             this.buttonCheckout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonCheckout.Location = new System.Drawing.Point(360, 571);
             this.buttonCheckout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -74,7 +77,7 @@ namespace ChapeauUI
             this.buttonCheckout.Size = new System.Drawing.Size(100, 60);
             this.buttonCheckout.TabIndex = 3;
             this.buttonCheckout.Text = "Afrekenen";
-            this.buttonCheckout.UseVisualStyleBackColor = true;
+            this.buttonCheckout.UseVisualStyleBackColor = false;
             this.buttonCheckout.Click += new System.EventHandler(this.buttonCheckout_Click);
             // 
             // pictureBox1
@@ -134,6 +137,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(513, 663);
             this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
@@ -145,6 +149,7 @@ namespace ChapeauUI
             this.Controls.Add(this.buttonBack);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableForm";
             this.Load += new System.EventHandler(this.TableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
