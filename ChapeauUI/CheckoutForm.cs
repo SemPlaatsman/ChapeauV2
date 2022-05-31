@@ -16,15 +16,16 @@ namespace ChapeauUI
 {
     public partial class CheckoutForm : Form
     {
-        private Table tableId;
-        private decimal newTotal;
+        private Table table;
+        private TableOverviewForm overviewForm;
         private Employee employee;
-        public CheckoutForm(Table TableId, Employee employee)
+        private decimal newTotal;
+        public CheckoutForm(Table table, Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
-            this.tableId = TableId;
-            this.Text += $" voor Tafel {tableId}";
+            this.table = table;
+            this.Text += $" voor Tafel {table.TableID}";
             ShowListView();
         }
         private decimal totalPrice = 0;         
@@ -33,7 +34,7 @@ namespace ChapeauUI
         {
             CheckoutService checkoutService = new CheckoutService();            
             
-            List<Checkout> orders = checkoutService.GetOrderList(tableId);
+            List<Checkout> orders = checkoutService.GetOrderList(table);
 
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
@@ -54,23 +55,29 @@ namespace ChapeauUI
         }
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)
-        {            
+        {
+            this.Hide();
+            TableForm tableForm = new TableForm(table, overviewForm, employee);
+            tableForm.ShowDialog();
             this.Close();
         }
         //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
         private void AfrekenenBtn_Click(object sender, EventArgs e)
-        {            
-            PaymentMethod paymentMethod = new PaymentMethod(this.tableId, newTotal, employee);
-            paymentMethod.ShowDialog();            
+        {
+            this.Hide();
+            PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, employee);
+            paymentMethod.ShowDialog();
+            this.Close();
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                ManualPrice manualPrice = new ManualPrice(totalPrice, this.tableId, this.employee);
-
-                manualPrice.ShowDialog();            
+                this.Hide();
+                ManualPrice manualPrice = new ManualPrice(totalPrice, table, this.employee);
+                manualPrice.ShowDialog();
+                this.Close();
             }
             catch (Exception ex)
             {

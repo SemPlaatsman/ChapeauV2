@@ -38,17 +38,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(10, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 20);
+            this.label1.Size = new System.Drawing.Size(111, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Manier van Betalen:";
             // 
             // AnnulerenBtn
             // 
-            this.AnnulerenBtn.Location = new System.Drawing.Point(159, 120);
+            this.AnnulerenBtn.Location = new System.Drawing.Point(139, 90);
+            this.AnnulerenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AnnulerenBtn.Name = "AnnulerenBtn";
-            this.AnnulerenBtn.Size = new System.Drawing.Size(94, 29);
+            this.AnnulerenBtn.Size = new System.Drawing.Size(82, 22);
             this.AnnulerenBtn.TabIndex = 1;
             this.AnnulerenBtn.Text = "Annuleren";
             this.AnnulerenBtn.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // ContantBtn
             // 
-            this.ContantBtn.Location = new System.Drawing.Point(41, 65);
+            this.ContantBtn.Location = new System.Drawing.Point(36, 49);
+            this.ContantBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContantBtn.Name = "ContantBtn";
-            this.ContantBtn.Size = new System.Drawing.Size(94, 29);
+            this.ContantBtn.Size = new System.Drawing.Size(82, 22);
             this.ContantBtn.TabIndex = 2;
             this.ContantBtn.Text = "Contant";
             this.ContantBtn.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // 
             // PinBtn
             // 
-            this.PinBtn.Location = new System.Drawing.Point(159, 65);
+            this.PinBtn.Location = new System.Drawing.Point(139, 49);
+            this.PinBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PinBtn.Name = "PinBtn";
-            this.PinBtn.Size = new System.Drawing.Size(94, 29);
+            this.PinBtn.Size = new System.Drawing.Size(82, 22);
             this.PinBtn.TabIndex = 3;
             this.PinBtn.Text = "Pin";
             this.PinBtn.UseVisualStyleBackColor = true;
@@ -76,9 +79,10 @@
             // 
             // CreditCardBtn
             // 
-            this.CreditCardBtn.Location = new System.Drawing.Point(275, 65);
+            this.CreditCardBtn.Location = new System.Drawing.Point(241, 49);
+            this.CreditCardBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreditCardBtn.Name = "CreditCardBtn";
-            this.CreditCardBtn.Size = new System.Drawing.Size(94, 29);
+            this.CreditCardBtn.Size = new System.Drawing.Size(82, 22);
             this.CreditCardBtn.TabIndex = 4;
             this.CreditCardBtn.Text = "Creditcard";
             this.CreditCardBtn.UseVisualStyleBackColor = true;
@@ -86,15 +90,17 @@
             // 
             // PaymentMethod
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 164);
+            this.ClientSize = new System.Drawing.Size(364, 123);
             this.Controls.Add(this.CreditCardBtn);
             this.Controls.Add(this.PinBtn);
             this.Controls.Add(this.ContantBtn);
             this.Controls.Add(this.AnnulerenBtn);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PaymentMethod";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaymentMethod";
             this.ResumeLayout(false);
             this.PerformLayout();
