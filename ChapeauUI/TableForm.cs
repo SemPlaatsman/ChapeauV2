@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using System.Text.RegularExpressions;
 
 namespace ChapeauUI
 {
@@ -51,17 +52,31 @@ namespace ChapeauUI
 
         private void ShowListView()
         {
+            KitchenService kitchenService = new KitchenService();
+            KitchenOrderOverview kitchenOrderOverview = new KitchenOrderOverview()
+            {
+                TableId = this.table.TableID
+            };
+            kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview);
             // iets nodig om te items te showen die georderd zijn op deze tafel. 
             listViewOrder.View = View.Details;
-            listViewOrder.Columns.Add("Naam", 150);
-            listViewOrder.Columns.Add("Status", 80);
+            listViewOrder.Columns.Add("Naam", 200);
+            listViewOrder.Columns.Add("Status gerecht", 80);
+            listViewOrder.Columns.Add("Duur", 75);
+            listViewOrder.Columns.Add("Status geserveerd", 130);
+           
 
-/*            foreach (var item in collection)
+            foreach (OrderGerecht item in kitchenOrderOverview.GetCombinedGerechten())
             {
-                Iets met ListItem li... 
-                li.add.iets();
-            }*/
+                ListViewItem li = new ListViewItem(item.MenuItem.ProductName);
+                li.SubItems.Add(Regex.Replace($"{item.Status.ToString()}", "([A-Z])", " $1").Trim());
+                // TimeSpan maken vanaf timeOfOrder -> datetime.now 
+                TimeSpan time = DateTime.Now - item.TimeOfOrder;
+                li.SubItems.Add(time.ToString("hh':'mm':'ss"));
+                li.SubItems.Add(Regex.Replace($"{item.IsServed.ToString()}", "([A-Z])", " $1").Trim());
+                listViewOrder.Items.Add(li);
 
+            }
         }
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
@@ -77,8 +92,6 @@ namespace ChapeauUI
                     {
                         orderService.InsertNewOrder(table);
                         tableService.AlterTables(table, occupation);
-
-                        // dit moet hier komen te staan. Luuk moet dan er dan voor zorgen dat de tafel weer op groen wordt gezet. d.m.v. Methode die hier voor staat. 
                         // achtergrond kleur moet naar rood. 
                         tableService.UpdateTableOccupy(table, true);
                         tableService.SetEmployee(this.employee, table);
@@ -98,30 +111,10 @@ namespace ChapeauUI
         private void checkBoxTable_CheckedChanged(object sender, EventArgs e)
         {
             TableService tableService = new TableService();
-            Table table = null;
-           
+            Table table = null;           
             // Dit later omzetten naar Table Object. 
             List<Table> tables = tableService.GetAllTables();
             table = tables.Find(x => x.TableID == this.table.TableID);
-
-/*            if (checkBoxTable.Checked)
-            {
-                // achtergrond kleur moet naar rood. 
-                tableService.UpdateTableOccupy(table, true);
-                tableService.SetEmployee(this.employee, table);
-                this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
-                labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
-                // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
-                this.overviewForm.SetColor();
-            }
-            else
-            {
-                // achtergrond kleur default. Groen
-                tableService.UpdateTableOccupy(table, false);
-                labelCurrentEmployee.Text = "Geen medewerker gekoppeld";
-                this.overviewForm.SetColor();
-            }*/
-
             // alle tafels updaten? 
             tableService.GetAllTables();
 
@@ -135,15 +128,10 @@ namespace ChapeauUI
             List<Table> tables = tableService.GetAllTables();
             Table table = null;
             table = tables.Find(x => x.TableID == this.table.TableID);
-
             if (table.IsOccupied)
-            {
                 checkBoxTable.Checked = true;
-            }
             else
-            {
                 checkBoxTable.Checked = false;
-            }
         }
        
 
