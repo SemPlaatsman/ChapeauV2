@@ -62,6 +62,24 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
+        //public Order ReadTable(DataTable dataTable)
+        //{
+        //    try
+        //    {
+        //        Order order = new Order();
+        //        foreach (DataRow dr in dataTable.Rows)
+        //            {
+        //                order.OrderId = (int)dr["OrderId"],
+        //                order.TableId = (int)dr["TableId"]
+        //            };
+        //        return order;
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        throw;
+        //    }
+        //}
        
         
         
