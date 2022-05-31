@@ -222,6 +222,7 @@ namespace ChapeauUI
                 item.SubItems.Add(menuItem.Price.ToString());
                 item.SubItems.Add(menuItem.IsAlcoholic.ToString());
                 item.SubItems.Add(O.Remark.ToString());
+                item.Tag = menuItem;
                 listViewViewOrder.Items.Add(item);
             }
         }
@@ -249,16 +250,33 @@ namespace ChapeauUI
         }
 
 
-
+        public List<OrderGerecht> GetItemsFromListView()
+        {
+            List<OrderGerecht> orders = new List<OrderGerecht>();
+            OrderService orderService = new OrderService();
+            //orderService.
+            foreach (ListViewItem item in listViewViewOrder.Items)
+            {
+                OrderGerecht o = new OrderGerecht();
+                o.MenuItem = (MenuItem)item.Tag;
+                o.TimeOfOrder = DateTime.Now;
+                o.Remark = item.SubItems[4].Text;
+                o.IsServed = 0;
+                o.Status = OrderStatus.MoetNog;
+                orders.Add(o);  
+            }
+            return orders;
+        }
 
         private void buttonBestel_Click(object sender, EventArgs e)
         {
             OrderGerechtService orderGerechtService = new OrderGerechtService();
-            selectedItems = new List<OrderGerecht>();
+            selectedItems = GetItemsFromListView();
             foreach (OrderGerecht orderGerecht in selectedItems)
             {
                 orderGerechtService.InsertOrderGerecht(orderGerecht);
             }
+            MessageBox.Show("Besteld!");
         }
 
         private void button2_Click(object sender, EventArgs e)

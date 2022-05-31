@@ -16,4 +16,6 @@ namespace ChapeauModel
         public string Remark;
         public ServeerStatus IsServed;
     }
+
+    
 }
