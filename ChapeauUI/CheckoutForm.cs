@@ -20,6 +20,7 @@ namespace ChapeauUI
         private TableOverviewForm overviewForm;
         private Employee employee;
         private decimal newTotal;
+        private decimal priceQuantity;
         public CheckoutForm(Table table, Employee employee)
         {
             InitializeComponent();
@@ -38,18 +39,19 @@ namespace ChapeauUI
 
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
-            rekeningListView.Columns.Add("Keer", 43);
+            rekeningListView.Columns.Add("Keer", 40);
             rekeningListView.Columns.Add("Naam Product", 233);
-            rekeningListView.Columns.Add("Prijs", 42);
+            rekeningListView.Columns.Add("Prijs", 45);
 
             foreach (Checkout order in orders)
             {
+                priceQuantity = order.Price * order.Quantity;
                 ListViewItem li = new ListViewItem(order.Quantity.ToString());
                 li.SubItems.Add(order.ProductName);
-                li.SubItems.Add(string.Format($"{Convert.ToDecimal(order.Price):0.00}"));
+                li.SubItems.Add(string.Format($"{Convert.ToDecimal(priceQuantity):0.00}"));
                 li.Tag = order;
                 rekeningListView.Items.Add(li);                
-                totalPrice += order.Price * order.Quantity;                   
+                totalPrice += priceQuantity;                   
             }
             checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
         }

@@ -34,6 +34,7 @@ namespace ChapeauUI
         private decimal btwTotal = 0;
         private decimal btwItem = 0;
         private decimal totalWithBtw = 0;
+        private decimal priceQuantity;
         private DateTime timeOfPayment;
 
         ReceiptService receiptService = new ReceiptService();
@@ -45,18 +46,19 @@ namespace ChapeauUI
 
             itemsListBox.View = View.Details;
             itemsListBox.FullRowSelect = true;
-            itemsListBox.Columns.Add("Naam Product", 214);
+            itemsListBox.Columns.Add("Naam Product", 201);
             itemsListBox.Columns.Add("Aantal", 46);
-            itemsListBox.Columns.Add("Prijs", 34);
+            itemsListBox.Columns.Add("Prijs", 47);
 
             foreach (Receipt order in orders)
             {
+                priceQuantity = order.Price * order.Quantity;
                 ListViewItem li = new ListViewItem(order.ProductName);
                 li.SubItems.Add(order.Quantity.ToString());
-                li.SubItems.Add(string.Format("{0:#,##0.00}", Convert.ToDecimal(order.Price)));
+                li.SubItems.Add(string.Format($"{Convert.ToDecimal(priceQuantity):0.00}"));
                 li.Tag = order;
                 itemsListBox.Items.Add(li);
-                totalPrice += order.Price * order.Quantity;
+                totalPrice += priceQuantity;
                 totalItems += order.Quantity;
                 //hier wordt gekeken of het product 21% of 9% btw bevat.
                 if(order.IsAlcoholic)
@@ -158,7 +160,7 @@ namespace ChapeauUI
                     receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
                 }
             }
-
+            //Hier krijgt u de bevestiging van de betaling. De bon en indien aanwezig remark zijn opgeslagen in de database.
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
             tableService.AlterTables(table, occupation);
 
