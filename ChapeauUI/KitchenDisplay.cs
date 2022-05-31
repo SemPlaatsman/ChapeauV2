@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
@@ -36,23 +37,27 @@ namespace ChapeauUI
             dataGridViewMoetNog.Columns[4].Width = 80;
 
             SetDefaultGridProperties(dataGridViewOverzicht);
-            dataGridViewOverzicht.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dataGridViewOverzicht.Columns[0].Width = 42;
             dataGridViewOverzicht.Columns[1].Width = 38;
-            dataGridViewOverzicht.Columns[2].Width = 75;
-            dataGridViewOverzicht.Columns[3].Width = 75;
-            dataGridViewOverzicht.Columns[4].Width = 75;
-            dataGridViewOverzicht.Columns[5].Width = 75;
+            dataGridViewOverzicht.Columns[2].Width = 59;
+            dataGridViewOverzicht.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[3].Width = 59;
+            dataGridViewOverzicht.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[4].Width = 59;
+            dataGridViewOverzicht.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[5].Width = 59;
+            dataGridViewOverzicht.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOverzicht.Columns[6].Width = 64;
 
             flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
             flowLayoutMeeBezig.AutoScroll = true;
             flowLayoutMeeBezig.WrapContents = false;
 
-            ReloadKitchenDisplay();
+            LoadKitchenDisplayData();
         }
         
-        private void ReloadKitchenDisplay()
+        private void LoadKitchenDisplayData()
         {
             dataGridViewMoetNog.AllowUserToAddRows = true;
             dataGridViewOverzicht.AllowUserToAddRows = true;
@@ -65,7 +70,7 @@ namespace ChapeauUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ReloadKitchenDisplay();
+            LoadKitchenDisplayData();
         }
 
         private void FillLists()
@@ -88,23 +93,81 @@ namespace ChapeauUI
                 gerechten = kitchenOverview.GetNextMoetNogList();
                 if (gerechten.Count > 0)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
-                    row.Cells[0].Value = kitchenOverview.OrderId.ToString();
-                    row.Cells[1].Value = kitchenOverview.TableId.ToString();
-                    row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
-                    row.Cells[3].Value = GetMenuItems(gerechten);
-                    row.Cells[4].Value = "Verwerk";
-                    row.MinimumHeight = 30;
-                    row.Tag = kitchenOverview;
-                    dataGridViewMoetNog.Rows.Add(row);
+                    AddToMoetNogList(kitchenOverview, gerechten);
                 }
             }
+        }
+
+        private void AddToMoetNogList(KitchenOrderOverview kitchenOverview, List<OrderGerecht> gerechten)
+        {
+            DataGridViewRow row = (DataGridViewRow)dataGridViewMoetNog.Rows[0].Clone();
+            row.Cells[0].Value = kitchenOverview.OrderId.ToString();
+            row.Cells[1].Value = kitchenOverview.TableId.ToString();
+            row.Cells[2].Value = ((TimeSpan)(DateTime.Now - gerechten.OrderBy(g => g.TimeOfOrder).First().TimeOfOrder)).ToString(@"hh\:mm");
+            row.Cells[3].Value = GetMenuItems(gerechten);
+            row.Cells[4].Value = "Verwerk";
+            row.MinimumHeight = 30;
+            row.Tag = kitchenOverview;
+            dataGridViewMoetNog.Rows.Add(row);
         }
 
         private void AddToOverviewList(KitchenOrderOverview kitchenOverview)
         {
             //TODO: vul een lijst met alle orders
+            DataGridViewRow row = (DataGridViewRow)dataGridViewOverzicht.Rows[0].Clone();
+            row.Cells[0].Value = kitchenOverview.OrderId.ToString();
+            row.Cells[1].Value = kitchenOverview.TableId.ToString();
+            row.Cells[2].Style.BackColor = GetColor(kitchenOverview.Voorgerechten);
+            row.Cells[2].Value = GetStatus(kitchenOverview.Voorgerechten);
+            row.Cells[3].Style.BackColor = GetColor(kitchenOverview.Tussengerechten);
+            row.Cells[3].Value = GetStatus(kitchenOverview.Tussengerechten);
+            row.Cells[4].Style.BackColor = GetColor(kitchenOverview.Hoofdgerechten);
+            row.Cells[4].Value = GetStatus(kitchenOverview.Hoofdgerechten);
+            row.Cells[5].Style.BackColor = GetColor(kitchenOverview.Nagerechten);
+            row.Cells[5].Value = GetStatus(kitchenOverview.Nagerechten);
+            row.Cells[6].Value = "Open";
+            row.MinimumHeight = dataGridViewOverzicht.Columns[6].Width;
+            row.Tag = kitchenOverview;
+            dataGridViewOverzicht.Rows.Add(row);
+        }
+        
+        private Color GetColor(List<OrderGerecht> gerechten)
+        {
+            if (gerechten.Count == 0)
+            {
+                return Color.Empty;
+            }
+            else if (KitchenOrderOverview.ListCompleted(gerechten))
+            {
+                return Color.MediumSpringGreen;
+            }
+            else if (gerechten[0].Status == OrderStatus.MoetNog)
+            {
+                return Color.OrangeRed;
+            }
+            return Color.Yellow;
+        }
 
+        private string GetStatus(List<OrderGerecht> gerechten)
+        {
+            string status = "";
+            if (gerechten.Count == 0)
+            {
+                return status;
+            }
+            else if (KitchenOrderOverview.ListCompleted(gerechten))
+            {
+                status = OrderStatus.Klaar.ToString();
+            }
+            else if (gerechten[0].Status == OrderStatus.MoetNog)
+            {
+                status = OrderStatus.MoetNog.ToString();
+            }
+            else
+            {
+                status = OrderStatus.MeeBezig.ToString();
+            }
+            return Regex.Replace($"{status}", "([A-Z])", " $1").Trim();
         }
 
         private string GetMenuItems(List<OrderGerecht> gerechten)
@@ -223,7 +286,7 @@ namespace ChapeauUI
                 {
                     orderGerechtService.ChangeOrderGerechtStatus(orderGerecht, OrderStatus.Klaar);
                 }
-                ReloadKitchenDisplay();
+                LoadKitchenDisplayData();
             }
         }
 
@@ -250,11 +313,11 @@ namespace ChapeauUI
                 dataGridView.ClearSelection();
                 KitchenOrderOverview kitchenOverview = (KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag;
                 kitchenService.ChangeNextOrderStatus(kitchenOverview.GetNextMoetNogList()[0], OrderStatus.MeeBezig);
-                ReloadKitchenDisplay();
+                LoadKitchenDisplayData();
             }
         }
 
-        private void SetDefaultGridProperties(DataGridView dataGridView)
+        public static void SetDefaultGridProperties(DataGridView dataGridView)
         {
             dataGridView.Visible = true;
             dataGridView.ReadOnly = true;
@@ -266,5 +329,22 @@ namespace ChapeauUI
             dataGridView.BackgroundColor = SystemColors.Control;
         }
 
+        private void dataGridViewOverzicht_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+            if (dataGridView.Columns[e.ColumnIndex].CellType == typeof(DataGridViewButtonCell) && dataGridView.Rows[e.RowIndex].Tag != null)
+            {
+                KitchenOrderOverviewForm kitchenOrderOverviewForm = new KitchenOrderOverviewForm((KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag);
+                kitchenOrderOverviewForm.ShowDialog();
+            }
+        }
+
+        private void buttonUitloggen_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login loginForm = new Login();
+            loginForm.ShowDialog();
+            this.Close();
+        }
     }
 }

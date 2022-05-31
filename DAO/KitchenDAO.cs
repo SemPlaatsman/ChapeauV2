@@ -39,14 +39,15 @@ namespace ChapeauDAO
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
-                "WHERE M.[Type] != 3 AND OG.[OrderId] IN (SELECT DISTINCT O2.[OrderId] " +
+                "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] IN (SELECT DISTINCT O2.[OrderId] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O2 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG2 ON O2.[OrderID] = OG2.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M2 ON OG2.[ItemId] = M2.[ProductID] " +
-                "WHERE DATEPART(DAYOFYEAR, DATEADD(HOUR, 2, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder) AND M2.[Type] != 3 AND OG2.[IsServed] != 1 OR OG2.[IsServed] IS NULL); ";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
+                "WHERE M2.[Type] != @typeOfDrink AND OG2.[IsServed] != 1 OR OG2.[IsServed] IS NULL) " +
+                "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
-            //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
+            sqlParameters[1] = new SqlParameter("@hoursToAdd", 2);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -64,9 +65,40 @@ namespace ChapeauDAO
             return ReadTable(ExecuteSelectQuery(query, sqlParameter));
         }
 
-        private KitchenOrderOverview ReadTable(DataTable dataTable) 
+        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET[Status] = @newStatus " +
+                "WHERE OrderId = @orderId AND ItemId IN (SELECT ProductID " +
+                "FROM ApplicatiebouwChapeau.MenuItem " +
+                "WHERE[Type] = @typeId); ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
+            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            sqlParameters[2] = new SqlParameter("typeId", (int)orderGerecht.MenuItem.Type);
+            ExecuteEditQuery(query, sqlParameters);
+
+        }
+
+        public KitchenOrderOverview GetKitchenOverview(KitchenOrderOverview kitchenOrderOverview)
+        {
+            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
+                "FROM ApplicatiebouwChapeau.[Order] AS O " +
+                "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
+                "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] = @orderId " +
+                "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", kitchenOrderOverview.OrderId);
+            sqlParameters[1] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            sqlParameters[2] = new SqlParameter("@hoursToAdd", 2);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private KitchenOrderOverview ReadTable(DataTable dataTable)
         {
             KitchenOrderOverview kitchenOrderOverview = new KitchenOrderOverview();
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 OrderGerecht orderGerecht = new OrderGerecht()
@@ -93,27 +125,14 @@ namespace ChapeauDAO
                     /* Zelfde reden als hierboven is genoemd alleen dan maak ik een empty string wanneer de value null is.*/
                     IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
                 };
+                kitchenOrderOverview.OrderId = (int)dr["OrderID"];
+                kitchenOrderOverview.TableId = (int)dr["TableId"];
                 kitchenOrderOverview.Add(orderGerecht);
             }
             return kitchenOrderOverview;
         }
 
-        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
-        {
-            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
-                "SET[Status] = @newStatus " +
-                "WHERE OrderId = @orderId AND ItemId IN (SELECT ProductID " +
-                "FROM ApplicatiebouwChapeau.MenuItem " +
-                "WHERE[Type] = @typeId); ";
-            SqlParameter[] sqlParameters = new SqlParameter[3];
-            sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
-            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
-            sqlParameters[2] = new SqlParameter("typeId", (int)orderGerecht.MenuItem.Type);
-            ExecuteEditQuery(query, sqlParameters);
-
-        }
-
-            private List<KitchenOrderOverview> ReadTables(DataTable dataTable)
+        private List<KitchenOrderOverview> ReadTables(DataTable dataTable)
         { 
             List<KitchenOrderOverview> kitchenOrderOverviews = new List<KitchenOrderOverview>();
 
