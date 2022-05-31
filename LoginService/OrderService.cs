@@ -24,7 +24,11 @@ namespace ChapeauLogica
         {
             orderDAO.InsertOrder(TableID);
         }
-        
+        public Order GetCurrentOrder(Table table)
+        {
+            Order order = orderDAO.GetCurrentOrder(table);
+            return order;
+        }
        
     }
 }
