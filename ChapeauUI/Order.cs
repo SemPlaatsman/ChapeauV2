@@ -138,7 +138,6 @@ namespace ChapeauUI
 
         private void buttonTerug_Click(object sender, EventArgs e)
         {
-            this.Hide();
             TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);  
             tableOverviewForm.ShowDialog();
             this.Close();
