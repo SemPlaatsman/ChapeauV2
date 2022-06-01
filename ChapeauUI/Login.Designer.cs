@@ -80,19 +80,21 @@ namespace ChapeauUI
             // 
             // textBoxLoginWerknemerNummer
             // 
+            this.textBoxLoginWerknemerNummer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxLoginWerknemerNummer.Location = new System.Drawing.Point(201, 366);
             this.textBoxLoginWerknemerNummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLoginWerknemerNummer.Name = "textBoxLoginWerknemerNummer";
-            this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(70, 23);
+            this.textBoxLoginWerknemerNummer.Size = new System.Drawing.Size(70, 29);
             this.textBoxLoginWerknemerNummer.TabIndex = 5;
             // 
             // textBoxLoginPIN
             // 
+            this.textBoxLoginPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxLoginPIN.Location = new System.Drawing.Point(201, 398);
             this.textBoxLoginPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLoginPIN.Name = "textBoxLoginPIN";
             this.textBoxLoginPIN.PasswordChar = '*';
-            this.textBoxLoginPIN.Size = new System.Drawing.Size(70, 23);
+            this.textBoxLoginPIN.Size = new System.Drawing.Size(70, 29);
             this.textBoxLoginPIN.TabIndex = 6;
             // 
             // panel1
@@ -143,6 +145,7 @@ namespace ChapeauUI
             // 
             // listViewNames
             // 
+            this.listViewNames.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listViewNames.HideSelection = false;
             this.listViewNames.Location = new System.Drawing.Point(22, 16);
             this.listViewNames.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
