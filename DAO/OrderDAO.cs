@@ -62,6 +62,39 @@ namespace ChapeauDAO
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
         }
+        public Order GetCurrentOrder(Table table)
+        {
+            try
+            {
+                string query = "Select TOP(1) o.OrderID, o.tableid from[ApplicatiebouwChapeau].[Order] as O where O.OrderID not in (select Receipt.OrderID from[ApplicatiebouwChapeau].[Receipt]) and O.TableID = @TableId ORDER BY o.OrderID DESC";
+                SqlParameter[] sql = new SqlParameter[1];
+                sql[0] = new SqlParameter("@TableId", table.TableID);
+                return ReadTable(ExecuteSelectQuery(query, sql));
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Tables could not be loaded properly. Please try again " + e.Message);
+            }
+        }
+        public Order ReadTable(DataTable dataTable)
+        {
+            try
+            {
+                Order order = new Order();
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    order.OrderId = (int)dr["OrderId"];
+                    order.TableId = (int)dr["TableId"];
+                }
+                return order;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
+            }
+        }
        
         
         

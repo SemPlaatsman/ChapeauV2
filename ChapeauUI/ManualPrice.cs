@@ -14,17 +14,17 @@ namespace ChapeauUI
     public partial class ManualPrice : Form
     {
         private decimal totalPrice;
-        private Table tableId;
+        private Table table;
         private decimal newTotal;
         private Employee employee;
        
-        public ManualPrice(decimal totalWithBtw, Table TableId, Employee employee)
+        public ManualPrice(decimal totalWithBtw, Table table, Employee employee)
         {
             InitializeComponent();       
             AfrekenenBtn.Enabled = false;
             this.employee = employee;
             this.totalPrice = totalWithBtw;
-            this.tableId = TableId;
+            this.table = table;
             totalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
         }
         
@@ -35,7 +35,6 @@ namespace ChapeauUI
 
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {
-            
             newTotal = Convert.ToDecimal(newPriceTextBox.Text);
 
             if(newTotal < totalPrice)
@@ -45,7 +44,8 @@ namespace ChapeauUI
             else
             {
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
-                PaymentMethod paymentMethod = new PaymentMethod(this.tableId, newTotal, this.employee);
+                this.Hide();
+                PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee);
                 paymentMethod.ShowDialog();
                 this.Close();
             }

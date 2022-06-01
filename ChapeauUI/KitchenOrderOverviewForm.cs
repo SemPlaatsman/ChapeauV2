@@ -22,6 +22,7 @@ namespace ChapeauUI
         {
             this.kitchenOrderOverview = kitchenOrderOverview;
             InitializeComponent();
+            this.CenterToScreen();
             KitchenDisplay.SetDefaultGridProperties(dataGridViewOrderOverview);
             dataGridViewOrderOverview.ReadOnly = false;
             dataGridViewOrderOverview.Columns[0].ReadOnly = true;

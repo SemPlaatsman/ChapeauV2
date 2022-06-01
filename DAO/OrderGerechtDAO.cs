@@ -66,13 +66,12 @@ namespace ChapeauDAO
         {
             try
             {
-                string query = "INSERT INTO [ApplicatiebouwChapeau].[OrderGerecht] (ItemID, OrderID, [Status], TimeOfOrder, Remark) Values (@ItemID, @OrderID, @Status, @TimeOfOrder, @Remark)";
-                SqlParameter[] sql = new SqlParameter[5];
+                string query = "INSERT INTO [ApplicatiebouwChapeau].[OrderGerecht] (ItemID, OrderID, TimeOfOrder, Remark) Values (@ItemID, @OrderID, @TimeOfOrder, @Remark)";
+                SqlParameter[] sql = new SqlParameter[4];
                 sql[0] = new SqlParameter("@ItemID", orderGerecht.MenuItem.ProductId);
                 sql[1] = new SqlParameter("@OrderID", orderGerecht.OrderId);
-                sql[2] = new SqlParameter("@Status", orderGerecht.Status);
-                sql[3] = new SqlParameter("@TimeOfOrder", orderGerecht.TimeOfOrder);
-                sql[4] = new SqlParameter("@Remark", orderGerecht.Remark);
+                sql[2] = new SqlParameter("@TimeOfOrder", orderGerecht.TimeOfOrder);
+                sql[3] = new SqlParameter("@Remark", orderGerecht.Remark);
                 ExecuteEditQuery(query, sql);
             }
             catch (Exception ex)
