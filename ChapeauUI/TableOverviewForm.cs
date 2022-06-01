@@ -135,6 +135,8 @@ namespace ChapeauUI
 
         private void ShowPictureBox() 
         {
+            KitchenService kitchenService = new KitchenService();
+            OrderGerecht orderGerecht = null;
             List<PictureBox> pictureBoxes = new List<PictureBox>();
             pictureBoxes.Add(pictureBoxTable1);
             pictureBoxes.Add(pictureBoxTable2);
@@ -149,6 +151,13 @@ namespace ChapeauUI
 
             foreach (PictureBox picture in pictureBoxes)
             {
+                // check if gerecht in order is readytoserve
+
+                picture.Enabled = true;
+                if ()
+                {
+
+                }
 
             }
             
