@@ -130,13 +130,28 @@ namespace ChapeauUI
         private void timerRefreshOverview_Tick(object sender, EventArgs e)
         {
             AssignTables();
-/*            if (this.KitchenOrderOverview.ListCompleted(orderGerecht))
+            ShowPictureBox();
+        }
+
+        private void ShowPictureBox() 
+        {
+            List<PictureBox> pictureBoxes = new List<PictureBox>();
+            pictureBoxes.Add(pictureBoxTable1);
+            pictureBoxes.Add(pictureBoxTable2);
+            pictureBoxes.Add(pictureBoxTable3);
+            pictureBoxes.Add(pictureBoxTable4);
+            pictureBoxes.Add(pictureBoxTable5);
+            pictureBoxes.Add(pictureBoxTable6);
+            pictureBoxes.Add(pictureBoxTable7);
+            pictureBoxes.Add(pictureBoxTable8);
+            pictureBoxes.Add(pictureBoxTable9);
+            pictureBoxes.Add(pictureBoxTable10);
+
+            foreach (PictureBox picture in pictureBoxes)
             {
-                order ophalen uit DB van foreach table table in tables.
-                per order, status bekijken. 
-                if status == 1, dan gereed. 
-                
-            }*/
+
+            }
+            
         }
 
     }

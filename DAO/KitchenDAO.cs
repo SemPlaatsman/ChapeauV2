@@ -95,6 +95,21 @@ namespace ChapeauDAO
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public KitchenOrderOverview GetKitchenOverviewWithTableId(KitchenOrderOverview kitchenOrderOverview)
+        {
+            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
+                "FROM ApplicatiebouwChapeau.[Order] AS O " +
+                "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
+                "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] = (SELECT TOP(1) O2.OrderId FROM ApplicatiebouwChapeau.[Order] AS O2 WHERE O2.TableID = @tableId ORDER BY O2.OrderID DESC) " +
+                "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@tableId", kitchenOrderOverview.TableId);
+            sqlParameters[1] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            sqlParameters[2] = new SqlParameter("@hoursToAdd", 2);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         private KitchenOrderOverview ReadTable(DataTable dataTable)
         {
             KitchenOrderOverview kitchenOrderOverview = new KitchenOrderOverview();

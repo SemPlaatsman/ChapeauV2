@@ -130,6 +130,16 @@ namespace ChapeauModel
             return true;
         }
 
+        public List<OrderGerecht> GetCombinedGerechten()
+        {
+            List<OrderGerecht> gerechten = new List<OrderGerecht>();
+            gerechten.AddRange(this.Voorgerechten);
+            gerechten.AddRange(this.Tussengerechten);
+            gerechten.AddRange(this.Hoofdgerechten);
+            gerechten.AddRange(this.Nagerechten);
+            return gerechten;
+        }
+
         public string ToStringOverzicht()
         {
             return $"Voorgerechten: {(Voorgerechten.Count != 0 ? Regex.Replace($"{Voorgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +

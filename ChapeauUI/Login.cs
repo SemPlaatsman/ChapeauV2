@@ -29,9 +29,9 @@ namespace ChapeauUI
 
             listViewNames.View = View.Details;
             listViewNames.FullRowSelect = true;
-            listViewNames.Columns.Add("Lastname", 200);
-            listViewNames.Columns.Add("Firstname", 200);
-            listViewNames.Columns.Add("Phone Number", 182);
+            listViewNames.Columns.Add("Lastname", 170);
+            listViewNames.Columns.Add("Firstname", 170);
+            listViewNames.Columns.Add("Phone Number", 165);
 
             foreach (Employee employee in allEmployees)
             {

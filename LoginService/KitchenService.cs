@@ -27,6 +27,11 @@ namespace ChapeauLogica
             return kitchenDAO.GetKitchenOverview(kitchenOrderOverview);
         }
 
+        public KitchenOrderOverview GetKitchenOverviewWithTableId(KitchenOrderOverview kitchenOrderOverview)
+        {
+            return kitchenDAO.GetKitchenOverviewWithTableId(kitchenOrderOverview);
+        }
+
         public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
         {
             return kitchenDAO.ReadyToServe(orderGerecht);
