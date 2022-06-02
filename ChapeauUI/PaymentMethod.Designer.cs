@@ -33,12 +33,16 @@
             this.ContantBtn = new System.Windows.Forms.Button();
             this.PinBtn = new System.Windows.Forms.Button();
             this.CreditCardBtn = new System.Windows.Forms.Button();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxPartialPayment = new System.Windows.Forms.TextBox();
+            this.labelPartialPayment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 7);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 15);
             this.label1.TabIndex = 0;
@@ -46,7 +50,7 @@
             // 
             // AnnulerenBtn
             // 
-            this.AnnulerenBtn.Location = new System.Drawing.Point(139, 90);
+            this.AnnulerenBtn.Location = new System.Drawing.Point(140, 185);
             this.AnnulerenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AnnulerenBtn.Name = "AnnulerenBtn";
             this.AnnulerenBtn.Size = new System.Drawing.Size(82, 22);
@@ -57,7 +61,7 @@
             // 
             // ContantBtn
             // 
-            this.ContantBtn.Location = new System.Drawing.Point(36, 49);
+            this.ContantBtn.Location = new System.Drawing.Point(37, 144);
             this.ContantBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContantBtn.Name = "ContantBtn";
             this.ContantBtn.Size = new System.Drawing.Size(82, 22);
@@ -68,7 +72,7 @@
             // 
             // PinBtn
             // 
-            this.PinBtn.Location = new System.Drawing.Point(139, 49);
+            this.PinBtn.Location = new System.Drawing.Point(140, 144);
             this.PinBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PinBtn.Name = "PinBtn";
             this.PinBtn.Size = new System.Drawing.Size(82, 22);
@@ -79,7 +83,7 @@
             // 
             // CreditCardBtn
             // 
-            this.CreditCardBtn.Location = new System.Drawing.Point(241, 49);
+            this.CreditCardBtn.Location = new System.Drawing.Point(242, 144);
             this.CreditCardBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreditCardBtn.Name = "CreditCardBtn";
             this.CreditCardBtn.Size = new System.Drawing.Size(82, 22);
@@ -88,11 +92,48 @@
             this.CreditCardBtn.UseVisualStyleBackColor = true;
             this.CreditCardBtn.Click += new System.EventHandler(this.CreditCardBtn_Click);
             // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(12, 36);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(84, 15);
+            this.labelPrice.TabIndex = 5;
+            this.labelPrice.Text = "Totaal bedrag: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(293, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Verschillende betaalmethodes?  Vul hier deelbedrag in:";
+            // 
+            // textBoxPartialPayment
+            // 
+            this.textBoxPartialPayment.Location = new System.Drawing.Point(12, 88);
+            this.textBoxPartialPayment.Name = "textBoxPartialPayment";
+            this.textBoxPartialPayment.Size = new System.Drawing.Size(100, 23);
+            this.textBoxPartialPayment.TabIndex = 7;
+            // 
+            // labelPartialPayment
+            // 
+            this.labelPartialPayment.AutoSize = true;
+            this.labelPartialPayment.Location = new System.Drawing.Point(119, 91);
+            this.labelPartialPayment.Name = "labelPartialPayment";
+            this.labelPartialPayment.Size = new System.Drawing.Size(0, 15);
+            this.labelPartialPayment.TabIndex = 8;
+            // 
             // PaymentMethod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 123);
+            this.ClientSize = new System.Drawing.Size(364, 224);
+            this.Controls.Add(this.labelPartialPayment);
+            this.Controls.Add(this.textBoxPartialPayment);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.CreditCardBtn);
             this.Controls.Add(this.PinBtn);
             this.Controls.Add(this.ContantBtn);
@@ -114,5 +155,9 @@
         private System.Windows.Forms.Button ContantBtn;
         private System.Windows.Forms.Button PinBtn;
         private System.Windows.Forms.Button CreditCardBtn;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxPartialPayment;
+        private System.Windows.Forms.Label labelPartialPayment;
     }
 }
