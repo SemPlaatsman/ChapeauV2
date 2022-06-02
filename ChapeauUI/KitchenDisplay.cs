@@ -24,6 +24,7 @@ namespace ChapeauUI
             kitchenService = new KitchenService();
 
             InitializeComponent();
+            this.CenterToScreen();
 
             flowLayoutMeeBezig.SendToBack();
 
@@ -288,11 +289,6 @@ namespace ChapeauUI
                 }
                 LoadKitchenDisplayData();
             }
-        }
-
-        private void DataGridView_AllowUserToAddRowsChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private int CalculateDataGridViewHeight(DataGridView dataGridView)

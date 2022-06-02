@@ -93,20 +93,22 @@ namespace ChapeauUI
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.labelStatus.BackColor = System.Drawing.Color.White;
+            this.labelStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStatus.Location = new System.Drawing.Point(38, 157);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(45, 15);
+            this.labelStatus.Size = new System.Drawing.Size(59, 21);
             this.labelStatus.TabIndex = 5;
             this.labelStatus.Text = "Status: ";
             // 
             // listViewOrder
             // 
+            this.listViewOrder.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listViewOrder.HideSelection = false;
-            this.listViewOrder.Location = new System.Drawing.Point(38, 186);
+            this.listViewOrder.Location = new System.Drawing.Point(12, 186);
             this.listViewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewOrder.Name = "listViewOrder";
-            this.listViewOrder.Size = new System.Drawing.Size(422, 356);
+            this.listViewOrder.Size = new System.Drawing.Size(489, 356);
             this.listViewOrder.TabIndex = 6;
             this.listViewOrder.UseCompatibleStateImageBehavior = false;
             // 
