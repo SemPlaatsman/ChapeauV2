@@ -14,6 +14,8 @@ namespace ChapeauUI
     public partial class ManualPrice : Form
     {
         private decimal totalPrice;
+        private decimal sharedPrice;
+        private int numberOfPersons;
         private Table table;
         private decimal newTotal;
         private Employee employee;
@@ -43,9 +45,10 @@ namespace ChapeauUI
             }
             else
             {
+                numberOfPersons = int.Parse(textBoxNumberOfPersons.Text);
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
                 this.Hide();
-                PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee);
+                PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee, numberOfPersons);
                 paymentMethod.ShowDialog();
                 this.Close();
             }

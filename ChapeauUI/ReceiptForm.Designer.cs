@@ -87,7 +87,7 @@
             // receiptStraat
             // 
             this.receiptStraat.AutoSize = true;
-            this.receiptStraat.Location = new System.Drawing.Point(136, 148);
+            this.receiptStraat.Location = new System.Drawing.Point(141, 148);
             this.receiptStraat.Name = "receiptStraat";
             this.receiptStraat.Size = new System.Drawing.Size(83, 15);
             this.receiptStraat.TabIndex = 2;
@@ -96,7 +96,7 @@
             // receiptPostCode
             // 
             this.receiptPostCode.AutoSize = true;
-            this.receiptPostCode.Location = new System.Drawing.Point(123, 163);
+            this.receiptPostCode.Location = new System.Drawing.Point(132, 163);
             this.receiptPostCode.Name = "receiptPostCode";
             this.receiptPostCode.Size = new System.Drawing.Size(101, 15);
             this.receiptPostCode.TabIndex = 3;
@@ -288,7 +288,7 @@
             // betaalMethodeLbl
             // 
             this.betaalMethodeLbl.AutoSize = true;
-            this.betaalMethodeLbl.Location = new System.Drawing.Point(227, 411);
+            this.betaalMethodeLbl.Location = new System.Drawing.Point(203, 411);
             this.betaalMethodeLbl.Name = "betaalMethodeLbl";
             this.betaalMethodeLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.betaalMethodeLbl.Size = new System.Drawing.Size(87, 15);
@@ -299,7 +299,7 @@
             // datumLbl
             // 
             this.datumLbl.AutoSize = true;
-            this.datumLbl.Location = new System.Drawing.Point(227, 426);
+            this.datumLbl.Location = new System.Drawing.Point(203, 426);
             this.datumLbl.Name = "datumLbl";
             this.datumLbl.Size = new System.Drawing.Size(30, 15);
             this.datumLbl.TabIndex = 33;
