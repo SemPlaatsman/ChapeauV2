@@ -125,9 +125,7 @@ namespace ChapeauUI
         private void TableForm_Load(object sender, EventArgs e)
         {
             ShowListView();
-            EmployeeService employeeService = new EmployeeService();
-
-            
+            EmployeeService employeeService = new EmployeeService();            
             TableService tableService = new TableService();
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
@@ -142,6 +140,11 @@ namespace ChapeauUI
             {
                 checkBoxTable.Checked = false;
             }
-        }       
+        }
+
+        private void buttonServed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

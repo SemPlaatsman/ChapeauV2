@@ -18,7 +18,7 @@ namespace ChapeauUI
         TableService tableService = new TableService();
         private List<Table> tables;
         private KitchenOrderOverview KitchenOrderOverview;
-        private List<OrderGerecht> orderGerecht;
+        private List<OrderGerecht> orderGerechten;
         public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
@@ -136,8 +136,12 @@ namespace ChapeauUI
         private void ShowPictureBox() 
         {
             KitchenService kitchenService = new KitchenService();
-            OrderGerecht orderGerecht = null;
+            this.orderGerechten = new List<OrderGerecht>();
+            OrderService orderService = new OrderService();
+            ChapeauModel.Order order = null;
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
             List<PictureBox> pictureBoxes = new List<PictureBox>();
+
             pictureBoxes.Add(pictureBoxTable1);
             pictureBoxes.Add(pictureBoxTable2);
             pictureBoxes.Add(pictureBoxTable3);
@@ -148,19 +152,23 @@ namespace ChapeauUI
             pictureBoxes.Add(pictureBoxTable8);
             pictureBoxes.Add(pictureBoxTable9);
             pictureBoxes.Add(pictureBoxTable10);
+            int index = 0;
 
-            foreach (PictureBox picture in pictureBoxes)
+
+            // nodig: OrderID, TableID, IsServed
+            foreach (Table table in this.tables)
             {
-                // check if gerecht in order is readytoserve
-
-                picture.Enabled = true;
-                if ()
+                // check if gerecht in order is readytoserve()
+                order = orderService.GetCurrentOrder(table);
+                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
+                if (orderGerechten.Count > 0)
                 {
-
+                    pictureBoxes[index].Visible = true;
                 }
-
+                index++;
             }
-            
+
+
         }
 
     }

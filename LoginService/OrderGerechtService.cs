@@ -32,5 +32,11 @@ namespace ChapeauLogica
         {
             orderGerechtDAO.InsertOrderGerecht(orderGerecht);
         }
+
+        public List<OrderGerecht> GetCurrentOrderGerechten(Order order) 
+        {
+            List<OrderGerecht> orderGerecht = orderGerechtDAO.GetCurrentOrderGerechten(order);
+            return orderGerecht;
+        }
     }
 }

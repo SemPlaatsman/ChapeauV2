@@ -310,6 +310,7 @@ namespace ChapeauUI
             this.Controls.Add(this.labelWelkom);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
             this.ResumeLayout(false);
             this.PerformLayout();
