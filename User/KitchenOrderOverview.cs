@@ -106,6 +106,16 @@ namespace ChapeauModel
             return new List<OrderGerecht>();
         }
 
+        public List<OrderGerecht> GetCombinedGerechten()
+        {
+            List<OrderGerecht> gerechten = new List<OrderGerecht>();
+            gerechten.AddRange(this.Voorgerechten);
+            gerechten.AddRange(this.Tussengerechten);
+            gerechten.AddRange(this.Hoofdgerechten);
+            gerechten.AddRange(this.Nagerechten);
+            return gerechten;
+        }
+
         public static bool ListHasMeeBezig(List<OrderGerecht> gerechten)
         {
             foreach (OrderGerecht gerecht in gerechten)
