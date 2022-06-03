@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -117,4 +57,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTijd.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewButtonColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnOrder.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTable.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnVoorgerechten.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTussengerechten.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnHoofdgerechten.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnNagerechten.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnOpen.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonUitloggen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAA4hJREFUaEPNmrtKLEEQhhdxIw3cUDAwMRcMvDyFL6CBVxAMzWXfxjcQ1FfQcAMR
+        DAxNBfFWx7/hH6prqnv6jDvMflDUfZja6vYcdAfyy8/PD1RNaxB7fX2V3d1dGQ6HMhgMepO5uTnZ2tqS
+        yWQig9TLe/rs7Cw07+/vy/n5eW9yenoqS0tLsr29LdEGgLYtmHp9fT3UpHpy/SU9pf0YAh9mtAEK0T70
+        5uambGxsRDFr0wdd5rGJcKSC9wsTFh23A2hK+sk0+qsBWKB1ym7aAHUuD3J5G7N5ADvagC1KaW+AvrQ7
+        AEn5qSPUhx8dIRbQ1jFAXw9gRdfpGLBxT7w6YuOQ7AaAjtG2A5DSfkD7r/21S0zoe3FvAK9Oa2LjpXXE
+        xqMNeNgHgNQGPLrO1zYAnbMh4/FYLi8va7kSO5crsa3fuAEP/aC2TKvf3UBKt81Rt81Re7FoA17BrOvs
+        AJ+fn3J8fBz+9wkbeA8huRzJ1eRyxOaSR+jj40OOjo5C8uTkRL6/v0PcPtT2lWpSWm81cTeAT5svf3Bw
+        UH36RD+kxLZMs7+2ga+vr/DSCB4eHgYfOeZp0wd95qMN6GMDDZ+wQVMaA131VwPoY4NPHi/PJmhtk1ze
+        xmwe5PI2ZvMAdjUALioMHB8cm7e3N7m4uAgXuAu5urqqvVQbXQ2wtrYm8/Pzcn19HZIvLy+yvLwso9Go
+        E9nb26tehLTxqwEeHx9ldXVVFhYW5O7uLiTf39/DJroQ/cNBC1/MxoCNQ6JLzCEWFxfl9va2aiKencqT
+        rvurARh4enqqhri5uak9lH5Kk9J4aR2x8WgDxG7CPkSTy4Gu87UNQEO8ISi67n/tXK7Etr67AcLjtLKy
+        Ev2jBvigtkyr392A1s/Pz9EGgKdzOeq2OWovFm3AK5h1XTSAJleTy5FcTS5HbK7xCHn6/v5eHh4eKr+N
+        JqX1VhN3A8AWanZ2dsIfFVCT6sn1l/SU9rsboBDtQ9vfjdq89kGX+WgDgAmLjtsBNCX9ZBr92TuQsps2
+        QJ3Lg1zexmwewHbvQJP2BuhLJy8xSPmpI9SHHx0hFtDWMUBfD2BF1+kYsHFPvDpi45DsBoCO0bYDkNJ+
+        QPuv/bVLTOh7cW8Ar05rYuOldcTGow142AeA1AY8us7XNgCdsyH2EjNeYudyJbb1Gzfgob9q0Ja/9AL2
+        u181SGnaM/9ljyY9e1+3mcg/QkR7NbAn+7IAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

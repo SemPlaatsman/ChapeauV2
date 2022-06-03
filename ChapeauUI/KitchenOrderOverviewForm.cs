@@ -17,12 +17,17 @@ namespace ChapeauUI
 {
     public partial class KitchenOrderOverviewForm : Form
     {
+        private Timer timer;
+
         private KitchenOrderOverview kitchenOrderOverview;
         public KitchenOrderOverviewForm(KitchenOrderOverview kitchenOrderOverview)
         {
+            this.timer = new Timer();
             this.kitchenOrderOverview = kitchenOrderOverview;
             InitializeComponent();
-            this.CenterToScreen();
+            this.timer.Interval = 5000;
+            this.timer.Start();
+
             KitchenDisplay.SetDefaultGridProperties(dataGridViewOrderOverview);
             dataGridViewOrderOverview.ReadOnly = false;
             dataGridViewOrderOverview.Columns[0].ReadOnly = true;
@@ -51,7 +56,7 @@ namespace ChapeauUI
             KitchenService kitchenService = new KitchenService();
             this.kitchenOrderOverview = kitchenService.GetKitchenOverview(this.kitchenOrderOverview);
 
-            foreach (OrderGerecht orderGerecht in GetCombinedGerechten())
+            foreach (OrderGerecht orderGerecht in kitchenOrderOverview.GetCombinedGerechten())
             {
                 DataGridViewRow row = (DataGridViewRow)dataGridViewOrderOverview.Rows[0].Clone();
                 row.Cells[0].Value = ((TimeSpan)(DateTime.Now - orderGerecht.TimeOfOrder)).ToString(@"hh\:mm");
@@ -65,26 +70,6 @@ namespace ChapeauUI
             }
 
             dataGridViewOrderOverview.AllowUserToAddRows = false;
-        }
-
-        private List<OrderStatus> GetStatus()
-        {
-            List<OrderStatus> os = new List<OrderStatus>();
-            foreach (OrderGerecht item in GetCombinedGerechten())
-            {
-                os.Add(item.Status);
-            }
-            return os;
-        }
-            
-        private List<OrderGerecht> GetCombinedGerechten()
-        {
-            List<OrderGerecht> gerechten = new List<OrderGerecht>();
-            gerechten.AddRange(kitchenOrderOverview.Voorgerechten);
-            gerechten.AddRange(kitchenOrderOverview.Tussengerechten);
-            gerechten.AddRange(kitchenOrderOverview.Hoofdgerechten);
-            gerechten.AddRange(kitchenOrderOverview.Nagerechten);
-            return gerechten;
         }
 
         private void buttonTerug_Click(object sender, EventArgs e)

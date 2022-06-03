@@ -29,12 +29,235 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarDisplay));
+            this.lblMoetNog = new System.Windows.Forms.Label();
+            this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTijd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridViewOverzicht = new System.Windows.Forms.DataGridView();
+            this.ColumnOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnVoorgerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTussengerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnHoofdgerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNagerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOpen = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblOverzicht = new System.Windows.Forms.Label();
+            this.lblMeeBezig = new System.Windows.Forms.Label();
+            this.buttonUitloggen = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lblMoetNog
+            // 
+            this.lblMoetNog.AutoSize = true;
+            this.lblMoetNog.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMoetNog.Location = new System.Drawing.Point(12, 9);
+            this.lblMoetNog.Name = "lblMoetNog";
+            this.lblMoetNog.Size = new System.Drawing.Size(140, 37);
+            this.lblMoetNog.TabIndex = 5;
+            this.lblMoetNog.Text = "Moet nog:";
+            // 
+            // dataGridViewMoetNog
+            // 
+            this.dataGridViewMoetNog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMoetNog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.ColumnTijd,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewButtonColumn1});
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
+            this.dataGridViewMoetNog.RowTemplate.Height = 25;
+            this.dataGridViewMoetNog.Size = new System.Drawing.Size(600, 612);
+            this.dataGridViewMoetNog.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tafel";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 75;
+            // 
+            // ColumnTijd
+            // 
+            this.ColumnTijd.HeaderText = "Tijd";
+            this.ColumnTijd.Name = "ColumnTijd";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Bestellingen";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 458;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "Verwerk";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Text = "";
+            this.dataGridViewButtonColumn1.Width = 80;
+            // 
+            // flowLayoutMeeBezig
+            // 
+            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(618, 52);
+            this.flowLayoutMeeBezig.Name = "flowLayoutMeeBezig";
+            this.flowLayoutMeeBezig.Size = new System.Drawing.Size(556, 612);
+            this.flowLayoutMeeBezig.TabIndex = 7;
+            // 
+            // dataGridViewOverzicht
+            // 
+            this.dataGridViewOverzicht.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOverzicht.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnOrder,
+            this.ColumnTable,
+            this.ColumnVoorgerechten,
+            this.ColumnTussengerechten,
+            this.ColumnHoofdgerechten,
+            this.ColumnNagerechten,
+            this.ColumnOpen});
+            this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 52);
+            this.dataGridViewOverzicht.Name = "dataGridViewOverzicht";
+            this.dataGridViewOverzicht.RowTemplate.Height = 25;
+            this.dataGridViewOverzicht.Size = new System.Drawing.Size(400, 612);
+            this.dataGridViewOverzicht.TabIndex = 8;
+            // 
+            // ColumnOrder
+            // 
+            this.ColumnOrder.HeaderText = "Order";
+            this.ColumnOrder.Name = "ColumnOrder";
+            // 
+            // ColumnTable
+            // 
+            this.ColumnTable.HeaderText = "Tafel";
+            this.ColumnTable.Name = "ColumnTable";
+            // 
+            // ColumnVoorgerechten
+            // 
+            this.ColumnVoorgerechten.HeaderText = "Voor-";
+            this.ColumnVoorgerechten.Name = "ColumnVoorgerechten";
+            // 
+            // ColumnTussengerechten
+            // 
+            this.ColumnTussengerechten.HeaderText = "Tussen-";
+            this.ColumnTussengerechten.Name = "ColumnTussengerechten";
+            // 
+            // ColumnHoofdgerechten
+            // 
+            this.ColumnHoofdgerechten.HeaderText = "Hoofd-";
+            this.ColumnHoofdgerechten.Name = "ColumnHoofdgerechten";
+            // 
+            // ColumnNagerechten
+            // 
+            this.ColumnNagerechten.HeaderText = "Na-";
+            this.ColumnNagerechten.Name = "ColumnNagerechten";
+            // 
+            // ColumnOpen
+            // 
+            this.ColumnOpen.HeaderText = "Open overzicht";
+            this.ColumnOpen.Name = "ColumnOpen";
+            // 
+            // lblOverzicht
+            // 
+            this.lblOverzicht.AutoSize = true;
+            this.lblOverzicht.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOverzicht.Location = new System.Drawing.Point(1180, 9);
+            this.lblOverzicht.Name = "lblOverzicht";
+            this.lblOverzicht.Size = new System.Drawing.Size(134, 37);
+            this.lblOverzicht.TabIndex = 9;
+            this.lblOverzicht.Text = "Overzicht:";
+            // 
+            // lblMeeBezig
+            // 
+            this.lblMeeBezig.AutoSize = true;
+            this.lblMeeBezig.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMeeBezig.Location = new System.Drawing.Point(618, 9);
+            this.lblMeeBezig.Name = "lblMeeBezig";
+            this.lblMeeBezig.Size = new System.Drawing.Size(147, 37);
+            this.lblMeeBezig.TabIndex = 10;
+            this.lblMeeBezig.Text = "Mee bezig:";
+            // 
+            // buttonUitloggen
+            // 
+            this.buttonUitloggen.BackColor = System.Drawing.Color.White;
+            this.buttonUitloggen.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonUitloggen.Image = ((System.Drawing.Image)(resources.GetObject("buttonUitloggen.Image")));
+            this.buttonUitloggen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonUitloggen.Location = new System.Drawing.Point(12, 775);
+            this.buttonUitloggen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonUitloggen.Name = "buttonUitloggen";
+            this.buttonUitloggen.Size = new System.Drawing.Size(221, 75);
+            this.buttonUitloggen.TabIndex = 33;
+            this.buttonUitloggen.Text = "       Uitloggen";
+            this.buttonUitloggen.UseVisualStyleBackColor = false;
+            this.buttonUitloggen.Click += new System.EventHandler(this.buttonUitloggen_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(12, 682);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(221, 75);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Update orders";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // BarDisplay
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.buttonUitloggen);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblMeeBezig);
+            this.Controls.Add(this.lblOverzicht);
+            this.Controls.Add(this.dataGridViewOverzicht);
+            this.Controls.Add(this.flowLayoutMeeBezig);
+            this.Controls.Add(this.dataGridViewMoetNog);
+            this.Controls.Add(this.lblMoetNog);
+            this.Name = "BarDisplay";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BarDisplay";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblMoetNog;
+        private System.Windows.Forms.DataGridView dataGridViewMoetNog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTijd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutMeeBezig;
+        private System.Windows.Forms.DataGridView dataGridViewOverzicht;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVoorgerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTussengerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoofdgerechten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNagerechten;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnOpen;
+        private System.Windows.Forms.Label lblOverzicht;
+        private System.Windows.Forms.Label lblMeeBezig;
+        private System.Windows.Forms.Button buttonUitloggen;
+        private System.Windows.Forms.Button button1;
     }
 }
