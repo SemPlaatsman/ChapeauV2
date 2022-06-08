@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class BarOrderOverview : Order
+    public class BarOrderOverview : OrderOverview
     {
         public List<OrderGerecht> Drinken;
 
@@ -21,6 +21,24 @@ namespace ChapeauModel
                 Drinken.Add(orderGerecht);
             else
                 throw new Exception($"An attempts was made to add a OrderGerecht with the type {orderGerecht.MenuItem.Type} to a {this.GetType().Name} which is not possible!");
+        }
+
+        public List<OrderGerecht> GetNextMoetNogList()
+        {
+            if (Drinken.Count != 0 && !ListHasMeeBezig(Drinken) && !ListCompleted(Drinken))
+            {
+                return Drinken;
+            }
+            return new List<OrderGerecht>();
+        }
+
+        public List<OrderGerecht> GetNextMeeBezigList()
+        {
+            if (Drinken.Count != 0 && ListHasMeeBezig(Drinken))
+            {
+                return Drinken;
+            }
+            return new List<OrderGerecht>();
         }
     }
 }

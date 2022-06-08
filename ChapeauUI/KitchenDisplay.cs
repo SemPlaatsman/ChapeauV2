@@ -23,59 +23,22 @@ namespace ChapeauUI
 
         public KitchenDisplay()
         {
+            InitializeComponent();
+            
             this.timer = new Timer();
             this.kitchenService = new KitchenService();
 
-            InitializeComponent();
             this.timer.Tick += KitchenTickEvent;
-            this.timer.Interval = 10000;
+            this.timer.Interval = 30000;
             this.timer.Start();
-
-            flowLayoutMeeBezig.SendToBack();
 
             SetDefaultGridProperties(dataGridViewMoetNog);
             dataGridViewMoetNog.Columns[4].ReadOnly = false;
-            //TEST: Test ReadOnly, Width en Content Aligment properties default
-            //ook voor Flowlayout testen
-            dataGridViewMoetNog.Columns[0].Width = 42;
-            dataGridViewMoetNog.Columns[1].Width = 38;
-            dataGridViewMoetNog.Columns[2].Width = 40;
-            dataGridViewMoetNog.Columns[3].Width = 380;
-            dataGridViewMoetNog.Columns[4].Width = 80;
 
             SetDefaultGridProperties(dataGridViewOverzicht);
-
-            dataGridViewOverzicht.Columns[0].Width = 42;
-            dataGridViewOverzicht.Columns[1].Width = 38;
-            dataGridViewOverzicht.Columns[2].Width = 59;
-            dataGridViewOverzicht.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOverzicht.Columns[3].Width = 59;
-            dataGridViewOverzicht.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOverzicht.Columns[4].Width = 59;
-            dataGridViewOverzicht.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOverzicht.Columns[5].Width = 59;
-            dataGridViewOverzicht.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOverzicht.Columns[6].Width = 64;
-
-            flowLayoutMeeBezig.FlowDirection = FlowDirection.TopDown;
-            flowLayoutMeeBezig.AutoScroll = true;
-            flowLayoutMeeBezig.WrapContents = false;
+            dataGridViewOverzicht.Columns[6].ReadOnly = false;
 
             LoadKitchenDisplayData();
-        }
-        
-        private void LoadKitchenDisplayData()
-        {
-            dataGridViewMoetNog.AllowUserToAddRows = true;
-            dataGridViewOverzicht.AllowUserToAddRows = true;
-
-            FillLists();
-
-            //dataGridViewMoetNog.ClearSelection();
-            //dataGridViewOverzicht.ClearSelection();
-
-            dataGridViewMoetNog.AllowUserToAddRows = false;
-            dataGridViewOverzicht.AllowUserToAddRows = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,8 +46,11 @@ namespace ChapeauUI
             LoadKitchenDisplayData();
         }
 
-        private void FillLists()
+        private void LoadKitchenDisplayData()
         {
+            dataGridViewMoetNog.AllowUserToAddRows = true;
+            dataGridViewOverzicht.AllowUserToAddRows = true;
+
             dataGridViewMoetNog.Rows.Clear();
             flowLayoutMeeBezig.Controls.Clear();
             dataGridViewOverzicht.Rows.Clear();
@@ -106,6 +72,12 @@ namespace ChapeauUI
                     AddToMoetNogList(kitchenOverview, gerechten);
                 }
             }
+
+            dataGridViewMoetNog.ClearSelection();
+            dataGridViewOverzicht.ClearSelection();
+
+            dataGridViewMoetNog.AllowUserToAddRows = false;
+            dataGridViewOverzicht.AllowUserToAddRows = false;
         }
 
         private void AddToMoetNogList(KitchenOrderOverview kitchenOverview, List<OrderGerecht> gerechten)
@@ -209,6 +181,8 @@ namespace ChapeauUI
         private void AddGridToMeeBezigLayout(KitchenOrderOverview kitchenOrderOverview)
         {
             List<OrderGerecht> gerechten = kitchenOrderOverview.GetNextMeeBezigList();
+            if (gerechten.Count() <= 0)
+                return;
 
             Label orderLabel = new Label();
             orderLabel.Text = $"Order {kitchenOrderOverview.OrderId}: {gerechten[0].MenuItem.Type}en voor tafel {kitchenOrderOverview.TableId}";
@@ -341,7 +315,7 @@ namespace ChapeauUI
             if (dataGridView.Columns[e.ColumnIndex].CellType == typeof(DataGridViewButtonCell) && dataGridView.Rows[e.RowIndex].Tag != null)
             {
                 this.timer.Stop();
-                KitchenOrderOverviewForm kitchenOrderOverviewForm = new KitchenOrderOverviewForm((KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag);
+                OrderOverviewForm kitchenOrderOverviewForm = new OrderOverviewForm((KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag);
                 kitchenOrderOverviewForm.ShowDialog();
                 LoadKitchenDisplayData();
                 this.timer.Start();

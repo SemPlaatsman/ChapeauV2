@@ -42,10 +42,11 @@ namespace ChapeauDAO
                 "FROM ApplicatiebouwChapeau.[Order] AS O2 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG2 ON O2.[OrderID] = OG2.[OrderId] " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M2 ON OG2.[ItemId] = M2.[ProductID] " +
-                "WHERE (OG2.[Status] = 0 OR OG2.[Status] IS NULL) AND M2.[Type] = @typeOfDrink); ";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
+                "WHERE M2.[Type] = @typeOfDrink AND OG2.[IsServed] != 1 OR OG2.[IsServed] IS NULL) " +
+                "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
-            //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
+            sqlParameters[1] = new SqlParameter("@hoursToAdd", 2);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 

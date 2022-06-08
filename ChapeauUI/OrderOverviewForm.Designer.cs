@@ -1,7 +1,7 @@
 ﻿
 namespace ChapeauUI
 {
-    partial class KitchenOrderOverviewForm
+    partial class OrderOverviewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -148,7 +148,7 @@ namespace ChapeauUI
             this.label1.TabIndex = 5;
             this.label1.Text = "Gehele order:";
             // 
-            // KitchenOrderOverviewForm
+            // OrderOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,9 +159,9 @@ namespace ChapeauUI
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewOrderOverview);
             this.Controls.Add(this.buttonTerug);
-            this.Name = "KitchenOrderOverviewForm";
+            this.Name = "OrderOverviewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KitchenOrderOverviewForm";
+            this.Text = "OrderOverviewForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderOverview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

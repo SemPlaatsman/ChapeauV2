@@ -15,12 +15,12 @@ using ChapeauModel;
 
 namespace ChapeauUI
 {
-    public partial class KitchenOrderOverviewForm : Form
+    public partial class OrderOverviewForm : Form
     {
         private Timer timer;
 
         private KitchenOrderOverview kitchenOrderOverview;
-        public KitchenOrderOverviewForm(KitchenOrderOverview kitchenOrderOverview)
+        public OrderOverviewForm(KitchenOrderOverview kitchenOrderOverview)
         {
             this.timer = new Timer();
             this.kitchenOrderOverview = kitchenOrderOverview;
