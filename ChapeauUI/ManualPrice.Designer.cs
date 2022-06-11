@@ -34,6 +34,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.newPriceTextBox = new System.Windows.Forms.TextBox();
             this.AfrekenenBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxNumberOfPersons = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +68,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 66);
+            this.label4.Location = new System.Drawing.Point(10, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 15);
             this.label4.TabIndex = 3;
@@ -74,7 +76,7 @@
             // 
             // newPriceTextBox
             // 
-            this.newPriceTextBox.Location = new System.Drawing.Point(10, 83);
+            this.newPriceTextBox.Location = new System.Drawing.Point(10, 74);
             this.newPriceTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newPriceTextBox.Name = "newPriceTextBox";
             this.newPriceTextBox.Size = new System.Drawing.Size(155, 23);
@@ -83,7 +85,7 @@
             // 
             // AfrekenenBtn
             // 
-            this.AfrekenenBtn.Location = new System.Drawing.Point(73, 108);
+            this.AfrekenenBtn.Location = new System.Drawing.Point(83, 179);
             this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AfrekenenBtn.Name = "AfrekenenBtn";
             this.AfrekenenBtn.Size = new System.Drawing.Size(82, 22);
@@ -92,11 +94,29 @@
             this.AfrekenenBtn.UseVisualStyleBackColor = true;
             this.AfrekenenBtn.Click += new System.EventHandler(this.AfrekenenBtn_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(225, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Bon delen? Geef hier het aantal personen:";
+            // 
+            // textBoxNumberOfPersons
+            // 
+            this.textBoxNumberOfPersons.Location = new System.Drawing.Point(10, 131);
+            this.textBoxNumberOfPersons.Name = "textBoxNumberOfPersons";
+            this.textBoxNumberOfPersons.Size = new System.Drawing.Size(53, 23);
+            this.textBoxNumberOfPersons.TabIndex = 7;
+            // 
             // ManualPrice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 148);
+            this.ClientSize = new System.Drawing.Size(254, 212);
+            this.Controls.Add(this.textBoxNumberOfPersons);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.AfrekenenBtn);
             this.Controls.Add(this.newPriceTextBox);
             this.Controls.Add(this.label4);
@@ -120,5 +140,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox newPriceTextBox;
         private System.Windows.Forms.Button AfrekenenBtn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxNumberOfPersons;
     }
 }

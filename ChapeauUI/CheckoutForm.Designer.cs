@@ -61,7 +61,7 @@ namespace ChapeauUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 251);
+            this.label1.Location = new System.Drawing.Point(41, 429);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 3;
@@ -70,7 +70,7 @@ namespace ChapeauUI
             // checkoutTotalPriceLbl
             // 
             this.checkoutTotalPriceLbl.AutoSize = true;
-            this.checkoutTotalPriceLbl.Location = new System.Drawing.Point(313, 251);
+            this.checkoutTotalPriceLbl.Location = new System.Drawing.Point(349, 429);
             this.checkoutTotalPriceLbl.Name = "checkoutTotalPriceLbl";
             this.checkoutTotalPriceLbl.Size = new System.Drawing.Size(52, 15);
             this.checkoutTotalPriceLbl.TabIndex = 4;
@@ -78,7 +78,7 @@ namespace ChapeauUI
             // 
             // AfrekenenBtn
             // 
-            this.AfrekenenBtn.Location = new System.Drawing.Point(41, 275);
+            this.AfrekenenBtn.Location = new System.Drawing.Point(41, 453);
             this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AfrekenenBtn.Name = "AfrekenenBtn";
             this.AfrekenenBtn.Size = new System.Drawing.Size(102, 28);
@@ -89,7 +89,7 @@ namespace ChapeauUI
             // 
             // HandmatigBtn
             // 
-            this.HandmatigBtn.Location = new System.Drawing.Point(269, 275);
+            this.HandmatigBtn.Location = new System.Drawing.Point(305, 453);
             this.HandmatigBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HandmatigBtn.Name = "HandmatigBtn";
             this.HandmatigBtn.Size = new System.Drawing.Size(96, 28);
@@ -104,7 +104,7 @@ namespace ChapeauUI
             this.rekeningListView.Location = new System.Drawing.Point(41, 81);
             this.rekeningListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rekeningListView.Name = "rekeningListView";
-            this.rekeningListView.Size = new System.Drawing.Size(324, 169);
+            this.rekeningListView.Size = new System.Drawing.Size(360, 308);
             this.rekeningListView.TabIndex = 7;
             this.rekeningListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -112,7 +112,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 384);
+            this.ClientSize = new System.Drawing.Size(446, 511);
             this.Controls.Add(this.rekeningListView);
             this.Controls.Add(this.HandmatigBtn);
             this.Controls.Add(this.AfrekenenBtn);

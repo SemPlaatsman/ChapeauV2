@@ -20,13 +20,15 @@ namespace ChapeauUI
         private Employee employee;
         private string paymentMethod;
         private decimal newTotal;
-        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee)
+        private int numberOfPersons;
+        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee, int numberOfPersons)
         {
             InitializeComponent();
             this.paymentMethod = paymentMethod; 
             this.table = table;
             this.newTotal = newTotal;
             this.employee = employee;
+            this.numberOfPersons = numberOfPersons;
             FillReceipt();
         }
         private decimal totalPrice = 0;
@@ -91,6 +93,11 @@ namespace ChapeauUI
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
             geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(table.TableID)}";
             tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
+
+            if(numberOfPersons != 0)
+            {
+                receiptBetaling.Text = $"BETAALMETHODE (X{numberOfPersons}):";
+            }
 
             //prijs onder 0 word verandert naar de originele prijs en de fooi staat op 0,00
             if (newTotal <= 0)

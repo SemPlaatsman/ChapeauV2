@@ -21,6 +21,7 @@ namespace ChapeauUI
         private Employee employee;
         private decimal newTotal;
         private decimal priceQuantity;
+        private int numberOfPersons;
         public CheckoutForm(Table table, Employee employee)
         {
             InitializeComponent();
@@ -67,7 +68,7 @@ namespace ChapeauUI
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, employee);
+            PaymentMethod paymentMethod = new PaymentMethod(table, totalPrice, employee, numberOfPersons);
             paymentMethod.ShowDialog();
             this.Close();
         }
