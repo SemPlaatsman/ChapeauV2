@@ -38,8 +38,8 @@ namespace ChapeauUI
             this.listViewOrder = new System.Windows.Forms.ListView();
             this.checkBoxTable = new System.Windows.Forms.CheckBox();
             this.labelCurrentEmployee = new System.Windows.Forms.Label();
-            this.buttonServed = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonServedDrink = new System.Windows.Forms.Button();
+            this.buttonServedFood = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,30 +137,30 @@ namespace ChapeauUI
             this.labelCurrentEmployee.TabIndex = 8;
             this.labelCurrentEmployee.Text = "Geen medewerker\r\ngekoppeld";
             // 
-            // buttonServed
+            // buttonServedDrink
             // 
-            this.buttonServed.BackColor = System.Drawing.Color.White;
-            this.buttonServed.Enabled = false;
-            this.buttonServed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonServed.Location = new System.Drawing.Point(334, 123);
-            this.buttonServed.Name = "buttonServed";
-            this.buttonServed.Size = new System.Drawing.Size(126, 58);
-            this.buttonServed.TabIndex = 9;
-            this.buttonServed.Text = "Drinken geserveerd";
-            this.buttonServed.UseVisualStyleBackColor = false;
-            this.buttonServed.Click += new System.EventHandler(this.buttonServed_Click);
+            this.buttonServedDrink.BackColor = System.Drawing.Color.White;
+            this.buttonServedDrink.Enabled = false;
+            this.buttonServedDrink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonServedDrink.Location = new System.Drawing.Point(334, 123);
+            this.buttonServedDrink.Name = "buttonServedDrink";
+            this.buttonServedDrink.Size = new System.Drawing.Size(126, 58);
+            this.buttonServedDrink.TabIndex = 9;
+            this.buttonServedDrink.Text = "Drinken geserveerd";
+            this.buttonServedDrink.UseVisualStyleBackColor = false;
+            this.buttonServedDrink.Click += new System.EventHandler(this.buttonServed_Click);
             // 
-            // button1
+            // buttonServedFood
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(199, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 58);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Eten geserveerd";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonServedFood.BackColor = System.Drawing.Color.White;
+            this.buttonServedFood.Enabled = false;
+            this.buttonServedFood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonServedFood.Location = new System.Drawing.Point(199, 123);
+            this.buttonServedFood.Name = "buttonServedFood";
+            this.buttonServedFood.Size = new System.Drawing.Size(126, 58);
+            this.buttonServedFood.TabIndex = 10;
+            this.buttonServedFood.Text = "Eten geserveerd";
+            this.buttonServedFood.UseVisualStyleBackColor = false;
             // 
             // TableForm
             // 
@@ -168,8 +168,8 @@ namespace ChapeauUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(513, 637);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonServed);
+            this.Controls.Add(this.buttonServedFood);
+            this.Controls.Add(this.buttonServedDrink);
             this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
             this.Controls.Add(this.listViewOrder);
@@ -199,7 +199,7 @@ namespace ChapeauUI
         private System.Windows.Forms.ListView listViewOrder;
         private System.Windows.Forms.CheckBox checkBoxTable;
         private System.Windows.Forms.Label labelCurrentEmployee;
-        private System.Windows.Forms.Button buttonServed;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonServedDrink;
+        private System.Windows.Forms.Button buttonServedFood;
     }
 }

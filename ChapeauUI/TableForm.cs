@@ -141,10 +141,5 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
-
-        private void buttonServed_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
