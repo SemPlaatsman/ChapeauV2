@@ -45,13 +45,6 @@ namespace ChapeauDAO
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void UpdateIsServed() 
-        {
-            
-        }
-
-
-
         private List<OrderGerecht> ReadTables(DataTable dataTable)
         {
             List<OrderGerecht> orderGerechten = new List<OrderGerecht>();

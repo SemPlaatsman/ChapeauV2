@@ -154,26 +154,31 @@ namespace ChapeauUI
             pictureBoxes.Add(pictureBoxTable10);
             int index = 0;
 
-
-            // nodig: OrderID, TableID, IsServed
             foreach (Table table in this.tables)
             {
-/*                // HIERIN GAAT IETS FOUT.... 
-                // check if gerecht in order is readytoserve()
-                order = orderService.GetCurrentOrder(table);
-                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
+                // deze 2 zinnen verpesten het. 
+/*                order = orderService.GetCurrentOrder(table);
+                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);*/
                 if (orderGerechten.Count > 0)
                 {
                     pictureBoxes[index].Visible = true;
                 }
-                index++;*/
+                index++;
+
+                pictureBoxes[index].Visible = true;
             }
         }
 
         private void pictureBoxTable1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Order bezorgd op tafel 1");
+            MessageBox.Show("Order bezorgd op tafel 1");
             pictureBoxTable1.Visible = false;
+        }
+
+        private void pictureBoxTable2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 2");
+            pictureBoxTable2.Visible = false;
         }
     }
 }

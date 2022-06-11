@@ -143,14 +143,6 @@ namespace ChapeauUI
             }
         }
 
-        private void buttonServedDrink_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void buttonServedFood_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
