@@ -148,7 +148,7 @@ namespace ChapeauUI
             this.buttonServedDrink.TabIndex = 9;
             this.buttonServedDrink.Text = "Drinken geserveerd";
             this.buttonServedDrink.UseVisualStyleBackColor = false;
-            this.buttonServedDrink.Click += new System.EventHandler(this.buttonServed_Click);
+            this.buttonServedDrink.Click += new System.EventHandler(this.buttonServedDrink_Click);
             // 
             // buttonServedFood
             // 
@@ -161,6 +161,7 @@ namespace ChapeauUI
             this.buttonServedFood.TabIndex = 10;
             this.buttonServedFood.Text = "Eten geserveerd";
             this.buttonServedFood.UseVisualStyleBackColor = false;
+            this.buttonServedFood.Click += new System.EventHandler(this.buttonServedFood_Click);
             // 
             // TableForm
             // 

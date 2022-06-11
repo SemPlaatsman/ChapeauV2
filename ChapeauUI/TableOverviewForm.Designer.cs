@@ -315,6 +315,7 @@ namespace ChapeauUI
             this.pictureBoxTable1.TabIndex = 31;
             this.pictureBoxTable1.TabStop = false;
             this.pictureBoxTable1.Visible = false;
+            this.pictureBoxTable1.Click += new System.EventHandler(this.pictureBoxTable1_Click);
             // 
             // pictureBoxTable2
             // 

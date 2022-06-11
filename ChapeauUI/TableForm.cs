@@ -98,6 +98,7 @@ namespace ChapeauUI
                         tableService.UpdateTableOccupy(table, true);
                         tableService.SetEmployee(this.employee, table);
                         this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
+                        // overbodig. met refactor eruit halen. 
                         labelCurrentEmployee.Text = $"{this.employee.LastName}, {this.employee.FirstName}";
                         // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
                         this.overviewForm.SetColor();
@@ -140,6 +141,16 @@ namespace ChapeauUI
             {
                 checkBoxTable.Checked = false;
             }
+        }
+
+        private void buttonServedDrink_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonServedFood_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -158,6 +158,7 @@ namespace ChapeauUI
             // nodig: OrderID, TableID, IsServed
             foreach (Table table in this.tables)
             {
+                // HIERIN GAAT IETS FOUT.... 
                 // check if gerecht in order is readytoserve()
                 order = orderService.GetCurrentOrder(table);
                 orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
@@ -167,9 +168,12 @@ namespace ChapeauUI
                 }
                 index++;
             }
-
-
         }
 
+        private void pictureBoxTable1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Order bezorgd op tafel 1");
+            pictureBoxTable1.Visible = false;
+        }
     }
 }
