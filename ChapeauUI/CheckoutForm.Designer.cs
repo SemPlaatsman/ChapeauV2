@@ -63,9 +63,9 @@ namespace ChapeauUI
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(41, 429);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Totaal";
+            this.label1.Text = "Totaal met btw";
             // 
             // checkoutTotalPriceLbl
             // 
