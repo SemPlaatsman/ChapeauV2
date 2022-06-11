@@ -31,7 +31,8 @@ namespace ChapeauUI
         {
             panelBestellen.Visible = false;
             panelItemSelected.Visible = false;
-            panelViewOrder.Visible = false; 
+            panelViewOrder.Visible = false;
+            panelOrdered.Visible = false;
             panelVerwijderenBestelling.Visible = false;
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
@@ -72,7 +73,7 @@ namespace ChapeauUI
             labelTypeGerecht.Text = "Hoofdgerecht";
             MenuItemService menuItemService = new MenuItemService();
             List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-            panelBestellen.Visible = true;
+  
             foreach (MenuItem m in orderedItems)
             {
                 if (m.Type == TypeOfProduct.Hoofdgerecht)
@@ -96,7 +97,7 @@ namespace ChapeauUI
             labelTypeGerecht.Text = "Nagerecht";
             MenuItemService menuItemService = new MenuItemService();
             List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-            panelBestellen.Visible = true;
+      
             foreach (MenuItem m in orderedItems)
             {
                 if (m.Type == TypeOfProduct.Nagerecht)
@@ -119,7 +120,7 @@ namespace ChapeauUI
             labelTypeGerecht.Text = "Drankjes";
             MenuItemService menuItemService = new MenuItemService();
             List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-            panelBestellen.Visible = true;
+         
             foreach (MenuItem m in orderedItems)
             {
                 if (m.Type == TypeOfProduct.Drinken)
@@ -143,8 +144,6 @@ namespace ChapeauUI
 
         private void buttonTerug_Click(object sender, EventArgs e)
         {
-            TableOverviewForm tableOverviewForm = new TableOverviewForm(this.employee);  
-            tableOverviewForm.ShowDialog();
             this.Close();
         }
         private void buttonTerugBestelling_Click(object sender, EventArgs e)
@@ -152,20 +151,23 @@ namespace ChapeauUI
             panelBestellen.Visible = false;
         }
 
-
-
-
-
         private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxAmount.Text = "1";
-            labelErrorMessage.Text = "";
-            if (listViewGerechten.SelectedItems.Count == 0)
+            if (int.Parse(listViewGerechten.SelectedItems[0].SubItems[3].Text) < 1)
             {
-                return;
+                panelOrdered.Visible = true;   
             }
-            panelItemSelected.Visible = true;
-            labelSelectedItem.Text= listViewGerechten.SelectedItems[0].SubItems[1].Text;
+            else
+            {
+                textBoxAmount.Text = "1";
+                labelErrorMessage.Text = "";
+                if (listViewGerechten.SelectedItems.Count == 0)
+                {
+                    return;
+                }
+                panelItemSelected.Visible = true;
+                labelSelectedItem.Text = listViewGerechten.SelectedItems[0].SubItems[1].Text;
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -282,10 +284,12 @@ namespace ChapeauUI
         {
             if (listViewViewOrder.Items.Count == 0)
             {
-
+                panelOrdered.Visible = true;
+                labelBesteld.Text = "*Lege Bestelling";
             }
             else
             {
+                labelBesteld.Text = "Besteld!";
                 OrderGerechtService orderGerechtService = new OrderGerechtService();
                 selectedItems = GetItemsFromListView();
                 MenuItemService menuItemService = new MenuItemService();
@@ -295,7 +299,8 @@ namespace ChapeauUI
                     menuItemService.UpdateMenuItem(orderGerecht);
                 }
                 listViewViewOrder.Clear();
-                MessageBox.Show("Besteld!");
+                panelOrdered.Visible = true;
+                this.Close();
             }
         }
 
@@ -331,6 +336,11 @@ namespace ChapeauUI
         private void buttonNeeVerwijderen_Click(object sender, EventArgs e)
         {
             panelVerwijderenBestelling.Visible = false;
+        }
+
+        private void buttonOrderedOk_Click(object sender, EventArgs e)
+        {
+            panelOrdered.Visible = false;
         }
     }
 }

@@ -156,16 +156,16 @@ namespace ChapeauUI
 
             foreach (Table table in this.tables)
             {
-                // deze 2 zinnen verpesten het. 
-/*                order = orderService.GetCurrentOrder(table);
-                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);*/
+                //deze 2 zinnen verpesten het. 
+                //order = orderService.GetCurrentOrder(table);
+                //orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
                 if (orderGerechten.Count > 0)
                 {
                     pictureBoxes[index].Visible = true;
                 }
                 index++;
 
-                pictureBoxes[index].Visible = true;
+                //pictureBoxes[index].Visible = true;
             }
         }
 

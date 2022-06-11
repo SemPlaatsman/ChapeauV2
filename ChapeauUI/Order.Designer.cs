@@ -67,10 +67,10 @@
             this.buttonMinus = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonViewOrder = new System.Windows.Forms.Button();
             this.panelOrdered = new System.Windows.Forms.Panel();
             this.labelBesteld = new System.Windows.Forms.Label();
             this.buttonOrderedOk = new System.Windows.Forms.Button();
+            this.buttonViewOrder = new System.Windows.Forms.Button();
             this.panelBestellen.SuspendLayout();
             this.panelItemSelected.SuspendLayout();
             this.panelViewOrder.SuspendLayout();
@@ -152,7 +152,6 @@
             // 
             // panelBestellen
             // 
-            this.panelBestellen.Controls.Add(this.panelViewOrder);
             this.panelBestellen.Controls.Add(this.panelItemSelected);
             this.panelBestellen.Controls.Add(this.listViewGerechten);
             this.panelBestellen.Controls.Add(this.labelTypeGerecht);
@@ -495,6 +494,34 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Geselecteerde items:";
             // 
+            // panelOrdered
+            // 
+            this.panelOrdered.Controls.Add(this.labelBesteld);
+            this.panelOrdered.Controls.Add(this.buttonOrderedOk);
+            this.panelOrdered.Location = new System.Drawing.Point(162, 257);
+            this.panelOrdered.Name = "panelOrdered";
+            this.panelOrdered.Size = new System.Drawing.Size(200, 100);
+            this.panelOrdered.TabIndex = 8;
+            // 
+            // labelBesteld
+            // 
+            this.labelBesteld.AutoSize = true;
+            this.labelBesteld.Location = new System.Drawing.Point(15, 12);
+            this.labelBesteld.Name = "labelBesteld";
+            this.labelBesteld.Size = new System.Drawing.Size(12, 15);
+            this.labelBesteld.TabIndex = 0;
+            this.labelBesteld.Text = "-";
+            // 
+            // buttonOrderedOk
+            // 
+            this.buttonOrderedOk.Location = new System.Drawing.Point(59, 62);
+            this.buttonOrderedOk.Name = "buttonOrderedOk";
+            this.buttonOrderedOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOrderedOk.TabIndex = 1;
+            this.buttonOrderedOk.Text = "Ok";
+            this.buttonOrderedOk.UseVisualStyleBackColor = true;
+            this.buttonOrderedOk.Click += new System.EventHandler(this.buttonOrderedOk_Click);
+            // 
             // buttonViewOrder
             // 
             this.buttonViewOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -506,39 +533,13 @@
             this.buttonViewOrder.UseVisualStyleBackColor = true;
             this.buttonViewOrder.Click += new System.EventHandler(this.buttonViewOrder_Click);
             // 
-            // panelOrdered
-            // 
-            this.panelOrdered.Controls.Add(this.buttonOrderedOk);
-            this.panelOrdered.Controls.Add(this.labelBesteld);
-            this.panelOrdered.Location = new System.Drawing.Point(162, 257);
-            this.panelOrdered.Name = "panelOrdered";
-            this.panelOrdered.Size = new System.Drawing.Size(200, 100);
-            this.panelOrdered.TabIndex = 8;
-            // 
-            // labelBesteld
-            // 
-            this.labelBesteld.AutoSize = true;
-            this.labelBesteld.Location = new System.Drawing.Point(72, 20);
-            this.labelBesteld.Name = "labelBesteld";
-            this.labelBesteld.Size = new System.Drawing.Size(48, 15);
-            this.labelBesteld.TabIndex = 0;
-            this.labelBesteld.Text = "Besteld!";
-            // 
-            // buttonOrderedOk
-            // 
-            this.buttonOrderedOk.Location = new System.Drawing.Point(59, 62);
-            this.buttonOrderedOk.Name = "buttonOrderedOk";
-            this.buttonOrderedOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOrderedOk.TabIndex = 1;
-            this.buttonOrderedOk.Text = "Ok";
-            this.buttonOrderedOk.UseVisualStyleBackColor = true;
-            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
             this.Controls.Add(this.panelOrdered);
+            this.Controls.Add(this.panelViewOrder);
             this.Controls.Add(this.panelBestellen);
             this.Controls.Add(this.buttonDrankjes);
             this.Controls.Add(this.buttonViewOrder);
@@ -548,6 +549,7 @@
             this.Controls.Add(this.buttonVoorgerecht);
             this.Controls.Add(this.buttonTerug);
             this.Name = "Order";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";
             this.Load += new System.EventHandler(this.Order_Load);
             this.panelBestellen.ResumeLayout(false);
