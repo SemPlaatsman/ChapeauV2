@@ -156,16 +156,13 @@ namespace ChapeauUI
 
             foreach (Table table in this.tables)
             {
-                // deze 2 zinnen verpesten het. 
-/*                order = orderService.GetCurrentOrder(table);
-                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);*/
+                order = orderService.GetCurrentOrder(table);
+                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
                 if (orderGerechten.Count > 0)
                 {
                     pictureBoxes[index].Visible = true;
                 }
                 index++;
-
-                pictureBoxes[index].Visible = true;
             }
         }
 
@@ -179,6 +176,54 @@ namespace ChapeauUI
         {
             MessageBox.Show("Order bezorgd op tafel 2");
             pictureBoxTable2.Visible = false;
+        }
+
+        private void pictureBoxTable3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 3");
+            pictureBoxTable3.Visible = false;
+        }
+
+        private void pictureBoxTable4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 4");
+            pictureBoxTable4.Visible = false;
+        }
+
+        private void pictureBoxTable5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 5");
+            pictureBoxTable5.Visible = false;
+        }
+
+        private void pictureBoxTable6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 6");
+            pictureBoxTable6.Visible = false;
+        }
+
+        private void pictureBoxTable7_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 7");
+            pictureBoxTable7.Visible = false;
+        }
+
+        private void pictureBoxTable8_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 8");
+            pictureBoxTable8.Visible = false;
+        }
+
+        private void pictureBoxTable9_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 9");
+            pictureBoxTable9.Visible = false;
+        }
+
+        private void pictureBoxTable10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order bezorgd op tafel 10");
+            pictureBoxTable10.Visible = false;
         }
     }
 }
