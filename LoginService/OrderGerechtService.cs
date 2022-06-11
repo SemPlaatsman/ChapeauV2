@@ -38,5 +38,12 @@ namespace ChapeauLogica
             List<OrderGerecht> orderGerecht = orderGerechtDAO.GetCurrentOrderGerechten(order);
             return orderGerecht;
         }
+
+
+        // helaas gebruik gemaakt van int. 
+        public void UpdateIsServed(OrderGerecht orderGerecht) 
+        {
+            orderGerechtDAO.UpdateIsServed(orderGerecht);
+        }
     }
 }

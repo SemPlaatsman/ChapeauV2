@@ -45,10 +45,11 @@ namespace ChapeauDAO
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void UpdateIsServed() 
+        public void UpdateIsServed(OrderGerecht orderGerecht) 
         {
-            string query = "update ApplicatiebouwChapeau.OrderGerecht set IsServed = 1 where IsServed = 0 and OrderId = 1; ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "update ApplicatiebouwChapeau.OrderGerecht set IsServed = 1 where IsServed = 0 and OrderID = @OrderID; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", orderGerecht.OrderId);
             ExecuteEditQuery(query, sqlParameters);
         }
 

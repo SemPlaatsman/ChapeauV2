@@ -17,8 +17,12 @@ namespace ChapeauUI
         private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
         TableService tableService = new TableService();
         private List<Table> tables;
+        private Table table;
         private KitchenOrderOverview KitchenOrderOverview;
+        private OrderGerechtService orderGerechtService;
         private List<OrderGerecht> orderGerechten;
+        private OrderGerecht orderGerecht;
+        private KitchenService kitchenService;
         public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
@@ -135,7 +139,6 @@ namespace ChapeauUI
 
         private void ShowPictureBox() 
         {
-            KitchenService kitchenService = new KitchenService();
             this.orderGerechten = new List<OrderGerecht>();
             OrderService orderService = new OrderService();
             ChapeauModel.Order order = null;
@@ -169,12 +172,15 @@ namespace ChapeauUI
         private void pictureBoxTable1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Order bezorgd op tafel 1");
+            this.table.TableID = 1;
             pictureBoxTable1.Visible = false;
         }
 
         private void pictureBoxTable2_Click(object sender, EventArgs e)
         {
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
             MessageBox.Show("Order bezorgd op tafel 2");
+            orderGerechtService.UpdateIsServed(this.orderGerecht);
             pictureBoxTable2.Visible = false;
         }
 
