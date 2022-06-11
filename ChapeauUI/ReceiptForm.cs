@@ -135,7 +135,7 @@ namespace ChapeauUI
         {
             this.Hide();
             //CheckoutForm checkoutForm = new CheckoutForm(table, employee);
-            formToShow.ShowDialog();
+            formToShow.Show();
             this.Close();
         }
 
@@ -171,13 +171,10 @@ namespace ChapeauUI
             }
             //Hier krijgt u de bevestiging van de betaling. De bon en indien aanwezig remark zijn opgeslagen in de database.
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
+            //De tafel word vrij gemaakt
             tableService.AlterTables(table, occupation);
-
-            //this.Hide();
-            //TableOverviewForm tableOverviewForm = new TableOverviewForm(employee);
-            //tableOverviewForm.ShowDialog();
+            //Je word nu naar de TableoverviewForm gestuurd
             Close();
-            //Close();
         }
     }
 }

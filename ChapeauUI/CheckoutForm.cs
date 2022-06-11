@@ -17,8 +17,8 @@ namespace ChapeauUI
     public partial class CheckoutForm : Form
     {
         private Table table;
-        private TableOverviewForm overviewForm;
         private Employee employee;
+        private TableOverviewForm overviewForm; //Dit is nodig als parameter voor TableForm
         private decimal priceQuantity;
         private decimal totalPrice = 0;         
         private int numberOfPersons; //Dit is nodig voor PaymentMethod
