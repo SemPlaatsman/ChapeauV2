@@ -35,22 +35,6 @@
             this.buttonDrankjes = new System.Windows.Forms.Button();
             this.buttonBestel = new System.Windows.Forms.Button();
             this.panelBestellen = new System.Windows.Forms.Panel();
-            this.panelViewOrder = new System.Windows.Forms.Panel();
-            this.labelNoItems = new System.Windows.Forms.Label();
-            this.panelVerwijderenBestelling = new System.Windows.Forms.Panel();
-            this.buttonNeeVerwijderen = new System.Windows.Forms.Button();
-            this.buttonJaVerwijderen = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonDeleteOrder = new System.Windows.Forms.Button();
-            this.listViewViewOrder = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.buttonAddComment = new System.Windows.Forms.Button();
-            this.textBoxComment = new System.Windows.Forms.TextBox();
-            this.buttonPlus = new System.Windows.Forms.Button();
-            this.buttonMinus = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelItemSelected = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -67,14 +51,30 @@
             this.labelZoeken = new System.Windows.Forms.Label();
             this.textBoxZoeken = new System.Windows.Forms.TextBox();
             this.buttonTerugBestelling = new System.Windows.Forms.Button();
+            this.panelViewOrder = new System.Windows.Forms.Panel();
+            this.labelNoItems = new System.Windows.Forms.Label();
+            this.panelVerwijderenBestelling = new System.Windows.Forms.Panel();
+            this.buttonNeeVerwijderen = new System.Windows.Forms.Button();
+            this.buttonJaVerwijderen = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonDeleteOrder = new System.Windows.Forms.Button();
+            this.listViewViewOrder = new System.Windows.Forms.ListView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonAddComment = new System.Windows.Forms.Button();
+            this.textBoxComment = new System.Windows.Forms.TextBox();
+            this.buttonPlus = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelOrdered = new System.Windows.Forms.Panel();
-            this.buttonOrderedOk = new System.Windows.Forms.Button();
             this.labelBesteld = new System.Windows.Forms.Label();
+            this.buttonOrderedOk = new System.Windows.Forms.Button();
             this.buttonViewOrder = new System.Windows.Forms.Button();
             this.panelBestellen.SuspendLayout();
+            this.panelItemSelected.SuspendLayout();
             this.panelViewOrder.SuspendLayout();
             this.panelVerwijderenBestelling.SuspendLayout();
-            this.panelItemSelected.SuspendLayout();
             this.panelOrdered.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,7 +152,6 @@
             // 
             // panelBestellen
             // 
-            this.panelBestellen.Controls.Add(this.panelViewOrder);
             this.panelBestellen.Controls.Add(this.panelItemSelected);
             this.panelBestellen.Controls.Add(this.listViewGerechten);
             this.panelBestellen.Controls.Add(this.labelTypeGerecht);
@@ -163,6 +162,166 @@
             this.panelBestellen.Name = "panelBestellen";
             this.panelBestellen.Size = new System.Drawing.Size(522, 641);
             this.panelBestellen.TabIndex = 6;
+            // 
+            // panelItemSelected
+            // 
+            this.panelItemSelected.Controls.Add(this.labelErrorMessage);
+            this.panelItemSelected.Controls.Add(this.buttonAdd);
+            this.panelItemSelected.Controls.Add(this.buttonCancel);
+            this.panelItemSelected.Controls.Add(this.textBoxRemark);
+            this.panelItemSelected.Controls.Add(this.label3);
+            this.panelItemSelected.Controls.Add(this.label2);
+            this.panelItemSelected.Controls.Add(this.textBoxAmount);
+            this.panelItemSelected.Controls.Add(this.labelAmount);
+            this.panelItemSelected.Controls.Add(this.labelSelectedItem);
+            this.panelItemSelected.Controls.Add(this.label1);
+            this.panelItemSelected.Location = new System.Drawing.Point(88, 132);
+            this.panelItemSelected.Name = "panelItemSelected";
+            this.panelItemSelected.Size = new System.Drawing.Size(353, 294);
+            this.panelItemSelected.TabIndex = 8;
+            // 
+            // labelErrorMessage
+            // 
+            this.labelErrorMessage.AutoSize = true;
+            this.labelErrorMessage.Location = new System.Drawing.Point(8, 87);
+            this.labelErrorMessage.Name = "labelErrorMessage";
+            this.labelErrorMessage.Size = new System.Drawing.Size(12, 15);
+            this.labelErrorMessage.TabIndex = 9;
+            this.labelErrorMessage.Text = "-";
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(202, 255);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(137, 27);
+            this.buttonAdd.TabIndex = 8;
+            this.buttonAdd.Text = "Voeg toe";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(16, 255);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(137, 27);
+            this.buttonCancel.TabIndex = 7;
+            this.buttonCancel.Text = "Annuleer";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // textBoxRemark
+            // 
+            this.textBoxRemark.Location = new System.Drawing.Point(14, 125);
+            this.textBoxRemark.Multiline = true;
+            this.textBoxRemark.Name = "textBoxRemark";
+            this.textBoxRemark.Size = new System.Drawing.Size(325, 114);
+            this.textBoxRemark.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(8, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Opmerking:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(100, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "X";
+            // 
+            // textBoxAmount
+            // 
+            this.textBoxAmount.Location = new System.Drawing.Point(77, 55);
+            this.textBoxAmount.Name = "textBoxAmount";
+            this.textBoxAmount.Size = new System.Drawing.Size(23, 23);
+            this.textBoxAmount.TabIndex = 3;
+            this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelAmount
+            // 
+            this.labelAmount.AutoSize = true;
+            this.labelAmount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAmount.Location = new System.Drawing.Point(8, 58);
+            this.labelAmount.Name = "labelAmount";
+            this.labelAmount.Size = new System.Drawing.Size(47, 17);
+            this.labelAmount.TabIndex = 2;
+            this.labelAmount.Text = "Aantal:";
+            // 
+            // labelSelectedItem
+            // 
+            this.labelSelectedItem.AutoSize = true;
+            this.labelSelectedItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSelectedItem.Location = new System.Drawing.Point(8, 34);
+            this.labelSelectedItem.Name = "labelSelectedItem";
+            this.labelSelectedItem.Size = new System.Drawing.Size(13, 17);
+            this.labelSelectedItem.TabIndex = 1;
+            this.labelSelectedItem.Text = "-";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(8, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Gekozen:";
+            // 
+            // listViewGerechten
+            // 
+            this.listViewGerechten.HideSelection = false;
+            this.listViewGerechten.Location = new System.Drawing.Point(12, 121);
+            this.listViewGerechten.MultiSelect = false;
+            this.listViewGerechten.Name = "listViewGerechten";
+            this.listViewGerechten.Size = new System.Drawing.Size(497, 508);
+            this.listViewGerechten.TabIndex = 7;
+            this.listViewGerechten.UseCompatibleStateImageBehavior = false;
+            this.listViewGerechten.SelectedIndexChanged += new System.EventHandler(this.listViewGerechten_SelectedIndexChanged);
+            // 
+            // labelTypeGerecht
+            // 
+            this.labelTypeGerecht.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTypeGerecht.AutoSize = true;
+            this.labelTypeGerecht.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTypeGerecht.Location = new System.Drawing.Point(192, 17);
+            this.labelTypeGerecht.Name = "labelTypeGerecht";
+            this.labelTypeGerecht.Size = new System.Drawing.Size(147, 26);
+            this.labelTypeGerecht.TabIndex = 6;
+            this.labelTypeGerecht.Text = "Voorgerechten";
+            // 
+            // labelZoeken
+            // 
+            this.labelZoeken.AutoSize = true;
+            this.labelZoeken.Location = new System.Drawing.Point(14, 61);
+            this.labelZoeken.Name = "labelZoeken";
+            this.labelZoeken.Size = new System.Drawing.Size(49, 15);
+            this.labelZoeken.TabIndex = 5;
+            this.labelZoeken.Text = "Zoeken:";
+            // 
+            // textBoxZoeken
+            // 
+            this.textBoxZoeken.Location = new System.Drawing.Point(12, 81);
+            this.textBoxZoeken.Name = "textBoxZoeken";
+            this.textBoxZoeken.Size = new System.Drawing.Size(497, 23);
+            this.textBoxZoeken.TabIndex = 4;
+            // 
+            // buttonTerugBestelling
+            // 
+            this.buttonTerugBestelling.Location = new System.Drawing.Point(12, 13);
+            this.buttonTerugBestelling.Name = "buttonTerugBestelling";
+            this.buttonTerugBestelling.Size = new System.Drawing.Size(94, 38);
+            this.buttonTerugBestelling.TabIndex = 3;
+            this.buttonTerugBestelling.Text = "Terug";
+            this.buttonTerugBestelling.UseVisualStyleBackColor = true;
+            this.buttonTerugBestelling.Click += new System.EventHandler(this.buttonTerugBestelling_Click);
             // 
             // panelViewOrder
             // 
@@ -335,174 +494,23 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Geselecteerde items:";
             // 
-            // panelItemSelected
-            // 
-            this.panelItemSelected.Controls.Add(this.labelErrorMessage);
-            this.panelItemSelected.Controls.Add(this.buttonAdd);
-            this.panelItemSelected.Controls.Add(this.buttonCancel);
-            this.panelItemSelected.Controls.Add(this.textBoxRemark);
-            this.panelItemSelected.Controls.Add(this.label3);
-            this.panelItemSelected.Controls.Add(this.label2);
-            this.panelItemSelected.Controls.Add(this.textBoxAmount);
-            this.panelItemSelected.Controls.Add(this.labelAmount);
-            this.panelItemSelected.Controls.Add(this.labelSelectedItem);
-            this.panelItemSelected.Controls.Add(this.label1);
-            this.panelItemSelected.Location = new System.Drawing.Point(88, 132);
-            this.panelItemSelected.Name = "panelItemSelected";
-            this.panelItemSelected.Size = new System.Drawing.Size(353, 294);
-            this.panelItemSelected.TabIndex = 8;
-            // 
-            // labelErrorMessage
-            // 
-            this.labelErrorMessage.AutoSize = true;
-            this.labelErrorMessage.Location = new System.Drawing.Point(8, 87);
-            this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(12, 15);
-            this.labelErrorMessage.TabIndex = 9;
-            this.labelErrorMessage.Text = "-";
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Location = new System.Drawing.Point(202, 255);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(137, 27);
-            this.buttonAdd.TabIndex = 8;
-            this.buttonAdd.Text = "Voeg toe";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(16, 255);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(137, 27);
-            this.buttonCancel.TabIndex = 7;
-            this.buttonCancel.Text = "Annuleer";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // textBoxRemark
-            // 
-            this.textBoxRemark.Location = new System.Drawing.Point(14, 125);
-            this.textBoxRemark.Multiline = true;
-            this.textBoxRemark.Name = "textBoxRemark";
-            this.textBoxRemark.Size = new System.Drawing.Size(325, 114);
-            this.textBoxRemark.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(8, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Opmerking:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(100, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "X";
-            // 
-            // textBoxAmount
-            // 
-            this.textBoxAmount.Location = new System.Drawing.Point(77, 55);
-            this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(23, 23);
-            this.textBoxAmount.TabIndex = 3;
-            this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelAmount
-            // 
-            this.labelAmount.AutoSize = true;
-            this.labelAmount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAmount.Location = new System.Drawing.Point(8, 58);
-            this.labelAmount.Name = "labelAmount";
-            this.labelAmount.Size = new System.Drawing.Size(47, 17);
-            this.labelAmount.TabIndex = 2;
-            this.labelAmount.Text = "Aantal:";
-            // 
-            // labelSelectedItem
-            // 
-            this.labelSelectedItem.AutoSize = true;
-            this.labelSelectedItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSelectedItem.Location = new System.Drawing.Point(8, 34);
-            this.labelSelectedItem.Name = "labelSelectedItem";
-            this.labelSelectedItem.Size = new System.Drawing.Size(13, 17);
-            this.labelSelectedItem.TabIndex = 1;
-            this.labelSelectedItem.Text = "-";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(8, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gekozen:";
-            // 
-            // listViewGerechten
-            // 
-            this.listViewGerechten.HideSelection = false;
-            this.listViewGerechten.Location = new System.Drawing.Point(12, 121);
-            this.listViewGerechten.MultiSelect = false;
-            this.listViewGerechten.Name = "listViewGerechten";
-            this.listViewGerechten.Size = new System.Drawing.Size(497, 508);
-            this.listViewGerechten.TabIndex = 7;
-            this.listViewGerechten.UseCompatibleStateImageBehavior = false;
-            this.listViewGerechten.SelectedIndexChanged += new System.EventHandler(this.listViewGerechten_SelectedIndexChanged);
-            // 
-            // labelTypeGerecht
-            // 
-            this.labelTypeGerecht.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTypeGerecht.AutoSize = true;
-            this.labelTypeGerecht.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTypeGerecht.Location = new System.Drawing.Point(192, 17);
-            this.labelTypeGerecht.Name = "labelTypeGerecht";
-            this.labelTypeGerecht.Size = new System.Drawing.Size(147, 26);
-            this.labelTypeGerecht.TabIndex = 6;
-            this.labelTypeGerecht.Text = "Voorgerechten";
-            // 
-            // labelZoeken
-            // 
-            this.labelZoeken.AutoSize = true;
-            this.labelZoeken.Location = new System.Drawing.Point(14, 61);
-            this.labelZoeken.Name = "labelZoeken";
-            this.labelZoeken.Size = new System.Drawing.Size(49, 15);
-            this.labelZoeken.TabIndex = 5;
-            this.labelZoeken.Text = "Zoeken:";
-            // 
-            // textBoxZoeken
-            // 
-            this.textBoxZoeken.Location = new System.Drawing.Point(12, 81);
-            this.textBoxZoeken.Name = "textBoxZoeken";
-            this.textBoxZoeken.Size = new System.Drawing.Size(497, 23);
-            this.textBoxZoeken.TabIndex = 4;
-            // 
-            // buttonTerugBestelling
-            // 
-            this.buttonTerugBestelling.Location = new System.Drawing.Point(12, 13);
-            this.buttonTerugBestelling.Name = "buttonTerugBestelling";
-            this.buttonTerugBestelling.Size = new System.Drawing.Size(94, 38);
-            this.buttonTerugBestelling.TabIndex = 3;
-            this.buttonTerugBestelling.Text = "Terug";
-            this.buttonTerugBestelling.UseVisualStyleBackColor = true;
-            this.buttonTerugBestelling.Click += new System.EventHandler(this.buttonTerugBestelling_Click);
-            // 
             // panelOrdered
             // 
-            this.panelOrdered.Controls.Add(this.buttonOrderedOk);
             this.panelOrdered.Controls.Add(this.labelBesteld);
+            this.panelOrdered.Controls.Add(this.buttonOrderedOk);
             this.panelOrdered.Location = new System.Drawing.Point(162, 257);
             this.panelOrdered.Name = "panelOrdered";
             this.panelOrdered.Size = new System.Drawing.Size(200, 100);
             this.panelOrdered.TabIndex = 8;
+            // 
+            // labelBesteld
+            // 
+            this.labelBesteld.AutoSize = true;
+            this.labelBesteld.Location = new System.Drawing.Point(15, 12);
+            this.labelBesteld.Name = "labelBesteld";
+            this.labelBesteld.Size = new System.Drawing.Size(12, 15);
+            this.labelBesteld.TabIndex = 0;
+            this.labelBesteld.Text = "-";
             // 
             // buttonOrderedOk
             // 
@@ -513,15 +521,6 @@
             this.buttonOrderedOk.Text = "Ok";
             this.buttonOrderedOk.UseVisualStyleBackColor = true;
             this.buttonOrderedOk.Click += new System.EventHandler(this.buttonOrderedOk_Click);
-            // 
-            // labelBesteld
-            // 
-            this.labelBesteld.AutoSize = true;
-            this.labelBesteld.Location = new System.Drawing.Point(72, 20);
-            this.labelBesteld.Name = "labelBesteld";
-            this.labelBesteld.Size = new System.Drawing.Size(12, 15);
-            this.labelBesteld.TabIndex = 0;
-            this.labelBesteld.Text = "-";
             // 
             // buttonViewOrder
             // 
@@ -540,6 +539,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
             this.Controls.Add(this.panelOrdered);
+            this.Controls.Add(this.panelViewOrder);
             this.Controls.Add(this.panelBestellen);
             this.Controls.Add(this.buttonDrankjes);
             this.Controls.Add(this.buttonViewOrder);
@@ -549,16 +549,17 @@
             this.Controls.Add(this.buttonVoorgerecht);
             this.Controls.Add(this.buttonTerug);
             this.Name = "Order";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";
             this.Load += new System.EventHandler(this.Order_Load);
             this.panelBestellen.ResumeLayout(false);
             this.panelBestellen.PerformLayout();
+            this.panelItemSelected.ResumeLayout(false);
+            this.panelItemSelected.PerformLayout();
             this.panelViewOrder.ResumeLayout(false);
             this.panelViewOrder.PerformLayout();
             this.panelVerwijderenBestelling.ResumeLayout(false);
             this.panelVerwijderenBestelling.PerformLayout();
-            this.panelItemSelected.ResumeLayout(false);
-            this.panelItemSelected.PerformLayout();
             this.panelOrdered.ResumeLayout(false);
             this.panelOrdered.PerformLayout();
             this.ResumeLayout(false);
