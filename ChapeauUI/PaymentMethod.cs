@@ -48,7 +48,6 @@ namespace ChapeauUI
             {
                 labelPrice.Text = string.Format($"Totaal bedrag: €{Convert.ToDecimal(newTotal):0.00}");
             }
-            
         }
         private string paymentMethod;
         
@@ -58,7 +57,6 @@ namespace ChapeauUI
             //checkoutForm.Show();
             this.Close();
         }
-
         private void ContantBtn_Click(object sender, EventArgs e)
         {
             paymentMethod += "Contant ";
@@ -68,7 +66,7 @@ namespace ChapeauUI
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);
-                receiptForm.Show();
+                receiptForm.ShowDialog();
                 this.Close();
             }
             else
@@ -87,7 +85,6 @@ namespace ChapeauUI
                 partialPayment = true;
             }
         }
-
         private void PinBtn_Click(object sender, EventArgs e)
         {
             paymentMethod += "Pin ";
@@ -97,7 +94,7 @@ namespace ChapeauUI
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);
-                receiptForm.Show();
+                receiptForm.ShowDialog();
                 this.Close();
             }
             else
@@ -116,7 +113,6 @@ namespace ChapeauUI
                 partialPayment = true;
             }
         }
-
         private void CreditCardBtn_Click(object sender, EventArgs e)
         {
             paymentMethod += "CreditCard ";
@@ -126,7 +122,7 @@ namespace ChapeauUI
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);
-                receiptForm.Show();
+                receiptForm.ShowDialog();
                 this.Close();
             }
             else
