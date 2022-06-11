@@ -18,12 +18,10 @@ namespace ChapeauUI
     {
         private Table table;
         private TableOverviewForm overviewForm;
-        private CheckoutForm checkoutForm;
         private Employee employee;
-        private decimal newTotal;
         private decimal priceQuantity;
-        private int numberOfPersons;
         private decimal totalPrice = 0;         
+        private int numberOfPersons; //Dit is nodig voor PaymentMethod
         public CheckoutForm(Table table, Employee employee)
         {
             InitializeComponent();
