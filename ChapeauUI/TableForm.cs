@@ -38,7 +38,7 @@ namespace ChapeauUI
             {
                 this.Hide();
                 CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
-                checkoutForm.ShowDialog();                
+                checkoutForm.Show();                
                 this.Close();
             }
             else

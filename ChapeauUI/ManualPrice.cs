@@ -13,23 +13,29 @@ namespace ChapeauUI
 {
     public partial class ManualPrice : Form
     {
+        private Table table;
+        private Employee employee;
+        private Form formToHide;
         private decimal totalPrice;
         private decimal sharedPrice;
         private int numberOfPersons;
-        private Table table;
         private decimal newTotal;
-        private Employee employee;
        
-        public ManualPrice(decimal totalWithBtw, Table table, Employee employee)
+        public ManualPrice(decimal totalWithBtw, Table table, Employee employee, Form checkoutForm)
         {
-            InitializeComponent();       
+            InitializeComponent();
             AfrekenenBtn.Enabled = false;
             this.employee = employee;
             this.totalPrice = totalWithBtw;
             this.table = table;
+            formToHide = checkoutForm;
+            ShowLabels();
+        }
+        private void ShowLabels()
+        {
             totalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
         }
-        
+
         private void newPriceTextbox_TextChanged(object sender, EventArgs e)
         {
             AfrekenenBtn.Enabled = !string.IsNullOrEmpty(newPriceTextBox.Text);
@@ -39,19 +45,23 @@ namespace ChapeauUI
         {
             newTotal = Convert.ToDecimal(newPriceTextBox.Text);
 
-            if(newTotal < totalPrice)
+            if (newTotal < totalPrice)
             {
                 MessageBox.Show("Het nieuwe bedrag mag niet lager zijn dan het originele bedrag");
             }
             else
             {
-                numberOfPersons = int.Parse(textBoxNumberOfPersons.Text);
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
-                this.Hide();
-                PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee, numberOfPersons);
-                paymentMethod.ShowDialog();
+                numberOfPersons = int.Parse(textBoxNumberOfPersons.Text);
+                PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee, numberOfPersons, formToHide);
+                paymentMethod.Show();
                 this.Close();
-            }
+            }            
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

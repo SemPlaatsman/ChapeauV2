@@ -18,10 +18,19 @@ namespace ChapeauUI
     {
         private Table table;
         private Employee employee;
+        private DateTime timeOfPayment;
+        private Form formToShow;
         private string paymentMethod;
         private decimal newTotal;
         private int numberOfPersons;
-        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee, int numberOfPersons)
+        private decimal totalPrice = 0;
+        private int totalItems = 0; 
+        private decimal btwTotal = 0;
+        private decimal btwItem = 0;
+        private decimal totalWithBtw = 0;
+        private decimal priceQuantity;
+
+        public ReceiptForm(string paymentMethod, Table table, decimal newTotal, Employee employee, int numberOfPersons, Form checkoutForm)
         {
             InitializeComponent();
             this.paymentMethod = paymentMethod; 
@@ -29,21 +38,14 @@ namespace ChapeauUI
             this.newTotal = newTotal;
             this.employee = employee;
             this.numberOfPersons = numberOfPersons;
+            formToShow = checkoutForm;
             FillReceipt();
         }
-        private decimal totalPrice = 0;
-        private int totalItems = 0; 
-        private decimal btwTotal = 0;
-        private decimal btwItem = 0;
-        private decimal totalWithBtw = 0;
-        private decimal priceQuantity;
-        private DateTime timeOfPayment;
 
         ReceiptService receiptService = new ReceiptService();
         public void FillReceipt()
         {
             //vul de listview
-
             List<Receipt> orders = receiptService.GetOrderList(table.TableID);
 
             itemsListBox.View = View.Details;
@@ -85,7 +87,7 @@ namespace ChapeauUI
             betaalMethodeLbl.Text = paymentMethod;
             timeOfPayment = DateTime.Now;
             datumLbl.Text = timeOfPayment.ToString("g");
-            receiptTotaalArtikelLbl.Text = $"Totaal {totalItems} artikelen";
+            receiptTotaalArtikelLbl.Text = $"Totaal {totalItems} artikelen (zonder btw)";
             receiptTotaalArtikelPrijsLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
             btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotal):0.00}");
             totalWithBtw = totalPrice;
@@ -132,8 +134,8 @@ namespace ChapeauUI
         private void TerugBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CheckoutForm checkoutForm = new CheckoutForm(table, employee);
-            checkoutForm.ShowDialog();
+            //CheckoutForm checkoutForm = new CheckoutForm(table, employee);
+            formToShow.ShowDialog();
             this.Close();
         }
 
@@ -171,10 +173,11 @@ namespace ChapeauUI
             MessageBox.Show("          Bestelling afgerond     \n      Je kunt dit venster sluiten");
             tableService.AlterTables(table, occupation);
 
-            this.Hide();
-            TableOverviewForm tableOverviewForm = new TableOverviewForm(employee);
-            tableOverviewForm.ShowDialog();
-            this.Close();
+            //this.Hide();
+            //TableOverviewForm tableOverviewForm = new TableOverviewForm(employee);
+            //tableOverviewForm.ShowDialog();
+            Close();
+            //Close();
         }
     }
 }

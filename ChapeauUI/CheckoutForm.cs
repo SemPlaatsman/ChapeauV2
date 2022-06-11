@@ -18,10 +18,12 @@ namespace ChapeauUI
     {
         private Table table;
         private TableOverviewForm overviewForm;
+        private CheckoutForm checkoutForm;
         private Employee employee;
         private decimal newTotal;
         private decimal priceQuantity;
         private int numberOfPersons;
+        private decimal totalPrice = 0;         
         public CheckoutForm(Table table, Employee employee)
         {
             InitializeComponent();
@@ -30,7 +32,6 @@ namespace ChapeauUI
             this.Text += $" voor Tafel {table.TableID}";
             ShowListView();
         }
-        private decimal totalPrice = 0;         
 
         private void ShowListView()
         {
@@ -41,7 +42,7 @@ namespace ChapeauUI
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
             rekeningListView.Columns.Add("Keer", 40);
-            rekeningListView.Columns.Add("Naam Product", 233);
+            rekeningListView.Columns.Add("Naam Product", 271);
             rekeningListView.Columns.Add("Prijs", 45);
 
             foreach (Checkout order in orders)
@@ -67,20 +68,16 @@ namespace ChapeauUI
         //Dit is zonder fooikeuze. DIT GAAT NAAR BETAALMETHODE
         private void AfrekenenBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            PaymentMethod paymentMethod = new PaymentMethod(table, totalPrice, employee, numberOfPersons);
-            paymentMethod.ShowDialog();
-            this.Close();
+            PaymentMethod paymentMethod = new PaymentMethod(table, totalPrice, employee, numberOfPersons, this);
+            paymentMethod.Show();
         }
         //Hier is gekozen voor een fooi. DEZE GAAT NAAR PRIJSWIJZIGING
         private void HandmatigBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                this.Hide();
-                ManualPrice manualPrice = new ManualPrice(totalPrice, table, this.employee);
-                manualPrice.ShowDialog();
-                this.Close();
+                ManualPrice manualPrice = new ManualPrice(totalPrice, table, employee, this);
+                manualPrice.Show();                
             }
             catch (Exception ex)
             {
