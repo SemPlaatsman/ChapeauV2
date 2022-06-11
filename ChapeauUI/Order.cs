@@ -31,7 +31,8 @@ namespace ChapeauUI
         {
             panelBestellen.Visible = false;
             panelItemSelected.Visible = false;
-            panelViewOrder.Visible = false; 
+            panelViewOrder.Visible = false;
+            panelOrdered.Visible = false;
             panelVerwijderenBestelling.Visible = false;
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
@@ -282,10 +283,12 @@ namespace ChapeauUI
         {
             if (listViewViewOrder.Items.Count == 0)
             {
-
+                panelOrdered.Visible = true;
+                labelBesteld.Text = "*Er zijn geen geselecteerde items";
             }
             else
             {
+                labelBesteld.Text = "Besteld!";
                 OrderGerechtService orderGerechtService = new OrderGerechtService();
                 selectedItems = GetItemsFromListView();
                 MenuItemService menuItemService = new MenuItemService();
@@ -331,6 +334,11 @@ namespace ChapeauUI
         private void buttonNeeVerwijderen_Click(object sender, EventArgs e)
         {
             panelVerwijderenBestelling.Visible = false;
+        }
+
+        private void buttonOrderedOk_Click(object sender, EventArgs e)
+        {
+            panelOrdered.Visible = false;
         }
     }
 }
