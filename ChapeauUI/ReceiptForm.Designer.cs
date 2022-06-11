@@ -337,9 +337,9 @@
             this.receiptTotaalArtikelLbl.AutoSize = true;
             this.receiptTotaalArtikelLbl.Location = new System.Drawing.Point(36, 336);
             this.receiptTotaalArtikelLbl.Name = "receiptTotaalArtikelLbl";
-            this.receiptTotaalArtikelLbl.Size = new System.Drawing.Size(95, 15);
+            this.receiptTotaalArtikelLbl.Size = new System.Drawing.Size(165, 15);
             this.receiptTotaalArtikelLbl.TabIndex = 27;
-            this.receiptTotaalArtikelLbl.Text = "Totaal 0 artikelen";
+            this.receiptTotaalArtikelLbl.Text = "Totaal 0 artikelen (zonder btw)";
             // 
             // receiptBtwLbl
             // 
