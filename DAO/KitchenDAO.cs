@@ -52,18 +52,18 @@ namespace ChapeauDAO
         }
 
 
-        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht)
+/*        public KitchenOrderOverview ReadyToServe(Ordergerecht ordergerecht)
         {
             string query = "select OrderGerechtId, ItemId, OrderId, [Status], TimeOfOrder, Remark, [IsServed] from ApplicatiebouwChapeau.OrderGerecht " +
                 "where [Status] = @Status AND Orderid = @OrderID AND [IsServed] = @IsServed; ";
 
             SqlParameter[] sqlParameter = new SqlParameter[3];
             sqlParameter[0] = new SqlParameter("@Status", orderGerecht.Status);
-            sqlParameter[1] = new SqlParameter("@Status", orderGerecht.OrderId);
+            sqlParameter[1] = new SqlParameter("@OrderID", orderGerecht.OrderId);
             sqlParameter[2] = new SqlParameter("@IsServed", orderGerecht.IsServed);
 
             return ReadTable(ExecuteSelectQuery(query, sqlParameter));
-        }
+        }*/
 
         public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {

@@ -32,10 +32,10 @@ namespace ChapeauLogica
             return kitchenDAO.GetKitchenOverviewWithTableId(kitchenOrderOverview);
         }
 
-        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
+/*        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
         {
             return kitchenDAO.ReadyToServe(orderGerecht);
-        }
+        }*/
 
         public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {

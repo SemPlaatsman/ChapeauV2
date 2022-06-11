@@ -62,8 +62,9 @@ namespace ChapeauUI
             kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview);
             // iets nodig om te items te showen die georderd zijn op deze tafel. 
             listViewOrder.View = View.Details;
-            listViewOrder.Columns.Add("Naam", 200);
-            listViewOrder.Columns.Add("Status gerecht", 80);
+            listViewOrder.FullRowSelect = true;
+            listViewOrder.Columns.Add("Naam", 170);
+            listViewOrder.Columns.Add("Status gerecht", 90);
             listViewOrder.Columns.Add("Duur", 75);
             listViewOrder.Columns.Add("Status geserveerd", 130);
            
@@ -77,7 +78,6 @@ namespace ChapeauUI
                 li.SubItems.Add(time.ToString("hh':'mm':'ss"));
                 li.SubItems.Add(Regex.Replace($"{item.IsServed.ToString()}", "([A-Z])", " $1").Trim());
                 listViewOrder.Items.Add(li);
-
             }
         }
         private void buttonNewOrder_Click(object sender, EventArgs e)
@@ -98,7 +98,8 @@ namespace ChapeauUI
                         tableService.UpdateTableOccupy(table, true);
                         tableService.SetEmployee(this.employee, table);
                         this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
-                        labelCurrentEmployee.Text = $"{this.employeeConnectedToTable.FirstName}, {this.employeeConnectedToTable.LastName}";
+                        // overbodig. met refactor eruit halen. 
+                        labelCurrentEmployee.Text = $"{this.employee.LastName}, {this.employee.FirstName}";
                         // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
                         this.overviewForm.SetColor();
                     }
@@ -125,17 +126,31 @@ namespace ChapeauUI
         private void TableForm_Load(object sender, EventArgs e)
         {
             ShowListView();
+            EmployeeService employeeService = new EmployeeService();            
             TableService tableService = new TableService();
             tableService.GetAllTables();
             List<Table> tables = tableService.GetAllTables();
             Table table = null;
             table = tables.Find(x => x.TableID == this.table.TableID);
             if (table.IsOccupied)
+            {
                 checkBoxTable.Checked = true;
+                this.labelCurrentEmployee.Text = $"{table.EmployeeID}";
+            }
             else
+            {
                 checkBoxTable.Checked = false;
+            }
         }
-       
 
+        private void buttonServedDrink_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonServedFood_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
