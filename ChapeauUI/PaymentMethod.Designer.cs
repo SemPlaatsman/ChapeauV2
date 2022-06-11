@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 224);
+            this.ClientSize = new System.Drawing.Size(366, 224);
             this.Controls.Add(this.labelPartialPayment);
             this.Controls.Add(this.textBoxPartialPayment);
             this.Controls.Add(this.label2);

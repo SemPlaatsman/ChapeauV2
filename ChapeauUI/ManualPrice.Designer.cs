@@ -77,7 +77,7 @@
             // 
             // newPriceTextBox
             // 
-            this.newPriceTextBox.Location = new System.Drawing.Point(12, 115);
+            this.newPriceTextBox.Location = new System.Drawing.Point(162, 95);
             this.newPriceTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newPriceTextBox.Name = "newPriceTextBox";
             this.newPriceTextBox.Size = new System.Drawing.Size(155, 23);
@@ -86,7 +86,7 @@
             // 
             // AfrekenenBtn
             // 
-            this.AfrekenenBtn.Location = new System.Drawing.Point(85, 220);
+            this.AfrekenenBtn.Location = new System.Drawing.Point(141, 192);
             this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AfrekenenBtn.Name = "AfrekenenBtn";
             this.AfrekenenBtn.Size = new System.Drawing.Size(82, 22);
@@ -98,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 154);
+            this.label3.Location = new System.Drawing.Point(12, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(225, 15);
             this.label3.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             // textBoxNumberOfPersons
             // 
-            this.textBoxNumberOfPersons.Location = new System.Drawing.Point(12, 172);
+            this.textBoxNumberOfPersons.Location = new System.Drawing.Point(264, 142);
             this.textBoxNumberOfPersons.Name = "textBoxNumberOfPersons";
             this.textBoxNumberOfPersons.Size = new System.Drawing.Size(53, 23);
             this.textBoxNumberOfPersons.TabIndex = 7;
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 253);
+            this.ClientSize = new System.Drawing.Size(367, 225);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.textBoxNumberOfPersons);
             this.Controls.Add(this.label3);
