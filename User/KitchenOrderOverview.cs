@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace ChapeauModel
 {
-    public class KitchenOrderOverview : Order
+    public class KitchenOrderOverview : OrderOverview
     {
         public List<OrderGerecht> Voorgerechten;
         public List<OrderGerecht> Tussengerechten;
@@ -104,30 +104,6 @@ namespace ChapeauModel
                 return Nagerechten;
             }
             return new List<OrderGerecht>();
-        }
-
-        public static bool ListHasMeeBezig(List<OrderGerecht> gerechten)
-        {
-            foreach (OrderGerecht gerecht in gerechten)
-            {
-                if (gerecht.Status == OrderStatus.MeeBezig)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static bool ListCompleted(List<OrderGerecht> gerechten)
-        {
-            foreach (OrderGerecht gerecht in gerechten)
-            {
-                if (gerecht.Status != OrderStatus.Klaar)
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         public List<OrderGerecht> GetCombinedGerechten()
