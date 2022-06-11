@@ -624,5 +624,3 @@ The statement has been terminated.
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
    at ChapeauDAO.BaseDao.OpenConnection() in C:\Users\sempl\OneDrive\Documenten\Project Applicatiebouw\ChapeauV2\DAO\BaseDAO.cs:line 27
-
-

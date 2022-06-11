@@ -38,6 +38,8 @@ namespace ChapeauUI
             this.listViewOrder = new System.Windows.Forms.ListView();
             this.checkBoxTable = new System.Windows.Forms.CheckBox();
             this.labelCurrentEmployee = new System.Windows.Forms.Label();
+            this.buttonServedDrink = new System.Windows.Forms.Button();
+            this.buttonServedFood = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,12 +118,12 @@ namespace ChapeauUI
             // 
             this.checkBoxTable.AutoSize = true;
             this.checkBoxTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxTable.Location = new System.Drawing.Point(174, 60);
+            this.checkBoxTable.Location = new System.Drawing.Point(153, 48);
             this.checkBoxTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxTable.Name = "checkBoxTable";
-            this.checkBoxTable.Size = new System.Drawing.Size(66, 25);
+            this.checkBoxTable.Size = new System.Drawing.Size(190, 46);
             this.checkBoxTable.TabIndex = 7;
-            this.checkBoxTable.Text = "Bezet";
+            this.checkBoxTable.Text = "Bezet door\r\nmedewerkersnummer: ";
             this.checkBoxTable.UseVisualStyleBackColor = true;
             this.checkBoxTable.CheckedChanged += new System.EventHandler(this.checkBoxTable_CheckedChanged);
             // 
@@ -129,18 +131,46 @@ namespace ChapeauUI
             // 
             this.labelCurrentEmployee.AutoSize = true;
             this.labelCurrentEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCurrentEmployee.Location = new System.Drawing.Point(276, 61);
+            this.labelCurrentEmployee.Location = new System.Drawing.Point(349, 48);
             this.labelCurrentEmployee.Name = "labelCurrentEmployee";
             this.labelCurrentEmployee.Size = new System.Drawing.Size(137, 42);
             this.labelCurrentEmployee.TabIndex = 8;
             this.labelCurrentEmployee.Text = "Geen medewerker\r\ngekoppeld";
+            // 
+            // buttonServedDrink
+            // 
+            this.buttonServedDrink.BackColor = System.Drawing.Color.White;
+            this.buttonServedDrink.Enabled = false;
+            this.buttonServedDrink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonServedDrink.Location = new System.Drawing.Point(334, 123);
+            this.buttonServedDrink.Name = "buttonServedDrink";
+            this.buttonServedDrink.Size = new System.Drawing.Size(126, 58);
+            this.buttonServedDrink.TabIndex = 9;
+            this.buttonServedDrink.Text = "Drinken geserveerd";
+            this.buttonServedDrink.UseVisualStyleBackColor = false;
+            this.buttonServedDrink.Click += new System.EventHandler(this.buttonServedDrink_Click);
+            // 
+            // buttonServedFood
+            // 
+            this.buttonServedFood.BackColor = System.Drawing.Color.White;
+            this.buttonServedFood.Enabled = false;
+            this.buttonServedFood.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonServedFood.Location = new System.Drawing.Point(199, 123);
+            this.buttonServedFood.Name = "buttonServedFood";
+            this.buttonServedFood.Size = new System.Drawing.Size(126, 58);
+            this.buttonServedFood.TabIndex = 10;
+            this.buttonServedFood.Text = "Eten geserveerd";
+            this.buttonServedFood.UseVisualStyleBackColor = false;
+            this.buttonServedFood.Click += new System.EventHandler(this.buttonServedFood_Click);
             // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(513, 663);
+            this.ClientSize = new System.Drawing.Size(513, 637);
+            this.Controls.Add(this.buttonServedFood);
+            this.Controls.Add(this.buttonServedDrink);
             this.Controls.Add(this.labelCurrentEmployee);
             this.Controls.Add(this.checkBoxTable);
             this.Controls.Add(this.listViewOrder);
@@ -170,5 +200,7 @@ namespace ChapeauUI
         private System.Windows.Forms.ListView listViewOrder;
         private System.Windows.Forms.CheckBox checkBoxTable;
         private System.Windows.Forms.Label labelCurrentEmployee;
+        private System.Windows.Forms.Button buttonServedDrink;
+        private System.Windows.Forms.Button buttonServedFood;
     }
 }
