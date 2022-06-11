@@ -231,6 +231,7 @@ namespace ChapeauUI
             this.Name = "BarDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BarDisplay";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BarDisplay_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).EndInit();
             this.ResumeLayout(false);

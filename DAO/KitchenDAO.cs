@@ -75,13 +75,28 @@ namespace ChapeauDAO
             SqlParameter[] sqlParameters = new SqlParameter[3];
             sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
             sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
-            sqlParameters[2] = new SqlParameter("typeId", (int)orderGerecht.MenuItem.Type);
+            sqlParameters[2] = new SqlParameter("@typeId", (int)orderGerecht.MenuItem.Type);
             ExecuteEditQuery(query, sqlParameters);
-
         }
 
-        public KitchenOrderOverview GetKitchenOverview(KitchenOrderOverview kitchenOrderOverview)
+        public void ChangeServeStatusWithType(int orderId, TypeOfProduct type, ServeerStatus serveerStatus)
         {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET IsServed = @serveerStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@serveerStatus", serveerStatus == ServeerStatus.IsGeserveerd ? true : serveerStatus == ServeerStatus.KanGeserveerdWorden ? false : DBNull.Value);
+            sqlParameters[1] = new SqlParameter("@orderId", orderId);
+            sqlParameters[2] = new SqlParameter("@typeId", (int)type);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public KitchenOrderOverview GetKitchenOverview(int orderId)
+        {
+            PushLateOrders();
+
             string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
@@ -89,13 +104,13 @@ namespace ChapeauDAO
                 "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] = @orderId " +
                 "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
             SqlParameter[] sqlParameters = new SqlParameter[3];
-            sqlParameters[0] = new SqlParameter("@orderId", kitchenOrderOverview.OrderId);
+            sqlParameters[0] = new SqlParameter("@orderId", orderId);
             sqlParameters[1] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
             sqlParameters[2] = new SqlParameter("@hoursToAdd", 2);
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public KitchenOrderOverview GetKitchenOverviewWithTableId(KitchenOrderOverview kitchenOrderOverview)
+        public KitchenOrderOverview GetKitchenOverviewWithTableId(int tableId)
         {
             string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O " +
@@ -104,7 +119,7 @@ namespace ChapeauDAO
                 "WHERE M.[Type] != @typeOfDrink AND OG.[OrderId] = (SELECT TOP(1) O2.OrderId FROM ApplicatiebouwChapeau.[Order] AS O2 WHERE O2.TableID = @tableId ORDER BY O2.OrderID DESC) " +
                 "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
             SqlParameter[] sqlParameters = new SqlParameter[3];
-            sqlParameters[0] = new SqlParameter("@tableId", kitchenOrderOverview.TableId);
+            sqlParameters[0] = new SqlParameter("@tableId", tableId);
             sqlParameters[1] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
             sqlParameters[2] = new SqlParameter("@hoursToAdd", 2);
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));

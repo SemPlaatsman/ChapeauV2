@@ -25,7 +25,7 @@ namespace ChapeauModel
 
         public List<OrderGerecht> GetNextMoetNogList()
         {
-            if (Drinken.Count != 0 && !ListHasMeeBezig(Drinken) && !ListCompleted(Drinken))
+            if (Drinken.Count != 0 && !ListHasMeeBezig(Drinken) && !ListOnlyHasStatus(Drinken, OrderStatus.Klaar))
             {
                 return Drinken;
             }
@@ -39,6 +39,11 @@ namespace ChapeauModel
                 return Drinken;
             }
             return new List<OrderGerecht>();
+        }
+
+        public override List<OrderGerecht> GetCombinedGerechten()
+        {
+            return Drinken;
         }
     }
 }

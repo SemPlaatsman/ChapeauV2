@@ -22,14 +22,14 @@ namespace ChapeauLogica
             return kitchenDAO.GetKitchenOverviews();
         }
 
-        public KitchenOrderOverview GetKitchenOverview(KitchenOrderOverview kitchenOrderOverview)
+        public KitchenOrderOverview GetKitchenOverview(int orderId)
         {
-            return kitchenDAO.GetKitchenOverview(kitchenOrderOverview);
+            return kitchenDAO.GetKitchenOverview(orderId);
         }
 
-        public KitchenOrderOverview GetKitchenOverviewWithTableId(KitchenOrderOverview kitchenOrderOverview)
+        public KitchenOrderOverview GetKitchenOverviewWithTableId(int tableId)
         {
-            return kitchenDAO.GetKitchenOverviewWithTableId(kitchenOrderOverview);
+            return kitchenDAO.GetKitchenOverviewWithTableId(tableId);
         }
 
         public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
@@ -40,7 +40,11 @@ namespace ChapeauLogica
         public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
             kitchenDAO.ChangeNextOrderStatus(orderGerecht, newStatus);
+        }
 
+        public void ChangeServeStatusWithType(int orderId, TypeOfProduct type, ServeerStatus serveerStatus)
+        {
+            kitchenDAO.ChangeServeStatusWithType(orderId, type, serveerStatus);
         }
     }
 }

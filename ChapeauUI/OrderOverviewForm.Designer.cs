@@ -37,19 +37,21 @@ namespace ChapeauUI
             this.ColumnStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColumnCurrentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCurrentServeerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelGeheleOrder = new System.Windows.Forms.Label();
+            this.buttonTypeStatus = new System.Windows.Forms.Button();
+            this.buttonFullStatus = new System.Windows.Forms.Button();
+            this.labelPerType = new System.Windows.Forms.Label();
+            this.comBoxType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderOverview)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonTerug
             // 
+            this.buttonTerug.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonTerug.Location = new System.Drawing.Point(12, 382);
             this.buttonTerug.Name = "buttonTerug";
             this.buttonTerug.Size = new System.Drawing.Size(127, 56);
-            this.buttonTerug.TabIndex = 0;
+            this.buttonTerug.TabIndex = 1;
             this.buttonTerug.Text = "Terug";
             this.buttonTerug.UseVisualStyleBackColor = true;
             this.buttonTerug.Click += new System.EventHandler(this.buttonTerug_Click);
@@ -66,9 +68,10 @@ namespace ChapeauUI
             this.ColumnCurrentServeerStatus});
             this.dataGridViewOrderOverview.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewOrderOverview.Name = "dataGridViewOrderOverview";
+            this.dataGridViewOrderOverview.ReadOnly = true;
             this.dataGridViewOrderOverview.RowTemplate.Height = 25;
             this.dataGridViewOrderOverview.Size = new System.Drawing.Size(940, 364);
-            this.dataGridViewOrderOverview.TabIndex = 1;
+            this.dataGridViewOrderOverview.TabIndex = 0;
             this.dataGridViewOrderOverview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderOverview_CellValueChanged);
             this.dataGridViewOrderOverview.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridViewOrderOverview_CurrentCellDirtyStateChanged);
             // 
@@ -77,18 +80,24 @@ namespace ChapeauUI
             this.ColumnTijd.DataPropertyName = "TimeOfOrder";
             this.ColumnTijd.HeaderText = "Tijd";
             this.ColumnTijd.Name = "ColumnTijd";
+            this.ColumnTijd.ReadOnly = true;
+            this.ColumnTijd.Width = 50;
             // 
             // ColumnGerecht
             // 
             this.ColumnGerecht.DataPropertyName = "Gerecht";
             this.ColumnGerecht.HeaderText = "Gerecht";
             this.ColumnGerecht.Name = "ColumnGerecht";
+            this.ColumnGerecht.ReadOnly = true;
+            this.ColumnGerecht.Width = 380;
             // 
             // ColumnType
             // 
             this.ColumnType.DataPropertyName = "Type";
             this.ColumnType.HeaderText = "Type";
             this.ColumnType.Name = "ColumnType";
+            this.ColumnType.ReadOnly = true;
+            this.ColumnType.Width = 126;
             // 
             // ColumnStatus
             // 
@@ -100,63 +109,91 @@ namespace ChapeauUI
             "Klaar"});
             this.ColumnStatus.MaxDropDownItems = 3;
             this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
             this.ColumnStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnStatus.Width = 120;
             // 
             // ColumnCurrentStatus
             // 
             this.ColumnCurrentStatus.HeaderText = "Huidige status";
             this.ColumnCurrentStatus.Name = "ColumnCurrentStatus";
+            this.ColumnCurrentStatus.ReadOnly = true;
+            this.ColumnCurrentStatus.Width = 110;
             // 
             // ColumnCurrentServeerStatus
             // 
             this.ColumnCurrentServeerStatus.HeaderText = "Huidige serveer status";
             this.ColumnCurrentServeerStatus.Name = "ColumnCurrentServeerStatus";
+            this.ColumnCurrentServeerStatus.ReadOnly = true;
+            this.ColumnCurrentServeerStatus.Width = 150;
             // 
-            // button1
+            // labelGeheleOrder
             // 
-            this.button1.Location = new System.Drawing.Point(309, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelGeheleOrder.AutoSize = true;
+            this.labelGeheleOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGeheleOrder.Location = new System.Drawing.Point(708, 400);
+            this.labelGeheleOrder.Name = "labelGeheleOrder";
+            this.labelGeheleOrder.Size = new System.Drawing.Size(103, 21);
+            this.labelGeheleOrder.TabIndex = 5;
+            this.labelGeheleOrder.Text = "Gehele order:";
             // 
-            // button2
+            // buttonTypeStatus
             // 
-            this.button2.Location = new System.Drawing.Point(830, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 40);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonTypeStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTypeStatus.Location = new System.Drawing.Point(444, 390);
+            this.buttonTypeStatus.Name = "buttonTypeStatus";
+            this.buttonTypeStatus.Size = new System.Drawing.Size(122, 40);
+            this.buttonTypeStatus.TabIndex = 3;
+            this.buttonTypeStatus.Text = "test";
+            this.buttonTypeStatus.UseVisualStyleBackColor = true;
+            this.buttonTypeStatus.Click += new System.EventHandler(this.buttonTypeStatus_Click);
             // 
-            // comboBox1
+            // buttonFullStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(163, 400);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 4;
+            this.buttonFullStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonFullStatus.Location = new System.Drawing.Point(817, 391);
+            this.buttonFullStatus.Name = "buttonFullStatus";
+            this.buttonFullStatus.Size = new System.Drawing.Size(122, 40);
+            this.buttonFullStatus.TabIndex = 4;
+            this.buttonFullStatus.Text = "test";
+            this.buttonFullStatus.UseVisualStyleBackColor = true;
+            this.buttonFullStatus.Click += new System.EventHandler(this.buttonFullStatus_Click);
             // 
-            // label1
+            // labelPerType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(734, 403);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Gehele order:";
+            this.labelPerType.AutoSize = true;
+            this.labelPerType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPerType.Location = new System.Drawing.Point(242, 400);
+            this.labelPerType.Name = "labelPerType";
+            this.labelPerType.Size = new System.Drawing.Size(69, 21);
+            this.labelPerType.TabIndex = 6;
+            this.labelPerType.Text = "Per type:";
+            // 
+            // comBoxType
+            // 
+            this.comBoxType.FormattingEnabled = true;
+            this.comBoxType.Items.AddRange(new object[] {
+            "Voorgerecht",
+            "Tussengerecht",
+            "Hoofdgerecht",
+            "Nagerecht"});
+            this.comBoxType.Location = new System.Drawing.Point(317, 400);
+            this.comBoxType.Name = "comBoxType";
+            this.comBoxType.Size = new System.Drawing.Size(121, 23);
+            this.comBoxType.TabIndex = 7;
+            this.comBoxType.SelectedIndexChanged += new System.EventHandler(this.comBoxType_SelectedIndexChanged);
             // 
             // OrderOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comBoxType);
+            this.Controls.Add(this.labelPerType);
+            this.Controls.Add(this.buttonFullStatus);
+            this.Controls.Add(this.buttonTypeStatus);
+            this.Controls.Add(this.labelGeheleOrder);
             this.Controls.Add(this.dataGridViewOrderOverview);
             this.Controls.Add(this.buttonTerug);
             this.Name = "OrderOverviewForm";
@@ -172,15 +209,16 @@ namespace ChapeauUI
 
         private System.Windows.Forms.Button buttonTerug;
         private System.Windows.Forms.DataGridView dataGridViewOrderOverview;
+        private System.Windows.Forms.Label labelGeheleOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTijd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGerecht;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCurrentServeerStatus;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonTypeStatus;
+        private System.Windows.Forms.Button buttonFullStatus;
+        private System.Windows.Forms.Label labelPerType;
+        private System.Windows.Forms.ComboBox comBoxType;
     }
 }

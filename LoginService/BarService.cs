@@ -19,8 +19,22 @@ namespace ChapeauLogica
 
         public List<BarOrderOverview> GetBarOverviews()
         {
-            List<BarOrderOverview> barOverviews = barDAO.GetBarOverviews();
-            return barOverviews;
+            return barDAO.GetBarOverviews();
+        }
+
+        public BarOrderOverview GetBarOverview(int orderId)
+        {
+            return barDAO.GetBarOverview(orderId);
+        }
+
+        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            barDAO.ChangeNextOrderStatus(orderGerecht, newStatus);
+        }
+
+        public void ChangeServeStatusWithType(int orderId, ServeerStatus serveerStatus)
+        {
+            barDAO.ChangeServeStatusWithType(orderId, serveerStatus);
         }
     }
 }
