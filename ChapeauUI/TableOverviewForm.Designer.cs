@@ -307,93 +307,114 @@ namespace ChapeauUI
             // 
             // pictureBoxTable1
             // 
+            this.pictureBoxTable1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable1.Image")));
             this.pictureBoxTable1.Location = new System.Drawing.Point(174, 49);
             this.pictureBoxTable1.Name = "pictureBoxTable1";
             this.pictureBoxTable1.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable1.TabIndex = 31;
             this.pictureBoxTable1.TabStop = false;
+            this.pictureBoxTable1.Visible = false;
+            this.pictureBoxTable1.Click += new System.EventHandler(this.pictureBoxTable1_Click);
             // 
             // pictureBoxTable2
             // 
+            this.pictureBoxTable2.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable2.Image")));
             this.pictureBoxTable2.Location = new System.Drawing.Point(413, 49);
             this.pictureBoxTable2.Name = "pictureBoxTable2";
             this.pictureBoxTable2.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable2.TabIndex = 32;
             this.pictureBoxTable2.TabStop = false;
+            this.pictureBoxTable2.Visible = false;
             // 
             // pictureBoxTable3
             // 
+            this.pictureBoxTable3.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable3.Image")));
             this.pictureBoxTable3.Location = new System.Drawing.Point(174, 170);
             this.pictureBoxTable3.Name = "pictureBoxTable3";
             this.pictureBoxTable3.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable3.TabIndex = 33;
             this.pictureBoxTable3.TabStop = false;
+            this.pictureBoxTable3.Visible = false;
             // 
             // pictureBoxTable4
             // 
+            this.pictureBoxTable4.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable4.Image")));
             this.pictureBoxTable4.Location = new System.Drawing.Point(413, 170);
             this.pictureBoxTable4.Name = "pictureBoxTable4";
             this.pictureBoxTable4.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable4.TabIndex = 34;
             this.pictureBoxTable4.TabStop = false;
+            this.pictureBoxTable4.Visible = false;
             // 
             // pictureBoxTable5
             // 
+            this.pictureBoxTable5.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable5.Image")));
             this.pictureBoxTable5.Location = new System.Drawing.Point(174, 301);
             this.pictureBoxTable5.Name = "pictureBoxTable5";
             this.pictureBoxTable5.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable5.TabIndex = 35;
             this.pictureBoxTable5.TabStop = false;
+            this.pictureBoxTable5.Visible = false;
             // 
             // pictureBoxTable6
             // 
+            this.pictureBoxTable6.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable6.Image")));
             this.pictureBoxTable6.Location = new System.Drawing.Point(413, 301);
             this.pictureBoxTable6.Name = "pictureBoxTable6";
             this.pictureBoxTable6.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable6.TabIndex = 36;
             this.pictureBoxTable6.TabStop = false;
+            this.pictureBoxTable6.Visible = false;
             // 
             // pictureBoxTable7
             // 
+            this.pictureBoxTable7.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable7.Image")));
             this.pictureBoxTable7.Location = new System.Drawing.Point(174, 428);
             this.pictureBoxTable7.Name = "pictureBoxTable7";
             this.pictureBoxTable7.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable7.TabIndex = 37;
             this.pictureBoxTable7.TabStop = false;
+            this.pictureBoxTable7.Visible = false;
             // 
             // pictureBoxTable8
             // 
+            this.pictureBoxTable8.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable8.Image")));
             this.pictureBoxTable8.Location = new System.Drawing.Point(413, 428);
             this.pictureBoxTable8.Name = "pictureBoxTable8";
             this.pictureBoxTable8.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable8.TabIndex = 38;
             this.pictureBoxTable8.TabStop = false;
+            this.pictureBoxTable8.Visible = false;
             // 
             // pictureBoxTable9
             // 
+            this.pictureBoxTable9.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable9.Image")));
             this.pictureBoxTable9.Location = new System.Drawing.Point(174, 553);
             this.pictureBoxTable9.Name = "pictureBoxTable9";
             this.pictureBoxTable9.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable9.TabIndex = 39;
             this.pictureBoxTable9.TabStop = false;
+            this.pictureBoxTable9.Visible = false;
             // 
             // pictureBoxTable10
             // 
+            this.pictureBoxTable10.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxTable10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTable10.Image")));
             this.pictureBoxTable10.Location = new System.Drawing.Point(413, 553);
             this.pictureBoxTable10.Name = "pictureBoxTable10";
             this.pictureBoxTable10.Size = new System.Drawing.Size(52, 50);
             this.pictureBoxTable10.TabIndex = 40;
             this.pictureBoxTable10.TabStop = false;
+            this.pictureBoxTable10.Visible = false;
             // 
             // TableOverviewForm
             // 
@@ -434,6 +455,7 @@ namespace ChapeauUI
             this.Controls.Add(this.labelTable1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableOverviewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Table Overview";
             this.Load += new System.EventHandler(this.TableOverviewForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable1)).EndInit();
