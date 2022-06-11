@@ -32,6 +32,7 @@ namespace ChapeauUI
             panelBestellen.Visible = false;
             panelItemSelected.Visible = false;
             panelViewOrder.Visible = false; 
+            panelVerwijderenBestelling.Visible = false;
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
             listViewGerechten.Columns.Add("ID", 100);
@@ -126,6 +127,10 @@ namespace ChapeauUI
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);
                     listViewItem.SubItems.Add(m.Price.ToString());
+                    if (m.Stock < 10)
+                    {
+                        listViewItem.BackColor = Color.OrangeRed;
+                    }
                     listViewItem.SubItems.Add(m.Stock.ToString());
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
                     listViewItem.Tag = m;
@@ -243,6 +248,7 @@ namespace ChapeauUI
         private void button1_Click(object sender, EventArgs e)
         {
             panelViewOrder.Visible = false;
+            labelNoItems.Text = "";
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
@@ -274,21 +280,57 @@ namespace ChapeauUI
 
         private void buttonBestel_Click(object sender, EventArgs e)
         {
-            OrderGerechtService orderGerechtService = new OrderGerechtService();
-            selectedItems = GetItemsFromListView();
-            MenuItemService menuItemService = new MenuItemService();    
-            foreach (OrderGerecht orderGerecht in selectedItems)
+            if (listViewViewOrder.Items.Count == 0)
             {
-                orderGerechtService.InsertOrderGerecht(orderGerecht);
-                menuItemService.UpdateMenuItem(orderGerecht);
+
             }
-            listViewViewOrder.Clear();
-            MessageBox.Show("Besteld!");
+            else
+            {
+                OrderGerechtService orderGerechtService = new OrderGerechtService();
+                selectedItems = GetItemsFromListView();
+                MenuItemService menuItemService = new MenuItemService();
+                foreach (OrderGerecht orderGerecht in selectedItems)
+                {
+                    orderGerechtService.InsertOrderGerecht(orderGerecht);
+                    menuItemService.UpdateMenuItem(orderGerecht);
+                }
+                listViewViewOrder.Clear();
+                MessageBox.Show("Besteld!");
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonAddComment_Click(object sender, EventArgs e)
         {
+            string Remark = textBoxComment.Text;
+            foreach (ListViewItem item in listViewViewOrder.SelectedItems)
+            {
+                item.SubItems[4].Text = Remark;
+                listViewViewOrder.Items.Add((ListViewItem)item.Clone());
+                listViewViewOrder.Items.Remove(listViewViewOrder.SelectedItems[0]);
+            }
+        }
 
+        private void buttonDeleteOrder_Click(object sender, EventArgs e)
+        {
+            if (listViewViewOrder.Items.Count == 0)
+            {
+                labelNoItems.Text = "*Order is leeg.";
+            }
+            else
+            {
+                panelVerwijderenBestelling.Show();
+            }
+        }
+
+        private void buttonJaVerwijderen_Click(object sender, EventArgs e)
+        {
+            listViewViewOrder.Items.Clear();
+            panelVerwijderenBestelling.Visible = false;
+        }
+
+        private void buttonNeeVerwijderen_Click(object sender, EventArgs e)
+        {
+            panelVerwijderenBestelling.Visible = false;
         }
     }
 }
