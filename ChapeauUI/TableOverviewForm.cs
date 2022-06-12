@@ -109,6 +109,7 @@ namespace ChapeauUI
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
             this.timerRefreshOverview.Start();
+
         }
 
         // methode die de kleur van de tafel neerzet. 
@@ -175,14 +176,21 @@ namespace ChapeauUI
                     pictureBoxes[index].Visible = true;
                 }
                 index++;
-
             }
+        }
+
+        private void SetOrderIsServed(Table table)
+        {
+            ChapeauModel.Order order = this.orderService.GetCurrentOrder(table);
+            this.orderGerechtService.UpdateIsServed(order);
+            MessageBox.Show($"Order bezorgd op tafel {table.TableID.ToString()}");
         }
 
         private void pictureBoxTable1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 1");
-            
+            Table table = new Table();
+            table.TableID = 1;
+            SetOrderIsServed(table);
             pictureBoxTable1.Visible = false;
         }
 
@@ -190,57 +198,71 @@ namespace ChapeauUI
         {
             Table table = new Table();
             table.TableID = 2;
-            ChapeauModel.Order order = this.orderService.GetCurrentOrder(table);
-            this.orderGerechtService.UpdateIsServed(order);
-            MessageBox.Show("Order bezorgd op tafel 2");
+            SetOrderIsServed(table);
             pictureBoxTable2.Visible = false;
         }
 
         private void pictureBoxTable3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 3");
+            Table table = new Table();
+            table.TableID = 3;
+            SetOrderIsServed(table);
             pictureBoxTable3.Visible = false;
         }
 
         private void pictureBoxTable4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 4");
+            Table table = new Table();
+            table.TableID = 4;
+            SetOrderIsServed(table);
             pictureBoxTable4.Visible = false;
         }
 
         private void pictureBoxTable5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 5");
+            Table table = new Table();
+            table.TableID = 5;
+            SetOrderIsServed(table);
             pictureBoxTable5.Visible = false;
         }
 
         private void pictureBoxTable6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 6");
+            Table table = new Table();
+            table.TableID = 6;
+            SetOrderIsServed(table);
             pictureBoxTable6.Visible = false;
         }
 
         private void pictureBoxTable7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 7");
+            Table table = new Table();
+            table.TableID = 7;
+            SetOrderIsServed(table);
             pictureBoxTable7.Visible = false;
         }
 
         private void pictureBoxTable8_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 8");
+            Table table = new Table();
+            table.TableID = 8;
+            SetOrderIsServed(table);
             pictureBoxTable8.Visible = false;
         }
 
         private void pictureBoxTable9_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 9");
+            Table table = new Table();
+            table.TableID = 9;
+            SetOrderIsServed(table);
             pictureBoxTable9.Visible = false;
         }
 
         private void pictureBoxTable10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 10");
+            Table table = new Table();
+            table.TableID = 10;
+            SetOrderIsServed(table);
             pictureBoxTable10.Visible = false;
         }
     }
