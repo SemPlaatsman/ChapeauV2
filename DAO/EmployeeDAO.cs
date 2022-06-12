@@ -30,7 +30,7 @@ namespace ChapeauDAO
 
         public Employee GetEmployee(Table table) 
         {
-            string query = "SELECT [EmployeeID] ,[Password],[Category],[FirstName],[LastName],[DateOfBirth],[Email],[PhoneNumber],[Question],[Answer] " +
+            string query = "SELECT [EmployeeID],[Password],[Category],[FirstName],[LastName],[DateOfBirth],[Email],[PhoneNumber],[Question],[Answer] " +
                     "FROM [ApplicatiebouwChapeau].[Employee] WHERE EmployeeID = @EmployeeID";
             SqlParameter[] sqlParameter = new SqlParameter[1];
             sqlParameter[0] = new SqlParameter("@EmployeeID", table.EmployeeID);

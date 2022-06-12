@@ -95,9 +95,6 @@ namespace ChapeauDAO
 
                 throw new Exception("Data could not be retrieved from the database. Please try again" + e.Message);
             }
-        }
-       
-        
-        
+        }     
     }
 }
