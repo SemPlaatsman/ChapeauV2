@@ -73,7 +73,7 @@ namespace ChapeauDAO
                         IsAlcoholic = (bool)dr["IsAlcoholic"]
                     },
                     OrderId = (int)dr["OrderId"],
-                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (OrderStatus)((int)dr["Status"] + 1),
+                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (bool)dr["Status"] ? OrderStatus.Klaar : OrderStatus.MeeBezig,
                     /*Bovenstaande regel code komt van Kitchen- en BarDAO*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
                     Remark = Convert.IsDBNull(dr["Remark"]) ? string.Empty : (string)dr["Remark"],
@@ -83,6 +83,7 @@ namespace ChapeauDAO
             }
             return orderGerechten;
         }
+
         public void InsertOrderGerecht(OrderGerecht orderGerecht)
         {
             try
