@@ -51,30 +51,10 @@ namespace ChapeauUI
             MenuItemService menuItemService = new MenuItemService();
             
             panelBestellen.Visible = true;
-            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
-            {
-                menuitems = menuItemService.GetAllMenuItems(0, 1);
-            }
-            else
-            {
-                menuitems = menuItemService.GetAllMenuItems(0, 0);
-            }
-            foreach (MenuItem m in menuitems)
-            {
-                
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    if (m.Stock < 10)
-                    {
-                        listViewItem.BackColor = Color.OrangeRed;
-                    }
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                
-            }
+            
+                menuitems = menuItemService.GetAllMenuItems(0);
+            
+            AddItem(menuitems);
         }
 
         private void buttonHoofdgerecht_Click(object sender, EventArgs e)
@@ -84,30 +64,10 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Hoofdgerecht";
             MenuItemService menuItemService = new MenuItemService();
-            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
-            {
-                menuitems = menuItemService.GetAllMenuItems(1, 1);
-            }
-            else
-            {
-                menuitems = menuItemService.GetAllMenuItems(1, 0);
-            }
-            foreach (MenuItem m in menuitems)
-            {
-               
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    if (m.Stock < 10)
-                    {
-                        listViewItem.BackColor = Color.OrangeRed;
-                    }
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                
-            }
+            
+                menuitems = menuItemService.GetAllMenuItems(1);
+            
+            AddItem(menuitems);
         }
 
         private void buttonNagerecht_Click(object sender, EventArgs e)
@@ -117,31 +77,15 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Nagerecht";
             MenuItemService menuItemService = new MenuItemService();
-            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
-            {
-                menuitems = menuItemService.GetAllMenuItems(2, 1);
-            }
-            else
-            {
-                menuitems = menuItemService.GetAllMenuItems(2, 0);
-            }
-            foreach (MenuItem m in menuitems)
-            {
-                
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    if (m.Stock < 10)
-                    {
-                        listViewItem.BackColor = Color.OrangeRed;
-                    }
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                
-            }
+            
+                menuitems = menuItemService.GetAllMenuItems(2);
+            
+            AddItem(menuitems);
         }
+
+       
+
+        
 
         private void buttonDrankjes_Click(object sender, EventArgs e)
         {
@@ -149,25 +93,27 @@ namespace ChapeauUI
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Drankjes";
             MenuItemService menuItemService = new MenuItemService();
-            menuitems = menuItemService.GetAllMenuItems(3, 0);
-         
-            foreach (MenuItem m in menuitems)
-            {
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    if (m.Stock < 10)
-                    {
-                        listViewItem.BackColor = Color.OrangeRed;
-                    }
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-            }
+            menuitems = menuItemService.GetAllMenuItems(3);
+            AddItem(menuitems);
         }
 
-
+        private void AddItem(List<MenuItem> menuItems)
+        {
+            foreach (MenuItem m in menuitems)
+            {
+                ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
+                listViewItem.SubItems.Add(m.ProductName);
+                listViewItem.SubItems.Add(m.Price.ToString());
+                if (m.Stock < 10)
+                {
+                    listViewItem.BackColor = Color.OrangeRed;
+                }
+                listViewItem.SubItems.Add(m.Stock.ToString());
+                listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                listViewItem.Tag = m;
+                listViewGerechten.Items.Add(listViewItem);
+            }
+        }
 
         private void buttonTerug_Click(object sender, EventArgs e)
         {
