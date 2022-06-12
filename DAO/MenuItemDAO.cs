@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using ChapeauModel;
-
+using ChapeauInterfaces;
 
 namespace ChapeauDAO
 {
@@ -88,7 +88,7 @@ namespace ChapeauDAO
         }
         public void UpdateMenuItem(OrderGerecht orderGerecht)
         {
-            string query = "Update [ApplicatiebouwChapeau].[MenuItem] set stock -= 1 where ProductID = 2; ";
+            string query = "Update [ApplicatiebouwChapeau].[MenuItem] set stock -= 1 where ProductID = @MenuItemId; ";
             SqlParameter[] sqlParameter = new SqlParameter[1];
             sqlParameter[0] = new SqlParameter("@MenuItemId", orderGerecht.MenuItem.ProductId);
             ExecuteEditQuery(query, sqlParameter);

@@ -12,6 +12,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauLogica;
 using ChapeauModel;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -125,7 +126,7 @@ namespace ChapeauUI
             {
                 return Color.Empty;
             }
-            else if (BarOrderOverview.ListCompleted(drinken))
+            else if (OrderOverview.ListOnlyHasStatus(drinken, OrderStatus.Klaar))
             {
                 return Color.MediumSpringGreen;
             }
@@ -143,7 +144,7 @@ namespace ChapeauUI
             {
                 return status;
             }
-            else if (BarOrderOverview.ListCompleted(drinken))
+            else if (OrderOverview.ListOnlyHasStatus(drinken, OrderStatus.Klaar))
             {
                 status = OrderStatus.Klaar.ToString();
             }
@@ -177,10 +178,11 @@ namespace ChapeauUI
                     menuItems.Add(drinkName, 1);
                 }
             }
-            string list = $"{drinken[0].MenuItem.Type}en:";
-            foreach (KeyValuePair<string, int> kvp in menuItems)
+            
+            string list = $"{menuItems.First().Key} : {menuItems.First().Value}x";
+            for (int i = 1; i < menuItems.Count(); i++)
             {
-                list += $"\n{kvp.Key} : {kvp.Value}x";
+                list += $"\n{menuItems.ElementAt(i).Key} : {menuItems.ElementAt(i).Value}x";
             }
             return list;
         }
@@ -286,12 +288,29 @@ namespace ChapeauUI
 
         private void dataGridViewMoetNog_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //TODO: Change next Order Status
+            DataGridView dataGridView = (DataGridView)sender;
+            if (e.RowIndex >= 0 && dataGridView.Columns[e.ColumnIndex].CellType == typeof(DataGridViewButtonCell) && dataGridView.Rows[e.RowIndex].Tag != null)
+            {
+                dataGridView.ClearSelection();
+                BarOrderOverview barOverview = (BarOrderOverview)dataGridView.Rows[e.RowIndex].Tag;
+                List<OrderGerecht> drinken = barOverview.GetNextMoetNogList();
+                if (drinken.Count > 0)
+                    barService.ChangeOrderStatusWithType(drinken.First(), OrderStatus.MeeBezig);
+                LoadBarDisplayData();
+            }
         }
 
         private void dataGridViewOverzicht_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            DataGridView dataGridView = (DataGridView)sender;
+            if (dataGridView.Columns[e.ColumnIndex].CellType == typeof(DataGridViewButtonCell) && dataGridView.Rows[e.RowIndex].Tag != null)
+            {
+                this.timer.Stop();
+                OrderOverviewForm OrderOverviewForm = new OrderOverviewForm((BarOrderOverview)dataGridView.Rows[e.RowIndex].Tag);
+                OrderOverviewForm.ShowDialog();
+                LoadBarDisplayData();
+                this.timer.Start();
+            }
         }
 
         private void dataGridViewsMeeBezig_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -309,9 +328,20 @@ namespace ChapeauUI
                 else
                 {
                     orderGerechtService.ChangeOrderGerechtStatus(orderGerecht, OrderStatus.Klaar);
+                    BarOrderOverview barOverview = (BarOrderOverview)dataGridView.Tag;
+                    orderGerecht.Status = OrderStatus.Klaar;
+                    if (OrderOverview.ListOnlyHasStatus(barOverview.Drinken, OrderStatus.Klaar))
+                    {
+                        barService.ChangeServeStatusWithType(orderGerecht, ServeerStatus.KanGeserveerdWorden);
+                    }
                 }
                 LoadBarDisplayData();
             }
+        }
+
+        private void BarDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.Stop();
         }
     }
 }

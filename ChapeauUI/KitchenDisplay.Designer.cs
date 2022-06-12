@@ -30,10 +30,10 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
@@ -42,7 +42,6 @@ namespace ChapeauUI
             this.ColumnTijd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblMoetNog = new System.Windows.Forms.Label();
             this.lblMeeBezig = new System.Windows.Forms.Label();
             this.lblOverzicht = new System.Windows.Forms.Label();
             this.dataGridViewOverzicht = new System.Windows.Forms.DataGridView();
@@ -54,28 +53,32 @@ namespace ChapeauUI
             this.ColumnNagerechten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOpen = new System.Windows.Forms.DataGridViewButtonColumn();
             this.buttonUitloggen = new System.Windows.Forms.Button();
+            this.labelMoetNog = new System.Windows.Forms.Label();
+            this.labelKeuken = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonUpdate
             // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.White;
             this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUpdate.Image = ((System.Drawing.Image)(resources.GetObject("buttonUpdate.Image")));
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUpdate.Location = new System.Drawing.Point(12, 682);
+            this.buttonUpdate.Location = new System.Drawing.Point(245, 775);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(221, 75);
             this.buttonUpdate.TabIndex = 0;
             this.buttonUpdate.Text = "           Update orders";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.UseVisualStyleBackColor = false;
             this.buttonUpdate.Click += new System.EventHandler(this.button1_Click);
             // 
             // flowLayoutMeeBezig
             // 
             this.flowLayoutMeeBezig.AutoScroll = true;
+            this.flowLayoutMeeBezig.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutMeeBezig.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(618, 52);
+            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(618, 150);
             this.flowLayoutMeeBezig.Name = "flowLayoutMeeBezig";
             this.flowLayoutMeeBezig.Size = new System.Drawing.Size(556, 612);
             this.flowLayoutMeeBezig.TabIndex = 1;
@@ -90,7 +93,7 @@ namespace ChapeauUI
             this.ColumnTijd,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewButtonColumn1});
-            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 150);
             this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
             this.dataGridViewMoetNog.RowTemplate.Height = 25;
             this.dataGridViewMoetNog.Size = new System.Drawing.Size(600, 612);
@@ -132,33 +135,27 @@ namespace ChapeauUI
             this.dataGridViewButtonColumn1.Text = "";
             this.dataGridViewButtonColumn1.Width = 80;
             // 
-            // lblMoetNog
-            // 
-            this.lblMoetNog.AutoSize = true;
-            this.lblMoetNog.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMoetNog.Location = new System.Drawing.Point(12, 9);
-            this.lblMoetNog.Name = "lblMoetNog";
-            this.lblMoetNog.Size = new System.Drawing.Size(140, 37);
-            this.lblMoetNog.TabIndex = 4;
-            this.lblMoetNog.Text = "Moet nog:";
-            // 
             // lblMeeBezig
             // 
             this.lblMeeBezig.AutoSize = true;
-            this.lblMeeBezig.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMeeBezig.Location = new System.Drawing.Point(618, 9);
+            this.lblMeeBezig.BackColor = System.Drawing.Color.White;
+            this.lblMeeBezig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblMeeBezig.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMeeBezig.Location = new System.Drawing.Point(618, 104);
             this.lblMeeBezig.Name = "lblMeeBezig";
-            this.lblMeeBezig.Size = new System.Drawing.Size(147, 37);
+            this.lblMeeBezig.Size = new System.Drawing.Size(167, 43);
             this.lblMeeBezig.TabIndex = 5;
             this.lblMeeBezig.Text = "Mee bezig:";
             // 
             // lblOverzicht
             // 
             this.lblOverzicht.AutoSize = true;
-            this.lblOverzicht.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOverzicht.Location = new System.Drawing.Point(1180, 9);
+            this.lblOverzicht.BackColor = System.Drawing.Color.White;
+            this.lblOverzicht.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblOverzicht.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOverzicht.Location = new System.Drawing.Point(1180, 104);
             this.lblOverzicht.Name = "lblOverzicht";
-            this.lblOverzicht.Size = new System.Drawing.Size(134, 37);
+            this.lblOverzicht.Size = new System.Drawing.Size(152, 43);
             this.lblOverzicht.TabIndex = 6;
             this.lblOverzicht.Text = "Overzicht:";
             // 
@@ -173,7 +170,7 @@ namespace ChapeauUI
             this.ColumnHoofdgerechten,
             this.ColumnNagerechten,
             this.ColumnOpen});
-            this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 52);
+            this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 150);
             this.dataGridViewOverzicht.Name = "dataGridViewOverzicht";
             this.dataGridViewOverzicht.RowTemplate.Height = 25;
             this.dataGridViewOverzicht.Size = new System.Drawing.Size(400, 612);
@@ -196,8 +193,8 @@ namespace ChapeauUI
             // 
             // ColumnVoorgerechten
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnVoorgerechten.HeaderText = "Voor-";
             this.ColumnVoorgerechten.Name = "ColumnVoorgerechten";
             this.ColumnVoorgerechten.ReadOnly = true;
@@ -205,8 +202,8 @@ namespace ChapeauUI
             // 
             // ColumnTussengerechten
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnTussengerechten.HeaderText = "Tussen-";
             this.ColumnTussengerechten.Name = "ColumnTussengerechten";
             this.ColumnTussengerechten.ReadOnly = true;
@@ -214,8 +211,8 @@ namespace ChapeauUI
             // 
             // ColumnHoofdgerechten
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnHoofdgerechten.HeaderText = "Hoofd-";
             this.ColumnHoofdgerechten.Name = "ColumnHoofdgerechten";
             this.ColumnHoofdgerechten.ReadOnly = true;
@@ -223,8 +220,8 @@ namespace ChapeauUI
             // 
             // ColumnNagerechten
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnNagerechten.HeaderText = "Na-";
             this.ColumnNagerechten.Name = "ColumnNagerechten";
             this.ColumnNagerechten.ReadOnly = true;
@@ -251,22 +248,49 @@ namespace ChapeauUI
             this.buttonUitloggen.UseVisualStyleBackColor = false;
             this.buttonUitloggen.Click += new System.EventHandler(this.buttonUitloggen_Click_1);
             // 
+            // labelMoetNog
+            // 
+            this.labelMoetNog.AutoSize = true;
+            this.labelMoetNog.BackColor = System.Drawing.Color.White;
+            this.labelMoetNog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMoetNog.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelMoetNog.Location = new System.Drawing.Point(12, 104);
+            this.labelMoetNog.Name = "labelMoetNog";
+            this.labelMoetNog.Size = new System.Drawing.Size(159, 43);
+            this.labelMoetNog.TabIndex = 32;
+            this.labelMoetNog.Text = "Moet nog:";
+            // 
+            // labelKeuken
+            // 
+            this.labelKeuken.AutoSize = true;
+            this.labelKeuken.BackColor = System.Drawing.Color.White;
+            this.labelKeuken.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelKeuken.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelKeuken.Location = new System.Drawing.Point(12, 9);
+            this.labelKeuken.Name = "labelKeuken";
+            this.labelKeuken.Size = new System.Drawing.Size(185, 67);
+            this.labelKeuken.TabIndex = 33;
+            this.labelKeuken.Text = "Keuken";
+            // 
             // KitchenDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.labelKeuken);
+            this.Controls.Add(this.labelMoetNog);
             this.Controls.Add(this.buttonUitloggen);
             this.Controls.Add(this.dataGridViewOverzicht);
             this.Controls.Add(this.lblOverzicht);
             this.Controls.Add(this.lblMeeBezig);
-            this.Controls.Add(this.lblMoetNog);
             this.Controls.Add(this.dataGridViewMoetNog);
             this.Controls.Add(this.flowLayoutMeeBezig);
             this.Controls.Add(this.buttonUpdate);
             this.Name = "KitchenDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KitchenDisplay";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KitchenDisplay_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).EndInit();
             this.ResumeLayout(false);
@@ -279,7 +303,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutMeeBezig;
         private System.Windows.Forms.DataGridView dataGridViewMoetNog;
-        private System.Windows.Forms.Label lblMoetNog;
         private System.Windows.Forms.Label lblMeeBezig;
         private System.Windows.Forms.Label lblOverzicht;
         private System.Windows.Forms.DataGridView dataGridViewOverzicht;
@@ -296,5 +319,7 @@ namespace ChapeauUI
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHoofdgerechten;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNagerechten;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnOpen;
+        private System.Windows.Forms.Label labelMoetNog;
+        private System.Windows.Forms.Label labelKeuken;
     }
 }

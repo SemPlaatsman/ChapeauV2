@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {

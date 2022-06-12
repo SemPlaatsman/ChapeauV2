@@ -327,6 +327,7 @@ namespace ChapeauUI
             this.pictureBoxTable2.TabIndex = 32;
             this.pictureBoxTable2.TabStop = false;
             this.pictureBoxTable2.Visible = false;
+            this.pictureBoxTable2.Click += new System.EventHandler(this.pictureBoxTable2_Click);
             // 
             // pictureBoxTable3
             // 
@@ -338,6 +339,7 @@ namespace ChapeauUI
             this.pictureBoxTable3.TabIndex = 33;
             this.pictureBoxTable3.TabStop = false;
             this.pictureBoxTable3.Visible = false;
+            this.pictureBoxTable3.Click += new System.EventHandler(this.pictureBoxTable3_Click);
             // 
             // pictureBoxTable4
             // 
@@ -349,6 +351,7 @@ namespace ChapeauUI
             this.pictureBoxTable4.TabIndex = 34;
             this.pictureBoxTable4.TabStop = false;
             this.pictureBoxTable4.Visible = false;
+            this.pictureBoxTable4.Click += new System.EventHandler(this.pictureBoxTable4_Click);
             // 
             // pictureBoxTable5
             // 
@@ -360,6 +363,7 @@ namespace ChapeauUI
             this.pictureBoxTable5.TabIndex = 35;
             this.pictureBoxTable5.TabStop = false;
             this.pictureBoxTable5.Visible = false;
+            this.pictureBoxTable5.Click += new System.EventHandler(this.pictureBoxTable5_Click);
             // 
             // pictureBoxTable6
             // 
@@ -371,6 +375,7 @@ namespace ChapeauUI
             this.pictureBoxTable6.TabIndex = 36;
             this.pictureBoxTable6.TabStop = false;
             this.pictureBoxTable6.Visible = false;
+            this.pictureBoxTable6.Click += new System.EventHandler(this.pictureBoxTable6_Click);
             // 
             // pictureBoxTable7
             // 
@@ -382,6 +387,7 @@ namespace ChapeauUI
             this.pictureBoxTable7.TabIndex = 37;
             this.pictureBoxTable7.TabStop = false;
             this.pictureBoxTable7.Visible = false;
+            this.pictureBoxTable7.Click += new System.EventHandler(this.pictureBoxTable7_Click);
             // 
             // pictureBoxTable8
             // 
@@ -393,6 +399,7 @@ namespace ChapeauUI
             this.pictureBoxTable8.TabIndex = 38;
             this.pictureBoxTable8.TabStop = false;
             this.pictureBoxTable8.Visible = false;
+            this.pictureBoxTable8.Click += new System.EventHandler(this.pictureBoxTable8_Click);
             // 
             // pictureBoxTable9
             // 
@@ -404,6 +411,7 @@ namespace ChapeauUI
             this.pictureBoxTable9.TabIndex = 39;
             this.pictureBoxTable9.TabStop = false;
             this.pictureBoxTable9.Visible = false;
+            this.pictureBoxTable9.Click += new System.EventHandler(this.pictureBoxTable9_Click);
             // 
             // pictureBoxTable10
             // 
@@ -415,6 +423,7 @@ namespace ChapeauUI
             this.pictureBoxTable10.TabIndex = 40;
             this.pictureBoxTable10.TabStop = false;
             this.pictureBoxTable10.Visible = false;
+            this.pictureBoxTable10.Click += new System.EventHandler(this.pictureBoxTable10_Click);
             // 
             // TableOverviewForm
             // 
