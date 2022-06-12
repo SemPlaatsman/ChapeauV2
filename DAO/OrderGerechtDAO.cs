@@ -51,7 +51,7 @@ namespace ChapeauDAO
             }
         }
 
-        public List<OrderGerecht> GetOrdersByTableId(int tableId)
+        public List<OrderGerecht> GetOrdersByTableId(Table table)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ChapeauDAO
                     "WHERE OG.[OrderId] = (SELECT TOP(1) O2.OrderId FROM ApplicatiebouwChapeau.[Order] AS O2 WHERE O2.TableID = @tableId ORDER BY O2.OrderID DESC) " +
                     "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
                 SqlParameter[] sqlParameters = new SqlParameter[2];
-                sqlParameters[0] = new SqlParameter("@tableId", tableId);
+                sqlParameters[0] = new SqlParameter("@tableId", table.TableID);
                 sqlParameters[1] = new SqlParameter("@hoursToAdd", 2);
                 return ReadTables(ExecuteSelectQuery(query, sqlParameters));
             }

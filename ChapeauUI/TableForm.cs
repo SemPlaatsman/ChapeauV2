@@ -58,12 +58,8 @@ namespace ChapeauUI
 
         private void ShowListView()
         {
-            KitchenService kitchenService = new KitchenService();
-            KitchenOrderOverview kitchenOrderOverview = new KitchenOrderOverview()
-            {
-                TableId = this.table.TableID
-            };
-            kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview.TableId);
+            OrderGerechtService orderGerechtService = new OrderGerechtService();
+            List<OrderGerecht> orderGerechtList = orderGerechtService.GetOrdersByTableId(this.table);
             listViewOrder.View = View.Details;
             listViewOrder.FullRowSelect = true;
             listViewOrder.Columns.Add("Naam", 170);
@@ -72,7 +68,7 @@ namespace ChapeauUI
             listViewOrder.Columns.Add("Status geserveerd", 130);
            
 
-            foreach (OrderGerecht item in kitchenOrderOverview.GetCombinedGerechten())
+            foreach (OrderGerecht item in orderGerechtList)
             {
                 ListViewItem li = new ListViewItem(item.MenuItem.ProductName);
                 li.SubItems.Add(Regex.Replace($"{item.Status.ToString()}", "([A-Z])", " $1").Trim());
@@ -138,6 +134,7 @@ namespace ChapeauUI
             }
             else
             {
+                listViewOrder.Clear();
                 checkBoxTable.Checked = false;
             }
         }
