@@ -53,8 +53,6 @@ namespace ChapeauUI
         
         private void AnnulerenBtn_Click(object sender, EventArgs e)
         {
-            //CheckoutForm checkoutForm = new CheckoutForm(table, this.employee);
-            //checkoutForm.Show();
             this.Close();
         }
         private void ContantBtn_Click(object sender, EventArgs e)
@@ -62,7 +60,6 @@ namespace ChapeauUI
             paymentMethod += "Contant ";
             if (string.IsNullOrEmpty(textBoxPartialPayment.Text) || partialPayment == true)
             {
-                //checkoutForm.FindForm();
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);
@@ -90,7 +87,6 @@ namespace ChapeauUI
             paymentMethod += "Pin ";
             if (string.IsNullOrEmpty(textBoxPartialPayment.Text) || partialPayment == true)
             {
-                //checkoutForm.FindForm();
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);
@@ -118,7 +114,6 @@ namespace ChapeauUI
             paymentMethod += "CreditCard ";
             if (string.IsNullOrEmpty(textBoxPartialPayment.Text) || partialPayment == true)
             {
-                //checkoutForm.FindForm();
                 formToHide.Hide();
                 this.Hide();
                 ReceiptForm receiptForm = new ReceiptForm(paymentMethod, table, newTotal, this.employee, numberOfPersons, formToHide);

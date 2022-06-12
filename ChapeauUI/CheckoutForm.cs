@@ -40,7 +40,7 @@ namespace ChapeauUI
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
             rekeningListView.Columns.Add("Keer", 40);
-            rekeningListView.Columns.Add("Naam Product", 271);
+            rekeningListView.Columns.Add("Naam Product", 336);
             rekeningListView.Columns.Add("Prijs", 45);
 
             foreach (Checkout order in orders)

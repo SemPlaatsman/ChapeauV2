@@ -91,10 +91,10 @@ namespace ChapeauUI
             receiptTotaalArtikelPrijsLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
             btwPriceLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(btwTotal):0.00}");
             totalWithBtw = totalPrice;
-            totaalMetBtwLbl.Text = string.Format("\u20AC" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
+            totaalMetBtwLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
             geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(table.TableID)}";
-            tipTotalLbl.Text = string.Format("\u20AC" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
+            tipTotalLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
 
             if(numberOfPersons != 0)
             {
@@ -102,18 +102,11 @@ namespace ChapeauUI
             }
 
             //prijs onder 0 word verandert naar de originele prijs en de fooi staat op 0,00
-            if (newTotal <= 0)
+            if (newTotal <= totalWithBtw)
             {
                 receiptTotaalToonPrijsLbl.Text = receiptTotaalOriginelePrijsLbl.Text;
                 tipTotalLbl.Text = "\u20AC0,00";
             }
-            //zodra de nieuwe prijs onder de originele prijs is word deze verandert naar de originele prijs en de fooi staat op 0,00            
-            //else if (newTotal < totalWithBtw)
-            //{
-            //    tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw - newTotal):0.00}");
-            //    tipOrDiscountLbl.Text = "Uw korting:";
-            //    receiptTotaalToonPrijsLbl.Text = string.Format($"{Convert.ToDecimal(newTotal):0.00} EUR");
-            //}
             //hier is fooi gegeven de totaalprijs zal worden aangepast naar newTotal
             else
             {
@@ -130,15 +123,12 @@ namespace ChapeauUI
         {
             return price * 0.09M;
         }
-
         private void TerugBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //CheckoutForm checkoutForm = new CheckoutForm(table, employee);
             formToShow.Show();
             this.Close();
         }
-
         private void PrintBtn_Click(object sender, EventArgs e)
         {
             int occupation = 0;
@@ -148,13 +138,13 @@ namespace ChapeauUI
                 if (newTotal <= totalPrice)
                 {
                     receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
-                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
+                    receiptService.StoreRemark(table.TableID, remarkTextbox.Text.ToString());
                 }
                 else
                 {
                     totalPrice = newTotal;
                     receiptService.StoreReceipt(table.TableID, totalPrice, btwTotal, paymentMethod, timeOfPayment);
-                    receiptService.InsertRemark(table.TableID, remarkTextbox.Text.ToString());
+                    receiptService.StoreRemark(table.TableID, remarkTextbox.Text.ToString());
                 }
             }
             else
