@@ -45,7 +45,7 @@ namespace ChapeauUI
             // 
             this.buttonBack.BackColor = System.Drawing.Color.White;
             this.buttonBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonBack.Location = new System.Drawing.Point(38, 571);
+            this.buttonBack.Location = new System.Drawing.Point(38, 566);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(100, 60);
@@ -58,7 +58,7 @@ namespace ChapeauUI
             // 
             this.buttonNewOrder.BackColor = System.Drawing.Color.White;
             this.buttonNewOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonNewOrder.Location = new System.Drawing.Point(199, 571);
+            this.buttonNewOrder.Location = new System.Drawing.Point(199, 566);
             this.buttonNewOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonNewOrder.Name = "buttonNewOrder";
             this.buttonNewOrder.Size = new System.Drawing.Size(100, 60);
@@ -71,7 +71,7 @@ namespace ChapeauUI
             // 
             this.buttonCheckout.BackColor = System.Drawing.Color.White;
             this.buttonCheckout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCheckout.Location = new System.Drawing.Point(360, 571);
+            this.buttonCheckout.Location = new System.Drawing.Point(360, 566);
             this.buttonCheckout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCheckout.Name = "buttonCheckout";
             this.buttonCheckout.Size = new System.Drawing.Size(100, 60);
