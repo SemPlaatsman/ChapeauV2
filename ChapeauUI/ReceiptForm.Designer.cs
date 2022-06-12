@@ -361,6 +361,7 @@
             // 
             // TerugBtn
             // 
+            this.TerugBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TerugBtn.Location = new System.Drawing.Point(10, 9);
             this.TerugBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TerugBtn.Name = "TerugBtn";
@@ -372,6 +373,7 @@
             // 
             // PrintBtn
             // 
+            this.PrintBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PrintBtn.Location = new System.Drawing.Point(192, 749);
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.Size = new System.Drawing.Size(133, 40);
