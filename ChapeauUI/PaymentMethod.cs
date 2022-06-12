@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -42,11 +43,11 @@ namespace ChapeauUI
             if (numberOfPersons != 0)
             {
                 pricePerPerson = newTotal / numberOfPersons;
-                labelPrice.Text = string.Format($"Totaal bedrag: €{Convert.ToDecimal(pricePerPerson):0.00}");
+                labelPrice.Text = string.Format($"Totaal bedrag: \u20AC{Convert.ToDecimal(pricePerPerson):0.00}");
             }
             else
             {
-                labelPrice.Text = string.Format($"Totaal bedrag: €{Convert.ToDecimal(newTotal):0.00}");
+                labelPrice.Text = string.Format($"Totaal bedrag: \u20AC{Convert.ToDecimal(newTotal):0.00}");
             }
         }
         private string paymentMethod;
@@ -81,7 +82,7 @@ namespace ChapeauUI
                 {
                     remainingSum = newTotal - partialSum;
                 }
-                labelPrice.Text = string.Format($"Rest bedrag: €{Convert.ToDecimal(remainingSum):0.00}");
+                labelPrice.Text = string.Format($"Rest bedrag: \u20AC{Convert.ToDecimal(remainingSum):0.00}");
                 partialPayment = true;
             }
         }
@@ -109,7 +110,7 @@ namespace ChapeauUI
                 {
                     remainingSum = newTotal - partialSum;
                 }
-                labelPrice.Text = string.Format($"Rest bedrag: €{Convert.ToDecimal(remainingSum):0.00}");
+                labelPrice.Text = string.Format($"Rest bedrag: \u20AC{Convert.ToDecimal(remainingSum):0.00}");
                 partialPayment = true;
             }
         }
@@ -137,7 +138,7 @@ namespace ChapeauUI
                 {
                     remainingSum = newTotal - partialSum;
                 }
-                labelPrice.Text = string.Format($"Rest bedrag: €{Convert.ToDecimal(remainingSum):0.00}");
+                labelPrice.Text = string.Format($"Rest bedrag: \u20AC{Convert.ToDecimal(remainingSum):0.00}");
                 partialPayment = true;
             }
         }

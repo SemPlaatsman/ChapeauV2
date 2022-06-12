@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -53,7 +54,7 @@ namespace ChapeauUI
                 rekeningListView.Items.Add(li);                
                 totalPrice += priceQuantity;                   
             }
-            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
+            checkoutTotalPriceLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalPrice):0.00}");
         }
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)

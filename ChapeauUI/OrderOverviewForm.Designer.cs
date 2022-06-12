@@ -145,7 +145,6 @@ namespace ChapeauUI
             this.buttonTypeStatus.Name = "buttonTypeStatus";
             this.buttonTypeStatus.Size = new System.Drawing.Size(122, 40);
             this.buttonTypeStatus.TabIndex = 3;
-            this.buttonTypeStatus.Text = "test";
             this.buttonTypeStatus.UseVisualStyleBackColor = true;
             this.buttonTypeStatus.Click += new System.EventHandler(this.buttonTypeStatus_Click);
             // 
@@ -156,7 +155,6 @@ namespace ChapeauUI
             this.buttonFullStatus.Name = "buttonFullStatus";
             this.buttonFullStatus.Size = new System.Drawing.Size(122, 40);
             this.buttonFullStatus.TabIndex = 4;
-            this.buttonFullStatus.Text = "test";
             this.buttonFullStatus.UseVisualStyleBackColor = true;
             this.buttonFullStatus.Click += new System.EventHandler(this.buttonFullStatus_Click);
             // 
@@ -188,6 +186,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(964, 450);
             this.Controls.Add(this.comBoxType);
             this.Controls.Add(this.labelPerType);

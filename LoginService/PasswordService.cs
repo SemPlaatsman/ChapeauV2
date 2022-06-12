@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauModel;
 using HashingAlgorithms;
+using ChapeauInterfaces;
 
 namespace ChapeauLogica
 {
