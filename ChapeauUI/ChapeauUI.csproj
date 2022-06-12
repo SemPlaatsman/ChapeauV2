@@ -4,11 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChapeauInterfaces\ChapeauInterfaces.csproj" />
     <ProjectReference Include="..\ErrorHandling\ErrorHandling.csproj" />
     <ProjectReference Include="..\HashingAlgorithms\HashingAlgorithms.csproj" />
+    <ProjectReference Include="..\LoginService\ChapeauLogica.csproj" />
+    <ProjectReference Include="..\User\ChapeauModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

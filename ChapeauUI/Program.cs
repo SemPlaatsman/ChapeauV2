@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauModel;
 
 namespace ChapeauUI
 {
@@ -18,6 +19,8 @@ namespace ChapeauUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+            //Application.Run(new KitchenDisplay());
+            //Application.Run(new BarDisplay());
         }
     }
 }

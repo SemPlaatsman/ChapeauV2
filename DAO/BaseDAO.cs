@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using ErrorHandling;
+using ChapeauInterfaces;
 
 namespace ChapeauDAO
 {
@@ -28,8 +30,7 @@ namespace ChapeauDAO
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e);
             }
             return conn;
         }
@@ -51,8 +52,7 @@ namespace ChapeauDAO
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e);
             }
         }
 
@@ -71,8 +71,7 @@ namespace ChapeauDAO
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e);
             }
             finally
             {
@@ -100,9 +99,8 @@ namespace ChapeauDAO
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
+                ErrorLogger.WriteLogToFile(e);
                 return null;
-                throw;
             }
             finally
             {

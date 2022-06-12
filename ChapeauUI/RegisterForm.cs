@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ErrorHandling;
+using ChapeauModel;
+using ChapeauLogica;
+using System.Text.RegularExpressions;
+using HashingAlgorithms;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -21,8 +26,8 @@ namespace ChapeauUI
         private void buttonBackToInlog_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Login loginForm = new Login();
-            loginForm.ShowDialog();
+            OwnerForm ownerForm = new OwnerForm();
+            ownerForm.ShowDialog();
             this.Close();
         }
 
@@ -36,24 +41,51 @@ namespace ChapeauUI
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            {
+                PasswordService sh = new PasswordService();
+                Employee employee = new Employee()
+                {
+                    FirstName = textBoxRegisterFirstname.Text,
+                    LastName = textBoxRegisterLastname.Text,
+                    Password = sh.HashWithSalt(textBoxRegisterPIN.Text).Digest,
+                    Category = (EmployeeCategory)comboBoxRegisterJob.SelectedIndex,
+                    DateOfBirth = dateTimePickerDateOfBirth.Value,
+                    Email = textBoxRegisterEmail.Text,
+                    PhoneNumber = textBoxRegisterPhoneNumber.Text,
+                    Question = textBoxRegisterQuestion.Text,
+                    Answer = sh.HashWithSalt(textBoxRegisterAnswer.Text).Digest.ToLower()
+                };
+
+                RegisterService registerService = new RegisterService();
+                registerService.AddEmployee(employee);
+
+                MessageBox.Show($"{textBoxRegisterLastname.Text}, {textBoxRegisterFirstname.Text} is succesvol geregistreerd ");
+            }
+        }
+
+        private bool RegisterCheckMethod() 
+        {
+            bool registerCheck = true;
             string firstname = textBoxRegisterFirstname.Text;
             string lastname = textBoxRegisterLastname.Text;
             string email = textBoxRegisterEmail.Text;
             string phoneNumber = textBoxRegisterPhoneNumber.Text;
-            string job = comboBoxRegisterJob.Text;
-            string PIN = textBoxRegisterPIN.Text;
+            int jobType = comboBoxRegisterJob.SelectedIndex;
+            string PIN =  textBoxRegisterPIN.Text; 
             string PINRepeat = textBoxRegisterPINRepeat.Text;
+            string question = textBoxRegisterQuestion.Text;
+            string answer = textBoxRegisterAnswer.Text;
 
             try
             {
-                if (firstname == "" || lastname == "" || email == "" || phoneNumber == "" || job == "" || PIN == "")
-                {
-                    throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");
+                if (firstname == "" || lastname == "" ||  email == "" || phoneNumber == ""  || PIN == "" || PINRepeat == "" || question == "" || answer == "")
+                {                   
+                    throw new ChapeauException("Niet alle velden zijn ingevuld. Probeer het opnieuw.");                   
                 }
-                if (!email.Contains('@'))
+                if (!ValidateEmail(email))
                 {
                     textBoxRegisterEmail.Clear();
-                    throw new ChapeauException("Er ontbreekt een '@' in dit email adres. Probeer het opnieuw. ");
+                    throw new ChapeauException("Dit is een ongeldig email adres. probeer het opnieuw ");
                 }
                 if (PIN.Length < 4 || PIN.Length > 4)
                 {
@@ -63,25 +95,24 @@ namespace ChapeauUI
                 if (PIN != PINRepeat)
                 {
                     textBoxRegisterPINRepeat.Clear();
-                    throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");
-                }
-                // POP UP MET AANGEMAAKT WERKNEMERSNUMMER! 
-                // moet dit in een nieuwe form? 
-
+                    throw new ChapeauException("Wachtwoord komt niet overeen. Probeer het opnieuw.");                    
+                } 
             }
             catch (ChapeauException chapeau)
             {
                 MessageBox.Show(chapeau.Message);
             }
-            catch (Exception) 
+            catch (Exception exception)
             {
-                // normale exceptions
+                ErrorLogger.WriteLogToFile(exception);
+                MessageBox.Show(exception.Message);
             }
-
-            // Hier komt nog een iets van een RegisterDAO om het daadwerkelijk toe te voegen aan de database. 
-            // register.AddRow(alle parameters) of iets dergelijks. 
+            return registerCheck;
         }
 
-
+        private bool ValidateEmail(string email)
+        {
+            return new Regex(@"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}").Match(email).Success;
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace ChapeauModel
 {
     public class Order
     {
-        
+        public int OrderId;
+        public int TableId; 
     }
 }

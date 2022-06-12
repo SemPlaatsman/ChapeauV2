@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HashingAlgorithms
+namespace ChapeauModel
 {
-    public class HashSaltResult
+    public class Password
     {
         public string Salt { get; }
         public string Digest { get; set; }
 
-        public HashSaltResult(string salt, string digest)
+        public Password(string salt, string digest)
         {
             Salt = salt;
             Digest = digest;

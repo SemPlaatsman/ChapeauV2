@@ -21,9 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauModel", "User\Chapea
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FCFA1F72-700D-4F0C-B531-A0B8CCFB424D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{60E28AF4-830E-4D21-99A4-9866ECFA0AE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandling", "ErrorHandling\ErrorHandling.csproj", "{60E28AF4-830E-4D21-99A4-9866ECFA0AE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashingAlgorithms", "HashingAlgorithms\HashingAlgorithms.csproj", "{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashingAlgorithms", "HashingAlgorithms\HashingAlgorithms.csproj", "{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{1C8B801F-81C4-4096-A00A-7BD332298D3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauInterfaces", "ChapeauInterfaces\ChapeauInterfaces.csproj", "{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{1DD9B077-5251-489C-83A0-4FDD503D3929} = {A62E5F26-5D2F-4049-A290-398E9C02CBD8}
 		{60E28AF4-830E-4D21-99A4-9866ECFA0AE5} = {FCFA1F72-700D-4F0C-B531-A0B8CCFB424D}
 		{AD4975D7-8390-4EB3-AFC7-8F79CF14F4FF} = {FCFA1F72-700D-4F0C-B531-A0B8CCFB424D}
+		{49A2D7D4-2A8C-43EF-8DC0-284C1FF49968} = {1C8B801F-81C4-4096-A00A-7BD332298D3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B32207B-32C3-4A4F-955B-E3547CFF8569}
