@@ -48,8 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listViewGerechten = new System.Windows.Forms.ListView();
             this.labelTypeGerecht = new System.Windows.Forms.Label();
-            this.labelZoeken = new System.Windows.Forms.Label();
-            this.textBoxZoeken = new System.Windows.Forms.TextBox();
             this.buttonTerugBestelling = new System.Windows.Forms.Button();
             this.panelViewOrder = new System.Windows.Forms.Panel();
             this.labelNoItems = new System.Windows.Forms.Label();
@@ -153,10 +151,9 @@
             // panelBestellen
             // 
             this.panelBestellen.Controls.Add(this.panelItemSelected);
+            this.panelBestellen.Controls.Add(this.panelViewOrder);
             this.panelBestellen.Controls.Add(this.listViewGerechten);
             this.panelBestellen.Controls.Add(this.labelTypeGerecht);
-            this.panelBestellen.Controls.Add(this.labelZoeken);
-            this.panelBestellen.Controls.Add(this.textBoxZoeken);
             this.panelBestellen.Controls.Add(this.buttonTerugBestelling);
             this.panelBestellen.Location = new System.Drawing.Point(1, 0);
             this.panelBestellen.Name = "panelBestellen";
@@ -278,10 +275,10 @@
             // listViewGerechten
             // 
             this.listViewGerechten.HideSelection = false;
-            this.listViewGerechten.Location = new System.Drawing.Point(12, 121);
+            this.listViewGerechten.Location = new System.Drawing.Point(12, 74);
             this.listViewGerechten.MultiSelect = false;
             this.listViewGerechten.Name = "listViewGerechten";
-            this.listViewGerechten.Size = new System.Drawing.Size(497, 508);
+            this.listViewGerechten.Size = new System.Drawing.Size(497, 555);
             this.listViewGerechten.TabIndex = 7;
             this.listViewGerechten.UseCompatibleStateImageBehavior = false;
             this.listViewGerechten.SelectedIndexChanged += new System.EventHandler(this.listViewGerechten_SelectedIndexChanged);
@@ -296,22 +293,6 @@
             this.labelTypeGerecht.Size = new System.Drawing.Size(147, 26);
             this.labelTypeGerecht.TabIndex = 6;
             this.labelTypeGerecht.Text = "Voorgerechten";
-            // 
-            // labelZoeken
-            // 
-            this.labelZoeken.AutoSize = true;
-            this.labelZoeken.Location = new System.Drawing.Point(14, 61);
-            this.labelZoeken.Name = "labelZoeken";
-            this.labelZoeken.Size = new System.Drawing.Size(49, 15);
-            this.labelZoeken.TabIndex = 5;
-            this.labelZoeken.Text = "Zoeken:";
-            // 
-            // textBoxZoeken
-            // 
-            this.textBoxZoeken.Location = new System.Drawing.Point(12, 81);
-            this.textBoxZoeken.Name = "textBoxZoeken";
-            this.textBoxZoeken.Size = new System.Drawing.Size(497, 23);
-            this.textBoxZoeken.TabIndex = 4;
             // 
             // buttonTerugBestelling
             // 
@@ -539,7 +520,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
             this.Controls.Add(this.panelOrdered);
-            this.Controls.Add(this.panelViewOrder);
             this.Controls.Add(this.panelBestellen);
             this.Controls.Add(this.buttonDrankjes);
             this.Controls.Add(this.buttonViewOrder);
@@ -576,8 +556,6 @@
         private System.Windows.Forms.Button buttonBestel;
         private System.Windows.Forms.Panel panelBestellen;
         private System.Windows.Forms.Label labelTypeGerecht;
-        private System.Windows.Forms.Label labelZoeken;
-        private System.Windows.Forms.TextBox textBoxZoeken;
         private System.Windows.Forms.Button buttonTerugBestelling;
         private System.Windows.Forms.ListView listViewGerechten;
         private System.Windows.Forms.Panel panelItemSelected;
