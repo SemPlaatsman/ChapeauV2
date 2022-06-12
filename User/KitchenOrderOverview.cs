@@ -22,7 +22,7 @@ namespace ChapeauModel
             Nagerechten = new List<OrderGerecht>();
         }
 
-        public void Add(OrderGerecht orderGerecht)
+        public override void Add(OrderGerecht orderGerecht)
         {
             switch (orderGerecht.MenuItem.Type)
             {
@@ -45,19 +45,19 @@ namespace ChapeauModel
 
         public List<OrderGerecht> GetNextMoetNogList()
         {
-            if (Voorgerechten.Count != 0 && !ListHasMeeBezig(Voorgerechten) && !ListCompleted(Voorgerechten))
+            if (Voorgerechten.Count != 0 && !ListHasMeeBezig(Voorgerechten) && !ListOnlyHasStatus(Voorgerechten, OrderStatus.Klaar))
             {
                 return Voorgerechten;
             }
-            else if (Tussengerechten.Count != 0 && !ListHasMeeBezig(Tussengerechten) && !ListCompleted(Tussengerechten))
+            else if (Tussengerechten.Count != 0 && !ListHasMeeBezig(Tussengerechten) && !ListOnlyHasStatus(Tussengerechten, OrderStatus.Klaar))
             {
                 return Tussengerechten;
             }
-            else if (Hoofdgerechten.Count != 0 && !ListHasMeeBezig(Hoofdgerechten) && !ListCompleted(Hoofdgerechten))
+            else if (Hoofdgerechten.Count != 0 && !ListHasMeeBezig(Hoofdgerechten) && !ListOnlyHasStatus(Hoofdgerechten, OrderStatus.Klaar))
             {
                 return Hoofdgerechten;
             }
-            else if (Nagerechten.Count != 0 && !ListHasMeeBezig(Nagerechten) && !ListCompleted(Nagerechten))
+            else if (Nagerechten.Count != 0 && !ListHasMeeBezig(Nagerechten) && !ListOnlyHasStatus(Nagerechten, OrderStatus.Klaar))
             {
                 return Nagerechten;
             }
@@ -85,28 +85,7 @@ namespace ChapeauModel
             return new List<OrderGerecht>();
         }
 
-        public List<OrderGerecht> GetNextKlaarList()
-        {
-            if (Voorgerechten.Count != 0 && ListCompleted(Voorgerechten))
-            {
-                return Voorgerechten;
-            }
-            else if (Tussengerechten.Count != 0 && ListCompleted(Tussengerechten))
-            {
-                return Tussengerechten;
-            }
-            else if (Hoofdgerechten.Count != 0 && ListCompleted(Hoofdgerechten))
-            {
-                return Hoofdgerechten;
-            }
-            else if (Nagerechten.Count != 0 && ListCompleted(Nagerechten))
-            {
-                return Nagerechten;
-            }
-            return new List<OrderGerecht>();
-        }
-
-        public List<OrderGerecht> GetCombinedGerechten()
+        public override List<OrderGerecht> GetCombinedGerechten()
         {
             List<OrderGerecht> gerechten = new List<OrderGerecht>();
             gerechten.AddRange(this.Voorgerechten);
@@ -116,12 +95,21 @@ namespace ChapeauModel
             return gerechten;
         }
 
-        public string ToStringOverzicht()
+        public override List<OrderGerecht> TypeToList(TypeOfProduct type)
         {
-            return $"Voorgerechten: {(Voorgerechten.Count != 0 ? Regex.Replace($"{Voorgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Tussengerechten: {(Tussengerechten.Count != 0 ? Regex.Replace($"{Tussengerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Hoofdgerechten: {(Hoofdgerechten.Count != 0 ? Regex.Replace($"{Hoofdgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Nagerechten: {(Nagerechten.Count != 0 ? Regex.Replace($"{Nagerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}";
+            switch (type)
+            {
+                case TypeOfProduct.Voorgerecht:
+                    return Voorgerechten;
+                case TypeOfProduct.Tussengerecht:
+                    return Tussengerechten;
+                case TypeOfProduct.Hoofdgerecht:
+                    return Hoofdgerechten;
+                case TypeOfProduct.Nagerecht:
+                    return Nagerechten;
+                default:
+                    return new List<OrderGerecht>();
+            }
         }
     }
 }

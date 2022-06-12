@@ -9,23 +9,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
-        TableService tableService = new TableService();
+        // private fields
+        private Employee employee; 
+        private TableService tableService;
         private List<Table> tables;
         private KitchenOrderOverview KitchenOrderOverview;
+        private OrderGerechtService orderGerechtService;
+        private OrderService orderService;
         private List<OrderGerecht> orderGerechten;
+
+        // constructor
         public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
+            this.tableService = new TableService();
             this.KitchenOrderOverview = new KitchenOrderOverview();
+            this.orderService = new OrderService();
+            this.orderGerechtService = new OrderGerechtService();
         }
 
+        // log out of form, back to Login.cs
         private void buttonUitloggen_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -58,6 +68,7 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
+            //gebruik gemaakt van SoC. 
             SetColor();
         }
 
@@ -80,7 +91,7 @@ namespace ChapeauUI
 
         private void AssignTag(Control control)
         {
-            foreach (Table table in tables)
+            foreach (Table table in this.tables)
             {
                 //als de TableID van een table uit de database overeenkomt met de text van de button voeg dan die Table aan de tag van die button toe
                 if (table.TableID == int.Parse(control.Text))
@@ -93,14 +104,16 @@ namespace ChapeauUI
 
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
-            // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            // de Load is een soort van constructor. Word aangemaakt op het moment dat deze form geopend / gelaad wordt. 
             AssignTables();
             AssignEvent();
             // kleur veranderen afhankelijk van IsOccupied
             SetColor();
             this.timerRefreshOverview.Start();
+
         }
 
+        // methode die de kleur van de tafel neerzet. 
         public void SetColor()
         {
             foreach (Control control in this.Controls)
@@ -127,6 +140,7 @@ namespace ChapeauUI
             }
         }
 
+        //Timer die elke 3 seconde de form opnieuw laadt, veranderingen vanuit de DB meeneemt.
         private void timerRefreshOverview_Tick(object sender, EventArgs e)
         {
             AssignTables();
@@ -135,7 +149,6 @@ namespace ChapeauUI
 
         private void ShowPictureBox() 
         {
-            KitchenService kitchenService = new KitchenService();
             this.orderGerechten = new List<OrderGerecht>();
             OrderService orderService = new OrderService();
             ChapeauModel.Order order = null;
@@ -156,29 +169,103 @@ namespace ChapeauUI
 
             foreach (Table table in this.tables)
             {
-                //deze 2 zinnen verpesten het. 
-                //order = orderService.GetCurrentOrder(table);
-                //orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
+                order = orderService.GetCurrentOrder(table);
+                orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
+
                 if (orderGerechten.Count > 0)
                 {
                     pictureBoxes[index].Visible = true;
                 }
                 index++;
-
-                //pictureBoxes[index].Visible = true;
             }
+        }
+
+        // SoC die terugkomt in iedere pictureBoxTable_Click event. 
+        private void SetOrderIsServed(Table table)
+        {
+            ChapeauModel.Order order = this.orderService.GetCurrentOrder(table);
+            this.orderGerechtService.UpdateIsServed(order);
+            MessageBox.Show($"Order bezorgd op tafel {table.TableID.ToString()}");
         }
 
         private void pictureBoxTable1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 1");
+            Table table = new Table();
+            table.TableID = 1;
+            SetOrderIsServed(table);
             pictureBoxTable1.Visible = false;
         }
 
         private void pictureBoxTable2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Order bezorgd op tafel 2");
+            Table table = new Table();
+            table.TableID = 2;
+            SetOrderIsServed(table);
             pictureBoxTable2.Visible = false;
+        }
+
+        private void pictureBoxTable3_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 3;
+            SetOrderIsServed(table);
+            pictureBoxTable3.Visible = false;
+        }
+
+        private void pictureBoxTable4_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 4;
+            SetOrderIsServed(table);
+            pictureBoxTable4.Visible = false;
+        }
+
+        private void pictureBoxTable5_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 5;
+            SetOrderIsServed(table);
+            pictureBoxTable5.Visible = false;
+        }
+
+        private void pictureBoxTable6_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 6;
+            SetOrderIsServed(table);
+            pictureBoxTable6.Visible = false;
+        }
+
+        private void pictureBoxTable7_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 7;
+            SetOrderIsServed(table);
+            pictureBoxTable7.Visible = false;
+        }
+
+        private void pictureBoxTable8_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 8;
+            SetOrderIsServed(table);
+            pictureBoxTable8.Visible = false;
+        }
+
+        private void pictureBoxTable9_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 9;
+            SetOrderIsServed(table);
+            pictureBoxTable9.Visible = false;
+        }
+
+        private void pictureBoxTable10_Click(object sender, EventArgs e)
+        {
+            Table table = new Table();
+            table.TableID = 10;
+            SetOrderIsServed(table);
+            pictureBoxTable10.Visible = false;
         }
     }
 }

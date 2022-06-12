@@ -8,11 +8,11 @@ namespace ChapeauModel
 {
     public abstract class OrderOverview : Order
     {
-        public static bool ListHasMeeBezig(List<OrderGerecht> gerechten)
+        public static bool ListHasMeeBezig(List<OrderGerecht> orders)
         {
-            foreach (OrderGerecht gerecht in gerechten)
+            foreach (OrderGerecht orderGerecht in orders)
             {
-                if (gerecht.Status == OrderStatus.MeeBezig)
+                if (orderGerecht.Status == OrderStatus.MeeBezig)
                 {
                     return true;
                 }
@@ -20,16 +20,20 @@ namespace ChapeauModel
             return false;
         }
 
-        public static bool ListCompleted(List<OrderGerecht> gerechten)
+        public static bool ListOnlyHasStatus(List<OrderGerecht> orders, OrderStatus orderStatus)
         {
-            foreach (OrderGerecht gerecht in gerechten)
+            foreach (OrderGerecht orderGerecht in orders)
             {
-                if (gerecht.Status != OrderStatus.Klaar)
+                if (orderGerecht.Status != orderStatus)
                 {
                     return false;
                 }
             }
             return true;
         }
+
+        public abstract List<OrderGerecht> GetCombinedGerechten();
+        public abstract void Add(OrderGerecht orderGerecht);
+        public abstract List<OrderGerecht> TypeToList(TypeOfProduct type);
     }
 }

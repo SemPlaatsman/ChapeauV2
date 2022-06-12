@@ -12,6 +12,7 @@ using ChapeauModel;
 using ChapeauLogica;
 using System.Text.RegularExpressions;
 using HashingAlgorithms;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -30,6 +31,7 @@ namespace ChapeauUI
             this.Close();
         }
 
+        // laat als standaard een '*' zien, bij checked het getypte wachtwoord. 
         private void checkBoxPIN_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxPIN.Checked)
@@ -40,8 +42,6 @@ namespace ChapeauUI
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show($"{comboBoxRegisterJob.SelectedIndex}");
-            if (RegisterCheckMethod())
             {
                 PasswordService sh = new PasswordService();
                 Employee employee = new Employee()
@@ -61,8 +61,6 @@ namespace ChapeauUI
                 registerService.AddEmployee(employee);
 
                 MessageBox.Show($"{textBoxRegisterLastname.Text}, {textBoxRegisterFirstname.Text} is succesvol geregistreerd ");
-
-                // kijken in de DB wie het laatste toegevoegd is. WHERE ID = @ID. IN EEN LABEL!
             }
         }
 

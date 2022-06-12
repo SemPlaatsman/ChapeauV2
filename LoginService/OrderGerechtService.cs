@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ChapeauDAO;
 using ChapeauModel;
+using ChapeauInterfaces;
 
 namespace ChapeauLogica
 {
@@ -15,12 +16,6 @@ namespace ChapeauLogica
         public OrderGerechtService()
         {
             orderGerechtDAO = new OrderGerechtDAO();
-        }
-
-        public List<OrderGerecht> GetAllOrderGerechten()
-        {
-            List<OrderGerecht> orderGerechten = orderGerechtDAO.GetAllOrderGerechten();
-            return orderGerechten;
         }
 
         public void ChangeOrderGerechtStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
@@ -37,6 +32,17 @@ namespace ChapeauLogica
         {
             List<OrderGerecht> orderGerecht = orderGerechtDAO.GetCurrentOrderGerechten(order);
             return orderGerecht;
+        }
+
+        public List<OrderGerecht> GetOrdersByTableId(Table table) 
+        {
+            List<OrderGerecht> orderGerecht = orderGerechtDAO.GetOrdersByTableId(table);
+            return orderGerecht;
+        }
+
+        public void UpdateIsServed(Order order) 
+        {
+            orderGerechtDAO.UpdateIsServed(order);
         }
     }
 }

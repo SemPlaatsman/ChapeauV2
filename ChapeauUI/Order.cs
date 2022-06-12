@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -180,9 +181,13 @@ namespace ChapeauUI
 
         private void listViewGerechten_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listViewGerechten.SelectedItems.Count <= 0)
+            {
+                return;
+            }
             if (int.Parse(listViewGerechten.SelectedItems[0].SubItems[3].Text) < 1)
             {
-                panelOrdered.Visible = true;   
+                panelOrdered.Visible = true;
             }
             else
             {
