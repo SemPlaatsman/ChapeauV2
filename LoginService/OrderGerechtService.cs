@@ -39,11 +39,9 @@ namespace ChapeauLogica
             return orderGerecht;
         }
 
-
-        // helaas gebruik gemaakt van int. 
-        public void UpdateIsServed(OrderGerecht orderGerecht) 
+        public void UpdateIsServed(Order order) 
         {
-            orderGerechtDAO.UpdateIsServed(orderGerecht);
+            orderGerechtDAO.UpdateIsServed(order);
         }
     }
 }

@@ -14,22 +14,27 @@ namespace ChapeauUI
 {
     public partial class TableOverviewForm : Form
     {
-        private Employee employee; // toevoegen in de constructor later. om hiermee te bepalen wie de order opneemt. 
-        TableService tableService = new TableService();
+        // private fields
+        private Employee employee; 
+        TableService tableService;
         private List<Table> tables;
-        private Table table;
         private KitchenOrderOverview KitchenOrderOverview;
         private OrderGerechtService orderGerechtService;
+        private OrderService orderService;
         private List<OrderGerecht> orderGerechten;
-        private OrderGerecht orderGerecht;
-        private KitchenService kitchenService;
+
+        // constructor
         public TableOverviewForm(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
+            this.tableService = new TableService();
             this.KitchenOrderOverview = new KitchenOrderOverview();
+            this.orderService = new OrderService();
+            this.orderGerechtService = new OrderGerechtService();
         }
 
+        // log out of form, back to Login.cs
         private void buttonUitloggen_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -62,6 +67,7 @@ namespace ChapeauUI
                     AssignTag(control);
                 }
             }
+            //gebruik gemaakt van SoC. 
             SetColor();
         }
 
@@ -84,7 +90,7 @@ namespace ChapeauUI
 
         private void AssignTag(Control control)
         {
-            foreach (Table table in tables)
+            foreach (Table table in this.tables)
             {
                 //als de TableID van een table uit de database overeenkomt met de text van de button voeg dan die Table aan de tag van die button toe
                 if (table.TableID == int.Parse(control.Text))
@@ -97,7 +103,7 @@ namespace ChapeauUI
 
         private void TableOverviewForm_Load(object sender, EventArgs e)
         {
-            // de Load is een soort van constructor. Word aangemaakt op het dat deze form geopend / gelaad wordt. 
+            // de Load is een soort van constructor. Word aangemaakt op het moment dat deze form geopend / gelaad wordt. 
             AssignTables();
             AssignEvent();
             // kleur veranderen afhankelijk van IsOccupied
@@ -105,6 +111,7 @@ namespace ChapeauUI
             this.timerRefreshOverview.Start();
         }
 
+        // methode die de kleur van de tafel neerzet. 
         public void SetColor()
         {
             foreach (Control control in this.Controls)
@@ -131,6 +138,7 @@ namespace ChapeauUI
             }
         }
 
+        //Timer die elke 3 seconde de form opnieuw laadt, veranderingen vanuit de DB meeneemt.
         private void timerRefreshOverview_Tick(object sender, EventArgs e)
         {
             AssignTables();
@@ -172,15 +180,17 @@ namespace ChapeauUI
         private void pictureBoxTable1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Order bezorgd op tafel 1");
-            this.table.TableID = 1;
+            
             pictureBoxTable1.Visible = false;
         }
 
         private void pictureBoxTable2_Click(object sender, EventArgs e)
         {
-            OrderGerechtService orderGerechtService = new OrderGerechtService();
+            Table table = new Table();
+            table.TableID = 2;
+            ChapeauModel.Order order = this.orderService.GetCurrentOrder(table);
+            this.orderGerechtService.UpdateIsServed(order);
             MessageBox.Show("Order bezorgd op tafel 2");
-            orderGerechtService.UpdateIsServed(this.orderGerecht);
             pictureBoxTable2.Visible = false;
         }
 
