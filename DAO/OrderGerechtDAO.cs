@@ -51,6 +51,28 @@ namespace ChapeauDAO
             }
         }
 
+        public List<OrderGerecht> GetOrdersByTableId(int tableId)
+        {
+            try
+            {
+                string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
+                    "FROM ApplicatiebouwChapeau.[Order] AS O " +
+                    "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
+                    "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
+                    "WHERE OG.[OrderId] = (SELECT TOP(1) O2.OrderId FROM ApplicatiebouwChapeau.[Order] AS O2 WHERE O2.TableID = @tableId ORDER BY O2.OrderID DESC) " +
+                    "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@tableId", tableId);
+                sqlParameters[1] = new SqlParameter("@hoursToAdd", 2);
+                return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.WriteLogToFile(e);
+                throw new ChapeauException("Something went wrong while loading a kitchen order overview with table id.");
+            }
+        }
+
         public List<OrderGerecht> GetCurrentOrderGerechten(Order order) 
         {
             try
