@@ -45,6 +45,14 @@ namespace ChapeauDAO
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public void UpdateIsServed(Order order) 
+        {
+            string query = "update ApplicatiebouwChapeau.OrderGerecht set IsServed = 1 where IsServed = 0 and OrderID = @OrderID; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", order.OrderId);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<OrderGerecht> ReadTables(DataTable dataTable)
         {
             List<OrderGerecht> orderGerechten = new List<OrderGerecht>();
@@ -68,7 +76,7 @@ namespace ChapeauDAO
                     Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (OrderStatus)((int)dr["Status"] + 1),
                     /*Bovenstaande regel code komt van Kitchen- en BarDAO*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
-                    Remark = (string)dr["Remark"],
+                    Remark = Convert.IsDBNull(dr["Remark"]) ? string.Empty : (string)dr["Remark"],
                     IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
                 };
                 orderGerechten.Add(orderGerecht);
