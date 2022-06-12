@@ -18,7 +18,6 @@ namespace ChapeauLogica
             this.registerDB = new RegisterDAO();
         }
 
-        // weet niet of dit perse klopt. NOG GOED CHECKEN
         public void AddEmployee(Employee employee) 
         {
             registerDB.AddRowRegister(employee);

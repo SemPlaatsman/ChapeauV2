@@ -16,7 +16,5 @@ namespace ChapeauModel
             Salt = salt;
             Digest = digest;
         }
-
-        //HashSaltResult verwijderen. 
     }
 }
