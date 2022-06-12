@@ -19,7 +19,7 @@ namespace ChapeauUI
         private Employee employee;
         private Table table;
         private List<MenuItem> menuitems;
-        private MenuItemService menuItemService
+        private MenuItemService menuItemService;
         public Order(Table TableId, Employee employee) 
 
         {
@@ -355,7 +355,6 @@ namespace ChapeauUI
         private void buttonOrderedOk_Click(object sender, EventArgs e)
         {
             panelOrdered.Visible = false;
-            this.Close();
         }
 
         private void buttonTerugSelectedItems_Click(object sender, EventArgs e)
