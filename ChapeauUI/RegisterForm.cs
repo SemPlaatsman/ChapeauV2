@@ -31,7 +31,6 @@ namespace ChapeauUI
             this.Close();
         }
 
-        // laat als standaard een '*' zien, bij checked het getypte wachtwoord. 
         private void checkBoxPIN_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxPIN.Checked)

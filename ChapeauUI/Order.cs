@@ -25,6 +25,8 @@ namespace ChapeauUI
             this.table = TableId;
             this.employee = employee;
             InitializeComponent();
+
+            //this.selectedItems = new List<OrderGerecht>();
             
         }
 
@@ -191,41 +193,84 @@ namespace ChapeauUI
             panelViewOrder.Visible = true;
             listViewViewOrder.View = View.Details;
             listViewViewOrder.FullRowSelect = true;
-            listViewViewOrder.Columns.Add("Id", 50);
+            listViewViewOrder.Columns.Add("Id", 30);
             listViewViewOrder.Columns.Add("Naam", 100);
-            listViewViewOrder.Columns.Add("Prijs", 100);
-            listViewViewOrder.Columns.Add("Alcoholisch", 100);
+            listViewViewOrder.Columns.Add("Prijs", 50);
+            listViewViewOrder.Columns.Add("Alcoholisch", 80);
             listViewViewOrder.Columns.Add("Opmerking", 200);
+            listViewViewOrder.Columns.Add("Aantal", 70);
+            
             
         }
         private void RefreshListView()
         {
             MenuItemService menuItemService = new MenuItemService();
-            foreach (OrderGerecht O in selectedItems)
+            foreach (KeyValuePair<OrderGerecht, int> item in GetItems())
             {
-                MenuItem menuItem = menuItemService.GetMenuItemsFromOrder(O.MenuItem);
-                ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
-                item.SubItems.Add(menuItem.ProductName);
-                item.SubItems.Add(menuItem.Price.ToString());
+                MenuItem menuItem = menuItemService.GetMenuItemsFromOrder(item.Key.MenuItem);
+                ListViewItem liItem = new ListViewItem(menuItem.ProductId.ToString());
+                liItem.SubItems.Add(menuItem.ProductName);
+                liItem.SubItems.Add(menuItem.Price.ToString());
                 if (menuItem.IsAlcoholic)
                 {
-                    item.SubItems.Add("Ja");
+                    liItem.SubItems.Add("Ja");
                 }
                 else
                 {
-                    item.SubItems.Add("Nee");
+                    liItem.SubItems.Add("Nee");
                 }
-                item.SubItems.Add(O.Remark.ToString());
-                item.Tag = menuItem;
-                listViewViewOrder.Items.Add(item);
+                liItem.SubItems.Add(item.Key.Remark.ToString());
+                liItem.SubItems.Add(item.Value.ToString());
+                liItem.Tag = item.Key;
+                listViewViewOrder.Items.Add(liItem);
             }
+            //foreach (OrderGerecht O in selectedItems)
+            //{
+            //    MenuItem menuItem = menuItemService.GetMenuItemsFromOrder(O.MenuItem);
+            //    ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
+            //    item.SubItems.Add(menuItem.ProductName);
+            //    item.SubItems.Add(menuItem.Price.ToString());
+            //    if (menuItem.IsAlcoholic)
+            //    {
+            //        item.SubItems.Add("Ja");
+            //    }
+            //    else
+            //    {
+            //        item.SubItems.Add("Nee");
+            //    }
+            //    item.SubItems.Add(O.Remark.ToString());
+            //    item.Tag = menuItem;
+            //    listViewViewOrder.Items.Add(item);
+            //}
+        }
+
+        private Dictionary<OrderGerecht, int> GetItems()
+        {
+            Dictionary<OrderGerecht, int> items = new Dictionary<OrderGerecht, int>();
+            foreach (OrderGerecht gerecht in selectedItems)
+            {
+                if (items.ContainsKey(gerecht))
+                {
+                    items[gerecht]++;
+                }
+                else
+                {
+                    items.Add(gerecht, 1);
+                }
+            }
+            return items;
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in listViewViewOrder.SelectedItems)
             {
-                listViewViewOrder.Items.Add((ListViewItem)item.Clone());
+                int newAmount = int.Parse(listViewViewOrder.SelectedItems[0].SubItems[5].Text) + 1;
+                listViewViewOrder.Items[listViewViewOrder.SelectedItems[0].Index].SubItems[5].Text = $"{newAmount}";
+
+                //selectedItems.Add((OrderGerecht)listViewViewOrder.SelectedItems[0].Tag);
+                //RefreshListView();
+                //listViewViewOrder.Items.Add((ListViewItem)item.Clone());
             }   
         }
 
@@ -239,7 +284,15 @@ namespace ChapeauUI
         {
             foreach (ListViewItem item in listViewViewOrder.SelectedItems)
             {
-                listViewViewOrder.Items.Remove(listViewViewOrder.SelectedItems[0]); 
+                int newAmount = int.Parse(listViewViewOrder.SelectedItems[0].SubItems[5].Text) - 1;
+                if (newAmount <= 0)
+                {
+                    listViewViewOrder.Items.Remove(listViewViewOrder.SelectedItems[0]); 
+                }
+                else
+                {
+                    listViewViewOrder.Items[listViewViewOrder.SelectedItems[0].Index].SubItems[5].Text = $"{newAmount}";
+                }
             }
            
         }
@@ -253,7 +306,7 @@ namespace ChapeauUI
             {
                 OrderGerecht o = new OrderGerecht();
                 o.OrderId = orderService.GetCurrentOrder(table).OrderId;
-                o.MenuItem = (MenuItem)item.Tag;
+                o.MenuItem = ((OrderGerecht)item.Tag).MenuItem;
                 o.TimeOfOrder = DateTime.Now;
                 o.Remark = item.SubItems[4].Text;
                 o.IsServed = 0;
@@ -275,14 +328,31 @@ namespace ChapeauUI
                 OrderGerechtService orderGerechtService = new OrderGerechtService();
                 selectedItems = GetItemsFromListView();
                 MenuItemService menuItemService = new MenuItemService();
-                foreach (OrderGerecht orderGerecht in selectedItems)
+                int index = 0;
+                foreach (KeyValuePair<OrderGerecht, int> item in GetItems())
                 {
-                    orderGerechtService.InsertOrderGerecht(orderGerecht);
-                    menuItemService.UpdateMenuItem(orderGerecht);
+                    for (int i = 0; i < int.Parse(listViewViewOrder.Items[index].SubItems[5].Text); i++)
+                    {
+                        orderGerechtService.InsertOrderGerecht(item.Key);
+                        menuItemService.UpdateMenuItem(item.Key);
+                    }
+                    index++;
                 }
+                //for (int i = 0; i < listViewViewOrder.Items.Count; i++)
+                //{
+                //    for (int j = 0; j < int.Parse(listViewViewOrder.Items[i].SubItems[5].Text); j++)
+                //    {
+                //        orderGerechtService.InsertOrderGerecht((OrderGerecht)listViewViewOrder.Items[i].Tag);
+                //        menuItemService.UpdateMenuItem((OrderGerecht)listViewViewOrder.Items[i].Tag);
+                //    }
+                //}
+                //foreach (OrderGerecht orderGerecht in selectedItems)
+                //{
+                //    orderGerechtService.InsertOrderGerecht(orderGerecht);
+                //    menuItemService.UpdateMenuItem(orderGerecht);
+                //}
                 listViewViewOrder.Clear();
                 panelOrdered.Visible = true;
-                this.Close();
             }
         }
 
@@ -323,6 +393,7 @@ namespace ChapeauUI
         private void buttonOrderedOk_Click(object sender, EventArgs e)
         {
             panelOrdered.Visible = false;
+            this.Close();
         }
     }
 }

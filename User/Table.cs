@@ -11,7 +11,6 @@ namespace ChapeauModel
         public int TableID;
         public int EmployeeID;
         public bool IsOccupied;
-        public int AmountOfGuests;
-        
+        public int AmountOfGuests;        
     }
 }

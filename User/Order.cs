@@ -9,7 +9,6 @@ namespace ChapeauModel
     public class Order
     {
         public int OrderId;
-        // misschien Table tableId?
         public int TableId; 
     }
 }
