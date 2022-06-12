@@ -99,6 +99,7 @@ namespace ChapeauUI
             // 
             // buttonUpdate
             // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.White;
             this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUpdate.Image = ((System.Drawing.Image)(resources.GetObject("buttonUpdate.Image")));
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -107,7 +108,7 @@ namespace ChapeauUI
             this.buttonUpdate.Size = new System.Drawing.Size(221, 75);
             this.buttonUpdate.TabIndex = 34;
             this.buttonUpdate.Text = "           Update orders";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.UseVisualStyleBackColor = false;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // dataGridViewMoetNog

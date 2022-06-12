@@ -12,6 +12,7 @@ using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
 using System.Text.RegularExpressions;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
