@@ -33,7 +33,7 @@ namespace ChapeauUI
         }
         private void ShowLabels()
         {
-            totalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
+            totalPriceLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalPrice):0.00}");
         }
 
         private void newPriceTextbox_TextChanged(object sender, EventArgs e)
