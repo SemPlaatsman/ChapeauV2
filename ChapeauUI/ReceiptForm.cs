@@ -88,13 +88,13 @@ namespace ChapeauUI
             timeOfPayment = DateTime.Now;
             datumLbl.Text = timeOfPayment.ToString("g");
             receiptTotaalArtikelLbl.Text = $"Totaal {totalItems} artikelen (zonder btw)";
-            receiptTotaalArtikelPrijsLbl.Text = string.Format($"{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
-            btwPriceLbl.Text = string.Format($"{Convert.ToDecimal(btwTotal):0.00}");
+            receiptTotaalArtikelPrijsLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalPrice - btwTotal):0.00}");
+            btwPriceLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(btwTotal):0.00}");
             totalWithBtw = totalPrice;
-            totaalMetBtwLbl.Text = string.Format("€" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
+            totaalMetBtwLbl.Text = string.Format("\u20AC" + $"{Convert.ToDecimal(totalWithBtw):0.00}");
             receiptTotaalOriginelePrijsLbl.Text = totaalMetBtwLbl.Text;
             geholpenDoorLbl.Text = $"U bent geholpen door: {receiptService.GetHost(table.TableID)}";
-            tipTotalLbl.Text = string.Format("€" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
+            tipTotalLbl.Text = string.Format("\u20AC" + $"{Convert.ToDecimal(newTotal - totalWithBtw):0.00}");
 
             if(numberOfPersons != 0)
             {
@@ -105,7 +105,7 @@ namespace ChapeauUI
             if (newTotal <= 0)
             {
                 receiptTotaalToonPrijsLbl.Text = receiptTotaalOriginelePrijsLbl.Text;
-                tipTotalLbl.Text = "€0,00";
+                tipTotalLbl.Text = "\u20AC0,00";
             }
             //zodra de nieuwe prijs onder de originele prijs is word deze verandert naar de originele prijs en de fooi staat op 0,00            
             //else if (newTotal < totalWithBtw)
