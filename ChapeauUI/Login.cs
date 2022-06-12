@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -127,5 +128,7 @@ namespace ChapeauUI
         {
             labelLoginError.Text = "Neem contact op met de eigenaar voor een nieuw wachtwoord";
         }
+
+
     }
 }

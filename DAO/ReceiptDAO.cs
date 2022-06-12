@@ -15,7 +15,6 @@ namespace ChapeauDAO
         {
             try
             {
-
                 string query = "SELECT DISTINCT M1.ProductName, M1.Price, M1.IsAlcoholic, (SELECT COUNT(M3.ProductName) " +
                 "FROM ApplicatiebouwChapeau.[Order] AS O3 " +
                 "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG3 ON O3.[OrderID] = OG3.[OrderId] " +
@@ -72,7 +71,6 @@ namespace ChapeauDAO
 
                 SqlParameter[] sqlParameters = new SqlParameter[5];
                 sqlParameters[0] = new SqlParameter("@tableId", TableId);
-
                 sqlParameters[1] = new SqlParameter("@totalPrice", totalPrice);
                 sqlParameters[2] = new SqlParameter("@methodOfPayment", paymentMethod);
                 sqlParameters[3] = new SqlParameter("@timeOfPayment", timeOfPayment);
@@ -98,7 +96,6 @@ namespace ChapeauDAO
 
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@tableId", tableId);
-
                 sqlParameters[1] = new SqlParameter("@remark", remark);
                 ExecuteEditQuery(query, sqlParameters);
             }

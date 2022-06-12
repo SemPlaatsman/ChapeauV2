@@ -11,6 +11,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauModel;
 using ChapeauLogica;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -40,7 +41,7 @@ namespace ChapeauUI
             rekeningListView.View = View.Details;
             rekeningListView.FullRowSelect = true;
             rekeningListView.Columns.Add("Keer", 40);
-            rekeningListView.Columns.Add("Naam Product", 271);
+            rekeningListView.Columns.Add("Naam Product", 336);
             rekeningListView.Columns.Add("Prijs", 45);
 
             foreach (Checkout order in orders)
@@ -53,7 +54,7 @@ namespace ChapeauUI
                 rekeningListView.Items.Add(li);                
                 totalPrice += priceQuantity;                   
             }
-            checkoutTotalPriceLbl.Text = string.Format($"€{Convert.ToDecimal(totalPrice):0.00}");
+            checkoutTotalPriceLbl.Text = string.Format($"\u20AC{Convert.ToDecimal(totalPrice):0.00}");
         }
 
         private void buttonBackToTableOverview_Click(object sender, EventArgs e)

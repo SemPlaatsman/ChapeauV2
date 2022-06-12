@@ -42,18 +42,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 15);
+            this.label1.Size = new System.Drawing.Size(149, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Manier van Betalen:";
             // 
             // AnnulerenBtn
             // 
-            this.AnnulerenBtn.Location = new System.Drawing.Point(140, 185);
+            this.AnnulerenBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AnnulerenBtn.Location = new System.Drawing.Point(140, 182);
             this.AnnulerenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AnnulerenBtn.Name = "AnnulerenBtn";
-            this.AnnulerenBtn.Size = new System.Drawing.Size(82, 22);
+            this.AnnulerenBtn.Size = new System.Drawing.Size(82, 31);
             this.AnnulerenBtn.TabIndex = 1;
             this.AnnulerenBtn.Text = "Annuleren";
             this.AnnulerenBtn.UseVisualStyleBackColor = true;
@@ -61,10 +63,11 @@
             // 
             // ContantBtn
             // 
-            this.ContantBtn.Location = new System.Drawing.Point(37, 144);
+            this.ContantBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ContantBtn.Location = new System.Drawing.Point(37, 136);
             this.ContantBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContantBtn.Name = "ContantBtn";
-            this.ContantBtn.Size = new System.Drawing.Size(82, 22);
+            this.ContantBtn.Size = new System.Drawing.Size(82, 30);
             this.ContantBtn.TabIndex = 2;
             this.ContantBtn.Text = "Contant";
             this.ContantBtn.UseVisualStyleBackColor = true;
@@ -72,10 +75,11 @@
             // 
             // PinBtn
             // 
-            this.PinBtn.Location = new System.Drawing.Point(140, 144);
+            this.PinBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PinBtn.Location = new System.Drawing.Point(140, 136);
             this.PinBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PinBtn.Name = "PinBtn";
-            this.PinBtn.Size = new System.Drawing.Size(82, 22);
+            this.PinBtn.Size = new System.Drawing.Size(82, 30);
             this.PinBtn.TabIndex = 3;
             this.PinBtn.Text = "Pin";
             this.PinBtn.UseVisualStyleBackColor = true;
@@ -83,10 +87,11 @@
             // 
             // CreditCardBtn
             // 
-            this.CreditCardBtn.Location = new System.Drawing.Point(242, 144);
+            this.CreditCardBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CreditCardBtn.Location = new System.Drawing.Point(242, 136);
             this.CreditCardBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreditCardBtn.Name = "CreditCardBtn";
-            this.CreditCardBtn.Size = new System.Drawing.Size(82, 22);
+            this.CreditCardBtn.Size = new System.Drawing.Size(82, 30);
             this.CreditCardBtn.TabIndex = 4;
             this.CreditCardBtn.Text = "Creditcard";
             this.CreditCardBtn.UseVisualStyleBackColor = true;
@@ -95,18 +100,20 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(12, 36);
+            this.labelPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPrice.Location = new System.Drawing.Point(10, 44);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(84, 15);
+            this.labelPrice.Size = new System.Drawing.Size(97, 17);
             this.labelPrice.TabIndex = 5;
             this.labelPrice.Text = "Totaal bedrag: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(10, 70);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(293, 15);
+            this.label2.Size = new System.Drawing.Size(329, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Verschillende betaalmethodes?  Vul hier deelbedrag in:";
             // 
@@ -129,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 224);
+            this.ClientSize = new System.Drawing.Size(363, 232);
             this.Controls.Add(this.labelPartialPayment);
             this.Controls.Add(this.textBoxPartialPayment);
             this.Controls.Add(this.label2);

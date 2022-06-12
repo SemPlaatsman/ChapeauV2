@@ -114,7 +114,7 @@
             // receiptTotaalOriginelePrijsLbl
             // 
             this.receiptTotaalOriginelePrijsLbl.AutoSize = true;
-            this.receiptTotaalOriginelePrijsLbl.Location = new System.Drawing.Point(262, 470);
+            this.receiptTotaalOriginelePrijsLbl.Location = new System.Drawing.Point(248, 467);
             this.receiptTotaalOriginelePrijsLbl.Name = "receiptTotaalOriginelePrijsLbl";
             this.receiptTotaalOriginelePrijsLbl.Size = new System.Drawing.Size(28, 15);
             this.receiptTotaalOriginelePrijsLbl.TabIndex = 9;
@@ -150,7 +150,7 @@
             // receiptTotaalToonPrijsLbl
             // 
             this.receiptTotaalToonPrijsLbl.AutoSize = true;
-            this.receiptTotaalToonPrijsLbl.Location = new System.Drawing.Point(262, 507);
+            this.receiptTotaalToonPrijsLbl.Location = new System.Drawing.Point(248, 504);
             this.receiptTotaalToonPrijsLbl.Name = "receiptTotaalToonPrijsLbl";
             this.receiptTotaalToonPrijsLbl.Size = new System.Drawing.Size(52, 15);
             this.receiptTotaalToonPrijsLbl.TabIndex = 14;
@@ -159,7 +159,7 @@
             // geholpenDoorLbl
             // 
             this.geholpenDoorLbl.AutoSize = true;
-            this.geholpenDoorLbl.Location = new System.Drawing.Point(87, 554);
+            this.geholpenDoorLbl.Location = new System.Drawing.Point(119, 554);
             this.geholpenDoorLbl.Name = "geholpenDoorLbl";
             this.geholpenDoorLbl.Size = new System.Drawing.Size(185, 15);
             this.geholpenDoorLbl.TabIndex = 16;
@@ -204,7 +204,7 @@
             // receiptTotaalStreep
             // 
             this.receiptTotaalStreep.AutoSize = true;
-            this.receiptTotaalStreep.Location = new System.Drawing.Point(248, 492);
+            this.receiptTotaalStreep.Location = new System.Drawing.Point(234, 489);
             this.receiptTotaalStreep.Name = "receiptTotaalStreep";
             this.receiptTotaalStreep.Size = new System.Drawing.Size(82, 15);
             this.receiptTotaalStreep.TabIndex = 23;
@@ -260,7 +260,7 @@
             // tipTotalLbl
             // 
             this.tipTotalLbl.AutoSize = true;
-            this.tipTotalLbl.Location = new System.Drawing.Point(262, 487);
+            this.tipTotalLbl.Location = new System.Drawing.Point(248, 484);
             this.tipTotalLbl.Name = "tipTotalLbl";
             this.tipTotalLbl.Size = new System.Drawing.Size(28, 15);
             this.tipTotalLbl.TabIndex = 37;
@@ -288,7 +288,7 @@
             // betaalMethodeLbl
             // 
             this.betaalMethodeLbl.AutoSize = true;
-            this.betaalMethodeLbl.Location = new System.Drawing.Point(203, 411);
+            this.betaalMethodeLbl.Location = new System.Drawing.Point(217, 411);
             this.betaalMethodeLbl.Name = "betaalMethodeLbl";
             this.betaalMethodeLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.betaalMethodeLbl.Size = new System.Drawing.Size(87, 15);
@@ -299,7 +299,7 @@
             // datumLbl
             // 
             this.datumLbl.AutoSize = true;
-            this.datumLbl.Location = new System.Drawing.Point(203, 426);
+            this.datumLbl.Location = new System.Drawing.Point(217, 426);
             this.datumLbl.Name = "datumLbl";
             this.datumLbl.Size = new System.Drawing.Size(30, 15);
             this.datumLbl.TabIndex = 33;
@@ -361,6 +361,7 @@
             // 
             // TerugBtn
             // 
+            this.TerugBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TerugBtn.Location = new System.Drawing.Point(10, 9);
             this.TerugBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TerugBtn.Name = "TerugBtn";
@@ -372,9 +373,10 @@
             // 
             // PrintBtn
             // 
+            this.PrintBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PrintBtn.Location = new System.Drawing.Point(192, 749);
             this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.Size = new System.Drawing.Size(133, 34);
+            this.PrintBtn.Size = new System.Drawing.Size(133, 40);
             this.PrintBtn.TabIndex = 26;
             this.PrintBtn.Text = "Uitprinten";
             this.PrintBtn.UseVisualStyleBackColor = true;
