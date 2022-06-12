@@ -17,8 +17,7 @@ namespace ChapeauUI
         private Employee employee;
         private Form formToHide;
         private decimal totalPrice;
-        private decimal sharedPrice;
-        private int numberOfPersons;
+        private int numberOfPersons = 0;
         private decimal newTotal;
        
         public ManualPrice(decimal totalWithBtw, Table table, Employee employee, Form checkoutForm)
@@ -52,7 +51,10 @@ namespace ChapeauUI
             else
             {
                 totalPrice = decimal.Parse(newPriceTextBox.Text);
-                numberOfPersons = int.Parse(textBoxNumberOfPersons.Text);
+                if (!string.IsNullOrEmpty(textBoxNumberOfPersons.Text))
+                {
+                    numberOfPersons = int.Parse(textBoxNumberOfPersons.Text);
+                }
                 PaymentMethod paymentMethod = new PaymentMethod(table, newTotal, this.employee, numberOfPersons, formToHide);
                 paymentMethod.Show();
                 this.Close();

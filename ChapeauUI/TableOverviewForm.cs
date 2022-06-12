@@ -169,11 +169,13 @@ namespace ChapeauUI
             {
                 order = orderService.GetCurrentOrder(table);
                 orderGerechten = orderGerechtService.GetCurrentOrderGerechten(order);
+
                 if (orderGerechten.Count > 0)
                 {
                     pictureBoxes[index].Visible = true;
                 }
                 index++;
+
             }
         }
 

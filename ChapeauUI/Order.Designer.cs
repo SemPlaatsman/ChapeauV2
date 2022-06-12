@@ -35,16 +35,6 @@
             this.buttonDrankjes = new System.Windows.Forms.Button();
             this.buttonBestel = new System.Windows.Forms.Button();
             this.panelBestellen = new System.Windows.Forms.Panel();
-            this.panelViewOrder = new System.Windows.Forms.Panel();
-            this.listViewViewOrder = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonPlus = new System.Windows.Forms.Button();
-            this.buttonMinus = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelItemSelected = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -61,10 +51,31 @@
             this.labelZoeken = new System.Windows.Forms.Label();
             this.textBoxZoeken = new System.Windows.Forms.TextBox();
             this.buttonTerugBestelling = new System.Windows.Forms.Button();
+            this.panelViewOrder = new System.Windows.Forms.Panel();
+            this.labelNoItems = new System.Windows.Forms.Label();
+            this.panelVerwijderenBestelling = new System.Windows.Forms.Panel();
+            this.buttonNeeVerwijderen = new System.Windows.Forms.Button();
+            this.buttonJaVerwijderen = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonDeleteOrder = new System.Windows.Forms.Button();
+            this.listViewViewOrder = new System.Windows.Forms.ListView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonAddComment = new System.Windows.Forms.Button();
+            this.textBoxComment = new System.Windows.Forms.TextBox();
+            this.buttonPlus = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panelOrdered = new System.Windows.Forms.Panel();
+            this.labelBesteld = new System.Windows.Forms.Label();
+            this.buttonOrderedOk = new System.Windows.Forms.Button();
             this.buttonViewOrder = new System.Windows.Forms.Button();
             this.panelBestellen.SuspendLayout();
-            this.panelViewOrder.SuspendLayout();
             this.panelItemSelected.SuspendLayout();
+            this.panelViewOrder.SuspendLayout();
+            this.panelVerwijderenBestelling.SuspendLayout();
+            this.panelOrdered.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTerug
@@ -147,116 +158,10 @@
             this.panelBestellen.Controls.Add(this.labelZoeken);
             this.panelBestellen.Controls.Add(this.textBoxZoeken);
             this.panelBestellen.Controls.Add(this.buttonTerugBestelling);
-            this.panelBestellen.Location = new System.Drawing.Point(1, 2);
+            this.panelBestellen.Location = new System.Drawing.Point(1, 0);
             this.panelBestellen.Name = "panelBestellen";
             this.panelBestellen.Size = new System.Drawing.Size(522, 641);
             this.panelBestellen.TabIndex = 6;
-            // 
-            // panelViewOrder
-            // 
-            this.panelViewOrder.Controls.Add(this.listViewViewOrder);
-            this.panelViewOrder.Controls.Add(this.label6);
-            this.panelViewOrder.Controls.Add(this.label5);
-            this.panelViewOrder.Controls.Add(this.button2);
-            this.panelViewOrder.Controls.Add(this.textBox1);
-            this.panelViewOrder.Controls.Add(this.buttonPlus);
-            this.panelViewOrder.Controls.Add(this.buttonMinus);
-            this.panelViewOrder.Controls.Add(this.button1);
-            this.panelViewOrder.Controls.Add(this.label4);
-            this.panelViewOrder.Location = new System.Drawing.Point(0, 0);
-            this.panelViewOrder.Name = "panelViewOrder";
-            this.panelViewOrder.Size = new System.Drawing.Size(522, 641);
-            this.panelViewOrder.TabIndex = 8;
-            // 
-            // listViewViewOrder
-            // 
-            this.listViewViewOrder.HideSelection = false;
-            this.listViewViewOrder.Location = new System.Drawing.Point(12, 49);
-            this.listViewViewOrder.Name = "listViewViewOrder";
-            this.listViewViewOrder.Size = new System.Drawing.Size(497, 373);
-            this.listViewViewOrder.TabIndex = 9;
-            this.listViewViewOrder.UseCompatibleStateImageBehavior = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(31, 425);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 21);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Aantal:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(290, 425);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Opmerking:";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(352, 597);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 31);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Voeg toe";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(290, 448);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 142);
-            this.textBox1.TabIndex = 5;
-            // 
-            // buttonPlus
-            // 
-            this.buttonPlus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPlus.Location = new System.Drawing.Point(166, 495);
-            this.buttonPlus.Name = "buttonPlus";
-            this.buttonPlus.Size = new System.Drawing.Size(75, 51);
-            this.buttonPlus.TabIndex = 4;
-            this.buttonPlus.Text = "+";
-            this.buttonPlus.UseVisualStyleBackColor = true;
-            this.buttonPlus.Click += new System.EventHandler(this.buttonPlus_Click);
-            // 
-            // buttonMinus
-            // 
-            this.buttonMinus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonMinus.Location = new System.Drawing.Point(31, 495);
-            this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(75, 51);
-            this.buttonMinus.TabIndex = 3;
-            this.buttonMinus.Text = "-";
-            this.buttonMinus.UseVisualStyleBackColor = true;
-            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(13, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 27);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Terug";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(138, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(261, 37);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Geselecteerde items:";
             // 
             // panelItemSelected
             // 
@@ -418,6 +323,205 @@
             this.buttonTerugBestelling.UseVisualStyleBackColor = true;
             this.buttonTerugBestelling.Click += new System.EventHandler(this.buttonTerugBestelling_Click);
             // 
+            // panelViewOrder
+            // 
+            this.panelViewOrder.Controls.Add(this.labelNoItems);
+            this.panelViewOrder.Controls.Add(this.panelVerwijderenBestelling);
+            this.panelViewOrder.Controls.Add(this.buttonDeleteOrder);
+            this.panelViewOrder.Controls.Add(this.listViewViewOrder);
+            this.panelViewOrder.Controls.Add(this.label6);
+            this.panelViewOrder.Controls.Add(this.label5);
+            this.panelViewOrder.Controls.Add(this.buttonAddComment);
+            this.panelViewOrder.Controls.Add(this.textBoxComment);
+            this.panelViewOrder.Controls.Add(this.buttonPlus);
+            this.panelViewOrder.Controls.Add(this.buttonMinus);
+            this.panelViewOrder.Controls.Add(this.button1);
+            this.panelViewOrder.Controls.Add(this.label4);
+            this.panelViewOrder.Location = new System.Drawing.Point(0, 0);
+            this.panelViewOrder.Name = "panelViewOrder";
+            this.panelViewOrder.Size = new System.Drawing.Size(522, 641);
+            this.panelViewOrder.TabIndex = 8;
+            // 
+            // labelNoItems
+            // 
+            this.labelNoItems.AutoSize = true;
+            this.labelNoItems.ForeColor = System.Drawing.Color.Red;
+            this.labelNoItems.Location = new System.Drawing.Point(31, 546);
+            this.labelNoItems.Name = "labelNoItems";
+            this.labelNoItems.Size = new System.Drawing.Size(0, 15);
+            this.labelNoItems.TabIndex = 12;
+            // 
+            // panelVerwijderenBestelling
+            // 
+            this.panelVerwijderenBestelling.Controls.Add(this.buttonNeeVerwijderen);
+            this.panelVerwijderenBestelling.Controls.Add(this.buttonJaVerwijderen);
+            this.panelVerwijderenBestelling.Controls.Add(this.label7);
+            this.panelVerwijderenBestelling.Location = new System.Drawing.Point(138, 173);
+            this.panelVerwijderenBestelling.Name = "panelVerwijderenBestelling";
+            this.panelVerwijderenBestelling.Size = new System.Drawing.Size(261, 136);
+            this.panelVerwijderenBestelling.TabIndex = 11;
+            // 
+            // buttonNeeVerwijderen
+            // 
+            this.buttonNeeVerwijderen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonNeeVerwijderen.Location = new System.Drawing.Point(153, 66);
+            this.buttonNeeVerwijderen.Name = "buttonNeeVerwijderen";
+            this.buttonNeeVerwijderen.Size = new System.Drawing.Size(75, 41);
+            this.buttonNeeVerwijderen.TabIndex = 2;
+            this.buttonNeeVerwijderen.Text = "Nee";
+            this.buttonNeeVerwijderen.UseVisualStyleBackColor = true;
+            this.buttonNeeVerwijderen.Click += new System.EventHandler(this.buttonNeeVerwijderen_Click);
+            // 
+            // buttonJaVerwijderen
+            // 
+            this.buttonJaVerwijderen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonJaVerwijderen.Location = new System.Drawing.Point(38, 66);
+            this.buttonJaVerwijderen.Name = "buttonJaVerwijderen";
+            this.buttonJaVerwijderen.Size = new System.Drawing.Size(75, 41);
+            this.buttonJaVerwijderen.TabIndex = 1;
+            this.buttonJaVerwijderen.Text = "Ja";
+            this.buttonJaVerwijderen.UseVisualStyleBackColor = true;
+            this.buttonJaVerwijderen.Click += new System.EventHandler(this.buttonJaVerwijderen_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(64, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 21);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Weet u dit zeker?";
+            // 
+            // buttonDeleteOrder
+            // 
+            this.buttonDeleteOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(31, 568);
+            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
+            this.buttonDeleteOrder.Size = new System.Drawing.Size(210, 46);
+            this.buttonDeleteOrder.TabIndex = 10;
+            this.buttonDeleteOrder.Text = "Verwijder gehele bestelling";
+            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
+            this.buttonDeleteOrder.Click += new System.EventHandler(this.buttonDeleteOrder_Click);
+            // 
+            // listViewViewOrder
+            // 
+            this.listViewViewOrder.HideSelection = false;
+            this.listViewViewOrder.Location = new System.Drawing.Point(12, 49);
+            this.listViewViewOrder.Name = "listViewViewOrder";
+            this.listViewViewOrder.Size = new System.Drawing.Size(497, 373);
+            this.listViewViewOrder.TabIndex = 9;
+            this.listViewViewOrder.UseCompatibleStateImageBehavior = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(31, 430);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 21);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Aantal:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(290, 430);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Opmerking:";
+            // 
+            // buttonAddComment
+            // 
+            this.buttonAddComment.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAddComment.Location = new System.Drawing.Point(344, 583);
+            this.buttonAddComment.Name = "buttonAddComment";
+            this.buttonAddComment.Size = new System.Drawing.Size(98, 31);
+            this.buttonAddComment.TabIndex = 6;
+            this.buttonAddComment.Text = "Voeg toe";
+            this.buttonAddComment.UseVisualStyleBackColor = true;
+            this.buttonAddComment.Click += new System.EventHandler(this.buttonAddComment_Click);
+            // 
+            // textBoxComment
+            // 
+            this.textBoxComment.Location = new System.Drawing.Point(290, 462);
+            this.textBoxComment.Multiline = true;
+            this.textBoxComment.Name = "textBoxComment";
+            this.textBoxComment.Size = new System.Drawing.Size(219, 114);
+            this.textBoxComment.TabIndex = 5;
+            // 
+            // buttonPlus
+            // 
+            this.buttonPlus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPlus.Location = new System.Drawing.Point(166, 462);
+            this.buttonPlus.Name = "buttonPlus";
+            this.buttonPlus.Size = new System.Drawing.Size(75, 51);
+            this.buttonPlus.TabIndex = 4;
+            this.buttonPlus.Text = "+";
+            this.buttonPlus.UseVisualStyleBackColor = true;
+            this.buttonPlus.Click += new System.EventHandler(this.buttonPlus_Click);
+            // 
+            // buttonMinus
+            // 
+            this.buttonMinus.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonMinus.Location = new System.Drawing.Point(31, 462);
+            this.buttonMinus.Name = "buttonMinus";
+            this.buttonMinus.Size = new System.Drawing.Size(75, 51);
+            this.buttonMinus.TabIndex = 3;
+            this.buttonMinus.Text = "-";
+            this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 27);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Terug";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(138, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 37);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Geselecteerde items:";
+            // 
+            // panelOrdered
+            // 
+            this.panelOrdered.Controls.Add(this.labelBesteld);
+            this.panelOrdered.Controls.Add(this.buttonOrderedOk);
+            this.panelOrdered.Location = new System.Drawing.Point(162, 257);
+            this.panelOrdered.Name = "panelOrdered";
+            this.panelOrdered.Size = new System.Drawing.Size(200, 100);
+            this.panelOrdered.TabIndex = 8;
+            // 
+            // labelBesteld
+            // 
+            this.labelBesteld.AutoSize = true;
+            this.labelBesteld.Location = new System.Drawing.Point(15, 12);
+            this.labelBesteld.Name = "labelBesteld";
+            this.labelBesteld.Size = new System.Drawing.Size(12, 15);
+            this.labelBesteld.TabIndex = 0;
+            this.labelBesteld.Text = "-";
+            // 
+            // buttonOrderedOk
+            // 
+            this.buttonOrderedOk.Location = new System.Drawing.Point(59, 62);
+            this.buttonOrderedOk.Name = "buttonOrderedOk";
+            this.buttonOrderedOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOrderedOk.TabIndex = 1;
+            this.buttonOrderedOk.Text = "Ok";
+            this.buttonOrderedOk.UseVisualStyleBackColor = true;
+            this.buttonOrderedOk.Click += new System.EventHandler(this.buttonOrderedOk_Click);
+            // 
             // buttonViewOrder
             // 
             this.buttonViewOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -434,6 +538,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 640);
+            this.Controls.Add(this.panelOrdered);
             this.Controls.Add(this.panelViewOrder);
             this.Controls.Add(this.panelBestellen);
             this.Controls.Add(this.buttonDrankjes);
@@ -444,14 +549,19 @@
             this.Controls.Add(this.buttonVoorgerecht);
             this.Controls.Add(this.buttonTerug);
             this.Name = "Order";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";
             this.Load += new System.EventHandler(this.Order_Load);
             this.panelBestellen.ResumeLayout(false);
             this.panelBestellen.PerformLayout();
-            this.panelViewOrder.ResumeLayout(false);
-            this.panelViewOrder.PerformLayout();
             this.panelItemSelected.ResumeLayout(false);
             this.panelItemSelected.PerformLayout();
+            this.panelViewOrder.ResumeLayout(false);
+            this.panelViewOrder.PerformLayout();
+            this.panelVerwijderenBestelling.ResumeLayout(false);
+            this.panelVerwijderenBestelling.PerformLayout();
+            this.panelOrdered.ResumeLayout(false);
+            this.panelOrdered.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,7 +600,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewViewOrder;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonAddComment;
+        private System.Windows.Forms.TextBox textBoxComment;
+        private System.Windows.Forms.Button buttonDeleteOrder;
+        private System.Windows.Forms.Panel panelVerwijderenBestelling;
+        private System.Windows.Forms.Button buttonNeeVerwijderen;
+        private System.Windows.Forms.Button buttonJaVerwijderen;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNoItems;
+        private System.Windows.Forms.Panel panelOrdered;
+        private System.Windows.Forms.Button buttonOrderedOk;
+        private System.Windows.Forms.Label labelBesteld;
     }
 }
