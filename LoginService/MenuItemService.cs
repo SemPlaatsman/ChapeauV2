@@ -16,9 +16,9 @@ namespace ChapeauLogica
         {
             _menuItemDAO = new MenuItemDAO();
         }
-        public List<MenuItem> GetAllMenuItems()
+        public List<MenuItem> GetAllMenuItems(int Type, int IsDiner)
         {
-            List<MenuItem> menuItems = _menuItemDAO.GetAllMenuItems();
+            List<MenuItem> menuItems = _menuItemDAO.GetAllMenuItems(Type, IsDiner);
             return menuItems;
         }
         public MenuItem GetMenuItemsFromOrder(MenuItem menuItem)

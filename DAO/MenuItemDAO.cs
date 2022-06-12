@@ -12,13 +12,16 @@ namespace ChapeauDAO
 {
     public class MenuItemDAO : BaseDao
     {
-        public List<MenuItem> GetAllMenuItems()
+        public List<MenuItem> GetAllMenuItems(int Type, int IsDiner)
         {
             try
             {
                 string query = "SELECT [ProductID],[IsDiner],[Type],[ProductName],[Price],[Stock],[IsAlcoholic] " +
-                    "FROM [ApplicatiebouwChapeau].[MenuItem] ";
-                SqlParameter[] sqlParameters = new SqlParameter[0];
+                    "FROM [ApplicatiebouwChapeau].[MenuItem] " +
+                    "WHERE [type] = @Type and IsDiner = @IsDiner;";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@Type", Type);
+                sqlParameters[1] = new SqlParameter("@IsDiner", IsDiner);
                 return ReadTables(ExecuteSelectQuery(query, sqlParameters));
             }
             catch (Exception e)
