@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using ChapeauModel;
 using ErrorHandling;
 using HashingAlgorithms;
-
+using ChapeauInterfaces;
 
 namespace ChapeauDAO
 {

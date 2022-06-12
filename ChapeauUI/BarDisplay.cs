@@ -12,6 +12,7 @@ using ErrorHandling;
 using HashingAlgorithms;
 using ChapeauLogica;
 using ChapeauModel;
+using ChapeauInterfaces;
 
 namespace ChapeauUI
 {
@@ -178,7 +179,7 @@ namespace ChapeauUI
                 }
             }
             
-            string list = $"{menuItems.First().Key} : {menuItems.First().Value}:";
+            string list = $"{menuItems.First().Key} : {menuItems.First().Value}x";
             for (int i = 1; i < menuItems.Count(); i++)
             {
                 list += $"\n{menuItems.ElementAt(i).Key} : {menuItems.ElementAt(i).Value}x";

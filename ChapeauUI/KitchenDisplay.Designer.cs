@@ -30,10 +30,10 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
@@ -63,7 +63,7 @@ namespace ChapeauUI
             this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonUpdate.Image = ((System.Drawing.Image)(resources.GetObject("buttonUpdate.Image")));
             this.buttonUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUpdate.Location = new System.Drawing.Point(12, 682);
+            this.buttonUpdate.Location = new System.Drawing.Point(245, 775);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(221, 75);
             this.buttonUpdate.TabIndex = 0;
@@ -74,8 +74,9 @@ namespace ChapeauUI
             // flowLayoutMeeBezig
             // 
             this.flowLayoutMeeBezig.AutoScroll = true;
+            this.flowLayoutMeeBezig.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutMeeBezig.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(618, 52);
+            this.flowLayoutMeeBezig.Location = new System.Drawing.Point(618, 150);
             this.flowLayoutMeeBezig.Name = "flowLayoutMeeBezig";
             this.flowLayoutMeeBezig.Size = new System.Drawing.Size(556, 612);
             this.flowLayoutMeeBezig.TabIndex = 1;
@@ -90,7 +91,7 @@ namespace ChapeauUI
             this.ColumnTijd,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewButtonColumn1});
-            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewMoetNog.Location = new System.Drawing.Point(12, 150);
             this.dataGridViewMoetNog.Name = "dataGridViewMoetNog";
             this.dataGridViewMoetNog.RowTemplate.Height = 25;
             this.dataGridViewMoetNog.Size = new System.Drawing.Size(600, 612);
@@ -136,7 +137,7 @@ namespace ChapeauUI
             // 
             this.lblMoetNog.AutoSize = true;
             this.lblMoetNog.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMoetNog.Location = new System.Drawing.Point(12, 9);
+            this.lblMoetNog.Location = new System.Drawing.Point(12, 107);
             this.lblMoetNog.Name = "lblMoetNog";
             this.lblMoetNog.Size = new System.Drawing.Size(140, 37);
             this.lblMoetNog.TabIndex = 4;
@@ -146,7 +147,7 @@ namespace ChapeauUI
             // 
             this.lblMeeBezig.AutoSize = true;
             this.lblMeeBezig.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMeeBezig.Location = new System.Drawing.Point(618, 9);
+            this.lblMeeBezig.Location = new System.Drawing.Point(618, 107);
             this.lblMeeBezig.Name = "lblMeeBezig";
             this.lblMeeBezig.Size = new System.Drawing.Size(147, 37);
             this.lblMeeBezig.TabIndex = 5;
@@ -156,7 +157,7 @@ namespace ChapeauUI
             // 
             this.lblOverzicht.AutoSize = true;
             this.lblOverzicht.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOverzicht.Location = new System.Drawing.Point(1180, 9);
+            this.lblOverzicht.Location = new System.Drawing.Point(1180, 107);
             this.lblOverzicht.Name = "lblOverzicht";
             this.lblOverzicht.Size = new System.Drawing.Size(134, 37);
             this.lblOverzicht.TabIndex = 6;
@@ -173,7 +174,7 @@ namespace ChapeauUI
             this.ColumnHoofdgerechten,
             this.ColumnNagerechten,
             this.ColumnOpen});
-            this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 52);
+            this.dataGridViewOverzicht.Location = new System.Drawing.Point(1180, 150);
             this.dataGridViewOverzicht.Name = "dataGridViewOverzicht";
             this.dataGridViewOverzicht.RowTemplate.Height = 25;
             this.dataGridViewOverzicht.Size = new System.Drawing.Size(400, 612);
@@ -196,8 +197,8 @@ namespace ChapeauUI
             // 
             // ColumnVoorgerechten
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnVoorgerechten.HeaderText = "Voor-";
             this.ColumnVoorgerechten.Name = "ColumnVoorgerechten";
             this.ColumnVoorgerechten.ReadOnly = true;
@@ -205,8 +206,8 @@ namespace ChapeauUI
             // 
             // ColumnTussengerechten
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnTussengerechten.HeaderText = "Tussen-";
             this.ColumnTussengerechten.Name = "ColumnTussengerechten";
             this.ColumnTussengerechten.ReadOnly = true;
@@ -214,8 +215,8 @@ namespace ChapeauUI
             // 
             // ColumnHoofdgerechten
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnHoofdgerechten.HeaderText = "Hoofd-";
             this.ColumnHoofdgerechten.Name = "ColumnHoofdgerechten";
             this.ColumnHoofdgerechten.ReadOnly = true;
@@ -223,8 +224,8 @@ namespace ChapeauUI
             // 
             // ColumnNagerechten
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnNagerechten.HeaderText = "Na-";
             this.ColumnNagerechten.Name = "ColumnNagerechten";
             this.ColumnNagerechten.ReadOnly = true;
@@ -255,6 +256,7 @@ namespace ChapeauUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.buttonUitloggen);
             this.Controls.Add(this.dataGridViewOverzicht);

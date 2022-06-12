@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChapeauInterfaces\ChapeauInterfaces.csproj" />
     <ProjectReference Include="..\ErrorHandling\ErrorHandling.csproj" />
     <ProjectReference Include="..\HashingAlgorithms\HashingAlgorithms.csproj" />
     <ProjectReference Include="..\LoginService\ChapeauLogica.csproj" />
