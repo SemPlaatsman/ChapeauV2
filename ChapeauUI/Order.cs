@@ -18,7 +18,6 @@ namespace ChapeauUI
         private List<OrderGerecht> selectedItems;
         private Employee employee;
         private Table table;
-        private DateTime lunch = new DateTime(2022, 6, 14, 16, 00, 00);
         private List<MenuItem> menuitems;
         public Order(Table TableId, Employee employee) 
 
@@ -183,7 +182,7 @@ namespace ChapeauUI
                 }
                 panelItemSelected.Visible = false;
                 textBoxRemark.Clear();
-                RefreshListView(selectedItems);
+                RefreshListView();
             }
         }
 
@@ -199,7 +198,7 @@ namespace ChapeauUI
             listViewViewOrder.Columns.Add("Opmerking", 200);
             
         }
-        private void RefreshListView(List<OrderGerecht> selectedItems)
+        private void RefreshListView()
         {
             MenuItemService menuItemService = new MenuItemService();
             foreach (OrderGerecht O in selectedItems)
