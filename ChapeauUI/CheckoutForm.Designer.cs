@@ -40,6 +40,7 @@ namespace ChapeauUI
             // 
             // buttonBackToTableOverview
             // 
+            this.buttonBackToTableOverview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBackToTableOverview.Location = new System.Drawing.Point(10, 9);
             this.buttonBackToTableOverview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBackToTableOverview.Name = "buttonBackToTableOverview";
@@ -52,32 +53,36 @@ namespace ChapeauUI
             // rekeningLbl
             // 
             this.rekeningLbl.AutoSize = true;
-            this.rekeningLbl.Location = new System.Drawing.Point(41, 64);
+            this.rekeningLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rekeningLbl.Location = new System.Drawing.Point(41, 59);
             this.rekeningLbl.Name = "rekeningLbl";
-            this.rekeningLbl.Size = new System.Drawing.Size(59, 15);
+            this.rekeningLbl.Size = new System.Drawing.Size(73, 20);
             this.rekeningLbl.TabIndex = 1;
             this.rekeningLbl.Text = "Rekening:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(41, 538);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 15);
+            this.label1.Size = new System.Drawing.Size(109, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Totaal met btw";
             // 
             // checkoutTotalPriceLbl
             // 
             this.checkoutTotalPriceLbl.AutoSize = true;
-            this.checkoutTotalPriceLbl.Location = new System.Drawing.Point(417, 538);
+            this.checkoutTotalPriceLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkoutTotalPriceLbl.Location = new System.Drawing.Point(402, 538);
             this.checkoutTotalPriceLbl.Name = "checkoutTotalPriceLbl";
-            this.checkoutTotalPriceLbl.Size = new System.Drawing.Size(52, 15);
+            this.checkoutTotalPriceLbl.Size = new System.Drawing.Size(67, 20);
             this.checkoutTotalPriceLbl.TabIndex = 4;
             this.checkoutTotalPriceLbl.Text = "0,00 EUR";
             // 
             // AfrekenenBtn
             // 
+            this.AfrekenenBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AfrekenenBtn.Location = new System.Drawing.Point(41, 562);
             this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AfrekenenBtn.Name = "AfrekenenBtn";
@@ -89,6 +94,7 @@ namespace ChapeauUI
             // 
             // HandmatigBtn
             // 
+            this.HandmatigBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HandmatigBtn.Location = new System.Drawing.Point(373, 562);
             this.HandmatigBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HandmatigBtn.Name = "HandmatigBtn";

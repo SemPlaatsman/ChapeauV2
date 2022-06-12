@@ -42,10 +42,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 48);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(95, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 17);
+            this.label1.Size = new System.Drawing.Size(152, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pas het bedrag aan:";
             // 
@@ -53,7 +54,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 72);
+            this.label2.Location = new System.Drawing.Point(13, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 17);
             this.label2.TabIndex = 1;
@@ -63,7 +65,8 @@
             // 
             this.totalPriceLbl.AutoSize = true;
             this.totalPriceLbl.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalPriceLbl.Location = new System.Drawing.Point(162, 72);
+            this.totalPriceLbl.Location = new System.Drawing.Point(162, 63);
+            this.totalPriceLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalPriceLbl.Name = "totalPriceLbl";
             this.totalPriceLbl.Size = new System.Drawing.Size(32, 17);
             this.totalPriceLbl.TabIndex = 2;
@@ -73,7 +76,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(12, 98);
+            this.label4.Location = new System.Drawing.Point(12, 90);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 17);
             this.label4.TabIndex = 3;
@@ -81,10 +85,10 @@
             // 
             // newPriceTextBox
             // 
-            this.newPriceTextBox.Location = new System.Drawing.Point(162, 95);
-            this.newPriceTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newPriceTextBox.Location = new System.Drawing.Point(162, 87);
+            this.newPriceTextBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.newPriceTextBox.Name = "newPriceTextBox";
-            this.newPriceTextBox.Size = new System.Drawing.Size(155, 23);
+            this.newPriceTextBox.Size = new System.Drawing.Size(154, 23);
             this.newPriceTextBox.TabIndex = 4;
             this.newPriceTextBox.TextChanged += new System.EventHandler(this.newPriceTextbox_TextChanged);
             // 
@@ -92,7 +96,7 @@
             // 
             this.AfrekenenBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AfrekenenBtn.Location = new System.Drawing.Point(141, 182);
-            this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AfrekenenBtn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.AfrekenenBtn.Name = "AfrekenenBtn";
             this.AfrekenenBtn.Size = new System.Drawing.Size(82, 32);
             this.AfrekenenBtn.TabIndex = 5;
@@ -104,7 +108,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 145);
+            this.label3.Location = new System.Drawing.Point(12, 132);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(252, 17);
             this.label3.TabIndex = 6;
@@ -112,7 +117,8 @@
             // 
             // textBoxNumberOfPersons
             // 
-            this.textBoxNumberOfPersons.Location = new System.Drawing.Point(264, 142);
+            this.textBoxNumberOfPersons.Location = new System.Drawing.Point(264, 129);
+            this.textBoxNumberOfPersons.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxNumberOfPersons.Name = "textBoxNumberOfPersons";
             this.textBoxNumberOfPersons.Size = new System.Drawing.Size(53, 23);
             this.textBoxNumberOfPersons.TabIndex = 7;
@@ -121,6 +127,7 @@
             // 
             this.buttonBack.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBack.Location = new System.Drawing.Point(12, 12);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 33);
             this.buttonBack.TabIndex = 8;
@@ -142,7 +149,7 @@
             this.Controls.Add(this.totalPriceLbl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "ManualPrice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManualPrice";
