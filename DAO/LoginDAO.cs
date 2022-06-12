@@ -17,18 +17,26 @@ namespace ChapeauDAO
         // login Method + query
         public Employee Login(int employeeID) 
         {
-            string query = "SELECT [EmployeeID], [Password], [Category], [FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Question], [Answer] from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@EmployeeID", employeeID);
+            try
+            {
+                string query = "SELECT [EmployeeID], [Password], [Category], [FirstName], [LastName], [DateOfBirth], [Email], [PhoneNumber], [Question], [Answer] from [ApplicatiebouwChapeau].[Employee] where EmployeeID = @EmployeeID";
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@EmployeeID", employeeID);
 
-            if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
-            {
-                throw new ChapeauException("incorrect username or password, please make sure you have spelled everything correctly.");
+                if (ExecuteSelectQuery(query, sqlParameters).Rows.Count == 0)
+                {
+                    throw new ChapeauException("incorrect username or password, please make sure you have spelled everything correctly.");
+                }
+                else
+                {
+                    return ReadUser(ExecuteSelectQuery(query, sqlParameters));
+                }
             }
-            else
+            catch (Exception e)
             {
-                return ReadUser(ExecuteSelectQuery(query, sqlParameters));
+                throw new Exception("Data could not be retrieved from the database. Please try again, error: " + e.Message);
             }
+
         }
 
         // Datatable to read the Employee

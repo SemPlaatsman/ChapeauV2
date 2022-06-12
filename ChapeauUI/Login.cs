@@ -83,7 +83,6 @@ namespace ChapeauUI
                 ErrorLogger.WriteLogToFile(ex);
                 labelLoginError.Text = "Er is iets mis gegaan, neem contact op met de administrator!";
             }
-            
             //d.m.v. de LoginWithRightJobType() wordt er bepaald naar welk inlog scherm verwezen wordt. 
         }
 
@@ -128,7 +127,5 @@ namespace ChapeauUI
         {
             labelLoginError.Text = "Neem contact op met de eigenaar voor een nieuw wachtwoord";
         }
-
-
     }
 }
