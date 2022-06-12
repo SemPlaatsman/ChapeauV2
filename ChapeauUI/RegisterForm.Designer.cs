@@ -58,137 +58,154 @@ namespace ChapeauUI
             // labelWelkom
             // 
             this.labelWelkom.AutoSize = true;
-            this.labelWelkom.Location = new System.Drawing.Point(195, 23);
+            this.labelWelkom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelWelkom.Location = new System.Drawing.Point(32, 82);
             this.labelWelkom.Name = "labelWelkom";
-            this.labelWelkom.Size = new System.Drawing.Size(304, 45);
+            this.labelWelkom.Size = new System.Drawing.Size(403, 63);
             this.labelWelkom.TabIndex = 0;
             this.labelWelkom.Text = "Vul hieronder de gegevens in van de nieuwe werknemer.\r\nDe pincode bestaat uit vie" +
     "r cijfers. \r\nAlle velden zijn verplicht in te vullen.\r\n";
             // 
             // buttonBackToOwner
             // 
+            this.buttonBackToOwner.BackColor = System.Drawing.Color.White;
+            this.buttonBackToOwner.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonBackToOwner.Location = new System.Drawing.Point(28, 20);
             this.buttonBackToOwner.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBackToOwner.Name = "buttonBackToOwner";
-            this.buttonBackToOwner.Size = new System.Drawing.Size(92, 22);
+            this.buttonBackToOwner.Size = new System.Drawing.Size(124, 46);
             this.buttonBackToOwner.TabIndex = 1;
             this.buttonBackToOwner.Text = "<- Terug";
-            this.buttonBackToOwner.UseVisualStyleBackColor = true;
+            this.buttonBackToOwner.UseVisualStyleBackColor = false;
             this.buttonBackToOwner.Click += new System.EventHandler(this.buttonBackToInlog_Click);
             // 
             // labelRegisterVoornaam
             // 
             this.labelRegisterVoornaam.AutoSize = true;
-            this.labelRegisterVoornaam.Location = new System.Drawing.Point(32, 74);
+            this.labelRegisterVoornaam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRegisterVoornaam.Location = new System.Drawing.Point(32, 203);
             this.labelRegisterVoornaam.Name = "labelRegisterVoornaam";
-            this.labelRegisterVoornaam.Size = new System.Drawing.Size(121, 15);
+            this.labelRegisterVoornaam.Size = new System.Drawing.Size(159, 21);
             this.labelRegisterVoornaam.TabIndex = 2;
             this.labelRegisterVoornaam.Text = "Voor- en achternaam:";
             // 
             // labelRegisterEmail
             // 
             this.labelRegisterEmail.AutoSize = true;
-            this.labelRegisterEmail.Location = new System.Drawing.Point(86, 124);
+            this.labelRegisterEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRegisterEmail.Location = new System.Drawing.Point(86, 269);
             this.labelRegisterEmail.Name = "labelRegisterEmail";
-            this.labelRegisterEmail.Size = new System.Drawing.Size(70, 15);
+            this.labelRegisterEmail.Size = new System.Drawing.Size(93, 21);
             this.labelRegisterEmail.TabIndex = 4;
             this.labelRegisterEmail.Text = "Email adres:";
             // 
             // labelRegisterPhone
             // 
             this.labelRegisterPhone.AutoSize = true;
-            this.labelRegisterPhone.Location = new System.Drawing.Point(51, 149);
+            this.labelRegisterPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRegisterPhone.Location = new System.Drawing.Point(51, 301);
             this.labelRegisterPhone.Name = "labelRegisterPhone";
-            this.labelRegisterPhone.Size = new System.Drawing.Size(104, 15);
+            this.labelRegisterPhone.Size = new System.Drawing.Size(135, 21);
             this.labelRegisterPhone.TabIndex = 5;
             this.labelRegisterPhone.Text = "Telefoon nummer:";
             // 
             // labelRegisterPin
             // 
             this.labelRegisterPin.AutoSize = true;
-            this.labelRegisterPin.Location = new System.Drawing.Point(47, 200);
+            this.labelRegisterPin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRegisterPin.Location = new System.Drawing.Point(47, 391);
             this.labelRegisterPin.Name = "labelRegisterPin";
-            this.labelRegisterPin.Size = new System.Drawing.Size(108, 15);
+            this.labelRegisterPin.Size = new System.Drawing.Size(140, 21);
             this.labelRegisterPin.TabIndex = 6;
             this.labelRegisterPin.Text = "Wachtwoord (PIN):";
             // 
             // labelRegisterPinRepeat
             // 
             this.labelRegisterPinRepeat.AutoSize = true;
-            this.labelRegisterPinRepeat.Location = new System.Drawing.Point(21, 228);
+            this.labelRegisterPinRepeat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRegisterPinRepeat.Location = new System.Drawing.Point(21, 425);
             this.labelRegisterPinRepeat.Name = "labelRegisterPinRepeat";
-            this.labelRegisterPinRepeat.Size = new System.Drawing.Size(131, 15);
+            this.labelRegisterPinRepeat.Size = new System.Drawing.Size(171, 21);
             this.labelRegisterPinRepeat.TabIndex = 7;
             this.labelRegisterPinRepeat.Text = "Herhaling wachtwoord:";
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Location = new System.Drawing.Point(195, 384);
+            this.buttonRegister.BackColor = System.Drawing.Color.White;
+            this.buttonRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRegister.Location = new System.Drawing.Point(185, 669);
             this.buttonRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(99, 50);
+            this.buttonRegister.Size = new System.Drawing.Size(134, 58);
             this.buttonRegister.TabIndex = 8;
             this.buttonRegister.Text = "Registeren";
-            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.UseVisualStyleBackColor = false;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // textBoxRegisterFirstname
             // 
-            this.textBoxRegisterFirstname.Location = new System.Drawing.Point(195, 74);
+            this.textBoxRegisterFirstname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterFirstname.Location = new System.Drawing.Point(195, 203);
             this.textBoxRegisterFirstname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterFirstname.Name = "textBoxRegisterFirstname";
-            this.textBoxRegisterFirstname.Size = new System.Drawing.Size(138, 23);
+            this.textBoxRegisterFirstname.Size = new System.Drawing.Size(138, 29);
             this.textBoxRegisterFirstname.TabIndex = 10;
             // 
             // textBoxRegisterLastname
             // 
-            this.textBoxRegisterLastname.Location = new System.Drawing.Point(338, 74);
+            this.textBoxRegisterLastname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterLastname.Location = new System.Drawing.Point(338, 203);
             this.textBoxRegisterLastname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterLastname.Name = "textBoxRegisterLastname";
-            this.textBoxRegisterLastname.Size = new System.Drawing.Size(138, 23);
+            this.textBoxRegisterLastname.Size = new System.Drawing.Size(138, 29);
             this.textBoxRegisterLastname.TabIndex = 11;
             // 
             // textBoxRegisterEmail
             // 
-            this.textBoxRegisterEmail.Location = new System.Drawing.Point(195, 124);
+            this.textBoxRegisterEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterEmail.Location = new System.Drawing.Point(195, 269);
             this.textBoxRegisterEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterEmail.Name = "textBoxRegisterEmail";
-            this.textBoxRegisterEmail.Size = new System.Drawing.Size(224, 23);
+            this.textBoxRegisterEmail.Size = new System.Drawing.Size(224, 29);
             this.textBoxRegisterEmail.TabIndex = 12;
             // 
             // textBoxRegisterPhoneNumber
             // 
-            this.textBoxRegisterPhoneNumber.Location = new System.Drawing.Point(195, 150);
+            this.textBoxRegisterPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterPhoneNumber.Location = new System.Drawing.Point(195, 302);
             this.textBoxRegisterPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterPhoneNumber.Name = "textBoxRegisterPhoneNumber";
-            this.textBoxRegisterPhoneNumber.Size = new System.Drawing.Size(138, 23);
+            this.textBoxRegisterPhoneNumber.Size = new System.Drawing.Size(138, 29);
             this.textBoxRegisterPhoneNumber.TabIndex = 13;
             // 
             // textBoxRegisterPIN
             // 
-            this.textBoxRegisterPIN.Location = new System.Drawing.Point(195, 201);
+            this.textBoxRegisterPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterPIN.Location = new System.Drawing.Point(195, 392);
             this.textBoxRegisterPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterPIN.Name = "textBoxRegisterPIN";
             this.textBoxRegisterPIN.PasswordChar = '*';
-            this.textBoxRegisterPIN.Size = new System.Drawing.Size(84, 23);
+            this.textBoxRegisterPIN.Size = new System.Drawing.Size(84, 29);
             this.textBoxRegisterPIN.TabIndex = 14;
             // 
             // textBoxRegisterPINRepeat
             // 
-            this.textBoxRegisterPINRepeat.Location = new System.Drawing.Point(195, 228);
+            this.textBoxRegisterPINRepeat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterPINRepeat.Location = new System.Drawing.Point(195, 425);
             this.textBoxRegisterPINRepeat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterPINRepeat.Name = "textBoxRegisterPINRepeat";
             this.textBoxRegisterPINRepeat.PasswordChar = '*';
-            this.textBoxRegisterPINRepeat.Size = new System.Drawing.Size(84, 23);
+            this.textBoxRegisterPINRepeat.Size = new System.Drawing.Size(84, 29);
             this.textBoxRegisterPINRepeat.TabIndex = 15;
             // 
             // checkBoxPIN
             // 
             this.checkBoxPIN.AutoSize = true;
-            this.checkBoxPIN.Location = new System.Drawing.Point(331, 203);
+            this.checkBoxPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxPIN.Location = new System.Drawing.Point(331, 394);
             this.checkBoxPIN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxPIN.Name = "checkBoxPIN";
-            this.checkBoxPIN.Size = new System.Drawing.Size(73, 19);
+            this.checkBoxPIN.Size = new System.Drawing.Size(92, 25);
             this.checkBoxPIN.TabIndex = 16;
             this.checkBoxPIN.Text = "View PIN";
             this.checkBoxPIN.UseVisualStyleBackColor = true;
@@ -197,32 +214,35 @@ namespace ChapeauUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 176);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(61, 359);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 15);
+            this.label1.Size = new System.Drawing.Size(123, 21);
             this.label1.TabIndex = 17;
             this.label1.Text = "Gaat werken als:";
             // 
             // comboBoxRegisterJob
             // 
+            this.comboBoxRegisterJob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxRegisterJob.FormattingEnabled = true;
             this.comboBoxRegisterJob.Items.AddRange(new object[] {
             "Chef",
             "Serveerster",
             "Bartender",
             "Eigenaar"});
-            this.comboBoxRegisterJob.Location = new System.Drawing.Point(195, 176);
+            this.comboBoxRegisterJob.Location = new System.Drawing.Point(195, 359);
             this.comboBoxRegisterJob.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxRegisterJob.Name = "comboBoxRegisterJob";
-            this.comboBoxRegisterJob.Size = new System.Drawing.Size(138, 23);
+            this.comboBoxRegisterJob.Size = new System.Drawing.Size(138, 29);
             this.comboBoxRegisterJob.TabIndex = 18;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(195, 271);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(51, 522);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(354, 30);
+            this.label2.Size = new System.Drawing.Size(469, 42);
             this.label2.TabIndex = 19;
             this.label2.Text = "Door middel van een vraag en een antwoord kunnen werknemers \r\neen nieuw wachtwoor" +
     "d instellen";
@@ -230,52 +250,58 @@ namespace ChapeauUI
             // labelVraag
             // 
             this.labelVraag.AutoSize = true;
-            this.labelVraag.Location = new System.Drawing.Point(120, 310);
+            this.labelVraag.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelVraag.Location = new System.Drawing.Point(70, 576);
             this.labelVraag.Name = "labelVraag";
-            this.labelVraag.Size = new System.Drawing.Size(40, 15);
+            this.labelVraag.Size = new System.Drawing.Size(53, 21);
             this.labelVraag.TabIndex = 20;
             this.labelVraag.Text = "Vraag:";
             // 
             // labelAntwoord
             // 
             this.labelAntwoord.AutoSize = true;
-            this.labelAntwoord.Location = new System.Drawing.Point(95, 334);
+            this.labelAntwoord.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAntwoord.Location = new System.Drawing.Point(45, 609);
             this.labelAntwoord.Name = "labelAntwoord";
-            this.labelAntwoord.Size = new System.Drawing.Size(63, 15);
+            this.labelAntwoord.Size = new System.Drawing.Size(82, 21);
             this.labelAntwoord.TabIndex = 21;
             this.labelAntwoord.Text = "Antwoord:";
             // 
             // textBoxRegisterQuestion
             // 
-            this.textBoxRegisterQuestion.Location = new System.Drawing.Point(195, 310);
+            this.textBoxRegisterQuestion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterQuestion.Location = new System.Drawing.Point(145, 576);
             this.textBoxRegisterQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterQuestion.Name = "textBoxRegisterQuestion";
-            this.textBoxRegisterQuestion.Size = new System.Drawing.Size(224, 23);
+            this.textBoxRegisterQuestion.Size = new System.Drawing.Size(224, 29);
             this.textBoxRegisterQuestion.TabIndex = 22;
             // 
             // textBoxRegisterAnswer
             // 
-            this.textBoxRegisterAnswer.Location = new System.Drawing.Point(195, 334);
+            this.textBoxRegisterAnswer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxRegisterAnswer.Location = new System.Drawing.Point(145, 609);
             this.textBoxRegisterAnswer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRegisterAnswer.Name = "textBoxRegisterAnswer";
-            this.textBoxRegisterAnswer.Size = new System.Drawing.Size(224, 23);
+            this.textBoxRegisterAnswer.Size = new System.Drawing.Size(224, 29);
             this.textBoxRegisterAnswer.TabIndex = 23;
             // 
             // labelGeboorte
             // 
             this.labelGeboorte.AutoSize = true;
-            this.labelGeboorte.Location = new System.Drawing.Point(60, 100);
+            this.labelGeboorte.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelGeboorte.Location = new System.Drawing.Point(60, 236);
             this.labelGeboorte.Name = "labelGeboorte";
-            this.labelGeboorte.Size = new System.Drawing.Size(94, 15);
+            this.labelGeboorte.Size = new System.Drawing.Size(123, 21);
             this.labelGeboorte.TabIndex = 25;
             this.labelGeboorte.Text = "Geboortedatum:";
             // 
             // dateTimePickerDateOfBirth
             // 
-            this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(195, 100);
+            this.dateTimePickerDateOfBirth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(195, 236);
             this.dateTimePickerDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePickerDateOfBirth.Name = "dateTimePickerDateOfBirth";
-            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(224, 23);
+            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(281, 29);
             this.dateTimePickerDateOfBirth.TabIndex = 26;
             // 
             // RegisterForm
@@ -283,7 +309,7 @@ namespace ChapeauUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(618, 504);
+            this.ClientSize = new System.Drawing.Size(560, 757);
             this.Controls.Add(this.dateTimePickerDateOfBirth);
             this.Controls.Add(this.labelGeboorte);
             this.Controls.Add(this.textBoxRegisterAnswer);
