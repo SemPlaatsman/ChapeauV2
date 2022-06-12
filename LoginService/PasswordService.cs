@@ -34,6 +34,7 @@ namespace ChapeauLogica
         private byte[] GetSaltBytes()
         {
             byte[] saltBytes;
+            // als er geen Salt aanwezig is, genereer een Salt. 
             if (ConfigurationManager.AppSettings["Salt"] == null)
             {
                 saltBytes = this.GenerateSalt(64);

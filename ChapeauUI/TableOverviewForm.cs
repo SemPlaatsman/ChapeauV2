@@ -16,7 +16,7 @@ namespace ChapeauUI
     {
         // private fields
         private Employee employee; 
-        TableService tableService;
+        private TableService tableService;
         private List<Table> tables;
         private KitchenOrderOverview KitchenOrderOverview;
         private OrderGerechtService orderGerechtService;
@@ -179,6 +179,7 @@ namespace ChapeauUI
             }
         }
 
+        // SoC die terugkomt in iedere pictureBoxTable_Click event. 
         private void SetOrderIsServed(Table table)
         {
             ChapeauModel.Order order = this.orderService.GetCurrentOrder(table);
