@@ -32,18 +32,6 @@ namespace ChapeauModel
             return true;
         }
 
-        //public static bool ListIsMixed(List<OrderGerecht> orders)
-        //{
-        //    foreach (OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus)))
-        //    {
-        //        if (ListOnlyHasStatus(orders, orderStatus))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
         public abstract List<OrderGerecht> GetCombinedGerechten();
         public abstract void Add(OrderGerecht orderGerecht);
         public abstract List<OrderGerecht> TypeToList(TypeOfProduct type);

@@ -18,12 +18,6 @@ namespace ChapeauLogica
             orderGerechtDAO = new OrderGerechtDAO();
         }
 
-        public List<OrderGerecht> GetAllOrderGerechten()
-        {
-            List<OrderGerecht> orderGerechten = orderGerechtDAO.GetAllOrderGerechten();
-            return orderGerechten;
-        }
-
         public void ChangeOrderGerechtStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
             orderGerechtDAO.ChangeStatus(orderGerecht, newStatus);

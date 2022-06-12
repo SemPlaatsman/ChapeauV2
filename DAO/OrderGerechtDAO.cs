@@ -13,25 +13,6 @@ namespace ChapeauDAO
 {
     public class OrderGerechtDAO : BaseDao
     {
-        public List<OrderGerecht> GetAllOrderGerechten()
-        {
-            try
-            {
-                string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, M.[Type], M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark, O.IsServed " +
-                    "FROM ApplicatiebouwChapeau.OrderGerecht AS O " +
-                    "JOIN ApplicatiebouwChapeau.MenuItem AS M ON O.ItemId = M.ProductID " +
-                    "JOIN ApplicatiebouwChapeau.TypeOfProduct AS T ON M.[Type] = T.TypeID " +
-                    "WHERE O.[Status] != 1;";
-                SqlParameter[] sqlParameters = new SqlParameter[0];
-                return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-            }
-            catch (Exception e)
-            {
-                ErrorLogger.WriteLogToFile(e);
-                throw new ChapeauException("Something went wrong while loading all order gerechten.");
-            }
-        }
-
         public void ChangeStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
             try
