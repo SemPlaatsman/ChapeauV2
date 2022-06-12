@@ -18,7 +18,8 @@ namespace ChapeauUI
         private List<OrderGerecht> selectedItems;
         private Employee employee;
         private Table table;
-
+        private DateTime lunch = new DateTime(2022, 6, 14, 16, 00, 00);
+        private List<MenuItem> menuitems;
         public Order(Table TableId, Employee employee) 
 
         {
@@ -37,9 +38,9 @@ namespace ChapeauUI
             panelVerwijderenBestelling.Visible = false;
             listViewGerechten.View = View.Details;
             listViewGerechten.FullRowSelect = true;
-            listViewGerechten.Columns.Add("ID", 100);
-            listViewGerechten.Columns.Add("Name", 100);
-            listViewGerechten.Columns.Add("Price", 100);
+            listViewGerechten.Columns.Add("ID", 30);
+            listViewGerechten.Columns.Add("Name", 190);
+            listViewGerechten.Columns.Add("Price", 80);
             listViewGerechten.Columns.Add("Stock", 100);
             listViewGerechten.Columns.Add("Alcoholic", 100);
         }
@@ -49,83 +50,19 @@ namespace ChapeauUI
             listViewGerechten.Items.Clear();
             labelTypeGerecht.Text = "Voorgerecht";
             MenuItemService menuItemService = new MenuItemService();
-            List<MenuItem>orderedItems = menuItemService.GetAllMenuItems();
+            
             panelBestellen.Visible = true;
-            foreach (MenuItem m in orderedItems)
+            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
             {
-                if (m.Type == TypeOfProduct.Voorgerecht)
-                {
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                }
+                menuitems = menuItemService.GetAllMenuItems(0, 1);
             }
-        }
-
-        private void buttonHoofdgerecht_Click(object sender, EventArgs e)
-        {
-
-            listViewGerechten.Items.Clear();
-            panelBestellen.Visible = true;
-            labelTypeGerecht.Text = "Hoofdgerecht";
-            MenuItemService menuItemService = new MenuItemService();
-            List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-  
-            foreach (MenuItem m in orderedItems)
+            else
             {
-                if (m.Type == TypeOfProduct.Hoofdgerecht)
-                {
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                }
+                menuitems = menuItemService.GetAllMenuItems(0, 0);
             }
-        }
-
-        private void buttonNagerecht_Click(object sender, EventArgs e)
-        {
-
-            listViewGerechten.Items.Clear();
-            panelBestellen.Visible = true;
-            labelTypeGerecht.Text = "Nagerecht";
-            MenuItemService menuItemService = new MenuItemService();
-            List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-      
-            foreach (MenuItem m in orderedItems)
+            foreach (MenuItem m in menuitems)
             {
-                if (m.Type == TypeOfProduct.Nagerecht)
-                {
-                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
-                    listViewItem.SubItems.Add(m.ProductName);
-                    listViewItem.SubItems.Add(m.Price.ToString());
-                    listViewItem.SubItems.Add(m.Stock.ToString());
-                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
-                    listViewItem.Tag = m;
-                    listViewGerechten.Items.Add(listViewItem);
-                }
-            }
-        }
-
-        private void buttonDrankjes_Click(object sender, EventArgs e)
-        {
-            listViewGerechten.Items.Clear();
-            panelBestellen.Visible = true;
-            labelTypeGerecht.Text = "Drankjes";
-            MenuItemService menuItemService = new MenuItemService();
-            List<MenuItem> orderedItems = menuItemService.GetAllMenuItems();
-         
-            foreach (MenuItem m in orderedItems)
-            {
-                if (m.Type == TypeOfProduct.Drinken)
-                {
+                
                     ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
                     listViewItem.SubItems.Add(m.ProductName);
                     listViewItem.SubItems.Add(m.Price.ToString());
@@ -137,7 +74,97 @@ namespace ChapeauUI
                     listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
                     listViewItem.Tag = m;
                     listViewGerechten.Items.Add(listViewItem);
-                }
+                
+            }
+        }
+
+        private void buttonHoofdgerecht_Click(object sender, EventArgs e)
+        {
+
+            listViewGerechten.Items.Clear();
+            panelBestellen.Visible = true;
+            labelTypeGerecht.Text = "Hoofdgerecht";
+            MenuItemService menuItemService = new MenuItemService();
+            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
+            {
+                menuitems = menuItemService.GetAllMenuItems(1, 1);
+            }
+            else
+            {
+                menuitems = menuItemService.GetAllMenuItems(1, 0);
+            }
+            foreach (MenuItem m in menuitems)
+            {
+               
+                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
+                    listViewItem.SubItems.Add(m.ProductName);
+                    listViewItem.SubItems.Add(m.Price.ToString());
+                    if (m.Stock < 10)
+                    {
+                        listViewItem.BackColor = Color.OrangeRed;
+                    }
+                    listViewItem.SubItems.Add(m.Stock.ToString());
+                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
+                    listViewGerechten.Items.Add(listViewItem);
+                
+            }
+        }
+
+        private void buttonNagerecht_Click(object sender, EventArgs e)
+        {
+
+            listViewGerechten.Items.Clear();
+            panelBestellen.Visible = true;
+            labelTypeGerecht.Text = "Nagerecht";
+            MenuItemService menuItemService = new MenuItemService();
+            if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
+            {
+                menuitems = menuItemService.GetAllMenuItems(2, 1);
+            }
+            else
+            {
+                menuitems = menuItemService.GetAllMenuItems(2, 0);
+            }
+            foreach (MenuItem m in menuitems)
+            {
+                
+                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
+                    listViewItem.SubItems.Add(m.ProductName);
+                    listViewItem.SubItems.Add(m.Price.ToString());
+                    if (m.Stock < 10)
+                    {
+                        listViewItem.BackColor = Color.OrangeRed;
+                    }
+                    listViewItem.SubItems.Add(m.Stock.ToString());
+                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
+                    listViewGerechten.Items.Add(listViewItem);
+                
+            }
+        }
+
+        private void buttonDrankjes_Click(object sender, EventArgs e)
+        {
+            listViewGerechten.Items.Clear();
+            panelBestellen.Visible = true;
+            labelTypeGerecht.Text = "Drankjes";
+            MenuItemService menuItemService = new MenuItemService();
+            menuitems = menuItemService.GetAllMenuItems(3, 0);
+         
+            foreach (MenuItem m in menuitems)
+            {
+                    ListViewItem listViewItem = new ListViewItem(m.ProductId.ToString());
+                    listViewItem.SubItems.Add(m.ProductName);
+                    listViewItem.SubItems.Add(m.Price.ToString());
+                    if (m.Stock < 10)
+                    {
+                        listViewItem.BackColor = Color.OrangeRed;
+                    }
+                    listViewItem.SubItems.Add(m.Stock.ToString());
+                    listViewItem.SubItems.Add(m.IsAlcoholic.ToString());
+                    listViewItem.Tag = m;
+                    listViewGerechten.Items.Add(listViewItem);
             }
         }
 
@@ -192,6 +219,11 @@ namespace ChapeauUI
                 labelErrorMessage.ForeColor = Color.Red;
                 labelErrorMessage.Text = "Aantal kan niet onder de 1 zijn.";
             }
+            if (amount > int.Parse(listViewGerechten.SelectedItems[0].SubItems[3].Text)) 
+            {
+                labelErrorMessage.ForeColor = Color.Red;
+                labelErrorMessage.Text = $"Niet genoeg voorraad, voorraad: {int.Parse(listViewGerechten.SelectedItems[0].SubItems[3].Text)}";
+            }
             else
             {
                 OrderGerecht gerecht = new OrderGerecht();
@@ -236,7 +268,7 @@ namespace ChapeauUI
                 }
                 else
                 {
-                    item.SubItems.Add("nee");
+                    item.SubItems.Add("Nee");
                 }
                 item.SubItems.Add(O.Remark.ToString());
                 item.Tag = menuItem;
