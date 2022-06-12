@@ -85,27 +85,6 @@ namespace ChapeauModel
             return new List<OrderGerecht>();
         }
 
-        public List<OrderGerecht> GetNextKlaarList()
-        {
-            if (Voorgerechten.Count != 0 && ListOnlyHasStatus(Voorgerechten, OrderStatus.Klaar))
-            {
-                return Voorgerechten;
-            }
-            else if (Tussengerechten.Count != 0 && ListOnlyHasStatus(Tussengerechten, OrderStatus.Klaar))
-            {
-                return Tussengerechten;
-            }
-            else if (Hoofdgerechten.Count != 0 && ListOnlyHasStatus(Hoofdgerechten, OrderStatus.Klaar))
-            {
-                return Hoofdgerechten;
-            }
-            else if (Nagerechten.Count != 0 && ListOnlyHasStatus(Nagerechten, OrderStatus.Klaar))
-            {
-                return Nagerechten;
-            }
-            return new List<OrderGerecht>();
-        }
-
         public override List<OrderGerecht> GetCombinedGerechten()
         {
             List<OrderGerecht> gerechten = new List<OrderGerecht>();
@@ -131,14 +110,6 @@ namespace ChapeauModel
                 default:
                     return new List<OrderGerecht>();
             }
-        }
-
-        public string ToStringOverzicht()
-        {
-            return $"Voorgerechten: {(Voorgerechten.Count != 0 ? Regex.Replace($"{Voorgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Tussengerechten: {(Tussengerechten.Count != 0 ? Regex.Replace($"{Tussengerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Hoofdgerechten: {(Hoofdgerechten.Count != 0 ? Regex.Replace($"{Hoofdgerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}\n" +
-                $"Nagerechten: {(Nagerechten.Count != 0 ? Regex.Replace($"{Nagerechten[0].IsServed}", "([A-Z])", " $1").Trim() : "Geen Menu Items")}";
         }
     }
 }
