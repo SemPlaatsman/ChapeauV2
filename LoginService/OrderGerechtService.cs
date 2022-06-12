@@ -40,6 +40,12 @@ namespace ChapeauLogica
             return orderGerecht;
         }
 
+        public List<OrderGerecht> GetOrdersByTableId(Table table) 
+        {
+            List<OrderGerecht> orderGerecht = orderGerechtDAO.GetOrdersByTableId(table);
+            return orderGerecht;
+        }
+
         public void UpdateIsServed(Order order) 
         {
             orderGerechtDAO.UpdateIsServed(order);
