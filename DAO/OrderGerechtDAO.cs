@@ -13,7 +13,7 @@ namespace ChapeauDAO
     {
         public List<OrderGerecht> GetAllOrderGerechten()
         {
-            string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, M.[Type], M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark " +
+            string query = "SELECT O.OrderGerechtId, M.ProductID, M.IsDiner, M.[Type], M.ProductName, M.Price, M.Stock, M.IsAlcoholic, O.OrderId, O.[Status], O.TimeOfOrder, O.Remark, O.IsServed " +
                 "FROM ApplicatiebouwChapeau.OrderGerecht AS O " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON O.ItemId = M.ProductID " +
                 "JOIN ApplicatiebouwChapeau.TypeOfProduct AS T ON M.[Type] = T.TypeID " +
@@ -30,6 +30,26 @@ namespace ChapeauDAO
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@orderGerechtId", orderGerecht.OrderGerechtId);
             sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public List<OrderGerecht> GetCurrentOrderGerechten(Order order) 
+        {
+            string query = "SELECT OG.OrderGerechtId, M.ProductID, M.IsDiner, M.[Type], M.ProductName, M.Price, M.Stock, M.IsAlcoholic, OG.OrderId, OG.[Status], OG.TimeOfOrder, OG.Remark, OG.IsServed " +
+                "from [ApplicatiebouwChapeau].[OrderGerecht] as OG " +
+                "join ApplicatiebouwChapeau.[Order] as O on O.OrderID = OG.OrderId " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "where OG.OrderId = @OrderID and OG.IsServed = 0;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", order.OrderId);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public void UpdateIsServed(Order order) 
+        {
+            string query = "update ApplicatiebouwChapeau.OrderGerecht set IsServed = 1 where IsServed = 0 and OrderID = @OrderID; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", order.OrderId);
             ExecuteEditQuery(query, sqlParameters);
         }
 
@@ -56,7 +76,8 @@ namespace ChapeauDAO
                     Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (OrderStatus)((int)dr["Status"] + 1),
                     /*Bovenstaande regel code komt van Kitchen- en BarDAO*/
                     TimeOfOrder = (DateTime)dr["TimeOfOrder"],
-                    Remark = (string)dr["Remark"]
+                    Remark = Convert.IsDBNull(dr["Remark"]) ? string.Empty : (string)dr["Remark"],
+                    IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
                 };
                 orderGerechten.Add(orderGerecht);
             }
