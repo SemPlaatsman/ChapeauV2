@@ -59,7 +59,7 @@ namespace ChapeauUI
             {
                 TableId = this.table.TableID
             };
-            kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview);
+            kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview.TableId);
             // iets nodig om te items te showen die georderd zijn op deze tafel. 
             listViewOrder.View = View.Details;
             listViewOrder.FullRowSelect = true;
