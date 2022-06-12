@@ -18,11 +18,14 @@ namespace ChapeauUI
 {
     public partial class TableForm : Form
     {
+        // private fields
         private Table table;
         private TableOverviewForm overviewForm;
         private Employee employee;
         private Employee employeeConnectedToTable;
         private EmployeeService employeeService;
+
+        // constructor
         public TableForm(Table table, TableOverviewForm overviewForm, Employee employee) 
         {
             this.employeeService = new EmployeeService();
@@ -61,7 +64,6 @@ namespace ChapeauUI
                 TableId = this.table.TableID
             };
             kitchenOrderOverview = kitchenService.GetKitchenOverviewWithTableId(kitchenOrderOverview.TableId);
-            // iets nodig om te items te showen die georderd zijn op deze tafel. 
             listViewOrder.View = View.Details;
             listViewOrder.FullRowSelect = true;
             listViewOrder.Columns.Add("Naam", 170);
@@ -99,9 +101,6 @@ namespace ChapeauUI
                         tableService.UpdateTableOccupy(table, true);
                         tableService.SetEmployee(this.employee, table);
                         this.employeeConnectedToTable = employeeService.GetEmployee(this.table);
-                        // overbodig. met refactor eruit halen. 
-                        labelCurrentEmployee.Text = $"{this.employee.LastName}, {this.employee.FirstName}";
-                        // nu toont hij alleen degene die ingelogd is, maar niet degene die gekoppeld is aan de tafel. Update ook niet live... 
                         this.overviewForm.SetColor();
                     }
                 }
@@ -116,7 +115,6 @@ namespace ChapeauUI
         {
             TableService tableService = new TableService();
             Table table = null;           
-            // Dit later omzetten naar Table Object. 
             List<Table> tables = tableService.GetAllTables();
             table = tables.Find(x => x.TableID == this.table.TableID);
             // alle tafels updaten? 
@@ -143,7 +141,6 @@ namespace ChapeauUI
                 checkBoxTable.Checked = false;
             }
         }
-
 
     }
 }
