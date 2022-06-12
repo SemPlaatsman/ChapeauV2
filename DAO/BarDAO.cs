@@ -27,9 +27,9 @@ namespace ChapeauDAO
                 "AND M1.[Type] = @typeOfDrink); ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
-            //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public List<BarOrderOverview> GetBarOverviews()
         {
             PushLateDrinks();
@@ -67,30 +67,59 @@ namespace ChapeauDAO
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        public void ChangeFullOrderStatus(OrderOverview kitchenOrderOverview, OrderStatus newStatus)
         {
             string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
                 "SET[Status] = @newStatus " +
-                "WHERE OrderId = @orderId AND ItemId IN (SELECT ProductID " +
-                "FROM ApplicatiebouwChapeau.MenuItem " +
-                "WHERE[Type] = @typeId); ";
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId " +
+                "AND M.[Type] = @typeOfDrink; ";
             SqlParameter[] sqlParameters = new SqlParameter[3];
-            sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
+            sqlParameters[0] = new SqlParameter("@orderId", kitchenOrderOverview.OrderId);
             sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
-            sqlParameters[2] = new SqlParameter("typeId", (int)orderGerecht.MenuItem.Type);
+            sqlParameters[2] = new SqlParameter("@typeOfDrink", TypeOfProduct.Drinken);
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void ChangeServeStatusWithType(int orderId, ServeerStatus serveerStatus)
+        public void ChangeOrderStatusWithType(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET [Status] = @newStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
+            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            sqlParameters[2] = new SqlParameter("@typeId", (int)orderGerecht.MenuItem.Type);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeFullServeStatus(OrderOverview barOrderOverview, ServeerStatus serveerStatus)
         {
             string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
                 "SET IsServed = @serveerStatus " +
                 "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
                 "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
-                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId ";
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeOfDrink; ";
             SqlParameter[] sqlParameters = new SqlParameter[3];
             sqlParameters[0] = new SqlParameter("@serveerStatus", serveerStatus == ServeerStatus.IsGeserveerd ? true : serveerStatus == ServeerStatus.KanGeserveerdWorden ? false : DBNull.Value);
-            sqlParameters[1] = new SqlParameter("@orderId", orderId);
+            sqlParameters[1] = new SqlParameter("@orderId", barOrderOverview.OrderId);
+            sqlParameters[2] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeServeStatusWithType(OrderGerecht orderGerecht, ServeerStatus serveerStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET IsServed = @serveerStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@serveerStatus", serveerStatus == ServeerStatus.IsGeserveerd ? true : serveerStatus == ServeerStatus.KanGeserveerdWorden ? false : DBNull.Value);
+            sqlParameters[1] = new SqlParameter("@orderId", orderGerecht.OrderId);
             sqlParameters[2] = new SqlParameter("@typeId", (int)TypeOfProduct.Drinken);
             ExecuteEditQuery(query, sqlParameters);
         }

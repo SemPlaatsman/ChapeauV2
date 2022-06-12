@@ -73,6 +73,8 @@ namespace ChapeauUI
                 }
             }
 
+            dataGridViewMoetNog.Sort(dataGridViewMoetNog.Columns[2], ListSortDirection.Ascending);
+
             dataGridViewMoetNog.ClearSelection();
             dataGridViewOverzicht.ClearSelection();
 
@@ -272,7 +274,7 @@ namespace ChapeauUI
                     orderGerecht.Status = OrderStatus.Klaar;
                     if (OrderOverview.ListOnlyHasStatus(kitchenOverview.TypeToList(orderGerecht.MenuItem.Type), OrderStatus.Klaar))
                     {
-                        kitchenService.ChangeServeStatusWithType(kitchenOverview.OrderId, orderGerecht.MenuItem.Type, ServeerStatus.KanGeserveerdWorden);
+                        kitchenService.ChangeServeStatusWithType(orderGerecht, ServeerStatus.KanGeserveerdWorden);
                     }
                 }
                 LoadKitchenDisplayData();
@@ -298,7 +300,7 @@ namespace ChapeauUI
                 KitchenOrderOverview kitchenOverview = (KitchenOrderOverview)dataGridView.Rows[e.RowIndex].Tag;
                 List<OrderGerecht> gerechten = kitchenOverview.GetNextMoetNogList();
                 if (gerechten.Count > 0)
-                    kitchenService.ChangeNextOrderStatus(gerechten.First(), OrderStatus.MeeBezig);
+                    kitchenService.ChangeOrderStatusWithType(gerechten.First(), OrderStatus.MeeBezig);
                 LoadKitchenDisplayData();
             }
         }

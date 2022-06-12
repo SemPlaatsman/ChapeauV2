@@ -38,7 +38,7 @@ namespace ChapeauUI
 
             this.Text = $"Overview van order {this.orderOverview.OrderId} voor tafel {this.orderOverview.TableId}";
 
-            if (orderOverview.GetCombinedGerechten().FirstOrDefault().MenuItem.Type == TypeOfProduct.Drinken)
+            if (orderOverview.GetCombinedGerechten().First().MenuItem.Type == TypeOfProduct.Drinken)
             {
                 labelPerType.Visible = false;
                 comBoxType.Visible = false;
@@ -69,7 +69,7 @@ namespace ChapeauUI
             dataGridViewOrderOverview.AllowUserToAddRows = true;
 
             dataGridViewOrderOverview.Rows.Clear();
-            if (orderOverview.GetCombinedGerechten().FirstOrDefault().MenuItem.Type == TypeOfProduct.Drinken)
+            if (orderOverview.GetCombinedGerechten().First().MenuItem.Type == TypeOfProduct.Drinken)
             {
                 BarService barService = new BarService();
                 this.orderOverview = barService.GetBarOverview(this.orderOverview.OrderId);
@@ -79,6 +79,12 @@ namespace ChapeauUI
                 KitchenService kitchenService = new KitchenService();
                 this.orderOverview = kitchenService.GetKitchenOverview(this.orderOverview.OrderId);
                 SetButtonStatus(buttonTypeStatus, ((KitchenOrderOverview)orderOverview).TypeToList((TypeOfProduct)Enum.Parse(typeof(TypeOfProduct), comBoxType.GetItemText(comBoxType.SelectedItem))));
+            }
+
+            if (orderOverview.GetCombinedGerechten().Count <= 0)
+            {
+                MessageBox.Show("Er zijn geen orders meer over in deze order overview!\nDit scherm wordt nu gesloten.");
+                this.Close();
             }
 
             foreach (OrderGerecht orderGerecht in orderOverview.GetCombinedGerechten())
@@ -101,6 +107,7 @@ namespace ChapeauUI
 
         public void SetButtonStatus(Button button, List<OrderGerecht> statusIdentifier)
         {
+            button.Enabled = true;
             button.BackColor = Color.White;
             if (statusIdentifier.Count <= 0)
             {
@@ -148,15 +155,34 @@ namespace ChapeauUI
         private void dataGridViewOrderOverview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
-            {
                 return;
-            }
+
             DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridViewOrderOverview.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (((DataGridViewComboBoxCell)dataGridViewOrderOverview.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value != null)
             {
                 OrderGerechtService orderGerechtService = new OrderGerechtService();
                 OrderGerecht orderGerecht = (OrderGerecht)dataGridViewOrderOverview.Rows[e.RowIndex].Tag;
                 orderGerechtService.ChangeOrderGerechtStatus(orderGerecht, TranslateStringToStatus(cb.Value.ToString()));
+
+                IBarKitchenService orderService;
+
+                if (orderGerecht.MenuItem.Type == TypeOfProduct.Drinken)
+                    orderService = new BarService();
+                else
+                    orderService = new KitchenService();
+
+                if (TranslateStringToStatus(cb.Value.ToString()) == OrderStatus.Klaar)
+                {
+                    orderGerecht.Status = OrderStatus.Klaar;
+                    if (OrderOverview.ListOnlyHasStatus(orderOverview.TypeToList(orderGerecht.MenuItem.Type), OrderStatus.Klaar))
+                    {
+                        orderService.ChangeServeStatusWithType(orderGerecht, ServeerStatus.KanGeserveerdWorden);
+                    }
+                }
+                else
+                {
+                    orderService.ChangeServeStatusWithType(orderGerecht, ServeerStatus.MeeBezig);
+                }
                 LoadOrderOverviewData();
             }
         }
@@ -173,44 +199,64 @@ namespace ChapeauUI
 
         private void buttonTypeStatus_Click(object sender, EventArgs e)
         {
+            IBarKitchenService orderService;
+            if (this.orderOverview.GetCombinedGerechten().First().MenuItem.Type == TypeOfProduct.Drinken)
+                orderService = new BarService();
+            else
+                orderService = new KitchenService();
+
             List<OrderGerecht> orders = (List<OrderGerecht>)buttonTypeStatus.Tag;
             if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.MoetNog))
             {
-                //Moet nog
+                orderService.ChangeOrderStatusWithType(orders.First(), OrderStatus.MeeBezig);
             }
             else if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.MeeBezig))
             {
-                //Mee bezig
+                orderService.ChangeOrderStatusWithType(orders.First(), OrderStatus.Klaar);
+                orderService.ChangeServeStatusWithType(orders.First(), ServeerStatus.KanGeserveerdWorden);
             }
             else if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.Klaar))
             {
-                //Klaar
+                orderService.ChangeOrderStatusWithType(orders.First(), OrderStatus.MoetNog);
+                orderService.ChangeServeStatusWithType(orders.First(), ServeerStatus.MeeBezig);
             }
-            else if (MessageBox.Show("Weet je zeker dat je de status van de gehele order wilt veranderen naar Klaar?", "Weet je het zeker?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            else if (MessageBox.Show($"Weet je zeker dat je de status van alle {comBoxType.SelectedItem.ToString().ToLower()}en wilt veranderen naar Klaar?", "Weet je het zeker?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //Gemixt
+                orderService.ChangeOrderStatusWithType(orders.First(), OrderStatus.Klaar);
+                orderService.ChangeServeStatusWithType(orders.First(), ServeerStatus.KanGeserveerdWorden);
             }
+            LoadOrderOverviewData();
         }
 
         private void buttonFullStatus_Click(object sender, EventArgs e)
         {
+            IBarKitchenService orderService;
+            if (this.orderOverview.GetCombinedGerechten().First().MenuItem.Type == TypeOfProduct.Drinken)
+                orderService = new BarService();
+            else
+                orderService = new KitchenService();
+
             List<OrderGerecht> orders = (List<OrderGerecht>)buttonFullStatus.Tag;
             if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.MoetNog))
             {
-                //Moet nog
+                orderService.ChangeFullOrderStatus(this.orderOverview, OrderStatus.MeeBezig);
             }
             else if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.MeeBezig))
             {
-                //Mee bezig
+                orderService.ChangeFullOrderStatus(this.orderOverview, OrderStatus.Klaar);
+                orderService.ChangeFullServeStatus(this.orderOverview, ServeerStatus.KanGeserveerdWorden);
             }
             else if (OrderOverview.ListOnlyHasStatus(orders, OrderStatus.Klaar))
             {
-                //Klaar
+                orderService.ChangeFullOrderStatus(this.orderOverview, OrderStatus.MoetNog);
+                orderService.ChangeFullServeStatus(this.orderOverview, ServeerStatus.MeeBezig);
             }
             else if (MessageBox.Show("Weet je zeker dat je de status van de gehele order wilt veranderen naar Klaar?", "Weet je het zeker?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //Gemixt
+                orderService.ChangeFullOrderStatus(this.orderOverview, OrderStatus.Klaar);
+                orderService.ChangeFullServeStatus(this.orderOverview, ServeerStatus.KanGeserveerdWorden);
             }
+            LoadOrderOverviewData();
         }
     }
 }

@@ -294,7 +294,7 @@ namespace ChapeauUI
                 BarOrderOverview barOverview = (BarOrderOverview)dataGridView.Rows[e.RowIndex].Tag;
                 List<OrderGerecht> drinken = barOverview.GetNextMoetNogList();
                 if (drinken.Count > 0)
-                    barService.ChangeNextOrderStatus(drinken.First(), OrderStatus.MeeBezig);
+                    barService.ChangeOrderStatusWithType(drinken.First(), OrderStatus.MeeBezig);
                 LoadBarDisplayData();
             }
         }
@@ -331,7 +331,7 @@ namespace ChapeauUI
                     orderGerecht.Status = OrderStatus.Klaar;
                     if (OrderOverview.ListOnlyHasStatus(barOverview.Drinken, OrderStatus.Klaar))
                     {
-                        barService.ChangeServeStatusWithType(barOverview.OrderId, ServeerStatus.KanGeserveerdWorden);
+                        barService.ChangeServeStatusWithType(orderGerecht, ServeerStatus.KanGeserveerdWorden);
                     }
                 }
                 LoadBarDisplayData();

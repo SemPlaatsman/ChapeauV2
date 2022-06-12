@@ -22,7 +22,7 @@ namespace ChapeauModel
             Nagerechten = new List<OrderGerecht>();
         }
 
-        public void Add(OrderGerecht orderGerecht)
+        public override void Add(OrderGerecht orderGerecht)
         {
             switch (orderGerecht.MenuItem.Type)
             {
@@ -116,7 +116,7 @@ namespace ChapeauModel
             return gerechten;
         }
 
-        public List<OrderGerecht> TypeToList(TypeOfProduct type)
+        public override List<OrderGerecht> TypeToList(TypeOfProduct type)
         {
             switch (type)
             {

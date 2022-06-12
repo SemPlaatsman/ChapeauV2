@@ -8,7 +8,7 @@ using ChapeauDAO;
 
 namespace ChapeauLogica
 {
-    public class BarService
+    public class BarService : IBarKitchenService
     {
         private BarDAO barDAO;
 
@@ -27,14 +27,24 @@ namespace ChapeauLogica
             return barDAO.GetBarOverview(orderId);
         }
 
-        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        public void ChangeOrderStatusWithType(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
-            barDAO.ChangeNextOrderStatus(orderGerecht, newStatus);
+            barDAO.ChangeOrderStatusWithType(orderGerecht, newStatus);
         }
 
-        public void ChangeServeStatusWithType(int orderId, ServeerStatus serveerStatus)
+        public void ChangeServeStatusWithType(OrderGerecht orderGerecht, ServeerStatus serveerStatus)
         {
-            barDAO.ChangeServeStatusWithType(orderId, serveerStatus);
+            barDAO.ChangeServeStatusWithType(orderGerecht, serveerStatus);
+        }
+
+        public void ChangeFullOrderStatus(OrderOverview barOrderOverview, OrderStatus newStatus)
+        {
+            barDAO.ChangeFullOrderStatus(barOrderOverview, newStatus);
+        }
+
+        public void ChangeFullServeStatus(OrderOverview barOrderOverview, ServeerStatus serveerStatus)
+        {
+            barDAO.ChangeFullServeStatus(barOrderOverview, serveerStatus);
         }
     }
 }

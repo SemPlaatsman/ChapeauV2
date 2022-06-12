@@ -45,5 +45,7 @@ namespace ChapeauModel
         //}
 
         public abstract List<OrderGerecht> GetCombinedGerechten();
+        public abstract void Add(OrderGerecht orderGerecht);
+        public abstract List<OrderGerecht> TypeToList(TypeOfProduct type);
     }
 }
