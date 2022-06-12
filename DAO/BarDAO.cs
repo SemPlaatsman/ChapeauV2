@@ -27,9 +27,9 @@ namespace ChapeauDAO
                 "AND M1.[Type] = @typeOfDrink); ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
-            //sqlParameters[1] = new SqlParameter("@meeBezigStatus", ((int)OrderStatus.MeeBezig - 1));
             ExecuteEditQuery(query, sqlParameters);
         }
+
         public List<BarOrderOverview> GetBarOverviews()
         {
             PushLateDrinks();
@@ -48,6 +48,117 @@ namespace ChapeauDAO
             sqlParameters[0] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
             sqlParameters[1] = new SqlParameter("@hoursToAdd", 2);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public BarOrderOverview GetBarOverview(int orderId)
+        {
+            PushLateDrinks();
+
+            string query = "SELECT O.[OrderID], O.[TableId], OG.[OrderGerechtId], M.[ProductID], M.[IsDiner], M.[Type], M.[ProductName], M.[Price], M.[Stock], M.[IsAlcoholic], OG.[OrderId], OG.[Status], OG.[TimeOfOrder], OG.[Remark], OG.[IsServed] " +
+                "FROM ApplicatiebouwChapeau.[Order] AS O " +
+                "JOIN ApplicatiebouwChapeau.OrderGerecht AS OG ON O.OrderID = OG.OrderId " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.[ItemId] = M.[ProductID] " +
+                "WHERE M.[Type] = @typeOfDrink AND OG.[OrderId] = @orderId " +
+                "AND DATEPART(DAYOFYEAR, DATEADD(HOUR, @hoursToAdd, GETDATE())) = DATEPART(DAYOFYEAR, TimeOfOrder); ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", orderId);
+            sqlParameters[1] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            sqlParameters[2] = new SqlParameter("@hoursToAdd", 2);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public void ChangeFullOrderStatus(OrderOverview kitchenOrderOverview, OrderStatus newStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET[Status] = @newStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId " +
+                "AND M.[Type] = @typeOfDrink; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", kitchenOrderOverview.OrderId);
+            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            sqlParameters[2] = new SqlParameter("@typeOfDrink", TypeOfProduct.Drinken);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeOrderStatusWithType(OrderGerecht orderGerecht, OrderStatus newStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET [Status] = @newStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@orderId", orderGerecht.OrderId);
+            sqlParameters[1] = new SqlParameter("@newStatus", newStatus == OrderStatus.Klaar ? true : newStatus == OrderStatus.MeeBezig ? false : DBNull.Value);
+            sqlParameters[2] = new SqlParameter("@typeId", (int)orderGerecht.MenuItem.Type);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeFullServeStatus(OrderOverview barOrderOverview, ServeerStatus serveerStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET IsServed = @serveerStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeOfDrink; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@serveerStatus", serveerStatus == ServeerStatus.IsGeserveerd ? true : serveerStatus == ServeerStatus.KanGeserveerdWorden ? false : DBNull.Value);
+            sqlParameters[1] = new SqlParameter("@orderId", barOrderOverview.OrderId);
+            sqlParameters[2] = new SqlParameter("@typeOfDrink", (int)TypeOfProduct.Drinken);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void ChangeServeStatusWithType(OrderGerecht orderGerecht, ServeerStatus serveerStatus)
+        {
+            string query = "UPDATE ApplicatiebouwChapeau.OrderGerecht " +
+                "SET IsServed = @serveerStatus " +
+                "FROM ApplicatiebouwChapeau.OrderGerecht AS OG " +
+                "JOIN ApplicatiebouwChapeau.MenuItem AS M ON OG.ItemId = M.ProductID " +
+                "WHERE OG.OrderId = @orderId AND M.[Type] = @typeId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[3];
+            sqlParameters[0] = new SqlParameter("@serveerStatus", serveerStatus == ServeerStatus.IsGeserveerd ? true : serveerStatus == ServeerStatus.KanGeserveerdWorden ? false : DBNull.Value);
+            sqlParameters[1] = new SqlParameter("@orderId", orderGerecht.OrderId);
+            sqlParameters[2] = new SqlParameter("@typeId", (int)TypeOfProduct.Drinken);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        private BarOrderOverview ReadTable(DataTable dataTable)
+        {
+            BarOrderOverview barOrderOverview = new BarOrderOverview();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderGerecht orderGerecht = new OrderGerecht()
+                {
+                    OrderGerechtId = (int)dr["OrderGerechtId"],
+                    MenuItem = new MenuItem()
+                    {
+                        ProductId = (int)dr["ProductId"],
+                        IsDiner = (bool)dr["IsDiner"],
+                        Type = (TypeOfProduct)(int)dr["Type"],
+                        ProductName = (string)dr["ProductName"],
+                        Price = (decimal)dr["Price"],
+                        Stock = (int)dr["Stock"],
+                        IsAlcoholic = (bool)dr["IsAlcoholic"]
+                    },
+                    OrderId = (int)dr["OrderId"],
+                    Status = (Convert.IsDBNull(dr["Status"])) ? OrderStatus.MoetNog : (bool)dr["Status"] ? OrderStatus.Klaar : OrderStatus.MeeBezig,
+                    /* De bovenstaande regel code kijkt eerst of Convert.IsDBNull(...) true returned. 
+                    Als dat zo is dan wordt de waarde null gebruikt, 
+                    als Convert.IsDBNull false returned dan wordt (bool)dr["Status"] gebruikt (die de andere twee waardes van een nullable bool kan hebben).
+                    Dit wordt gedaan omdat je een DBNull niet direct naar een nullable bool kan casten.*/
+                    TimeOfOrder = (DateTime)dr["TimeOfOrder"],
+                    Remark = Convert.IsDBNull(dr["Remark"]) ? String.Empty : (string)dr["Remark"],
+                    /* Zelfde reden als hierboven is genoemd alleen dan maak ik een empty string wanneer de value null is.*/
+                    IsServed = Convert.IsDBNull(dr["IsServed"]) ? ServeerStatus.MeeBezig : (bool)dr["IsServed"] ? ServeerStatus.IsGeserveerd : ServeerStatus.KanGeserveerdWorden
+                };
+                barOrderOverview.OrderId = (int)dr["OrderID"];
+                barOrderOverview.TableId = (int)dr["TableId"];
+                barOrderOverview.Add(orderGerecht);
+            }
+            return barOrderOverview;
         }
 
         private List<BarOrderOverview> ReadTables(DataTable dataTable)

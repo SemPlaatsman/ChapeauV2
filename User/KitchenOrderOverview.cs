@@ -22,7 +22,7 @@ namespace ChapeauModel
             Nagerechten = new List<OrderGerecht>();
         }
 
-        public void Add(OrderGerecht orderGerecht)
+        public override void Add(OrderGerecht orderGerecht)
         {
             switch (orderGerecht.MenuItem.Type)
             {
@@ -45,19 +45,19 @@ namespace ChapeauModel
 
         public List<OrderGerecht> GetNextMoetNogList()
         {
-            if (Voorgerechten.Count != 0 && !ListHasMeeBezig(Voorgerechten) && !ListCompleted(Voorgerechten))
+            if (Voorgerechten.Count != 0 && !ListHasMeeBezig(Voorgerechten) && !ListOnlyHasStatus(Voorgerechten, OrderStatus.Klaar))
             {
                 return Voorgerechten;
             }
-            else if (Tussengerechten.Count != 0 && !ListHasMeeBezig(Tussengerechten) && !ListCompleted(Tussengerechten))
+            else if (Tussengerechten.Count != 0 && !ListHasMeeBezig(Tussengerechten) && !ListOnlyHasStatus(Tussengerechten, OrderStatus.Klaar))
             {
                 return Tussengerechten;
             }
-            else if (Hoofdgerechten.Count != 0 && !ListHasMeeBezig(Hoofdgerechten) && !ListCompleted(Hoofdgerechten))
+            else if (Hoofdgerechten.Count != 0 && !ListHasMeeBezig(Hoofdgerechten) && !ListOnlyHasStatus(Hoofdgerechten, OrderStatus.Klaar))
             {
                 return Hoofdgerechten;
             }
-            else if (Nagerechten.Count != 0 && !ListHasMeeBezig(Nagerechten) && !ListCompleted(Nagerechten))
+            else if (Nagerechten.Count != 0 && !ListHasMeeBezig(Nagerechten) && !ListOnlyHasStatus(Nagerechten, OrderStatus.Klaar))
             {
                 return Nagerechten;
             }
@@ -87,26 +87,26 @@ namespace ChapeauModel
 
         public List<OrderGerecht> GetNextKlaarList()
         {
-            if (Voorgerechten.Count != 0 && ListCompleted(Voorgerechten))
+            if (Voorgerechten.Count != 0 && ListOnlyHasStatus(Voorgerechten, OrderStatus.Klaar))
             {
                 return Voorgerechten;
             }
-            else if (Tussengerechten.Count != 0 && ListCompleted(Tussengerechten))
+            else if (Tussengerechten.Count != 0 && ListOnlyHasStatus(Tussengerechten, OrderStatus.Klaar))
             {
                 return Tussengerechten;
             }
-            else if (Hoofdgerechten.Count != 0 && ListCompleted(Hoofdgerechten))
+            else if (Hoofdgerechten.Count != 0 && ListOnlyHasStatus(Hoofdgerechten, OrderStatus.Klaar))
             {
                 return Hoofdgerechten;
             }
-            else if (Nagerechten.Count != 0 && ListCompleted(Nagerechten))
+            else if (Nagerechten.Count != 0 && ListOnlyHasStatus(Nagerechten, OrderStatus.Klaar))
             {
                 return Nagerechten;
             }
             return new List<OrderGerecht>();
         }
 
-        public List<OrderGerecht> GetCombinedGerechten()
+        public override List<OrderGerecht> GetCombinedGerechten()
         {
             List<OrderGerecht> gerechten = new List<OrderGerecht>();
             gerechten.AddRange(this.Voorgerechten);
@@ -114,6 +114,23 @@ namespace ChapeauModel
             gerechten.AddRange(this.Hoofdgerechten);
             gerechten.AddRange(this.Nagerechten);
             return gerechten;
+        }
+
+        public override List<OrderGerecht> TypeToList(TypeOfProduct type)
+        {
+            switch (type)
+            {
+                case TypeOfProduct.Voorgerecht:
+                    return Voorgerechten;
+                case TypeOfProduct.Tussengerecht:
+                    return Tussengerechten;
+                case TypeOfProduct.Hoofdgerecht:
+                    return Hoofdgerechten;
+                case TypeOfProduct.Nagerecht:
+                    return Nagerechten;
+                default:
+                    return new List<OrderGerecht>();
+            }
         }
 
         public string ToStringOverzicht()

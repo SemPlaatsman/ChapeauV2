@@ -30,10 +30,10 @@ namespace ChapeauUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenDisplay));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.flowLayoutMeeBezig = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridViewMoetNog = new System.Windows.Forms.DataGridView();
@@ -196,8 +196,8 @@ namespace ChapeauUI
             // 
             // ColumnVoorgerechten
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnVoorgerechten.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnVoorgerechten.HeaderText = "Voor-";
             this.ColumnVoorgerechten.Name = "ColumnVoorgerechten";
             this.ColumnVoorgerechten.ReadOnly = true;
@@ -205,8 +205,8 @@ namespace ChapeauUI
             // 
             // ColumnTussengerechten
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnTussengerechten.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnTussengerechten.HeaderText = "Tussen-";
             this.ColumnTussengerechten.Name = "ColumnTussengerechten";
             this.ColumnTussengerechten.ReadOnly = true;
@@ -214,8 +214,8 @@ namespace ChapeauUI
             // 
             // ColumnHoofdgerechten
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnHoofdgerechten.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnHoofdgerechten.HeaderText = "Hoofd-";
             this.ColumnHoofdgerechten.Name = "ColumnHoofdgerechten";
             this.ColumnHoofdgerechten.ReadOnly = true;
@@ -223,8 +223,8 @@ namespace ChapeauUI
             // 
             // ColumnNagerechten
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnNagerechten.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnNagerechten.HeaderText = "Na-";
             this.ColumnNagerechten.Name = "ColumnNagerechten";
             this.ColumnNagerechten.ReadOnly = true;
@@ -267,6 +267,7 @@ namespace ChapeauUI
             this.Name = "KitchenDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KitchenDisplay";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KitchenDisplay_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoetNog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverzicht)).EndInit();
             this.ResumeLayout(false);

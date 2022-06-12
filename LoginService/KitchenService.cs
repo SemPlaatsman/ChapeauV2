@@ -8,7 +8,7 @@ using ChapeauDAO;
 
 namespace ChapeauLogica
 {
-    public class KitchenService
+    public class KitchenService : IBarKitchenService
     {
         private KitchenDAO kitchenDAO;
 
@@ -22,14 +22,14 @@ namespace ChapeauLogica
             return kitchenDAO.GetKitchenOverviews();
         }
 
-        public KitchenOrderOverview GetKitchenOverview(KitchenOrderOverview kitchenOrderOverview)
+        public KitchenOrderOverview GetKitchenOverview(int orderId)
         {
-            return kitchenDAO.GetKitchenOverview(kitchenOrderOverview);
+            return kitchenDAO.GetKitchenOverview(orderId);
         }
 
-        public KitchenOrderOverview GetKitchenOverviewWithTableId(KitchenOrderOverview kitchenOrderOverview)
+        public KitchenOrderOverview GetKitchenOverviewWithTableId(int tableId)
         {
-            return kitchenDAO.GetKitchenOverviewWithTableId(kitchenOrderOverview);
+            return kitchenDAO.GetKitchenOverviewWithTableId(tableId);
         }
 
 /*        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
@@ -37,10 +37,24 @@ namespace ChapeauLogica
             return kitchenDAO.ReadyToServe(orderGerecht);
         }*/
 
-        public void ChangeNextOrderStatus(OrderGerecht orderGerecht, OrderStatus newStatus)
+        public void ChangeOrderStatusWithType(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
-            kitchenDAO.ChangeNextOrderStatus(orderGerecht, newStatus);
+            kitchenDAO.ChangeOrderStatusWithType(orderGerecht, newStatus);
+        }
 
+        public void ChangeServeStatusWithType(OrderGerecht orderGerecht, ServeerStatus serveerStatus)
+        {
+            kitchenDAO.ChangeServeStatusWithType(orderGerecht, serveerStatus);
+        }
+
+        public void ChangeFullOrderStatus(OrderOverview kitchenOrderOverview, OrderStatus newStatus)
+        {
+            kitchenDAO.ChangeFullOrderStatus(kitchenOrderOverview, newStatus);
+        }
+
+        public void ChangeFullServeStatus(OrderOverview kitchenOrderOverview, ServeerStatus serveerStatus)
+        {
+            kitchenDAO.ChangeFullServeStatus(kitchenOrderOverview, serveerStatus);
         }
     }
 }

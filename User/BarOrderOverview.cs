@@ -15,7 +15,7 @@ namespace ChapeauModel
             Drinken = new List<OrderGerecht>();
         }
 
-        public void Add(OrderGerecht orderGerecht)
+        public override void Add(OrderGerecht orderGerecht)
         {
             if (orderGerecht.MenuItem.Type == TypeOfProduct.Drinken)
                 Drinken.Add(orderGerecht);
@@ -25,7 +25,7 @@ namespace ChapeauModel
 
         public List<OrderGerecht> GetNextMoetNogList()
         {
-            if (Drinken.Count != 0 && !ListHasMeeBezig(Drinken) && !ListCompleted(Drinken))
+            if (Drinken.Count != 0 && !ListHasMeeBezig(Drinken) && !ListOnlyHasStatus(Drinken, OrderStatus.Klaar))
             {
                 return Drinken;
             }
@@ -35,6 +35,20 @@ namespace ChapeauModel
         public List<OrderGerecht> GetNextMeeBezigList()
         {
             if (Drinken.Count != 0 && ListHasMeeBezig(Drinken))
+            {
+                return Drinken;
+            }
+            return new List<OrderGerecht>();
+        }
+
+        public override List<OrderGerecht> GetCombinedGerechten()
+        {
+            return Drinken;
+        }
+
+        public override List<OrderGerecht> TypeToList(TypeOfProduct type)
+        {
+            if (type == TypeOfProduct.Drinken)
             {
                 return Drinken;
             }
