@@ -65,7 +65,7 @@
             this.textBoxComment = new System.Windows.Forms.TextBox();
             this.buttonPlus = new System.Windows.Forms.Button();
             this.buttonMinus = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTerugSelectedItems = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panelOrdered = new System.Windows.Forms.Panel();
             this.labelBesteld = new System.Windows.Forms.Label();
@@ -335,7 +335,7 @@
             this.panelViewOrder.Controls.Add(this.textBoxComment);
             this.panelViewOrder.Controls.Add(this.buttonPlus);
             this.panelViewOrder.Controls.Add(this.buttonMinus);
-            this.panelViewOrder.Controls.Add(this.button1);
+            this.panelViewOrder.Controls.Add(this.buttonTerugSelectedItems);
             this.panelViewOrder.Controls.Add(this.label4);
             this.panelViewOrder.Location = new System.Drawing.Point(0, 0);
             this.panelViewOrder.Name = "panelViewOrder";
@@ -474,15 +474,15 @@
             this.buttonMinus.UseVisualStyleBackColor = true;
             this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
             // 
-            // button1
+            // buttonTerugSelectedItems
             // 
-            this.button1.Location = new System.Drawing.Point(13, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 27);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Terug";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonTerugSelectedItems.Location = new System.Drawing.Point(13, 15);
+            this.buttonTerugSelectedItems.Name = "buttonTerugSelectedItems";
+            this.buttonTerugSelectedItems.Size = new System.Drawing.Size(95, 27);
+            this.buttonTerugSelectedItems.TabIndex = 2;
+            this.buttonTerugSelectedItems.Text = "Terug";
+            this.buttonTerugSelectedItems.UseVisualStyleBackColor = true;
+            this.buttonTerugSelectedItems.Click += new System.EventHandler(this.buttonTerugSelectedItems_Click);
             // 
             // label4
             // 
@@ -596,7 +596,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonPlus;
         private System.Windows.Forms.Button buttonMinus;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTerugSelectedItems;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listViewViewOrder;
         private System.Windows.Forms.Label label5;

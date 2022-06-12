@@ -19,6 +19,7 @@ namespace ChapeauUI
         private Employee employee;
         private Table table;
         private List<MenuItem> menuitems;
+        private MenuItemService menuItemService
         public Order(Table TableId, Employee employee) 
 
         {
@@ -26,7 +27,6 @@ namespace ChapeauUI
             this.employee = employee;
             InitializeComponent();
 
-            //this.selectedItems = new List<OrderGerecht>();
             
         }
 
@@ -50,11 +50,11 @@ namespace ChapeauUI
         {
             listViewGerechten.Items.Clear();
             labelTypeGerecht.Text = "Voorgerecht";
-            MenuItemService menuItemService = new MenuItemService();
+            menuItemService = new MenuItemService();
             
             panelBestellen.Visible = true;
             
-                menuitems = menuItemService.GetAllMenuItems(0);
+            menuitems = menuItemService.GetAllMenuItems(0);
             
             AddItem(menuitems);
         }
@@ -65,7 +65,7 @@ namespace ChapeauUI
             listViewGerechten.Items.Clear();
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Hoofdgerecht";
-            MenuItemService menuItemService = new MenuItemService();
+            menuItemService = new MenuItemService();
             
                 menuitems = menuItemService.GetAllMenuItems(1);
             
@@ -78,7 +78,7 @@ namespace ChapeauUI
             listViewGerechten.Items.Clear();
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Nagerecht";
-            MenuItemService menuItemService = new MenuItemService();
+            menuItemService = new MenuItemService();
             
                 menuitems = menuItemService.GetAllMenuItems(2);
             
@@ -94,7 +94,7 @@ namespace ChapeauUI
             listViewGerechten.Items.Clear();
             panelBestellen.Visible = true;
             labelTypeGerecht.Text = "Drankjes";
-            MenuItemService menuItemService = new MenuItemService();
+            menuItemService = new MenuItemService();
             menuitems = menuItemService.GetAllMenuItems(3);
             AddItem(menuitems);
         }
@@ -197,14 +197,14 @@ namespace ChapeauUI
             listViewViewOrder.Columns.Add("Naam", 100);
             listViewViewOrder.Columns.Add("Prijs", 50);
             listViewViewOrder.Columns.Add("Alcoholisch", 80);
-            listViewViewOrder.Columns.Add("Opmerking", 200);
+            listViewViewOrder.Columns.Add("Opmerking", 180);
             listViewViewOrder.Columns.Add("Aantal", 70);
             
             
         }
         private void RefreshListView()
         {
-            MenuItemService menuItemService = new MenuItemService();
+            menuItemService = new MenuItemService();
             foreach (KeyValuePair<OrderGerecht, int> item in GetItems())
             {
                 MenuItem menuItem = menuItemService.GetMenuItemsFromOrder(item.Key.MenuItem);
@@ -224,24 +224,7 @@ namespace ChapeauUI
                 liItem.Tag = item.Key;
                 listViewViewOrder.Items.Add(liItem);
             }
-            //foreach (OrderGerecht O in selectedItems)
-            //{
-            //    MenuItem menuItem = menuItemService.GetMenuItemsFromOrder(O.MenuItem);
-            //    ListViewItem item = new ListViewItem(menuItem.ProductId.ToString());
-            //    item.SubItems.Add(menuItem.ProductName);
-            //    item.SubItems.Add(menuItem.Price.ToString());
-            //    if (menuItem.IsAlcoholic)
-            //    {
-            //        item.SubItems.Add("Ja");
-            //    }
-            //    else
-            //    {
-            //        item.SubItems.Add("Nee");
-            //    }
-            //    item.SubItems.Add(O.Remark.ToString());
-            //    item.Tag = menuItem;
-            //    listViewViewOrder.Items.Add(item);
-            //}
+            
         }
 
         private Dictionary<OrderGerecht, int> GetItems()
@@ -267,18 +250,10 @@ namespace ChapeauUI
             {
                 int newAmount = int.Parse(listViewViewOrder.SelectedItems[0].SubItems[5].Text) + 1;
                 listViewViewOrder.Items[listViewViewOrder.SelectedItems[0].Index].SubItems[5].Text = $"{newAmount}";
-
-                //selectedItems.Add((OrderGerecht)listViewViewOrder.SelectedItems[0].Tag);
-                //RefreshListView();
-                //listViewViewOrder.Items.Add((ListViewItem)item.Clone());
             }   
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            panelViewOrder.Visible = false;
-            labelNoItems.Text = "";
-        }
+        
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
@@ -327,7 +302,7 @@ namespace ChapeauUI
                 labelBesteld.Text = "Besteld!";
                 OrderGerechtService orderGerechtService = new OrderGerechtService();
                 selectedItems = GetItemsFromListView();
-                MenuItemService menuItemService = new MenuItemService();
+                menuItemService = new MenuItemService();
                 int index = 0;
                 foreach (KeyValuePair<OrderGerecht, int> item in GetItems())
                 {
@@ -338,19 +313,6 @@ namespace ChapeauUI
                     }
                     index++;
                 }
-                //for (int i = 0; i < listViewViewOrder.Items.Count; i++)
-                //{
-                //    for (int j = 0; j < int.Parse(listViewViewOrder.Items[i].SubItems[5].Text); j++)
-                //    {
-                //        orderGerechtService.InsertOrderGerecht((OrderGerecht)listViewViewOrder.Items[i].Tag);
-                //        menuItemService.UpdateMenuItem((OrderGerecht)listViewViewOrder.Items[i].Tag);
-                //    }
-                //}
-                //foreach (OrderGerecht orderGerecht in selectedItems)
-                //{
-                //    orderGerechtService.InsertOrderGerecht(orderGerecht);
-                //    menuItemService.UpdateMenuItem(orderGerecht);
-                //}
                 listViewViewOrder.Clear();
                 panelOrdered.Visible = true;
             }
@@ -394,6 +356,12 @@ namespace ChapeauUI
         {
             panelOrdered.Visible = false;
             this.Close();
+        }
+
+        private void buttonTerugSelectedItems_Click(object sender, EventArgs e)
+        {
+            panelViewOrder.Visible = false;
+            labelNoItems.Text = "";
         }
     }
 }
