@@ -12,13 +12,31 @@ namespace ChapeauLogica
     public class MenuItemService
     {
         private MenuItemDAO _menuItemDAO;
+        int IsDiner;
 
+        private DateTime lunch = new DateTime(2022, 6, 14, 16, 00, 00);
         public MenuItemService()
         {
             _menuItemDAO = new MenuItemDAO();
         }
-        public List<MenuItem> GetAllMenuItems(int Type, int IsDiner)
+        public List<MenuItem> GetAllMenuItems(int Type)
         {
+            if (Type == 3)
+            {
+                IsDiner = 0;
+            }
+            else
+            {
+                if (DateTime.Now.TimeOfDay > lunch.TimeOfDay)
+                {
+                    IsDiner = 1;
+                }
+                else
+                {
+                    IsDiner = 0;
+                }
+            }
+            
             List<MenuItem> menuItems = _menuItemDAO.GetAllMenuItems(Type, IsDiner);
             return menuItems;
         }
