@@ -19,7 +19,7 @@ namespace ChapeauUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
-            Application.Run(new KitchenDisplay());
+            //Application.Run(new KitchenDisplay());
             Application.Run(new BarDisplay());
         }
     }
