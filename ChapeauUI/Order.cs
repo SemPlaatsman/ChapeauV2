@@ -19,7 +19,7 @@ namespace ChapeauUI
         private Employee employee;
         private Table table;
         private List<MenuItem> menuitems;
-        private MenuItemService menuItemService
+        private MenuItemService menuItemService;
         public Order(Table TableId, Employee employee) 
 
         {
