@@ -33,11 +33,6 @@ namespace ChapeauLogica
             return kitchenDAO.GetKitchenOverviewWithTableId(tableId);
         }
 
-/*        public KitchenOrderOverview ReadyToServe(OrderGerecht orderGerecht) 
-        {
-            return kitchenDAO.ReadyToServe(orderGerecht);
-        }*/
-
         public void ChangeOrderStatusWithType(OrderGerecht orderGerecht, OrderStatus newStatus)
         {
             kitchenDAO.ChangeOrderStatusWithType(orderGerecht, newStatus);
